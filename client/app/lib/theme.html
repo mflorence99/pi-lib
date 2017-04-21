@@ -1,0 +1,396 @@
+<custom-style>
+  <style>
+
+    html {
+
+      --primary-text-color: var(--paper-grey-900);
+      --primary-background-color: white;
+      --secondary-text-color: var(--paper-grey-600);
+      --disabled-background-color: var(--paper-grey-100);
+      --disabled-text-color: var(--paper-grey-500);
+      --divider-color: var(--paper-grey-400);
+
+      --primary-color: var(--paper-blue-500);
+      --light-primary-color: var(--paper-blue-100);
+      --dark-primary-color: var(--paper-blue-700);
+
+      --accent-color: var(--paper-pink-a200);
+      --light-accent-color: var(--paper-pink-a100);
+      --dark-accent-color: var(--paper-pink-a400);
+
+      --info-color: var(--primary-color);
+      --success-color: var(--paper-green-a700);
+      --warning-color: var(--paper-orange-a700);
+      --error-color: var(--paper-red-a700);
+
+    }
+
+    a {
+      color: var(--dark-accent-color);
+      font-weight: 700;
+    }
+
+    body {
+      background-color: var(--primary-background-color);
+      color: var(--primary-text-color);
+      font-family: 'Roboto', sans-serif;
+      font-size: 1rem;
+      font-weight: 400;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      padding: 0;
+      width: 100%;
+    }
+
+    body * {
+      box-sizing: border-box;
+    }
+
+    em {
+      color: var(--dark-primary-color);
+      font-weight: 400;
+    }
+
+    html {
+      border: 0;
+      font-size: 14px;
+      height: 100%;
+      width: 100%;
+    }
+
+    iron-icon[big] {
+      --iron-icon-height: 32px;
+      --iron-icon-width: 32px;
+    }
+
+    iron-icon[medium] {
+      --iron-icon-height: 24px;
+      --iron-icon-width: 24px;
+    }
+
+    iron-icon[small] {
+      --iron-icon-height: 16px;
+      --iron-icon-width: 16px;
+    }
+
+    iron-icon[primary] {
+      --iron-icon-fill-color: var(--primary-color);
+    }
+
+    iron-icon[secondary] {
+      --iron-icon-fill-color: var(--accent-color);
+    }
+
+    iron-icon[info] {
+      --iron-icon-fill-color: var(--info-color);
+    }
+
+    iron-icon[success] {
+      --iron-icon-fill-color: var(--success-color);
+    }
+
+    iron-icon[warning] {
+      --iron-icon-fill-color: var(--warning-color);
+    }
+
+    iron-icon[error] {
+      --iron-icon-fill-color: var(--error-color);
+    }
+
+    p {
+      line-height: 1.75;
+    }
+
+    pageable-data {
+      color: var(--primary-color);
+    }
+
+    paper-button[primary] {
+      color: var(--primary-color);
+    }
+
+    paper-button[primary][raised] {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    paper-button[secondary] {
+      color: var(--accent-color);
+    }
+
+    paper-button[secondary][raised] {
+      background-color: var(--accent-color);
+      color: white;
+    }
+
+    paper-button[info] {
+      color: var(--info-color);
+    }
+
+    paper-button[info][raised] {
+      background-color: var(--info-color);
+      color: white;
+    }
+
+    paper-button[success] {
+      color: var(--success-color);
+    }
+
+    paper-button[success][raised] {
+      background-color: var(--success-color);
+      color: white;
+    }
+
+    paper-button[warning] {
+      color: var(--warning-color);
+    }
+
+    paper-button[warning][raised] {
+      background-color: var(--warning-color);
+      color: white;
+    }
+
+    paper-button[error] {
+      color: var(--error-color);
+    }
+
+    paper-button[error][raised] {
+      background-color: var(--error-color);
+      color: white;
+    }
+
+    paper-button[toggles][active] {
+      background: var(--light-primary-color);
+    }
+
+    paper-button[disabled] {
+      background-color: var(--disabled-background-color) !important;
+      color: var(--disabled-text-color) !important;
+    }
+
+    paper-card {
+      --paper-card-background-color: var(--primary-background-color);
+      --paper-card-header-color: white;
+      --paper-card-header: {
+        background-color: var(--primary-color);
+      };
+    }
+
+    paper-card[info] {
+      --paper-card-header: {
+        background-color: var(--info-color);
+      };
+    }
+
+    paper-card[success] {
+      --paper-card-header: {
+        background-color: var(--success-color);
+      };
+    }
+
+    paper-card[warning] {
+      --paper-card-header: {
+        background-color: var(--warning-color);
+      };
+    }
+
+    paper-card[error] {
+      --paper-card-header: {
+        background-color: var(--error-color);
+      };
+    }
+
+    paper-card .card-actions {
+      border: 0 !important;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      padding: 16px !important;
+    }
+
+    paper-card .card-content {
+      padding: 16px !important;
+    }
+
+    paper-dialog *:first-child {
+      margin-top: 0 !important;
+    }
+
+    paper-dialog[info] {
+      --paper-dialog-title: {
+        color: white;
+        background-color: var(--info-color);
+        margin: 0 !important;
+        padding: 12px 24px 12px 24px;
+      };
+    }
+
+    paper-dialog[info] paper-progress {
+      --paper-progress-active-color: var(--info-color);
+    }
+
+    paper-dialog[success] {
+      --paper-dialog-title: {
+        color: white;
+        background-color: var(--success-color);
+        margin: 0 !important;
+        padding: 12px 24px 12px 24px;
+      };
+    }
+
+    paper-dialog[success] paper-progress {
+      --paper-progress-active-color: var(--success-color);
+    }
+
+    paper-dialog[warning] {
+      --paper-dialog-title: {
+        color: white;
+        background-color: var(--warning-color);
+        margin: 0 !important;
+        padding: 12px 24px 12px 24px;
+      };
+    }
+
+    paper-dialog[warning] paper-progress {
+      --paper-progress-active-color: var(--warning-color);
+    }
+
+    paper-dialog[error] {
+      --paper-dialog-title: {
+        color: white;
+        background-color: var(--error-color);
+        margin: 0 !important;
+        padding: 12px 24px 12px 24px;
+      };
+    }
+
+    paper-dialog[error] paper-progress {
+      --paper-progress-active-color: var(--error-color);
+    }
+
+    paper-dialog paper-progress {
+      margin: 0 !important;
+      padding: 0 !important;
+      width: 100%;
+    }
+
+    paper-fab[primary] {
+      --paper-fab-background: var(--primary-color);
+    }
+
+    paper-fab[secondary] {
+      --paper-fab-background: var(--secondary-color);
+    }
+
+    paper-fab[info] {
+      --paper-fab-background: var(--info-color);
+    }
+
+    paper-fab[success] {
+      --paper-fab-background: var(--success-color);
+    }
+
+    paper-fab[warning] {
+      --paper-fab-background: var(--warning-color);
+    }
+
+    paper-fab[error] {
+      --paper-fab-background: var(--error-color);
+    }
+
+    paper-header-panel {
+      --paper-header-panel-body: {
+        background-color: var(--paper-grey-50);
+      };
+    }
+
+    paper-icon-button[primary] {
+      color: var(--primary-color);
+    }
+
+    paper-icon-button[secondary] {
+      color: var(--accent-color);
+    }
+
+    paper-icon-button[info] {
+      color: var(--info-color);
+    }
+
+    paper-icon-button[success] {
+      color: var(--success-color);
+    }
+
+    paper-icon-button[suffix] {
+      color: var(--paper-grey-600);
+      height: 24px;
+      padding: 0 0 4px 0;
+      width: 24px;
+    }
+
+    paper-icon-button[warning] {
+      color: var(--warning-color);
+    }
+
+    paper-icon-button[error] {
+      color: var(--error-color);
+    }
+
+    paper-input {
+      --paper-input-container-color: var(--secondary-text-color);
+      --paper-input-container-focus-color: var(--primary-color);
+      --paper-input-container-invalid-color: var(--error-color);
+      --paper-input-container-input-color: var(--secondary-text-color);
+    }
+
+    paper-input iron-icon {
+      color: var(--primary-color);
+      margin-right: 8px;
+    }
+
+    paper-item {
+      --paper-item: {
+        cursor: pointer;
+      };
+    }
+
+    paper-progress {
+      --paper-progress-active-color: var(--primary-color);
+      --paper-progress-secondary-color: var(--accent-color);
+    }
+
+    paper-slider {
+      --paper-slider-active-color: var(--secondary-text-color);
+      --paper-slider-knob-color: var(--secondary-text-color);
+      --paper-slider-pin-color: var(--secondary-text-color);
+    }
+
+    paper-slider[primary] {
+      --paper-slider-active-color: var(--primary-color);
+      --paper-slider-knob-color: var(--primary-color);
+      --paper-slider-pin-color: var(--primary-color);
+    }
+
+    paper-slider[secondary] {
+      --paper-slider-active-color: var(--accent-color);
+      --paper-slider-knob-color: var(--accent-color);
+      --paper-slider-pin-color: var(--accent-color);
+    }
+
+    paper-tab {
+      --paper-tab-ink: var(--primary-color);
+    }
+
+    paper-tabs {
+      --paper-tabs-selection-bar-color: var(--primary-color);
+    }
+
+    paper-spinner {
+      --paper-spinner-layer-1-color: var(--primary-color);
+      --paper-spinner-layer-2-color: var(--primary-color);
+      --paper-spinner-layer-3-color: var(--primary-color);
+      --paper-spinner-layer-4-color: var(--primary-color);
+    }
+
+  </style>
+</custom-style>

@@ -1,0 +1,11 @@
+{
+  "extends": "./cli-tsconfig",
+  "compilerOptions": {
+    "alwaysStrict": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "pretty": true,
+    "suppressImplicitAnyIndexErrors": true
+  }
+}
