@@ -25,6 +25,10 @@
       "node_modules/@types"
     ]
   },
+  "exclude": [
+    "./dist/server/**/*.ts",
+    "./dist/tools/**/*.ts"
+  ],
   "include": [
     "./dist/**/*.ts"
   ]

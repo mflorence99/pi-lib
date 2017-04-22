@@ -36,8 +36,9 @@ function compile() {
 // copy root files
 function copyRoot() {
   var globs = [
-    path.join(source, 'theme.html'),
-    path.join(source, 'package.json')
+    path.join(source, 'package.json'),
+    path.join(source, 'startup.html'),
+    path.join(source, 'theme.html')
   ];
   return gulp.src(globs)
     .pipe(gulp.dest(target));
@@ -46,7 +47,7 @@ function copyRoot() {
 // inline styles and templates
 function inline() {
   var globs = [
-    path.join(source, '**/*.ts')
+    path.join(source, '**', '*.ts')
   ];
   return gulp.src(globs)
     .pipe(inliner({

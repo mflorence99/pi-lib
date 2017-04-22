@@ -1,6 +1,6 @@
 {
   "name": "pi-lib",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -69,7 +69,7 @@
     "web-animations-js": "2.2.2",
     "ws": "^2.2.3",
     "yargs": "^7.1.0",
-    "zone.js": "^0.8.4"
+    "zone.js": "0.8.5"
   },
   "devDependencies": {
     "@angular/cli": "latest"
