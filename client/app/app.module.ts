@@ -1,16 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
 import { AppComponent } from './containers/app';
+import { AppRoutes } from './app.routes';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FourOhFourComponent } from './lib/containers/404';
 import { HttpModule } from '@angular/http';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+import { NoopComponent } from './containers/noop';
 import { PiModule } from './lib';
 import { StoreModule } from '@ngrx/store';
 
 const DECLARATIONS = [
-  AppComponent
+  AppComponent,
+  FourOhFourComponent,
+  NoopComponent
 ];
 
 @NgModule({
@@ -22,6 +28,8 @@ const DECLARATIONS = [
   ],
 
   imports: [
+    AppRoutes,
+    BrowserAnimationsModule,
     BrowserModule,
     CommonModule,
     FlexLayoutModule,
