@@ -1,5 +1,10 @@
-version ${1:-patch}
+version=${1:-patch}
+
+set -e
+
 mversion -m "Updated to version %s" version "$version"
+git push origin --tags
+git push origin master
 
 pushd client/app/lib
 gulp
