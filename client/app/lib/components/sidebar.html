@@ -1,0 +1,14 @@
+<p>Route is: {{path}}</p>
+
+<img src="app/lib/assets/pi.png">
+
+<div *ngFor="let group of groups">
+
+  {{group}}
+
+  <div *ngFor="let item of items[group]">
+    <a [routerLink]="[item.path]">{{item.tag}}</a>
+  </div>
+
+</div>
+ 
