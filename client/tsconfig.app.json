@@ -8,6 +8,7 @@
   },
   "exclude": [
     "test.ts",
+    "app/lib/gulpfile.ts",
     "app/lib/dist",
     "app/lib/server",
     "app/lib/tools",

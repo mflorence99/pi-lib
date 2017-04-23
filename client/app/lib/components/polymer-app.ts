@@ -32,6 +32,8 @@ export class PolymerAppComponent {
     Polymer.updateStyles();
     this.loaded = true;
     this.loading = false;
+    // successful startup signature
+    console.log('<polymer-app> loaded');
   }
 
 }

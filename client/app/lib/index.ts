@@ -3,6 +3,7 @@ import * as lib from './';
 import {CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule} from '@angular/core';
 
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 /**
  * pi-lib module definition
@@ -14,6 +15,7 @@ import { CommonModule } from '@angular/common';
 
 export * from './components/no-data-on-page';
 export * from './components/polymer-app';
+export * from './components/sidebar';
 export * from './pipes/breakable';
 export * from './pipes/ellipsize';
 export * from './pipes/jsonify';
@@ -25,7 +27,8 @@ const DECLARATIONS = [
   lib.EllipsizePipe,
   lib.JSONifyPipe,
   lib.NoDataOnPageComponent,
-  lib.PolymerAppComponent
+  lib.PolymerAppComponent,
+  lib.SidebarComponent
 ];
 
 const PROVIDERS = [
@@ -43,7 +46,8 @@ const PROVIDERS = [
   ],
 
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
 
   providers: [

@@ -26,6 +26,7 @@
     ]
   },
   "exclude": [
+    "./dist/gulpfile.ts",
     "./dist/server/**/*.ts",
     "./dist/tools/**/*.ts"
   ],

@@ -9,6 +9,7 @@
       "outDir": "dist",
       "assets": [
         "assets",
+        "app/lib/assets",
         "app/lib/startup.html",
         "app/lib/theme.html",
         "bower_components",

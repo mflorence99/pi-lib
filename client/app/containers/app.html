@@ -1,7 +1,11 @@
-<pi-polymer-app>
-</pi-polymer-app>
+<pi-polymer-app></pi-polymer-app>
 
 <main>
+
+  <pi-sidebar
+    [path]="route | async"
+    [sidebar]="sidebar">
+  </pi-sidebar>
 
   <router-outlet></router-outlet>
 

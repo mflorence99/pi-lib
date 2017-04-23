@@ -4,8 +4,6 @@ import { Response } from '@angular/http';
  * Common utility functions
  */
 
-const typeCache: { [label: string]: boolean } = {};
-
 /**
  * Simple debounce; useful when no stream is at play
  */
@@ -46,11 +44,13 @@ export function handleHttpError(error: Response): string {
 }
 
 /**
- * Guarantee unique type for Store actions
+ * Guarantee unique string
  */
-export function type<T>(label: T | ''): T {
-  if (typeCache[<string>label])
-    throw new Error(`Action type "${label}" is not unique`);
-  typeCache[<string>label] = true;
+const uniqueCache: { [label: string]: boolean } = {};
+
+export function unique<T>(label: T | ''): T {
+  if (uniqueCache[<string>label])
+    throw new Error(`${label} is not unique`);
+  uniqueCache[<string>label] = true;
   return <T>label;
 }

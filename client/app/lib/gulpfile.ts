@@ -1,15 +1,15 @@
-var del = require('del');
-var gulp = require('gulp');
-var inliner = require('gulp-inline-ng2-template');
-var less = require('less');
-var merge = require('merge-stream');
-var minifier = require('html-minifier');
-var ngc = require('gulp-ngc');
-var path = require('path');
+import * as del from 'del';
+import * as gulp from 'gulp';
+import * as inliner from 'gulp-inline-ng2-template';
+import * as less from 'less';
+import * as merge from 'merge-stream';
+import * as minifier from 'html-minifier';
+import * as ngc from 'gulp-ngc';
+import * as path from 'path';
 
 // globals
-var source = path.join(process.cwd(), './');
-var target = path.join(process.cwd(), './dist');
+const source = path.join(process.cwd(), './');
+const target = path.join(process.cwd(), './dist');
 
 function build() {
   return merge(
@@ -35,7 +35,8 @@ function compile() {
 
 // copy root files
 function copyRoot() {
-  var globs = [
+  const globs = [
+    path.join(source, 'assets', '**', '*'),
     path.join(source, 'package.json'),
     path.join(source, 'startup.html'),
     path.join(source, 'theme.html')
@@ -46,7 +47,7 @@ function copyRoot() {
 
 // inline styles and templates
 function inline() {
-  var globs = [
+  const globs = [
     path.join(source, '**', '*.ts')
   ];
   return gulp.src(globs)
@@ -62,7 +63,7 @@ function inline() {
 
 // minify HTML
 function minify(path, ext, file, cb) {
-  var output = minifier.minify(file, {
+  const output = minifier.minify(file, {
     caseSensitive: true,
     collapseInlineTagWhitespace: true,
     collapseWhitespace: true,

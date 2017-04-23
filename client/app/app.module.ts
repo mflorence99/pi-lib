@@ -8,9 +8,10 @@ import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FourOhFourComponent } from './lib/containers/404';
 import { HttpModule } from '@angular/http';
-import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+import { LocalStorageModule } from 'angular-2-local-storage';
 import { NoopComponent } from './containers/noop';
 import { PiModule } from './lib';
+import { RouterModule } from '@angular/router';
 import { RouterStoreModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './reducers';
@@ -29,6 +30,10 @@ const DECLARATIONS = [
     ...DECLARATIONS
   ],
 
+  exports: [
+    ...DECLARATIONS
+  ],
+
   imports: [
     AppRoutes,
     BrowserAnimationsModule,
@@ -36,18 +41,14 @@ const DECLARATIONS = [
     CommonModule,
     FlexLayoutModule,
     HttpModule,
-    Ng2GoogleChartsModule,
+    LocalStorageModule.withConfig({
+      prefix: 'pi-lib',
+      storageType: 'localStorage'
+    }),
     PiModule,
+    RouterModule,
     RouterStoreModule.connectRouter(),
     StoreModule.provideStore(reducers)
-  ],
-
-  exports: [
-    ...DECLARATIONS,
-    Ng2GoogleChartsModule,
-    FlexLayoutModule,
-    PiModule,
-    StoreModule
   ],
 
   providers: [
