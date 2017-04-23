@@ -1,3 +1,6 @@
+version ${1:-patch}
+mversion -m "Updated to version %s" version "$version"
+
 pushd client/app/lib
 gulp
 pushd dist
