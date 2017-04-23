@@ -1,4 +1,4 @@
-import {Component, HostListener} from '@angular/core';
+import {ChangeDetectionStrategy, Component, HostListener} from '@angular/core';
 
 /**
  * Prepares app to use Polymer.
@@ -17,6 +17,7 @@ import {Component, HostListener} from '@angular/core';
 declare var Polymer: any;
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'pi-polymer-app',
   templateUrl: 'polymer-app.html',
   styleUrls: ['polymer-app.less']

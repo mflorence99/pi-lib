@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 
 /**
  * Standard treatment for "no data to display" UI.
@@ -12,6 +12,7 @@ import {Component, Input} from '@angular/core';
  */
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'pi-no-data-on-page',
   styleUrls: ['no-data-on-page.less'],
   templateUrl: 'no-data-on-page.html'

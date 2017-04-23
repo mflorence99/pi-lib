@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { EnvService } from '../lib/services/env';
 import { config } from '../config';
 
 @Component({
@@ -11,8 +12,9 @@ import { config } from '../config';
 
 export class AppComponent {
 
-  constructor() {
+  constructor(private env: EnvService) {
     console.log(config);
+    console.log(this.env);
   }
 
 }
