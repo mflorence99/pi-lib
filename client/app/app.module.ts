@@ -11,7 +11,9 @@ import { HttpModule } from '@angular/http';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { NoopComponent } from './containers/noop';
 import { PiModule } from './lib';
+import { RouterStoreModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
+import { reducers } from './reducers';
 
 const DECLARATIONS = [
   AppComponent,
@@ -35,7 +37,9 @@ const DECLARATIONS = [
     FlexLayoutModule,
     HttpModule,
     Ng2GoogleChartsModule,
-    PiModule
+    PiModule,
+    RouterStoreModule.connectRouter(),
+    StoreModule.provideStore(reducers)
   ],
 
   exports: [

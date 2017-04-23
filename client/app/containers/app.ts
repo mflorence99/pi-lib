@@ -3,6 +3,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { EnvService } from '../lib/services/env';
 import { config } from '../config';
 
+/**
+ * App root
+ */
+
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'pi-root',
