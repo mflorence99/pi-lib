@@ -2,7 +2,7 @@ version=${1:-patch}
 
 set -e
 
-mversion -m "Updated to version %s" version "$version"
+mversion -m "Updated to version %s" "$version"
 git push origin --tags
 git push origin master
 

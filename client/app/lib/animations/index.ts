@@ -4,7 +4,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
  * Common animation functions
  */
 
-export function flyInOut() {
+export function flyInOut(): any {
   return trigger('flyInOut', [
     state('in', style({transform: 'translate(0, 0)'})),
     transition('void => *', [
