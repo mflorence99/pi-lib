@@ -20,5 +20,6 @@
     "paper-ripple": "2.0-preview",
     "iron-a11y-keys-behavior": "2.0-preview",
     "paper-styles": "2.0-preview"
-  }
+  },
+  "version": "0.0.9"
 }
