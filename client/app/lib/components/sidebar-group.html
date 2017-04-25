@@ -1,25 +1,25 @@
 <paper-button
   class="group"
-  (click)="accordion.toggle()">
+  (click)="toggle(group)">
 
   <i
     class="fa fa-chevron-up"
-    [ngClass]="accordion.opened? 'up' : 'down'"></i>
+    [ngClass]="sidebarState[group]? 'up' : 'down'"></i>
   {{group}}
 
 </paper-button>
 
-<iron-collapse #accordion>
+<iron-collapse [opened]="sidebarState[group]">
 
   <paper-button
-    [ngClass]="{selected: item.path === route.path}"
+    [ngClass]="{selected: item.path === routerState.path}"
     *ngFor="let item of items"
     class="item">
 
     <div [routerLink]="item.path">
 
       <i
-        [ngClass]="{selected: item.path === route.path}"
+        [ngClass]="{selected: item.path === routerState.path}"
         class="fa fa-fw fa-{{item.faIcon}}">
       </i>
       {{item.tag}}

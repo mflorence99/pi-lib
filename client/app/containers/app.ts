@@ -1,4 +1,5 @@
 import * as router from '@ngrx/router-store';
+import * as sidebar from '../lib/reducers/sidebar';
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
@@ -21,7 +22,8 @@ import { config } from '../config';
 })
 
 export class AppComponent {
-  route: Observable<router.RouterState>;
+  routerState: Observable<router.RouterState>;
+  sidebarState: Observable<sidebar.State>;
 
   sidebarItems: SidebarItem[] = [
     new SidebarItem('Navigation', '/a', 'tachometer', 'Dashboard'),
@@ -36,7 +38,8 @@ export class AppComponent {
   constructor(env: EnvService,
               store: Store<AppState>) {
     console.log('<pi-root> loading', config, env);
-    this.route = store.select(state => state.router);
+    this.routerState = store.select(state => state.router);
+    this.sidebarState = store.select(state => state.sidebar);
   }
 
 }

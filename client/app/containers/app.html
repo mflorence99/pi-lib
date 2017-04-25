@@ -9,8 +9,9 @@
 
     <pi-sidebar
       fxFlexFill
-      [route]="route | async"
-      [sidebarItems]="sidebarItems">
+      [routerState]="routerState | async"
+      [sidebarItems]="sidebarItems"
+      [sidebarState]="sidebarState | async">
     </pi-sidebar>
 
   </aside>

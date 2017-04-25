@@ -1,6 +1,10 @@
 import * as router from '@ngrx/router-store';
+import * as sidebar from '../reducers/sidebar';
 
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
+import { CloseAction, OpenAction } from '../actions/sidebar';
+
+import { Store } from '@ngrx/store';
 
 /**
  * Common sidebar.
@@ -15,7 +19,8 @@ import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/c
 
 export class SidebarComponent {
   @HostBinding('style.display') _display = 'block';
-  @Input() route: router.RouterState = router.initialState;
+  @Input() routerState: router.RouterState = router.initialState;
+  @Input() sidebarState: sidebar.State = sidebar.initialState;
 
   groups: string[] = [];
   items = new SidebarItemMap();
@@ -47,7 +52,17 @@ export class SidebarGroupComponent {
   @HostBinding('style.display') _display = 'block';
   @Input() group = '';
   @Input() items: SidebarItem[] = [];
-  @Input() route: router.RouterState = router.initialState;
+  @Input() routerState: router.RouterState = router.initialState;
+  @Input() sidebarState: sidebar.State = sidebar.initialState;
+
+  /** ctor */
+  constructor(private store: Store<any>) { }
+
+  /** Toggle a group open/closed */
+  toggle(group: string) {
+    this.store.dispatch(this.sidebarState[group]?
+      new CloseAction(group) : new OpenAction(group));
+  }
 
 }
 
