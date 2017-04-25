@@ -21,8 +21,13 @@ import { config } from '../config';
 export class AppComponent extends AppBase {
 
   sidebar: SidebarItem[] = [
-    new SidebarItem('this', '/x', 'noop'),
-    new SidebarItem('that', '/y', '404')
+    new SidebarItem('Navigation', '/a', 'Dashboard'),
+    new SidebarItem('Navigation', '/b', 'Calendar'),
+    new SidebarItem('Navigation', '/x', 'Email'),
+    new SidebarItem('Components', '/y', 'Layout'),
+    new SidebarItem('Components', '/c', 'Table'),
+    new SidebarItem('Components', '/y', 'Form'),
+    new SidebarItem('Components', '/x', 'Chart')
   ];
 
   constructor(env: EnvService,

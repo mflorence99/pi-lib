@@ -1,11 +1,12 @@
 {
-  "name": "pi-led",
+  "name": "pi-lib",
   "dependencies": {
     "paper-button": "PolymerElements/paper-button#2.0-preview",
     "paper-checkbox": "PolymerElements/paper-checkbox#2.0-preview",
     "paper-spinner": "PolymerElements/paper-spinner#2.0-preview",
     "polymer": "Polymer/polymer#^2",
-    "webcomponentsjs": "webcomponents/webcomponentsjs#^1"
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1",
+    "iron-collapse": "2.0-preview"
   },
   "resolutions": {
     "polymer": "^2",

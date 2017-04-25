@@ -1,10 +1,9 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 
 /**
- * Conmon sidebar.
- *
+ * Common sidebar.
  */
- 
+
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'pi-sidebar',
@@ -27,6 +26,23 @@ export class SidebarComponent {
     }, new SidebarItemMap());
     this.groups = Object.keys(this.items);
   }
+
+}
+
+/**
+ * Sidebar group.
+ */
+
+@Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'pi-sidebar-group',
+  styleUrls: ['sidebar-group.less'],
+  templateUrl: 'sidebar-group.html'
+})
+
+export class SidebarGroupComponent {
+  @Input() group = '';
+  @Input() items: SidebarItem[] = [];
 
 }
 

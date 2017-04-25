@@ -1,0 +1,23 @@
+<paper-button
+  class="group"
+  (click)="accordion.toggle()">
+
+  <i
+    class="fa fa-chevron-up"
+    [ngClass]="accordion.opened? 'up' : 'down'"></i>
+
+  {{group}}
+
+</paper-button>
+
+<iron-collapse #accordion>
+
+  <paper-button
+    *ngFor="let item of items"
+    class="item">
+
+    <div [routerLink]="item.path">{{item.tag}}</div>
+
+  </paper-button>
+
+</iron-collapse>

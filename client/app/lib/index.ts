@@ -2,7 +2,10 @@ import * as lib from './';
 
 import {CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule} from '@angular/core';
 
+import { Cloudinary } from 'cloudinary-core';
+import { CloudinaryModule } from '@cloudinary/angular';
 import { CommonModule } from '@angular/common';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 
 /**
@@ -28,7 +31,8 @@ const DECLARATIONS = [
   lib.JSONifyPipe,
   lib.NoDataOnPageComponent,
   lib.PolymerAppComponent,
-  lib.SidebarComponent
+  lib.SidebarComponent,
+  lib.SidebarGroupComponent
 ];
 
 const PROVIDERS = [
@@ -46,7 +50,11 @@ const PROVIDERS = [
   ],
 
   imports: [
+    CloudinaryModule.forRoot({Cloudinary: Cloudinary}, {
+      cloud_name: 'mflo999'
+    }),
     CommonModule,
+    FlexLayoutModule,
     RouterModule
   ],
 

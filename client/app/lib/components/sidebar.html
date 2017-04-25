@@ -1,14 +1,26 @@
-<p>Route is: {{path}}</p>
+<nav
+  fxLayout="column"
+  fxLayoutAlign="start stretch"
+  fxLayoutGap="12px">
 
-<img src="app/lib/assets/pi.png">
+  <header
+    fxLayout="row"
+    fxLayoutAlign="space-between start">
 
-<div *ngFor="let group of groups">
+    <div>&nbsp;</div>
 
-  {{group}}
+    <cl-image
+      crop="scale"
+      public-id="pi_zdkoj3.png"
+      width="32">
+    </cl-image>
 
-  <div *ngFor="let item of items[group]">
-    <a [routerLink]="[item.path]">{{item.tag}}</a>
-  </div>
+  </header>
 
-</div>
- 
+  <pi-sidebar-group
+    *ngFor="let group of groups"
+    [group]="group"
+    [items]="items[group]">
+  </pi-sidebar-group>
+
+</nav>

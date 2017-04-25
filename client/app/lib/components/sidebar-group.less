@@ -1,0 +1,30 @@
+:host {
+  border-bottom: 3px solid var(--sidebar-dark-background-color);
+  display: block;
+}
+
+paper-button {
+  display: block;
+  width: 100%;
+
+  &.group { }
+
+  &.item {
+    text-transform: none;
+  }
+
+  i {
+    transform: rotate(0);
+    transition: transform 0.25s ease-in-out;
+
+    &.up {
+      transform: rotate(0);
+    }
+
+    &.down {
+      transform: rotate(180deg);
+    }
+
+  }
+
+}

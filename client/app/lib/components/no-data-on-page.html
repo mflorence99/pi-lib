@@ -1,10 +1,15 @@
-<i
-  [ngClass]="'fa-' + faIcon"
-  class="fa fa-2x">
-</i>
+<section
+  fxLayout="row"
+  fxLayoutAlign="center"
+  fxLayoutGap="8px">
 
-<div>
+  <i
+    [ngClass]="'fa-' + faIcon"
+    class="fa fa-2x">
+  </i>
 
-  <ng-content></ng-content>
+  <div>
+    <ng-content></ng-content>
+  </div>
 
-</div>
+</section>

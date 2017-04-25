@@ -1,12 +1,28 @@
-<pi-polymer-app></pi-polymer-app>
+<main
+  fxFlexFill
+  fxLayout="row"
+  fxLayoutAlign="start start">
 
-<main>
+  <aside
+    fxFlex="0 0 240px"
+    fxFlexFill>
 
-  <pi-sidebar
-    [path]="route | async"
-    [sidebar]="sidebar">
-  </pi-sidebar>
+    <pi-sidebar
+      fxFlexFill
+      [path]="route | async"
+      [sidebar]="sidebar">
+    </pi-sidebar>
 
-  <router-outlet></router-outlet>
+  </aside>
+
+  <section
+    fxFlex="grow"
+    fxFlexFill>
+
+    <router-outlet></router-outlet>
+
+  </section>
 
 </main>
+
+<pi-polymer-app></pi-polymer-app>
