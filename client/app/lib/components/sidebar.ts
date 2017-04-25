@@ -1,4 +1,6 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import * as router from '@ngrx/router-store';
+
+import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
 
 /**
  * Common sidebar.
@@ -12,14 +14,15 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 })
 
 export class SidebarComponent {
-  @Input() path = '';
+  @HostBinding('style.display') _display = 'block';
+  @Input() route: router.RouterState = router.initialState;
 
   groups: string[] = [];
   items = new SidebarItemMap();
 
   // property accessors / mutators
 
-  @Input() set sidebar(items: SidebarItem[]) {
+  @Input() set sidebarItems(items: SidebarItem[]) {
     this.items = items.reduce((acc, item) => {
       (acc[item.group] = (acc[item.group] || [])).push(item);
       return acc;
@@ -41,8 +44,10 @@ export class SidebarComponent {
 })
 
 export class SidebarGroupComponent {
+  @HostBinding('style.display') _display = 'block';
   @Input() group = '';
   @Input() items: SidebarItem[] = [];
+  @Input() route: router.RouterState = router.initialState;
 
 }
 
@@ -53,6 +58,7 @@ export class SidebarGroupComponent {
 export class SidebarItem {
   constructor(public group: string,
               public path: string,
+              public faIcon: string,
               public tag: string) { }
 }
 

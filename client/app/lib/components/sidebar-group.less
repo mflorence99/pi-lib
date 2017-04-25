@@ -1,16 +1,22 @@
 :host {
   border-bottom: 3px solid var(--sidebar-dark-background-color);
-  display: block;
 }
 
 paper-button {
   display: block;
-  width: 100%;
+  width: calc(~'100% - 8px');
 
-  &.group { }
+  &.group {
+  }
 
   &.item {
+    font-size: 16px;
     text-transform: none;
+  }
+
+  &.selected {
+    background-color: var(--sidebar-dark-background-color);
+    color: var(--sidebar-light-text-color);
   }
 
   i {
@@ -23,6 +29,10 @@ paper-button {
 
     &.down {
       transform: rotate(180deg);
+    }
+
+    &.selected {
+      color: var(--primary-color);
     }
 
   }

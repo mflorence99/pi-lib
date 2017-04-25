@@ -1,10 +1,12 @@
+import * as router from '@ngrx/router-store';
+
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { AppBase } from '../lib/classes/app-base';
+import { AppState } from '../reducers';
 import { EnvService } from '../lib/services/env';
-import { LocalStorageService } from 'angular-2-local-storage';
-import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 import { SidebarItem } from '../lib/components/sidebar';
+import { Store } from '@ngrx/store';
 import { config } from '../config';
 
 /**
@@ -18,22 +20,23 @@ import { config } from '../config';
   styleUrls: ['app.less']
 })
 
-export class AppComponent extends AppBase {
+export class AppComponent {
+  route: Observable<router.RouterState>;
 
-  sidebar: SidebarItem[] = [
-    new SidebarItem('Navigation', '/a', 'Dashboard'),
-    new SidebarItem('Navigation', '/b', 'Calendar'),
-    new SidebarItem('Navigation', '/x', 'Email'),
-    new SidebarItem('Components', '/y', 'Layout'),
-    new SidebarItem('Components', '/c', 'Table'),
-    new SidebarItem('Components', '/y', 'Form'),
-    new SidebarItem('Components', '/x', 'Chart')
+  sidebarItems: SidebarItem[] = [
+    new SidebarItem('Navigation', '/a', 'tachometer', 'Dashboard'),
+    new SidebarItem('Navigation', '/b', 'calendar', 'Calendar'),
+    new SidebarItem('Navigation', '/x', 'envelope', 'Email'),
+    new SidebarItem('Components', '/y', 'th', 'Layout'),
+    new SidebarItem('Components', '/c', 'table', 'Table'),
+    new SidebarItem('Components', '/y', 'sliders', 'Settings'),
+    new SidebarItem('Components', '/x', 'area-chart', 'Chart')
   ];
 
   constructor(env: EnvService,
-              lstor: LocalStorageService,
-              router: Router) {
-    super(config, env, lstor, router, '/x');
+              store: Store<AppState>) {
+    console.log('<pi-root> loading', config, env);
+    this.route = store.select(state => state.router);
   }
 
 }

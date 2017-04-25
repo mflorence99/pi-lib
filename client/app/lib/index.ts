@@ -5,7 +5,9 @@ import {CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule} from '@angular/co
 import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from '@cloudinary/angular';
 import { CommonModule } from '@angular/common';
+import { EffectsModule } from '@ngrx/effects';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { RouterEffects } from './effects/router';
 import { RouterModule } from '@angular/router';
 
 /**
@@ -54,6 +56,7 @@ const PROVIDERS = [
       cloud_name: 'mflo999'
     }),
     CommonModule,
+    EffectsModule.run(RouterEffects),
     FlexLayoutModule,
     RouterModule
   ],

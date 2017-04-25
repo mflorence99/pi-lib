@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
 
 /**
  * Standard treatment for "no data to display" UI.
@@ -19,6 +19,7 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 })
 
 export class NoDataOnPageComponent {
+  @HostBinding('style.display') _display = 'block';
   @Input() faIcon = 'info-circle';
 
 }

@@ -5,7 +5,6 @@
   <i
     class="fa fa-chevron-up"
     [ngClass]="accordion.opened? 'up' : 'down'"></i>
-
   {{group}}
 
 </paper-button>
@@ -13,10 +12,19 @@
 <iron-collapse #accordion>
 
   <paper-button
+    [ngClass]="{selected: item.path === route.path}"
     *ngFor="let item of items"
     class="item">
 
-    <div [routerLink]="item.path">{{item.tag}}</div>
+    <div [routerLink]="item.path">
+
+      <i
+        [ngClass]="{selected: item.path === route.path}"
+        class="fa fa-fw fa-{{item.faIcon}}">
+      </i>
+      {{item.tag}}
+
+    </div>
 
   </paper-button>
 
