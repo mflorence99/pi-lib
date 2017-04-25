@@ -4,8 +4,6 @@ import { AppComponent } from './containers/app';
 import { AppRoutes } from './app.routes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { Cloudinary } from 'cloudinary-core';
-import { CloudinaryModule } from '@cloudinary/angular';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FourOhFourComponent } from './lib/containers/404';
@@ -40,9 +38,6 @@ const DECLARATIONS = [
     AppRoutes,
     BrowserAnimationsModule,
     BrowserModule,
-    CloudinaryModule.forRoot({Cloudinary: Cloudinary}, {
-      cloud_name: 'mflo999'
-    }),
     CommonModule,
     FlexLayoutModule,
     HttpModule,

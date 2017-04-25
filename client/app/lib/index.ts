@@ -2,8 +2,6 @@ import * as lib from './';
 
 import {CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule} from '@angular/core';
 
-import { Cloudinary } from 'cloudinary-core';
-import { CloudinaryModule } from '@cloudinary/angular';
 import { CommonModule } from '@angular/common';
 import { EffectsModule } from '@ngrx/effects';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -53,9 +51,6 @@ const PROVIDERS = [
   ],
 
   imports: [
-    CloudinaryModule.forRoot({Cloudinary: Cloudinary}, {
-      cloud_name: 'mflo999'
-    }),
     CommonModule,
     EffectsModule.run(RouterEffects),
     EffectsModule.run(SidebarEffects),
