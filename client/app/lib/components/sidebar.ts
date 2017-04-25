@@ -1,8 +1,8 @@
 import * as router from '@ngrx/router-store';
 import * as sidebar from '../reducers/sidebar';
 
-import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
-import { CloseAction, OpenAction } from '../actions/sidebar';
+import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
+import { close, open } from '../actions/sidebar';
 
 import { Store } from '@ngrx/store';
 
@@ -60,8 +60,7 @@ export class SidebarGroupComponent {
 
   /** Toggle a group open/closed */
   toggle(group: string) {
-    this.store.dispatch(this.sidebarState[group]?
-      new CloseAction(group) : new OpenAction(group));
+    this.store.dispatch(this.sidebarState[group]? close(group) : open(group));
   }
 
 }

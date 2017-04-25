@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
 
 /**
  * Standard treatment for "no data to display" UI.

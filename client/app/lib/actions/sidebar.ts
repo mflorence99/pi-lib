@@ -16,6 +16,14 @@ export class OpenAction implements Action {
   constructor(public payload: string) { }
 }
 
+export function close(group: string): CloseAction {
+  return new CloseAction(group);
+}
+
+export function open(group: string): OpenAction {
+  return new OpenAction(group);
+}
+
 export type Actions
   = CloseAction
   | OpenAction;

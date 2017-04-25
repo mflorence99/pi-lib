@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, HostListener} from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener } from '@angular/core';
 
 /**
  * Prepares app to use Polymer.
