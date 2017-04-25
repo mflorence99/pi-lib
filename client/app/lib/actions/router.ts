@@ -2,7 +2,8 @@ import { Action } from '@ngrx/store';
 import { unique } from '../utils';
 
 export const ActionTypes = {
-  INIT: unique('[Router Extended] Init')
+  INIT: unique('[Router Extended] Init'),
+  NOOP: unique('[Router Extended] Noop')
 };
 
 export class InitAction implements Action {
@@ -10,8 +11,14 @@ export class InitAction implements Action {
   constructor(public payload: any = null) { }
 }
 
+export class NoopAction implements Action {
+  type = ActionTypes.NOOP;
+  constructor(public payload: any = null) { }
+}
+
 export type Actions
-  = InitAction;
+  = InitAction
+  | NoopAction;
 
 /**
  * Apply some sugar to the boilerplate to make the actions
@@ -20,4 +27,8 @@ export type Actions
 
 export function init(): InitAction {
   return new InitAction();
+}
+
+export function noop(): NoopAction {
+  return new NoopAction();
 }

@@ -5,13 +5,12 @@ import 'rxjs/add/operator/switchMap';
 import * as extendedActions from '../actions/router';
 
 import { Actions, Effect } from '@ngrx/effects';
-import { replace, routerActions } from '@ngrx/router-store';
+import { routerActions, show } from '@ngrx/router-store';
 
 import { Action } from '@ngrx/store';
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
 import { unique } from '../utils';
 
 /**
@@ -40,7 +39,8 @@ export class RouterEffects {
   @Effect() init: Observable<Action> = this.actions
     .ofType(extendedActions.ActionTypes.INIT)
     .startWith(extendedActions.init())
-    .map((action: Action) => replace(<string>this.lstor.get(LAST_USED_ROUTE)));
+    .do((action: Action) => console.log('load', this.lstor.get(LAST_USED_ROUTE)))
+    .map((action: Action) => show([this.lstor.get(LAST_USED_ROUTE)]));
 
   /**
    * Listen for any standard action to record last-used route
@@ -48,8 +48,9 @@ export class RouterEffects {
 
   @Effect() listen: Observable<Action> = this.actions
     .ofType(...STANDARD_ACTIONS)
+    .do((action: Action) => console.log('go', this.lstor.get(LAST_USED_ROUTE)))
     .do((action: Action) => this.lstor.set(LAST_USED_ROUTE, action.payload.path))
-    .switchMap((action: Action) => of());
+    .map((action: Action) => extendedActions.noop());
 
   /** ctor */
   constructor(private actions: Actions,

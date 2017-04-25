@@ -14,7 +14,6 @@ import { LocalStorageService } from 'angular-2-local-storage';
 import { Observable } from 'rxjs/Observable';
 import { SidebarState } from '../reducers/sidebar';
 import { Store } from '@ngrx/store';
-import { of } from 'rxjs/observable/of';
 import { unique } from '../utils';
 
 /**
@@ -45,7 +44,7 @@ export class SidebarEffects {
     .map((state: any) => state.sidebar)
     .distinctUntilChanged()
     .do((state: SidebarState) => this.lstor.set(LAST_USED_SIDEBAR_STATE, state))
-    .switchMap((action: Action) => of());
+    .map((action: Action) => sidebar.noop());
 
   // we should strongly-type the Store, but we can't because it belongs
   // to someone else and we're in a common library

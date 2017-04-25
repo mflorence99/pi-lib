@@ -5,6 +5,7 @@ import { unique } from '../utils';
 export const ActionTypes = {
   INIT:   unique('[Sidebar Group] Init'),
   LOAD:   unique('[Sidebar Group] Load'),
+  NOOP:   unique('[Sidebar Group] Noop'),
   TOGGLE: unique('[Sidebar Group] Toggle')
 };
 
@@ -18,6 +19,11 @@ export class LoadAction implements Action {
   constructor(public payload: any | SidebarState) { }
 }
 
+export class NoopAction implements Action {
+  type = ActionTypes.NOOP;
+  constructor(public payload: any = null) { }
+}
+
 export class ToggleAction implements Action {
   type = ActionTypes.TOGGLE;
   constructor(public payload: string) { }
@@ -26,6 +32,7 @@ export class ToggleAction implements Action {
 export type Actions
   = InitAction
   | LoadAction
+  | NoopAction
   | ToggleAction;
 
 /**
@@ -39,6 +46,10 @@ export function init(): InitAction {
 
 export function load(state: any | SidebarState): LoadAction {
   return new LoadAction(state);
+}
+
+export function noop(): NoopAction {
+  return new NoopAction();
 }
 
 export function toggle(group: string): ToggleAction {
