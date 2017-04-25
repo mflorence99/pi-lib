@@ -23,7 +23,7 @@ import { config } from '../config';
 
 export class AppComponent {
   routerState: Observable<router.RouterState>;
-  sidebarState: Observable<sidebar.State>;
+  sidebarState: Observable<sidebar.SidebarState>;
 
   sidebarItems: SidebarItem[] = [
     new SidebarItem('Navigation', '/a', 'tachometer', 'Dashboard'),

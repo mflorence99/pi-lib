@@ -2,9 +2,9 @@ import * as router from '@ngrx/router-store';
 import * as sidebar from '../reducers/sidebar';
 
 import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
-import { close, open } from '../actions/sidebar';
 
 import { Store } from '@ngrx/store';
+import { toggle } from '../actions/sidebar';
 
 /**
  * Common sidebar.
@@ -20,7 +20,7 @@ import { Store } from '@ngrx/store';
 export class SidebarComponent {
   @HostBinding('style.display') _display = 'block';
   @Input() routerState: router.RouterState = router.initialState;
-  @Input() sidebarState: sidebar.State = sidebar.initialState;
+  @Input() sidebarState: sidebar.SidebarState = sidebar.initialState;
 
   groups: string[] = [];
   items = new SidebarItemMap();
@@ -53,14 +53,15 @@ export class SidebarGroupComponent {
   @Input() group = '';
   @Input() items: SidebarItem[] = [];
   @Input() routerState: router.RouterState = router.initialState;
-  @Input() sidebarState: sidebar.State = sidebar.initialState;
+  @Input() sidebarState: sidebar.SidebarState = sidebar.initialState;
 
-  /** ctor */
+  // we should strongly-type the Store, but we can't because it belongs
+  // to someone else and we're in a common library
   constructor(private store: Store<any>) { }
 
   /** Toggle a group open/closed */
   toggle(group: string) {
-    this.store.dispatch(this.sidebarState[group]? close(group) : open(group));
+    this.store.dispatch(toggle(group));
   }
 
 }

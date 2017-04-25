@@ -34,12 +34,12 @@ const STANDARD_ACTIONS = [
 export class RouterEffects {
 
   /**
-   * Listen for any init action to load last-used route
+   * Listen for an init action to load last-used route
    */
 
   @Effect() init: Observable<Action> = this.actions
     .ofType(extendedActions.ActionTypes.INIT)
-    .startWith(new extendedActions.InitAction())
+    .startWith(extendedActions.init())
     .map((action: Action) => replace(<string>this.lstor.get(LAST_USED_ROUTE)));
 
   /**
@@ -51,10 +51,7 @@ export class RouterEffects {
     .do((action: Action) => this.lstor.set(LAST_USED_ROUTE, action.payload.path))
     .switchMap((action: Action) => of());
 
-  /**
-   * ctor
-   */
-
+  /** ctor */
   constructor(private actions: Actions,
               private lstor: LocalStorageService) { }
 

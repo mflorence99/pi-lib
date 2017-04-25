@@ -1,20 +1,20 @@
 import * as sidebar from '../actions/sidebar';
 
-export interface State {
+export interface SidebarState {
   [group: string]: boolean;
 };
 
-export const initialState: State = { };
+export const initialState: SidebarState = { };
 
 export function reducer(state = initialState,
-                        action: sidebar.Actions): State {
+                        action: sidebar.Actions): SidebarState {
   switch (action.type) {
 
-    case sidebar.ActionTypes.CLOSE:
-      return Object.assign({}, state, {[action.payload]: false});
+    case sidebar.ActionTypes.LOAD:
+      return Object.assign({}, action.payload || initialState);
 
-    case sidebar.ActionTypes.OPEN:
-      return Object.assign({}, state, {[action.payload]: true});
+    case sidebar.ActionTypes.TOGGLE:
+      return Object.assign({}, state, {[action.payload]: !state[action.payload]});
 
     default:
       return state;

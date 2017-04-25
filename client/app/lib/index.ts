@@ -9,6 +9,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterEffects } from './effects/router';
 import { RouterModule } from '@angular/router';
+import { SidebarEffects } from './effects/sidebar';
 
 /**
  * pi-lib module definition
@@ -57,6 +58,7 @@ const PROVIDERS = [
     }),
     CommonModule,
     EffectsModule.run(RouterEffects),
+    EffectsModule.run(SidebarEffects),
     FlexLayoutModule,
     RouterModule
   ],

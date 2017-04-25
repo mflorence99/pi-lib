@@ -1,29 +1,46 @@
 import { Action } from '@ngrx/store';
+import { SidebarState } from '../reducers/sidebar';
 import { unique } from '../utils';
 
 export const ActionTypes = {
-  CLOSE: unique('[Sidebar Group] Close'),
-  OPEN:  unique('[Sidebar Group] Open')
+  INIT:   unique('[Sidebar Group] Init'),
+  LOAD:   unique('[Sidebar Group] Load'),
+  TOGGLE: unique('[Sidebar Group] Toggle')
 };
 
-export class CloseAction implements Action {
-  type = ActionTypes.CLOSE;
+export class InitAction implements Action {
+  type = ActionTypes.INIT;
+  constructor(public payload: any = null) { }
+}
+
+export class LoadAction implements Action {
+  type = ActionTypes.LOAD;
+  constructor(public payload: any | SidebarState) { }
+}
+
+export class ToggleAction implements Action {
+  type = ActionTypes.TOGGLE;
   constructor(public payload: string) { }
-}
-
-export class OpenAction implements Action {
-  type = ActionTypes.OPEN;
-  constructor(public payload: string) { }
-}
-
-export function close(group: string): CloseAction {
-  return new CloseAction(group);
-}
-
-export function open(group: string): OpenAction {
-  return new OpenAction(group);
 }
 
 export type Actions
-  = CloseAction
-  | OpenAction;
+  = InitAction
+  | LoadAction
+  | ToggleAction;
+
+/**
+ * Apply some sugar to the boilerplate to make the actions
+ * look a lot more like imperative functions
+ */
+
+export function init(): InitAction {
+  return new InitAction();
+}
+
+export function load(state: any | SidebarState): LoadAction {
+  return new LoadAction(state);
+}
+
+export function toggle(group: string): ToggleAction {
+  return new ToggleAction(group);
+}

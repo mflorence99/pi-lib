@@ -8,5 +8,5 @@ export const reducers = {
 
 export interface AppState {
   router: router.RouterState;
-  sidebar: sidebar.State;
+  sidebar: sidebar.SidebarState;
 }
