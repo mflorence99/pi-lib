@@ -12,7 +12,7 @@
 
 export class Config {
 
-  xxx = true;
+  gpioCaptureInterval = 1000;
 
 }
 

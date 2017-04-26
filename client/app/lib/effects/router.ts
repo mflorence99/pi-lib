@@ -19,41 +19,50 @@ import { unique } from '../utils';
 
 const LAST_USED_ROUTE = unique('last-used-route');
 
-const STANDARD_ACTIONS = [
-  routerActions.GO,
-  routerActions.REPLACE,
-  routerActions.SEARCH,
-  routerActions.SHOW,
-  routerActions.BACK,
-  routerActions.FORWARD,
-  routerActions.UPDATE_LOCATION
-];
-
 @Injectable()
 export class RouterEffects {
 
   /**
    * Listen for an init action to load last-used route
+   *
+   * NOTE: do we even need this? On reload, the listener below kicks in
+   * where we just overwrite navigation to nothing with the last-used route
    */
 
   @Effect() init: Observable<Action> = this.actions
     .ofType(extendedActions.ActionTypes.INIT)
     .startWith(extendedActions.init())
-    .do((action: Action) => console.log('load', this.lstor.get(LAST_USED_ROUTE)))
-    .map((action: Action) => show([this.lstor.get(LAST_USED_ROUTE)]));
+    .map((action: Action) => show(this.last()));
 
   /**
    * Listen for any standard action to record last-used route
    */
 
   @Effect() listen: Observable<Action> = this.actions
-    .ofType(...STANDARD_ACTIONS)
-    .do((action: Action) => console.log('go', this.lstor.get(LAST_USED_ROUTE)))
-    .do((action: Action) => this.lstor.set(LAST_USED_ROUTE, action.payload.path))
-    .map((action: Action) => extendedActions.noop());
+    .ofType(routerActions.UPDATE_LOCATION)
+    .map((action: Action) => this.dref(action.payload.path))
+    .do((path: string) => {
+      if (path !== '/')
+        this.lstor.set(LAST_USED_ROUTE, path);
+    })
+    .map((path: string) => (path === '/')? show(this.last()) : extendedActions.noop());
 
   /** ctor */
   constructor(private actions: Actions,
               private lstor: LocalStorageService) { }
+
+  // private methods
+
+  private dref(path: any): string {
+    if (Array.isArray(path) && (path.length > 0))
+      return path[0];
+    else if (typeof path === 'string')
+      return path;
+    else return '/';
+  }
+
+  private last(): string[] {
+    return [<string>this.lstor.get(LAST_USED_ROUTE) || '/'];
+  }
 
 }

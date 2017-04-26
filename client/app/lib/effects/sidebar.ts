@@ -40,11 +40,9 @@ export class SidebarEffects {
 
   @Effect() listen: Observable<Action> = this.actions
     .ofType(sidebar.ActionTypes.TOGGLE)
-    .withLatestFrom(this.store, (action, state) => state)
-    .map((state: any) => state.sidebar)
-    .distinctUntilChanged()
+    .withLatestFrom(this.store.select('sidebar'), (action, state) => state)
     .do((state: SidebarState) => this.lstor.set(LAST_USED_SIDEBAR_STATE, state))
-    .map((action: Action) => sidebar.noop());
+    .map((state: SidebarState) => sidebar.noop());
 
   // we should strongly-type the Store, but we can't because it belongs
   // to someone else and we're in a common library
