@@ -24,21 +24,31 @@ import { of } from 'rxjs/observable/of';
 export class GPIOPinsEffects {
 
   /**
-   * Listen for toggle action
+   * Listen/Unlisten actions
    */
 
   @Effect() listen: Observable<Action> = this.actions
+    .ofType(gpio.ActionTypes.LISTEN, gpio.ActionTypes.UNLISTEN)
+    .switchMap((action: Action) => {
+      if (action.type === gpio.ActionTypes.UNLISTEN)
+        return of();
+      else return this.gpioPinsService.getAll()
+        .map((payload: boolean[]) => this.toGPIOPinsState(payload))
+        .map((payload: GPIOPinsState) => gpio.load(payload))
+        .catch((error: Response) => of(gpio.noop()));
+    });
+
+  /**
+   * Toggle action
+   */
+
+  @Effect() toggle: Observable<Action> = this.actions
     .ofType(gpio.ActionTypes.TOGGLE)
     .map((action: Action) => action.payload)
     .withLatestFrom(this.store.select('gpio'), (pin, state) => [pin, state[pin]])
     .switchMap(([pin, state]) => {
       return this.gpioPinsService.setOne(pin, !state)
-        .map((payload: boolean[]) => {
-            return payload.reduce((acc, _, ix) => {
-              acc[String(ix + 1)] = payload[ix];
-              return acc;
-            }, {});
-          })
+        .map((payload: boolean[]) => this.toGPIOPinsState(payload))
         .map((payload: GPIOPinsState) => gpio.load(payload))
         .catch((error: Response) => of(gpio.noop()));
     });
@@ -47,5 +57,14 @@ export class GPIOPinsEffects {
   constructor(private actions: Actions,
               private gpioPinsService: GPIOPinsService,
               private store: Store<AppState>) { }
+
+  // private methods
+
+  private toGPIOPinsState(payload: boolean[]): GPIOPinsState {
+    return payload.reduce((acc, _, ix) => {
+      acc[String(ix + 1)] = payload[ix];
+      return acc;
+    }, {});
+  }
 
 }

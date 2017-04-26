@@ -3,14 +3,21 @@ import { GPIOPinsState } from '../reducers/gpio-pins';
 import { unique } from '../lib/utils';
 
 export const ActionTypes = {
-  LOAD:   unique('[GPIO Pins] Load'),
-  NOOP:   unique('[GPIO Pins] Noop'),
-  TOGGLE: unique('[GPIO Pins] Toggle')
+  LOAD:     unique('[GPIO Pins] Load'),
+  LISTEN:   unique('[GPIO Pins] Listen'),
+  NOOP:     unique('[GPIO Pins] Noop'),
+  TOGGLE:   unique('[GPIO Pins] Toggle'),
+  UNLISTEN: unique('[GPIO Pins] Unlisten')
 };
 
 export class LoadAction implements Action {
   type = ActionTypes.LOAD;
   constructor(public payload: any | GPIOPinsState) { }
+}
+
+export class ListenAction implements Action {
+  type = ActionTypes.LISTEN;
+  constructor(public payload: any = null) { }
 }
 
 export class NoopAction implements Action {
@@ -23,10 +30,17 @@ export class ToggleAction implements Action {
   constructor(public payload: string) { }
 }
 
+export class UnlistenAction implements Action {
+  type = ActionTypes.UNLISTEN;
+  constructor(public payload: any = null) { }
+}
+
 export type Actions
   = LoadAction
+  | ListenAction
   | NoopAction
-  | ToggleAction;
+  | ToggleAction
+  | UnlistenAction;
 
 /**
  * Apply some sugar to the boilerplate to make the actions
@@ -37,10 +51,18 @@ export function load(state: any | GPIOPinsState): LoadAction {
   return new LoadAction(state);
 }
 
+export function listen(): ListenAction {
+  return new ListenAction();
+}
+
 export function noop(): NoopAction {
   return new NoopAction();
 }
 
 export function toggle(pin: string): ToggleAction {
   return new ToggleAction(pin);
+}
+
+export function unlisten(): UnlistenAction {
+  return new UnlistenAction();
 }
