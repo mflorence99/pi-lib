@@ -1,0 +1,57 @@
+.wrapper {
+  position: relative;
+  transform: scale(0.333333);
+  transform-origin: 0 0;
+
+  >img {
+    left: 0;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+  }
+
+  .overlay {
+    left: 0;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+
+    .flag {
+      background-color: rgba(128, 128, 128, 0);
+      cursor: pointer;
+      position: absolute;
+      transition: background-color 0.25s ease-in-out;
+
+      &:active {
+        background-color: rgba(128, 128, 128, 0.5);
+      }
+
+    }
+
+  }
+
+  .underlay {
+    left: 0;
+    position: absolute;
+    top: 0;
+    z-index: 0;
+
+    .light {
+      border-radius: 50%;
+      position: absolute;
+
+      &.on {
+        animation: gpio-pins-pulse 1s linear infinite;
+      }
+
+    }
+
+  }
+
+}
+
+@keyframes gpio-pins-pulse {
+  0% { background-color: rgba(255, 0, 0, 0.3); }
+  50% { background-color: rgba(255, 0, 0, 0.8); }
+  100% { background-color: rgba(255, 0, 0, 0.3); }
+}

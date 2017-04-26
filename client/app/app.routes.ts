@@ -1,10 +1,12 @@
-import { FourOhFourComponent } from './lib/containers/404';
-import { NoopComponent } from './containers/noop';
+import { FourOhFourPageComponent } from './lib/containers/404-page';
+import { GPIOPageComponent } from './containers/gpio-page';
+import { NoopPageComponent } from './containers/noop-page';
 import { RouterModule } from '@angular/router';
 
 export const AppRoutes = RouterModule.forRoot([
-  {path: '',                 component: NoopComponent},
-  {path: 'x',                component: NoopComponent},
-  {path: 'y',                component: FourOhFourComponent},
-  {path: '**',               component: FourOhFourComponent}
+  {path: '',                 component: FourOhFourPageComponent},
+  {path: 'gpio',             component: GPIOPageComponent},
+  {path: 'x',                component: NoopPageComponent},
+  {path: 'y',                component: FourOhFourPageComponent},
+  {path: '**',               component: FourOhFourPageComponent}
 ], { useHash: true });

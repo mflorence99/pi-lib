@@ -26,6 +26,7 @@ export class AppComponent {
   sidebarState: Observable<sidebar.SidebarState>;
 
   sidebarItems: SidebarItem[] = [
+    new SidebarItem('Raspberry Pi', '/gpio', 'calculator', 'GPIO Pins'),
     new SidebarItem('Navigation', '/a', 'tachometer', 'Dashboard'),
     new SidebarItem('Navigation', '/b', 'calendar', 'Calendar'),
     new SidebarItem('Navigation', '/x', 'envelope', 'Email'),

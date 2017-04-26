@@ -1,4 +1,3 @@
-import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/switchMap';
@@ -35,7 +34,7 @@ export class SidebarEffects {
     .map((action: Action) => sidebar.load(this.lstor.get(LAST_USED_SIDEBAR_STATE)));
 
   /**
-   * Listen for any standard action to record last-used sidebar state
+   * Listen for toggle action to record last-used sidebar state
    */
 
   @Effect() listen: Observable<Action> = this.actions

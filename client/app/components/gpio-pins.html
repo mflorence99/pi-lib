@@ -1,0 +1,27 @@
+<div class="wrapper">
+
+  <img src="http://res.cloudinary.com/mflo999/image/upload/e_make_transparent:10/v1493053273/gpio_jwvi0h.png">
+
+  <div class="underlay">
+
+    <div
+      [ngClass]="{on: state(pin)}"
+      [ngStyle]="lightStyle(pin)"
+      *ngFor="let _ of pins; let pin = index"
+      class="light">
+    </div>
+
+  </div>
+
+  <div class="overlay">
+
+    <div
+      (click)="toggle(pin)"
+      [ngStyle]="flagStyle(pin)"
+      *ngFor="let _ of pins; let pin = index"
+      class="flag">
+    </div>
+
+  </div>
+
+</div>

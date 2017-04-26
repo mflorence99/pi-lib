@@ -59,7 +59,9 @@ function getAll(): boolean[] {
 
 function setOne(pin: number,
                 state: boolean) {
-  rpio.write(pin, STATES.get(String(state)));
+  try {
+    rpio.write(pin, STATES.get(String(state)));
+  } catch (ignored) { }
 };
 
 /**
