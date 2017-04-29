@@ -1,0 +1,141 @@
+<pi-form
+  #form
+  focus="name"
+  fxLayout="column"
+  fxLayoutAlign="start stretch"
+  fxLayoutGap="16px"
+  key="x.y">
+
+  <div>
+    <paper-input
+      [sticky]="true"
+      auto-validate
+      error-message="Age must be between 18 and 70"
+      label="Age"
+      max="70"
+      min="18"
+      name="age"
+      piControl
+      prevent-invalid-input
+      required
+      type="number">
+    </paper-input>
+  </div>
+
+  <div
+    fxFlexLayout="row"
+    fxLayoutAlign="space-between center">
+    <paper-checkbox
+      [sticky]="true"
+      piControl
+      name="red">
+      Red
+    </paper-checkbox>
+    <paper-checkbox
+      [sticky]="true"
+      piControl
+      name="green">
+      Green
+    </paper-checkbox>
+    <paper-checkbox
+      [sticky]="true"
+      piControl
+      name="blue">
+      Blue
+    </paper-checkbox>
+  </div>
+
+  <div>
+    <paper-input
+      [sticky]="true"
+      auto-validate
+      error-message="Name is always required"
+      label="Name"
+      name="name"
+      piControl
+      prevent-invalid-input
+      required
+      type="text">
+      <paper-button
+        (click)="form.clear('name')"
+        alt="Reset name"
+        icon="clear"
+        suffix
+        title="Reset Name">
+        <i class="fa fa-times"></i>
+      </paper-button>
+    </paper-input>
+  </div>
+
+  <div>
+    <paper-radio-group
+      [sticky]="true"
+      piControl
+      name="gender">
+      <paper-radio-button
+        name="male">
+        Male
+      </paper-radio-button>
+      <paper-radio-button
+        name="female">
+        Female
+      </paper-radio-button>
+    </paper-radio-group>
+  </div>
+
+  <div>
+    <paper-toggle-button
+      [sticky]="true"
+      piControl
+      name="active">
+      Active on/off
+    </paper-toggle-button>
+  </div>
+
+  <div>
+    <div>Severity</div>
+    <paper-slider
+      [sticky]="true"
+      expand
+      max="100"
+      min="0"
+      name="severity"
+      piControl
+      primary
+      snap>
+    </paper-slider>
+  </div>
+
+  <div>
+    <paper-input
+      [sticky]="true"
+      label="Count"
+      name="count"
+      piControl
+      type="number">
+    </paper-input>
+  </div>
+
+  <div
+    fxFlexLayout="row"
+    fxLayoutAlign="end center"
+    fxLayoutGap="16px">
+    <paper-button
+      (click)="form.reset()">
+      Reset
+    </paper-button>
+    <paper-button
+      (click)="form.submit()"
+      [disabled]="!form.isValid()"
+      *ngIf="!working"
+      primary
+      raised>
+      Submit
+    </paper-button>
+    <paper-spinner
+      [active]="working"
+      *ngIf="working">
+    </paper-spinner>
+  </div>
+
+</pi-form>

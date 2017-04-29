@@ -1,10 +1,13 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { HighlightJsModule, HighlightJsService } from 'angular2-highlight-js';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { EffectsModule } from '@ngrx/effects';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsPageComponent } from './containers/forms/page';
+import { FormsPageModule } from './containers/forms/module';
 import { FourOhFourPageComponent } from './lib/containers/404-page';
 import { GPIOPageComponent } from './containers/gpio/page';
 import { GPIOPageModule } from './containers/gpio/module';
@@ -18,6 +21,8 @@ import { PiModule } from './lib';
 import { RootComponent } from './containers/root';
 import { RouterModule } from '@angular/router';
 import { RouterStoreModule } from '@ngrx/router-store';
+import { SplashPageComponent } from './containers/splash/page';
+import { SplashPageModule } from './containers/splash/module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { combineReducers } from '@ngrx/store';
@@ -31,15 +36,39 @@ import { storeFreeze } from 'ngrx-store-freeze';
  */
 
 const DECLARATIONS = [
-  FourOhFourPageComponent,
   RootComponent
 ];
 
+const MODULES_ANGULAR = [
+  BrowserAnimationsModule,
+  BrowserModule,
+  CommonModule,
+  FlexLayoutModule,
+  HttpModule,
+  RouterModule
+];
+
+const MODULES_EXTERNAL = [
+  HighlightJsModule,
+  LocalStorageModule.withConfig({
+      prefix: 'pi-lib',
+      storageType: 'localStorage'
+    })
+];
+
+const MODULES_INTERNAL = [
+  FormsPageModule,
+  GPIOPageModule,
+  NoopPageModule,
+  PiModule,
+  SplashPageModule
+];
+
 const ROUTES = [
-  {path: '',                 component: FourOhFourPageComponent},
+  {path: '',                 component: SplashPageComponent},
   {path: 'gpio',             component: GPIOPageComponent},
-  {path: 'x',                component: NoopPageComponent},
-  {path: 'y',                component: FourOhFourPageComponent},
+  {path: 'forms',            component: FormsPageComponent},
+  {path: 'noop',             component: NoopPageComponent},
   {path: '**',               component: FourOhFourPageComponent}
 ];
 
@@ -61,20 +90,10 @@ const appStore = compose(...metaReducers)(reducers);
   ],
 
   imports: [
-    BrowserAnimationsModule,
-    BrowserModule,
-    CommonModule,
+    ...MODULES_ANGULAR,
+    ...MODULES_EXTERNAL,
+    ...MODULES_INTERNAL,
     EffectsModule.run(GPIOPinsEffects),
-    FlexLayoutModule,
-    GPIOPageModule,
-    HttpModule,
-    LocalStorageModule.withConfig({
-        prefix: 'pi-lib',
-        storageType: 'localStorage'
-      }),
-    NoopPageModule,
-    PiModule,
-    RouterModule,
     RouterModule.forRoot(ROUTES, { useHash: true }),
     RouterStoreModule.connectRouter(),
     StoreModule.provideStore(appStore),
@@ -84,7 +103,8 @@ const appStore = compose(...metaReducers)(reducers);
   ],
 
   providers: [
-    GPIOPinsService
+    GPIOPinsService,
+    HighlightJsService
   ],
 
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

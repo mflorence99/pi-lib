@@ -1,0 +1,17 @@
+<main
+  [@flyInOut]="'in'"
+  fxLayout="row"
+  fxLayoutAlign="start start"
+  fxLayoutGap="32px">
+
+  <pi-test-form
+    #form
+    fxFlex="0 0 240px">
+  </pi-test-form>
+
+  <pi-test-ctrl
+    [json]="form.stream | async"
+    fxFlex="1 2 240px">
+  </pi-test-ctrl>
+
+</main>

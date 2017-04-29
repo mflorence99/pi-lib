@@ -1,17 +1,20 @@
 import { CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
-import { GPIOPageComponent } from './page';
-import { GPIOPinsComponent } from './pins';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsPageComponent } from './page';
 import { PiModule } from '../../lib';
+import { TestCtrlComponent } from './test-ctrl';
+import { TestFormComponent } from './test-form';
 
 /**
- * Noop page module
+ * Forms page module
  */
 
 const DECLARATIONS = [
-  GPIOPageComponent,
-  GPIOPinsComponent
+  FormsPageComponent,
+  TestCtrlComponent,
+  TestFormComponent
 ];
 
 @NgModule({
@@ -26,6 +29,7 @@ const DECLARATIONS = [
 
   imports: [
     CommonModule,
+    FlexLayoutModule,
     PiModule
   ],
 
@@ -33,10 +37,10 @@ const DECLARATIONS = [
 
 })
 
-export class GPIOPageModule {
+export class FormsPageModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: GPIOPageModule,
+      ngModule: FormsPageModule,
       providers: [ ]
     };
   }

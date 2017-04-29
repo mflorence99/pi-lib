@@ -27,13 +27,7 @@ export class RootComponent {
 
   sidebarItems: SidebarItem[] = [
     new SidebarItem('Raspberry Pi', '/gpio', 'calculator', 'GPIO Pins'),
-    new SidebarItem('Navigation', '/a', 'tachometer', 'Dashboard'),
-    new SidebarItem('Navigation', '/b', 'calendar', 'Calendar'),
-    new SidebarItem('Navigation', '/x', 'envelope', 'Email'),
-    new SidebarItem('Components', '/y', 'th', 'Layout'),
-    new SidebarItem('Components', '/c', 'table', 'Table'),
-    new SidebarItem('Components', '/y', 'sliders', 'Settings'),
-    new SidebarItem('Components', '/x', 'area-chart', 'Chart')
+    new SidebarItem('Components', '/forms', 'th', 'Forms')
   ];
 
   constructor(env: EnvService,

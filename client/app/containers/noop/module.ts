@@ -1,5 +1,6 @@
-import { ModuleWithProviders, NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule } from '@angular/core';
 
+import { CommonModule } from '@angular/common';
 import { NoopPageComponent } from './page';
 import { PiModule } from '../../lib';
 
@@ -22,8 +23,11 @@ const DECLARATIONS = [
   ],
 
   imports: [
+    CommonModule,
     PiModule
-  ]
+  ],
+
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 
 })
 

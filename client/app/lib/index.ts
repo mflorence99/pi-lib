@@ -17,9 +17,11 @@ import { SidebarEffects } from './effects/sidebar';
  * @NgModule({ ... imports: [PiModule, ...] ...})
  */
 
+export * from './components/form';
 export * from './components/no-data-on-page';
 export * from './components/polymer-app';
 export * from './components/sidebar';
+export * from './containers/404-page';
 export * from './pipes/breakable';
 export * from './pipes/ellipsize';
 export * from './pipes/jsonify';
@@ -29,8 +31,11 @@ export * from './utils';
 const DECLARATIONS = [
   lib.BreakablePipe,
   lib.EllipsizePipe,
+  lib.FourOhFourPageComponent,
   lib.JSONifyPipe,
   lib.NoDataOnPageComponent,
+  lib.PiControlDirective,
+  lib.PiFormComponent,
   lib.PolymerAppComponent,
   lib.SidebarComponent,
   lib.SidebarGroupComponent

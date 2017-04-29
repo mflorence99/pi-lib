@@ -1,17 +1,15 @@
 import { CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
-import { GPIOPageComponent } from './page';
-import { GPIOPinsComponent } from './pins';
 import { PiModule } from '../../lib';
+import { SplashPageComponent } from './page';
 
 /**
- * Noop page module
+ * Splash page module
  */
 
 const DECLARATIONS = [
-  GPIOPageComponent,
-  GPIOPinsComponent
+  SplashPageComponent
 ];
 
 @NgModule({
@@ -33,10 +31,10 @@ const DECLARATIONS = [
 
 })
 
-export class GPIOPageModule {
+export class SplashPageModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: GPIOPageModule,
+      ngModule: SplashPageModule,
       providers: [ ]
     };
   }
