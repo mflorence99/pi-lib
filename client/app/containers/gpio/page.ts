@@ -1,12 +1,12 @@
-import * as gpio from '../reducers/gpio-pins';
+import * as gpio from '../../reducers/gpio-pins';
 
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { listen, unlisten } from '../actions/gpio-pins';
+import { listen, unlisten } from '../../actions/gpio-pins';
 
-import { AppState } from '../reducers';
+import { AppState } from '../../reducers';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
-import { flyInOut } from '../lib/animations';
+import { flyInOut } from '../../lib/animations';
 
 /**
  * GPIO test page
@@ -15,8 +15,8 @@ import { flyInOut } from '../lib/animations';
 @Component({
   animations: [flyInOut()],
   selector: 'pi-gpio-page',
-  styleUrls: ['gpio-page.less'],
-  templateUrl: 'gpio-page.html'
+  styleUrls: ['page.less'],
+  templateUrl: 'page.html'
 })
 
 export class GPIOPageComponent implements OnInit, OnDestroy {

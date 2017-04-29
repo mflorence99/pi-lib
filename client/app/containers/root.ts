@@ -11,17 +11,17 @@ import { Store } from '@ngrx/store';
 import { config } from '../config';
 
 /**
- * App root
+ * pi-lib demo app root
  */
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'pi-root',
-  templateUrl: 'app.html',
-  styleUrls: ['app.less']
+  templateUrl: 'root.html',
+  styleUrls: ['root.less']
 })
 
-export class AppComponent {
+export class RootComponent {
   routerState: Observable<router.RouterState>;
   sidebarState: Observable<sidebar.SidebarState>;
 

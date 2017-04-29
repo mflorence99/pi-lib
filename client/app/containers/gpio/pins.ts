@@ -1,10 +1,10 @@
-import * as gpio from '../reducers/gpio-pins';
+import * as gpio from '../../reducers/gpio-pins';
 
 import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
 
-import { AppState } from '../reducers';
+import { AppState } from '../../reducers';
 import { Store } from '@ngrx/store';
-import { toggle } from '../actions/gpio-pins';
+import { toggle } from '../../actions/gpio-pins';
 
 /**
  * Demonstrates GPIO pins.
@@ -21,8 +21,8 @@ const LIGHT_STRIDE = {h: 120, v: 120};
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'pi-gpio-pins',
-  templateUrl: 'gpio-pins.html',
-  styleUrls: ['gpio-pins.less']
+  templateUrl: 'pins.html',
+  styleUrls: ['pins.less']
 })
 
 export class GPIOPinsComponent {
