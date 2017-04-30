@@ -22,9 +22,10 @@
     </paper-input>
   </div>
 
-  <div
+  <!-- <div NOTE: bug in fxFlex hides children from QueryList
     fxFlexLayout="row"
-    fxLayoutAlign="space-between center">
+    fxLayoutAlign="space-between center"> -->
+  <div style="display: flex; justify-content: space-between">
     <paper-checkbox
       [sticky]="true"
       piControl
@@ -56,14 +57,13 @@
       prevent-invalid-input
       required
       type="text">
-      <paper-button
+      <paper-icon-button
         (click)="form.clear('name')"
         alt="Reset name"
         icon="clear"
-        suffix
+        slot="suffix"
         title="Reset Name">
-        <i class="fa fa-times"></i>
-      </paper-button>
+      </paper-icon-button>
     </paper-input>
   </div>
 
@@ -127,15 +127,10 @@
     <paper-button
       (click)="form.submit()"
       [disabled]="!form.isValid()"
-      *ngIf="!working"
       primary
       raised>
       Submit
     </paper-button>
-    <paper-spinner
-      [active]="working"
-      *ngIf="working">
-    </paper-spinner>
   </div>
 
 </pi-form>

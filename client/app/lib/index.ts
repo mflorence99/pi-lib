@@ -30,12 +30,12 @@ export * from './utils';
 
 const DECLARATIONS = [
   lib.BreakablePipe,
+  lib.ControlDirective,
   lib.EllipsizePipe,
+  lib.FormComponent,
   lib.FourOhFourPageComponent,
   lib.JSONifyPipe,
   lib.NoDataOnPageComponent,
-  lib.PiControlDirective,
-  lib.PiFormComponent,
   lib.PolymerAppComponent,
   lib.SidebarComponent,
   lib.SidebarGroupComponent

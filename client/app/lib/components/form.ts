@@ -5,6 +5,7 @@ import { ContentChildren } from '@angular/core';
 import { Directive } from '@angular/core';
 import { ElementRef } from '@angular/core';
 import { EventEmitter } from '@angular/core';
+import { HostBinding } from '@angular/core';
 import { HostListener } from '@angular/core';
 import { Input } from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
@@ -15,34 +16,36 @@ import { QueryList } from '@angular/core';
  * pi-form model
  */
 
-export class PiForm {
+export class Form {
   isValid = false;
   submitted = false;
-  validities = new PiFormValiditiesMap();
-  values = new PiFormValuesMap();
+  validities = new FormValiditiesMap();
+  values = new FormValuesMap();
 }
 
-export class PiFormValiditiesMap {
+export class FormValiditiesMap {
   [s: string]: boolean;
 }
 
-export class PiFormValuesMap {
+export class FormValuesMap {
   [s: string]: boolean | number | string;
 }
 
 /**
  * piControl directive
+ *
+ * NOTE: we place this before the pi-form component to make its QueryList work
  */
 
 enum Control {CHECKBOX, COMBOBOX, DATE, HIDDEN, INPUT, RADIO, SLIDER, TOGGLE}
 
-type ListenerCallback = (control: PiControlDirective) => void;
+type ListenerCallback = (control: ControlDirective) => void;
 
 @Directive ({
   selector: '[piControl]'
 })
 
-export class PiControlDirective implements OnDestroy {
+export class ControlDirective implements OnDestroy {
   @Input('default') dflt: boolean | number | string;
   @Input() name: string;
   @Input() sticky: boolean;
@@ -137,7 +140,7 @@ export class PiControlDirective implements OnDestroy {
       case Control.INPUT:
         // NOTE: the initial state of required fields may not set the invalid bit
         return (this.el.invalid !== true)
-            && !(this.el.required && PiControlDirective.isEmpty(this.el.value));
+            && !(this.el.required && ControlDirective.isEmpty(this.el.value));
     }
   }
 
@@ -198,7 +201,7 @@ export class PiControlDirective implements OnDestroy {
         return this.el.value;
       case Control.INPUT:
         if (this.el.type === 'number')
-          return PiControlDirective.isEmpty(this.el.value)? undefined : Number(this.el.value);
+          return ControlDirective.isEmpty(this.el.value)? undefined : Number(this.el.value);
         else return this.el.value;
       case Control.RADIO:
         return this.el.selected;
@@ -220,7 +223,7 @@ export class PiControlDirective implements OnDestroy {
         break;
       case Control.INPUT:
         if (this.el.type === 'number')
-          this.el.value = PiControlDirective.isEmpty(data)? null : Number(data);
+          this.el.value = ControlDirective.isEmpty(data)? null : Number(data);
         else this.el.value = data? data : null;
         break;
       case Control.RADIO:
@@ -250,19 +253,21 @@ export class PiControlDirective implements OnDestroy {
   template: '<ng-content></ng-content>'
 })
 
-export class PiFormComponent implements AfterContentInit {
+export class FormComponent implements AfterContentInit {
 
-  @ContentChildren(PiControlDirective) controls: QueryList<PiControlDirective>;
+  @ContentChildren(ControlDirective) controls: QueryList<ControlDirective>;
+
+  @HostBinding('style.display') _display = 'block';
 
   @Input() focus: string;
   @Input() key: string;
 
-  readonly stream = new EventEmitter<PiForm>();
+  readonly stream = new EventEmitter<Form>();
 
   private controlByName = {};
-  private model = new PiForm();
+  private model = new Form();
   private ready: boolean;
-  private seed = new PiFormValuesMap();
+  private seed = new FormValuesMap();
   private timer = null;
 
   /** ctor */
@@ -280,13 +285,13 @@ export class PiFormComponent implements AfterContentInit {
   }
 
   /** Get a control by name */
-  get(name: string) {
+  get(name: string): boolean | number | string {
     const control = this.controlByName[name];
     return (control)? control.value : null;
   }
 
   /** Is this form in a valid state? */
-  isValid() {
+  isValid(): boolean {
     return this.ready && this.controls.reduce((result, control) => {
       return result && control.isValid();
     }, true);
@@ -294,7 +299,7 @@ export class PiFormComponent implements AfterContentInit {
 
   /** Reseed the form by finding every control's default or initial value */
   reseed() {
-    this.controls.forEach((control: PiControlDirective) => {
+    this.controls.forEach((control: ControlDirective) => {
       if (!this.seed[control.name] && this.key && control.sticky)
         this.seed[control.name] = <any>this.lstor.get(`${this.key}.${control.name}`);
       if (!this.seed[control.name])
@@ -305,8 +310,8 @@ export class PiFormComponent implements AfterContentInit {
   /** Reset this form */
   reset() {
     this.controlByName = {};
-    this.model = new PiForm();
-    this.controls.forEach((control: PiControlDirective) => {
+    this.model = new Form();
+    this.controls.forEach((control: ControlDirective) => {
       control.value = this.seed[control.name];
       this.model.values[control.name] = control.value;
       this.model.validities[control.name] = control.isValid();
@@ -321,7 +326,7 @@ export class PiFormComponent implements AfterContentInit {
 
   /** Set a control by name */
   set(name: string,
-      value: any) {
+      value: boolean | number | string) {
     const control = this.controlByName[name];
     if (control)
       control.value = value;
@@ -363,7 +368,7 @@ export class PiFormComponent implements AfterContentInit {
 
   // private methods
 
-  private listener(control: PiControlDirective) {
+  private listener(control: ControlDirective) {
     // NOTE: we have to do this because some controls (like DATE)
     // don't set valid at the same time they set value
     this.timer = setTimeout(() => {
