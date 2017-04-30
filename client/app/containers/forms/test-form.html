@@ -1,4 +1,4 @@
-<pi-form
+<pi-polymer-form
   #form
   focus="name"
   fxLayout="column"
@@ -15,7 +15,7 @@
       max="70"
       min="18"
       name="age"
-      piControl
+      piPolymerControl
       prevent-invalid-input
       required
       type="number">
@@ -28,19 +28,19 @@
   <div style="display: flex; justify-content: space-between">
     <paper-checkbox
       [sticky]="true"
-      piControl
+      piPolymerControl
       name="red">
       Red
     </paper-checkbox>
     <paper-checkbox
       [sticky]="true"
-      piControl
+      piPolymerControl
       name="green">
       Green
     </paper-checkbox>
     <paper-checkbox
       [sticky]="true"
-      piControl
+      piPolymerControl
       name="blue">
       Blue
     </paper-checkbox>
@@ -53,24 +53,24 @@
       error-message="Name is always required"
       label="Name"
       name="name"
-      piControl
+      piPolymerControl
       prevent-invalid-input
       required
       type="text">
-      <paper-icon-button
-        (click)="form.clear('name')"
-        alt="Reset name"
-        icon="clear"
-        slot="suffix"
-        title="Reset Name">
-      </paper-icon-button>
+      <div slot="suffix">
+        <paper-icon-button
+          (click)="form.clear('name')"
+          icon="clear">
+        </paper-icon-button>
+        <paper-tooltip>Clear name</paper-tooltip>
+      </div>
     </paper-input>
   </div>
 
   <div>
     <paper-radio-group
       [sticky]="true"
-      piControl
+      piPolymerControl
       name="gender">
       <paper-radio-button
         name="male">
@@ -86,7 +86,7 @@
   <div>
     <paper-toggle-button
       [sticky]="true"
-      piControl
+      piPolymerControl
       name="active">
       Active on/off
     </paper-toggle-button>
@@ -100,9 +100,10 @@
       max="100"
       min="0"
       name="severity"
-      piControl
+      piPolymerControl
       primary
-      snap>
+      snap
+      style="width: 100%">
     </paper-slider>
   </div>
 
@@ -111,9 +112,22 @@
       [sticky]="true"
       label="Count"
       name="count"
-      piControl
+      piPolymerControl
       type="number">
     </paper-input>
+  </div>
+
+  <div>
+    <pi-multi-selector
+      [items]="feedIDs"
+      [required]="true"
+      [sticky]="true"
+      errorMessage="Feed IDs are always required"
+      label="Feed IDs"
+      name="feedIDs"
+      piPolymerControl
+      separator=",">
+    </pi-multi-selector>
   </div>
 
   <div
@@ -133,4 +147,4 @@
     </paper-button>
   </div>
 
-</pi-form>
+</pi-polymer-form>

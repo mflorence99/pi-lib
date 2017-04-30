@@ -1,0 +1,52 @@
+<label
+  fxFlexLayout="row"
+  fxLayoutAlign="space-between end">
+
+  <div class="label">{{label}}</div>
+
+  <div>
+    <paper-icon-button
+      (click)="clear()"
+      icon="clear"
+      style="top: 8px">
+    </paper-icon-button>
+    <paper-tooltip>Clear all selections</paper-tooltip>
+  </div>
+
+</label>
+
+<div class="multi-selector-items">
+
+  <paper-checkbox
+    (blur)="focus(false)"
+    (change)="check($event, item)"
+    (focus)="focus(true)"
+    [checked]="isChecked(item)"
+    [label]="item.label"
+    *ngFor="let item of items"
+    piMultiSelectorControl>
+    {{item.label}}
+  </paper-checkbox>
+
+</div>
+
+<div
+  *ngIf="isInvalid()"
+  class="multi-selector-error">
+  {{errorMessage}}
+</div>
+
+<div
+  class="multi-selector-labels">
+  <span
+    *ngFor="let label of labels"
+    (click)="scrollTo(label)">
+    {{label}}
+  </span>
+</div>
+
+<input
+  [attr.required]="required"
+  #proxy
+  type="hidden"
+  value="">

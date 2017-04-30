@@ -17,9 +17,10 @@ import { SidebarEffects } from './effects/sidebar';
  * @NgModule({ ... imports: [PiModule, ...] ...})
  */
 
-export * from './components/form';
+export * from './components/multi-selector';
 export * from './components/no-data-on-page';
 export * from './components/polymer-app';
+export * from './components/polymer-form';
 export * from './components/sidebar';
 export * from './containers/404-page';
 export * from './pipes/breakable';
@@ -30,13 +31,15 @@ export * from './utils';
 
 const DECLARATIONS = [
   lib.BreakablePipe,
-  lib.ControlDirective,
   lib.EllipsizePipe,
-  lib.FormComponent,
   lib.FourOhFourPageComponent,
   lib.JSONifyPipe,
+  lib.MultiSelectorComponent,
+  lib.MultiSelectorControlDirective,
   lib.NoDataOnPageComponent,
   lib.PolymerAppComponent,
+  lib.PolymerControlDirective,
+  lib.PolymerFormComponent,
   lib.SidebarComponent,
   lib.SidebarGroupComponent
 ];

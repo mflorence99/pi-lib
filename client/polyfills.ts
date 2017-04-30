@@ -1,5 +1,5 @@
 import 'intl';
-import 'web-animations-js';
+import 'web-animations-js/web-animations-next-lite.min';
 import 'core-js/es6/symbol';
 import 'core-js/es6/object';
 // import 'core-js/es6/function';

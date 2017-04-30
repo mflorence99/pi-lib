@@ -13,39 +13,42 @@ import { OnDestroy } from '@angular/core';
 import { QueryList } from '@angular/core';
 
 /**
- * pi-form model
+ * pi-polymer-form model
  */
 
-export class Form {
+export class PolymerForm {
   isValid = false;
   submitted = false;
-  validities = new FormValiditiesMap();
-  values = new FormValuesMap();
+  validities = new PolymerFormValiditiesMap();
+  values = new PolymerFormValuesMap();
 }
 
-export class FormValiditiesMap {
+export class PolymerFormValiditiesMap {
   [s: string]: boolean;
 }
 
-export class FormValuesMap {
+export class PolymerFormValuesMap {
   [s: string]: boolean | number | string;
 }
 
 /**
- * piControl directive
+ * piPolymerControl directive
  *
  * NOTE: we place this before the pi-form component to make its QueryList work
+ *
+ * NOTE: Angular components that wrap Polymer components (like pi-multi-selector)
+ * are obliged to expose an <input type=hidden> via element.nativeElement._proxy.
  */
 
-enum Control {CHECKBOX, COMBOBOX, DATE, HIDDEN, INPUT, RADIO, SLIDER, TOGGLE}
+enum Control {CHECKBOX, COMBOBOX, DATE, HIDDEN, INPUT, MULTI, RADIO, SLIDER, TOGGLE}
 
-type ListenerCallback = (control: ControlDirective) => void;
+type ListenerCallback = (control: PolymerControlDirective) => void;
 
 @Directive ({
-  selector: '[piControl]'
+  selector: '[piPolymerControl]'
 })
 
-export class ControlDirective implements OnDestroy {
+export class PolymerControlDirective implements OnDestroy {
   @Input('default') dflt: boolean | number | string;
   @Input() name: string;
   @Input() sticky: boolean;
@@ -76,13 +79,15 @@ export class ControlDirective implements OnDestroy {
       this.ctrl = Control.INPUT;
     else if ((tagName === 'input') && (type === 'hidden'))
       this.ctrl = Control.HIDDEN;
+    else if (tagName === 'pi-multi-selector')
+      this.ctrl = Control.MULTI;
     else if (tagName === 'paper-radio-group')
       this.ctrl = Control.RADIO;
     else if (tagName === 'paper-slider')
       this.ctrl = Control.SLIDER;
     else if (tagName === 'paper-toggle-button')
       this.ctrl = Control.TOGGLE;
-    else throw new Error(`admin-control <${tagName}> not supported`);
+    else throw new Error(`pi-polymer-form <${tagName}> not supported`);
   }
 
   /** Clear the control */
@@ -97,6 +102,9 @@ export class ControlDirective implements OnDestroy {
       case Control.INPUT:
       case Control.SLIDER:
         this.el.value = null;
+        break;
+      case Control.MULTI:
+        this.el._proxy.value = null;
         break;
       case Control.RADIO:
         this.el.selected = 0;
@@ -121,6 +129,7 @@ export class ControlDirective implements OnDestroy {
       case Control.INPUT:
         this.el.focus();
         break;
+      case Control.MULTI:
       case Control.HIDDEN:
         break;
     }
@@ -140,7 +149,10 @@ export class ControlDirective implements OnDestroy {
       case Control.INPUT:
         // NOTE: the initial state of required fields may not set the invalid bit
         return (this.el.invalid !== true)
-            && !(this.el.required && ControlDirective.isEmpty(this.el.value));
+            && !(this.el.required && PolymerControlDirective.isEmpty(this.el.value));
+      case Control.MULTI:
+        return (this.el._proxy.invalid !== true)
+            && !(this.el._proxy.required && PolymerControlDirective.isEmpty(this.el._proxy.value));
     }
   }
 
@@ -158,6 +170,7 @@ export class ControlDirective implements OnDestroy {
         case Control.DATE:
           evtNames = ['value-changed'];
           break;
+        case Control.MULTI:
         case Control.HIDDEN:
           evtNames = ['change'];
           break;
@@ -172,7 +185,10 @@ export class ControlDirective implements OnDestroy {
       this.evtNames = evtNames;
       this.listener = () => callback(this);
       this.evtNames.forEach(evtName => {
-        this.el.addEventListener(evtName, this.listener);
+        // oh oh -- bit of a hack here
+        if (this.el._proxy)
+          this.el._proxy.addEventListener(evtName, this.listener);
+        else this.el.addEventListener(evtName, this.listener);
       });
     }
   }
@@ -181,7 +197,10 @@ export class ControlDirective implements OnDestroy {
   unlisten() {
     if (this.listener) {
       this.evtNames.forEach(evtName => {
-        this.el.removeEventListener(evtName, this.listener);
+        // oh oh -- bit of a hack here
+        if (this.el._proxy)
+          this.el._proxy.removeEventListener(evtName, this.listener);
+        else this.el.removeEventListener(evtName, this.listener);
       });
       this.listener = null;
     }
@@ -201,8 +220,10 @@ export class ControlDirective implements OnDestroy {
         return this.el.value;
       case Control.INPUT:
         if (this.el.type === 'number')
-          return ControlDirective.isEmpty(this.el.value)? undefined : Number(this.el.value);
+          return PolymerControlDirective.isEmpty(this.el.value)? undefined : Number(this.el.value);
         else return this.el.value;
+      case Control.MULTI:
+        return this.el._proxy.value;
       case Control.RADIO:
         return this.el.selected;
       case Control.TOGGLE:
@@ -223,8 +244,11 @@ export class ControlDirective implements OnDestroy {
         break;
       case Control.INPUT:
         if (this.el.type === 'number')
-          this.el.value = ControlDirective.isEmpty(data)? null : Number(data);
+          this.el.value = PolymerControlDirective.isEmpty(data)? null : Number(data);
         else this.el.value = data? data : null;
+        break;
+      case Control.MULTI:
+        this.el._proxy.value = data? data : null;
         break;
       case Control.RADIO:
         this.el.selected = data;
@@ -249,25 +273,25 @@ export class ControlDirective implements OnDestroy {
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'pi-form',
+  selector: 'pi-polymer-form',
   template: '<ng-content></ng-content>'
 })
 
-export class FormComponent implements AfterContentInit {
+export class PolymerFormComponent implements AfterContentInit {
 
-  @ContentChildren(ControlDirective) controls: QueryList<ControlDirective>;
+  @ContentChildren(PolymerControlDirective) controls: QueryList<PolymerControlDirective>;
 
   @HostBinding('style.display') _display = 'block';
 
   @Input() focus: string;
   @Input() key: string;
 
-  readonly stream = new EventEmitter<Form>();
+  readonly stream = new EventEmitter<PolymerForm>();
 
   private controlByName = {};
-  private model = new Form();
+  private model = new PolymerForm();
   private ready: boolean;
-  private seed = new FormValuesMap();
+  private seed = new PolymerFormValuesMap();
   private timer = null;
 
   /** ctor */
@@ -299,7 +323,7 @@ export class FormComponent implements AfterContentInit {
 
   /** Reseed the form by finding every control's default or initial value */
   reseed() {
-    this.controls.forEach((control: ControlDirective) => {
+    this.controls.forEach((control: PolymerControlDirective) => {
       if (!this.seed[control.name] && this.key && control.sticky)
         this.seed[control.name] = <any>this.lstor.get(`${this.key}.${control.name}`);
       if (!this.seed[control.name])
@@ -310,8 +334,8 @@ export class FormComponent implements AfterContentInit {
   /** Reset this form */
   reset() {
     this.controlByName = {};
-    this.model = new Form();
-    this.controls.forEach((control: ControlDirective) => {
+    this.model = new PolymerForm();
+    this.controls.forEach((control: PolymerControlDirective) => {
       control.value = this.seed[control.name];
       this.model.values[control.name] = control.value;
       this.model.validities[control.name] = control.isValid();
@@ -368,7 +392,7 @@ export class FormComponent implements AfterContentInit {
 
   // private methods
 
-  private listener(control: ControlDirective) {
+  private listener(control: PolymerControlDirective) {
     // NOTE: we have to do this because some controls (like DATE)
     // don't set valid at the same time they set value
     this.timer = setTimeout(() => {

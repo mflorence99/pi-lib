@@ -1,0 +1,71 @@
+:host {
+
+  &:focus {
+    outline: none;
+  }
+
+  &.in-focus {
+
+    .label{
+      color: var(--primary-color);
+    }
+
+    .multi-selector-items {
+      border-color: var(--primary-color);
+      border-width: 2px 0 2px 2px;
+      padding: 5px;
+    }
+
+  }
+
+  &.out-of-focus {
+
+    .label{
+      color: var(--paper-grey-500);
+    }
+
+    .multi-selector-items {
+      border-color: var(--paper-grey-500);
+      border-width: 1px 0 1px 1px;
+      padding: 6px;
+    }
+
+  }
+
+}
+
+.label {
+  font-size: 12px;
+}
+
+.multi-selector-items {
+  border-style: solid;
+  max-height: 180px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  transition: border-color 0.5s ease-in-out;
+  width: 100%;
+
+  paper-checkbox {
+    display: block;
+    padding: 2px 0 2px 0;
+  }
+
+}
+
+.multi-selector-error {
+  color: var(--error-color);
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.multi-selector-labels {
+  cursor: pointer;
+  font-size: 12px;
+  margin-top: 4px;
+
+  span:not(:last-child)::after {
+    content: ', ';
+  }
+
+}
