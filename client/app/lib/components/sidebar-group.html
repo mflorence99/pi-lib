@@ -1,31 +1,40 @@
 <paper-button
   class="group"
-  (click)="toggle(group)">
+  (click)="expando(group)">
 
   <i
     class="fa fa-chevron-up"
-    [ngClass]="sidebarState[group]? 'up' : 'down'"></i>
+    [ngClass]="sidebarState.expando[group]? 'up' : 'down'"></i>
   {{group}}
 
 </paper-button>
 
-<iron-collapse [opened]="sidebarState[group]">
+<iron-collapse [opened]="sidebarState.expando[group]">
 
   <paper-button
     [ngClass]="{selected: item.path === routerState.path}"
     *ngFor="let item of items"
     class="item">
 
-    <div [routerLink]="item.path">
+    <div
+      [routerLink]="item.path"
+      fxFlexLayout="row"
+      fxLayoutAlign="space-between center">
 
-      <i
-        [ngClass]="{selected: item.path === routerState.path}"
-        class="fa fa-fw fa-{{item.faIcon}}">
-      </i>
-      {{item.tag}}
+      <div>
+        <i
+          [ngClass]="{selected: item.path === routerState.path}"
+          class="fa fa-fw fa-{{item.faIcon}}">
+        </i>
+        {{item.tag}}
+      </div>
+
+      <div *ngIf="sidebarState.badges[item.path]">
+        <paper-badge [label]="sidebarState.badges[item.path]"></paper-badge>
+      </div>
 
     </div>
 
-  </paper-button>
+  </paper-button> 
 
 </iron-collapse>

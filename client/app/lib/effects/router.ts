@@ -38,7 +38,7 @@ export class RouterEffects {
    * Listen for any standard action to record last-used route
    */
 
-  @Effect() listen: Observable<Action> = this.actions
+  @Effect() updateLocation: Observable<Action> = this.actions
     .ofType(routerActions.UPDATE_LOCATION)
     .map((action: Action) => this.dref(action.payload.path))
     .do((path: string) => {

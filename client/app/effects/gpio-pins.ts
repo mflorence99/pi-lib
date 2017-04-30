@@ -1,9 +1,11 @@
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/withLatestFrom';
 
 import * as gpio from '../actions/gpio-pins';
+import * as sidebar from '../lib/actions/sidebar';
 
 import { Actions, Effect } from '@ngrx/effects';
 
@@ -34,7 +36,10 @@ export class GPIOPinsEffects {
         return of();
       else return this.gpioPinsService.getAll()
         .map((payload: boolean[]) => this.toGPIOPinsState(payload))
-        .map((payload: GPIOPinsState) => gpio.load(payload))
+        .mergeMap((payload: GPIOPinsState) => {
+          const count = this.countActivePins(payload);
+          return [gpio.load(payload), sidebar.badge('/gpio', count)];
+        })
         .catch((error: Response) => of(gpio.noop()));
     });
 
@@ -59,6 +64,13 @@ export class GPIOPinsEffects {
               private store: Store<AppState>) { }
 
   // private methods
+
+  private countActivePins(payload: GPIOPinsState): number {
+    return Object.keys(payload).reduce((acc, pin) => {
+      acc += (payload[pin]? 1 : 0);
+      return acc;
+    }, 0);
+  }
 
   private toGPIOPinsState(payload: boolean[]): GPIOPinsState {
     return payload.reduce((acc, _, ix) => {

@@ -4,7 +4,7 @@ import * as sidebar from '../reducers/sidebar';
 import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
 
 import { Store } from '@ngrx/store';
-import { toggle } from '../actions/sidebar';
+import { expando } from '../actions/sidebar';
 
 /**
  * Common sidebar.
@@ -23,16 +23,21 @@ export class SidebarComponent {
   @Input() sidebarState: sidebar.SidebarState = sidebar.initialState;
 
   groups: string[] = [];
-  items = new SidebarItemMap();
+  itemsByGroup = new SidebarGroupMap();
+  itemsByPath = new SidebarPathMap();
 
   // property accessors / mutators
 
   @Input() set sidebarItems(items: SidebarItem[]) {
-    this.items = items.reduce((acc, item) => {
+    this.itemsByGroup = items.reduce((acc, item) => {
       (acc[item.group] = (acc[item.group] || [])).push(item);
       return acc;
-    }, new SidebarItemMap());
-    this.groups = Object.keys(this.items);
+    }, new SidebarGroupMap());
+    this.itemsByPath = items.reduce((acc, item) => {
+      acc[item.path] = item;
+      return acc;
+    }, new SidebarPathMap());
+    this.groups = Object.keys(this.itemsByGroup);
   }
 
 }
@@ -60,8 +65,8 @@ export class SidebarGroupComponent {
   constructor(private store: Store<any>) { }
 
   /** Toggle a group open/closed */
-  toggle(group: string) {
-    this.store.dispatch(toggle(group));
+  expando(group: string) {
+    this.store.dispatch(expando(group));
   }
 
 }
@@ -77,6 +82,10 @@ export class SidebarItem {
               public tag: string) { }
 }
 
-export class SidebarItemMap {
+export class SidebarGroupMap {
   [group: string]: SidebarItem[];
+}
+
+export class SidebarPathMap {
+  [path: string]: SidebarItem;
 }

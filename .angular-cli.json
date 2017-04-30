@@ -8,6 +8,7 @@
       "root": "client",
       "outDir": "dist",
       "assets": [
+        "app/lib/elements.html",
         "app/lib/startup.html",
         "app/lib/theme.html",
         "bower_components",
