@@ -1,15 +1,17 @@
 <paper-button
+  *ngIf="group"
   class="group"
   (click)="expando(group)">
 
   <i
     class="fa fa-chevron-up"
-    [ngClass]="sidebarState.expando[group]? 'up' : 'down'"></i>
+    [ngClass]="navigatorState.expando[group]? 'up' : 'down'"></i>
   {{group}}
 
 </paper-button>
 
-<iron-collapse [opened]="sidebarState.expando[group]">
+<iron-collapse
+  [opened]="!group || navigatorState.expando[group]">
 
   <paper-button
     [ngClass]="{selected: item.path === routerState.path}"
@@ -29,12 +31,12 @@
         {{item.tag}}
       </div>
 
-      <div *ngIf="sidebarState.badges[item.path]">
-        <paper-badge [label]="sidebarState.badges[item.path]"></paper-badge>
+      <div *ngIf="navigatorState.badges[item.path]">
+        <paper-badge [label]="navigatorState.badges[item.path]"></paper-badge>
       </div>
 
     </div>
 
-  </paper-button> 
+  </paper-button>
 
 </iron-collapse>

@@ -1,6 +1,6 @@
-import * as sidebar from '../actions/sidebar';
+import * as navigator from '../actions/navigator';
 
-export interface SidebarState {
+export interface NavigatorState {
   badges: {
     [path: string]: number;
   };
@@ -9,24 +9,24 @@ export interface SidebarState {
   };
 };
 
-export const initialState: SidebarState = {
+export const initialState: NavigatorState = {
   badges: {},
   expando: {}
 };
 
 export function reducer(state = initialState,
-                        action: sidebar.Actions): SidebarState {
+                        action: navigator.Actions): NavigatorState {
   switch (action.type) {
 
-    case sidebar.ActionTypes.BADGE:
+    case navigator.ActionTypes.BADGE:
       const badges = Object.assign({}, state.badges, {[action.payload.path]: action.payload.count});
       return Object.assign({}, state, {badges});
 
-    case sidebar.ActionTypes.EXPANDO:
+    case navigator.ActionTypes.EXPANDO:
       const expando = Object.assign({}, state.expando, {[action.payload]: !state.expando[action.payload]});
       return Object.assign({}, state, {expando});
 
-    case sidebar.ActionTypes.LOAD:
+    case navigator.ActionTypes.LOAD:
       return Object.assign({}, initialState, action.payload);
 
     default:

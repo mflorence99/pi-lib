@@ -5,7 +5,7 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/withLatestFrom';
 
 import * as gpio from '../actions/gpio-pins';
-import * as sidebar from '../lib/actions/sidebar';
+import * as navigator from '../lib/actions/navigator';
 
 import { Actions, Effect } from '@ngrx/effects';
 
@@ -38,7 +38,7 @@ export class GPIOPinsEffects {
         .map((payload: boolean[]) => this.toGPIOPinsState(payload))
         .mergeMap((payload: GPIOPinsState) => {
           const count = this.countActivePins(payload);
-          return [gpio.load(payload), sidebar.badge('/gpio', count)];
+          return [gpio.load(payload), navigator.badge('/gpio', count)];
         })
         .catch((error: Response) => of(gpio.noop()));
     });

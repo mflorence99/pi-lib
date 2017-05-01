@@ -1,15 +1,15 @@
 import * as gpio from './gpio-pins';
+import * as navigator from '../lib/reducers/navigator';
 import * as router from '@ngrx/router-store';
-import * as sidebar from '../lib/reducers/sidebar';
 
 export const reducers = {
   gpio: gpio.reducer,
   router: router.routerReducer,
-  sidebar: sidebar.reducer
+  navigator: navigator.reducer
 };
 
 export interface AppState {
   gpio: gpio.GPIOPinsState;
+  navigator: navigator.NavigatorState;
   router: router.RouterState;
-  sidebar: sidebar.SidebarState;
 }

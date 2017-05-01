@@ -1,13 +1,13 @@
 import { Action } from '@ngrx/store';
-import { SidebarState } from '../reducers/sidebar';
+import { NavigatorState } from '../reducers/navigator';
 import { unique } from '../utils';
 
 export const ActionTypes = {
-  BADGE:   unique('[Sidebar] Item badge'),
-  EXPANDO: unique('[Sidebar] Group expando'),
-  INIT:    unique('[Sidebar] Init'),
-  LOAD:    unique('[Sidebar] Load'),
-  NOOP:    unique('[Sidebar] Noop')
+  BADGE:   unique('[Navigator] Item badge'),
+  EXPANDO: unique('[Navigator] Group expando'),
+  INIT:    unique('[Navigator] Init'),
+  LOAD:    unique('[Navigator] Load'),
+  NOOP:    unique('[Navigator] Noop')
 };
 
 export class BadgeAction implements Action {
@@ -60,7 +60,7 @@ export function init(): InitAction {
   return new InitAction();
 }
 
-export function load(state: any | SidebarState): LoadAction {
+export function load(state: any | NavigatorState): LoadAction {
   return new LoadAction(state);
 }
 

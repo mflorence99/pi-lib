@@ -1,13 +1,12 @@
 :host {
-  border-bottom: 3px solid var(--sidebar-hilite-background-color);
+  border-bottom: 3px solid var(--navigator-hilite-background-color);
 }
 
 paper-button {
   display: block;
-  width: calc(~'100% - 8px');
+  width: calc(~'100% - 12px');
 
-  &.group {
-  }
+  &.group { }
 
   &.item {
     font-size: 16px;
@@ -15,8 +14,8 @@ paper-button {
   }
 
   &.selected {
-    background-color: var(--sidebar-hilite-background-color);
-    color: var(--sidebar-hilite-text-color);
+    background-color: var(--navigator-hilite-background-color);
+    color: var(--navigator-hilite-text-color);
   }
 
   i {

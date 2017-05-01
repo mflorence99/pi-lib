@@ -5,9 +5,9 @@ import {CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule} from '@angular/co
 import { CommonModule } from '@angular/common';
 import { EffectsModule } from '@ngrx/effects';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { NavigatorEffects } from './effects/navigator';
 import { RouterEffects } from './effects/router';
 import { RouterModule } from '@angular/router';
-import { SidebarEffects } from './effects/sidebar';
 
 /**
  * pi-lib module definition
@@ -21,7 +21,7 @@ export * from './components/multi-selector';
 export * from './components/no-data-on-page';
 export * from './components/polymer-app';
 export * from './components/polymer-form';
-export * from './components/sidebar';
+export * from './components/navigator';
 export * from './containers/404-page';
 export * from './pipes/breakable';
 export * from './pipes/ellipsize';
@@ -36,12 +36,12 @@ const DECLARATIONS = [
   lib.JSONifyPipe,
   lib.MultiSelectorComponent,
   lib.MultiSelectorControlDirective,
+  lib.NavigatorComponent,
+  lib.NavigatorGroupComponent,
   lib.NoDataOnPageComponent,
   lib.PolymerAppComponent,
   lib.PolymerControlDirective,
-  lib.PolymerFormComponent,
-  lib.SidebarComponent,
-  lib.SidebarGroupComponent
+  lib.PolymerFormComponent
 ];
 
 const PROVIDERS = [
@@ -61,7 +61,7 @@ const PROVIDERS = [
   imports: [
     CommonModule,
     EffectsModule.run(RouterEffects),
-    EffectsModule.run(SidebarEffects),
+    EffectsModule.run(NavigatorEffects),
     FlexLayoutModule,
     RouterModule
   ],

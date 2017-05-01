@@ -21,6 +21,7 @@ import { PiModule } from './lib';
 import { RootComponent } from './containers/root';
 import { RouterModule } from '@angular/router';
 import { RouterStoreModule } from '@ngrx/router-store';
+import { SidebarComponent } from './containers/sidebar';
 import { SplashPageComponent } from './containers/splash/page';
 import { SplashPageModule } from './containers/splash/module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -36,7 +37,8 @@ import { storeFreeze } from 'ngrx-store-freeze';
  */
 
 const DECLARATIONS = [
-  RootComponent
+  RootComponent,
+  SidebarComponent
 ];
 
 const MODULES_ANGULAR = [
@@ -66,8 +68,9 @@ const MODULES_INTERNAL = [
 
 const ROUTES = [
   {path: '',                 component: SplashPageComponent},
-  {path: 'gpio',             component: GPIOPageComponent},
   {path: 'forms',            component: FormsPageComponent},
+  {path: 'gpio',             component: GPIOPageComponent},
+  {path: 'home',             component: SplashPageComponent},
   {path: 'noop',             component: NoopPageComponent},
   {path: '**',               component: FourOhFourPageComponent}
 ];
