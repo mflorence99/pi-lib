@@ -10,7 +10,8 @@
   </pi-test-form>
 
   <pi-test-ctrl
-    [json]="form.stream | async">
+    (working)="form.working = $event"
+    [form]="form.stream | async">
   </pi-test-ctrl>
 
 </main>

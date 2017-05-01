@@ -1,10 +1,9 @@
 import 'rxjs/add/observable/of';
 
-import { AfterViewInit, ChangeDetectionStrategy, Component, HostBinding, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, HostBinding, Input, ViewChild } from '@angular/core';
 
 import { MultiSelectorItem } from '../../lib/components/multi-selector';
 import { Observable } from 'rxjs/Observable';
-import { PolymerForm } from '../../lib/components/polymer-form';
 
 /**
  * Test form component
@@ -18,7 +17,12 @@ import { PolymerForm } from '../../lib/components/polymer-form';
 })
 
 export class TestFormComponent implements AfterViewInit {
+
   @HostBinding('style.display') _display = 'block';
+
+  @Input() disabled = false;
+  @Input() working = false;
+
   @ViewChild('form') form;
 
   feedIDs: MultiSelectorItem[] = [
@@ -50,13 +54,14 @@ export class TestFormComponent implements AfterViewInit {
     {label: 'Z-Feed', value: '2600'},
   ];
 
-  stream = Observable.of('');
+  stream = Observable.of(null);
 
   // lifecycle methods
 
   ngAfterViewInit() {
+    // NOTE: normally we'd filer at least isValid
     this.stream = this.form.stream
-      .map((form: PolymerForm) => JSON.stringify(form, null, ' '));
+      .do(x => console.log(x));
   }
 
 }

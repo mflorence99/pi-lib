@@ -26,7 +26,9 @@ const LIGHT_STRIDE = {h: 120, v: 120};
 })
 
 export class GPIOPinsComponent {
+
   @HostBinding('style.display') _display = 'block';
+
   @Input() gpioPinsState: gpio.GPIOPinsState = gpio.initialState;
 
   pins = new Array(40);
@@ -36,20 +38,12 @@ export class GPIOPinsComponent {
 
   /** Style the flag container to the right position */
   flagStyle(pin: number): any {
-    const x = FLAG_ORIGIN.x + ((pin % 2) * FLAG_STRIDE.h);
-    const y = FLAG_ORIGIN.y + (Math.floor(pin / 2) * FLAG_STRIDE.v);
-    const cx = FLAG_DIM.w;
-    const cy = FLAG_DIM.h;
-    return {'left.px': x, 'top.px': y, 'width.px': cx, 'height.px': cy};
+    return this.xxxStyle(pin, FLAG_DIM, FLAG_ORIGIN, FLAG_STRIDE);
   }
 
   /** Style the light container to the right position */
   lightStyle(pin: number): any {
-    const x = LIGHT_ORIGIN.x + ((pin % 2) * LIGHT_STRIDE.h);
-    const y = LIGHT_ORIGIN.y + (Math.floor(pin / 2) * LIGHT_STRIDE.v);
-    const cx = LIGHT_DIM.w;
-    const cy = LIGHT_DIM.h;
-    return {'left.px': x, 'top.px': y, 'width.px': cx, 'height.px': cy};
+    return this.xxxStyle(pin, LIGHT_DIM, LIGHT_ORIGIN, LIGHT_STRIDE);
   }
 
   /** Access pin state */
@@ -62,5 +56,17 @@ export class GPIOPinsComponent {
     this.store.dispatch(toggle(String(pin + 1)));
   }
 
+  // private methods
+
+  private xxxStyle(pin: number,
+                   dim: {w, h},
+                   orig: {x, y},
+                   stride: {h, v}): any {
+    const x = orig.x + ((pin % 2) * stride.h);
+    const y = orig.y + (Math.floor(pin / 2) * stride.v);
+    const cx = dim.w;
+    const cy = dim.h;
+    return {'left.px': x, 'top.px': y, 'width.px': cx, 'height.px': cy};
+  }
+
 }
- 

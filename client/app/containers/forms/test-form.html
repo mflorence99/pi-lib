@@ -141,10 +141,15 @@
     <paper-button
       (click)="form.submit()"
       [disabled]="!form.isValid()"
+      *ngIf="!working"
       primary
       raised>
       Submit
     </paper-button>
+    <paper-spinner
+      [active]="working"
+      *ngIf="working">
+    </paper-spinner>
   </div>
 
 </pi-polymer-form>

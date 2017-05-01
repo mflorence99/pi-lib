@@ -42,7 +42,9 @@ export class NavigatorPathMap {
 })
 
 export class NavigatorComponent {
+
   @HostBinding('style.display') _display = 'block';
+
   @Input() navigatorState: navigator.NavigatorState = navigator.initialState;
   @Input() routerState: router.RouterState = router.initialState;
 
@@ -78,7 +80,9 @@ export class NavigatorComponent {
 })
 
 export class NavigatorGroupComponent {
+
   @HostBinding('style.display') _display = 'block';
+  
   @Input() group = '';
   @Input() items: NavigatorItem[] = [];
   @Input() navigatorState: navigator.NavigatorState = navigator.initialState;

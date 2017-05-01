@@ -25,12 +25,15 @@ export class SidebarComponent {
   routerState: Observable<router.RouterState>;
   navigatorState: Observable<navigator.NavigatorState>;
 
+  // navigator contents
+
   navigatorItems: NavigatorItem[] = [
     new NavigatorItem('/home', 'home', 'Welcome!'),
     new NavigatorItem('/gpio', 'calculator', 'GPIO Pins', 'Raspberry Pi'),
     new NavigatorItem('/forms', 'th', 'Forms', 'Components')
   ];
 
+  /** ctor */
   constructor(store: Store<AppState>) {
     this.navigatorState = store.select(state => state.navigator);
     this.routerState = store.select(state => state.router);

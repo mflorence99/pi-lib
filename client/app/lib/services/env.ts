@@ -17,6 +17,7 @@ declare var ENV: any;
 @Injectable()
 export class EnvService {
 
+  /** ctor */
   constructor() {
     Object.keys(ENV).forEach(k => this[k] = ENV[k]);
   }
