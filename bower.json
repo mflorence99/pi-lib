@@ -19,7 +19,11 @@
     "iron-label": "PolymerElements/iron-label#2.0-preview",
     "paper-tooltip": "PolymerElements/paper-tooltip#2.0-preview",
     "neon-animation": "PolymerElements/neon-animation#2.0-preview",
-    "paper-badge": "PolymerElements/paper-badge#2.0-preview"
+    "paper-badge": "PolymerElements/paper-badge#2.0-preview",
+    "paper-toast": "PolymerElements/paper-toast#2.0-preview",
+    "paper-header-panel": "PolymerElements/paper-header-panel#2.0-preview",
+    "paper-toolbar": "PolymerElements/paper-toolbar#2.0-preview",
+    "paper-card": "PolymerElements/paper-card#2.0-preview"
   },
   "resolutions": {
     "polymer": "^2",

@@ -6,4 +6,26 @@ main {
     z-index: 99;
   }
 
+  section {
+
+    header {
+      background-color: var(--primary-color);
+      color: white;
+      height: 60px;
+      padding: 16px;
+      width: 100%;
+
+      .title {
+        font-size: 24px;
+        font-weight: 400;
+      }
+
+    }
+
+    .content {
+      height: calc(~'100% - 60px');
+    }
+
+  }
+
 }

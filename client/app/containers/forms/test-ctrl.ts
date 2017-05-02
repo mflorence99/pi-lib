@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { PolymerForm } from '../../lib/components/polymer-form';
 
@@ -14,14 +14,11 @@ import { PolymerForm } from '../../lib/components/polymer-form';
 })
 
 export class TestCtrlComponent {
-
-  @HostBinding('style.display') _display = 'block';
-
   @Output() working = new EventEmitter<boolean>();
 
   json: string;
 
-  // property mutator
+  // property accessors / mutators
 
   @Input() set form(form: PolymerForm) {
     if (form) {

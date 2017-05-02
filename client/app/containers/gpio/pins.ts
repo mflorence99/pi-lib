@@ -1,6 +1,6 @@
 import * as gpio from '../../reducers/gpio-pins';
 
-import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { AppState } from '../../reducers';
 import { Store } from '@ngrx/store';
@@ -26,9 +26,6 @@ const LIGHT_STRIDE = {h: 120, v: 120};
 })
 
 export class GPIOPinsComponent {
-
-  @HostBinding('style.display') _display = 'block';
-
   @Input() gpioPinsState: gpio.GPIOPinsState = gpio.initialState;
 
   pins = new Array(40);

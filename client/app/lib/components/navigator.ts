@@ -1,7 +1,7 @@
 import * as navigator from '../reducers/navigator';
 import * as router from '@ngrx/router-store';
 
-import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 import { expando } from '../actions/navigator';
@@ -43,8 +43,6 @@ export class NavigatorPathMap {
 
 export class NavigatorComponent {
 
-  @HostBinding('style.display') _display = 'block';
-
   @Input() navigatorState: navigator.NavigatorState = navigator.initialState;
   @Input() routerState: router.RouterState = router.initialState;
 
@@ -55,15 +53,17 @@ export class NavigatorComponent {
   // property accessors / mutators
 
   @Input() set navigatorItems(items: NavigatorItem[]) {
-    this.itemsByGroup = items.reduce((acc, item) => {
-      (acc[item.group] = (acc[item.group] || [])).push(item);
-      return acc;
-    }, new NavigatorGroupMap());
-    this.itemsByPath = items.reduce((acc, item) => {
-      acc[item.path] = item;
-      return acc;
-    }, new NavigatorPathMap());
-    this.groups = Object.keys(this.itemsByGroup);
+    if (items) {
+      this.itemsByGroup = items.reduce((acc, item) => {
+        (acc[item.group] = (acc[item.group] || [])).push(item);
+        return acc;
+      }, new NavigatorGroupMap());
+      this.itemsByPath = items.reduce((acc, item) => {
+        acc[item.path] = item;
+        return acc;
+      }, new NavigatorPathMap());
+      this.groups = Object.keys(this.itemsByGroup);
+    }
   }
 
 }
@@ -80,8 +80,6 @@ export class NavigatorComponent {
 })
 
 export class NavigatorGroupComponent {
-
-  @HostBinding('style.display') _display = 'block';
 
   @Input() group = '';
   @Input() items: NavigatorItem[] = [];

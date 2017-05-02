@@ -1,6 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { PiModule } from '../../lib';
 import { SplashPageComponent } from './page';
 
@@ -14,6 +15,7 @@ const COMPONENTS = [
 
 const MODULES = [
   CommonModule,
+  FlexLayoutModule,
   PiModule
 ];
 

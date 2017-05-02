@@ -17,7 +17,19 @@
     fxFlex="grow"
     fxFlexFill>
 
-    <router-outlet></router-outlet>
+    <header
+      fxLayout="row"
+      fxLayoutAlign="center center">
+
+      <div class="title">
+        <code>pi-lib</code> Demo App and Test Bed
+      </div>
+
+    </header>
+
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
 
   </section>
 

@@ -1,7 +1,7 @@
 import * as navigator from '../lib/reducers/navigator';
 import * as router from '@ngrx/router-store';
 
-import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { AppState } from '../reducers';
 import { NavigatorItem } from '../lib/components/navigator';
@@ -20,8 +20,6 @@ import { Store } from '@ngrx/store';
 })
 
 export class SidebarComponent {
-  @HostBinding('style.display') _display = 'block';
-
   routerState: Observable<router.RouterState>;
   navigatorState: Observable<navigator.NavigatorState>;
 

@@ -5,7 +5,6 @@ import { ContentChildren } from '@angular/core';
 import { Directive } from '@angular/core';
 import { ElementRef } from '@angular/core';
 import { EventEmitter } from '@angular/core';
-import { HostBinding } from '@angular/core';
 import { HostListener } from '@angular/core';
 import { Input } from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
@@ -274,14 +273,13 @@ export class PolymerControlDirective implements OnDestroy {
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'pi-polymer-form',
-  template: '<ng-content></ng-content>'
+  styleUrls: ['polymer-form.less'],
+  templateUrl: 'polymer-form.html'
 })
 
 export class PolymerFormComponent implements AfterContentInit {
 
   @ContentChildren(PolymerControlDirective) controls: QueryList<PolymerControlDirective>;
-
-  @HostBinding('style.display') _display = 'block';
 
   @Input() focus: string;
   @Input() key: string;

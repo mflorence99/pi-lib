@@ -20,7 +20,6 @@ export class TestFormComponent implements AfterViewInit {
 
   @HostBinding('style.cursor') get isWorking()
     { return this.working? 'wait' : 'default'; }
-  @HostBinding('style.display') _display = 'block';
 
   @Input() disabled = false;
   @Input() working = false;

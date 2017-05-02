@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, HostBinding, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, ViewChild } from '@angular/core';
 
 import { HighlightJsService } from 'angular2-highlight-js';
 
@@ -15,15 +15,7 @@ import { HighlightJsService } from 'angular2-highlight-js';
 
 export class CodeViewerComponent implements AfterViewInit {
 
-  @HostBinding('style.display') _display = 'block';
-
   @Input() type = 'xml';
-
-  @Input() set code(code: string) {
-    if (this.snippet)
-      this.fill(code);
-    else this.cache = code;
-  }
 
   @ViewChild('snippet') snippet: ElementRef;
 
@@ -31,6 +23,14 @@ export class CodeViewerComponent implements AfterViewInit {
 
   /** ctor */
   constructor(private hljs: HighlightJsService) { }
+
+  // property accessors / mutators
+
+  @Input() set code(code: string) {
+    if (this.snippet)
+      this.fill(code);
+    else this.cache = code;
+  }
 
   // lifecycle methods
 

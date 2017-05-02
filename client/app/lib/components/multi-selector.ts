@@ -60,7 +60,6 @@ export class MultiSelectorComponent implements DoCheck, OnInit {
 
   @HostBinding('class.in-focus') get inFocus() { return this.focussed; }
   @HostBinding('class.out-of-focus') get outOfFocus() { return !this.focussed; }
-  @HostBinding('style.display') _display = 'block';
   @HostBinding() tabindex = -1;
 
   @Input() errorMessage = '';

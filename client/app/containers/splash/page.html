@@ -1,9 +1,23 @@
 <main
   [@flyInOut]="'in'"
-  fxFlexFill>
+  fxFlexFill
+  fxLayout="row"
+  fxLayoutAlign="center center">
 
-  <pi-no-data-on-page faIcon="globe">
-    Welcome!
-  </pi-no-data-on-page>
+  <paper-card
+    animated
+    animated-shadow
+    heading="Welcome!"
+    info>
+
+    <div class="card-content">
+
+      <p>
+        Blah blah blah
+      </p>
+
+    </div>
+
+  </paper-card>
 
 </main>
