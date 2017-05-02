@@ -2,19 +2,15 @@ import { CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule } from '@angular/
 
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormsPageComponent } from './page';
 import { PiModule } from '../../lib';
-import { TestCtrlComponent } from './test-ctrl';
-import { TestFormComponent } from './test-form';
+import { PipesPageComponent } from './page';
 
 /**
- * Forms page module
+ * Pipes page module
  */
 
 const COMPONENTS = [
-  FormsPageComponent,
-  TestCtrlComponent,
-  TestFormComponent
+  PipesPageComponent
 ];
 
 const MODULES = [
@@ -37,10 +33,10 @@ const MODULES = [
 
 })
 
-export class FormsPageModule {
+export class PipesPageModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: FormsPageModule,
+      ngModule: PipesPageModule,
       providers: [ ]
     };
   }

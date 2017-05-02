@@ -9,24 +9,24 @@ import { PiModule } from '../../lib';
  * Noop page module
  */
 
-const DECLARATIONS = [
+const COMPONENTS = [
   GPIOPageComponent,
   GPIOPinsComponent
+];
+
+const MODULES = [
+  CommonModule,
+  PiModule
 ];
 
 @NgModule({
 
   declarations: [
-    ...DECLARATIONS
-  ],
-
-  exports: [
-    ...DECLARATIONS
+    ...COMPONENTS
   ],
 
   imports: [
-    CommonModule,
-    PiModule
+    ...MODULES
   ],
 
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

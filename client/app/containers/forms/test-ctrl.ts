@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 
-import { HighlightJsService } from 'angular2-highlight-js';
 import { PolymerForm } from '../../lib/components/polymer-form';
 
 /**
@@ -20,10 +19,7 @@ export class TestCtrlComponent {
 
   @Output() working = new EventEmitter<boolean>();
 
-  @ViewChild('snippet') snippet;
-
-  /** ctor */
-  constructor(private hljs: HighlightJsService) { }
+  json: string;
 
   // property mutator
 
@@ -35,12 +31,7 @@ export class TestCtrlComponent {
         setTimeout(() => this.working.emit(false), 2000);
       }
       // convert the form to json
-      const json = JSON.stringify(form, null, ' ');
-      const el = this.snippet.nativeElement;
-      el.innerHTML = json
-        .replace(/\n/g, '<br>')
-        .replace(/ /g, '&nbsp;');
-      this.hljs.highlight(el, true);
+      this.json = JSON.stringify(form, null, ' ');
     }
   }
 

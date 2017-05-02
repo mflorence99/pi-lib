@@ -8,23 +8,23 @@ import { SplashPageComponent } from './page';
  * Splash page module
  */
 
-const DECLARATIONS = [
+const COMPONENTS = [
   SplashPageComponent
+];
+
+const MODULES = [
+  CommonModule,
+  PiModule
 ];
 
 @NgModule({
 
   declarations: [
-    ...DECLARATIONS
-  ],
-
-  exports: [
-    ...DECLARATIONS
+    ...COMPONENTS
   ],
 
   imports: [
-    CommonModule,
-    PiModule
+    ...MODULES
   ],
 
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

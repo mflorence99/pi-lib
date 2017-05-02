@@ -16,7 +16,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 export class BreakablePipe implements PipeTransform {
 
   transform(s: string,
-            dflt = '') {
+            dflt = ''): string {
     if ((s === null) || (s === undefined))
       return dflt;
     else if (typeof s.replace === 'function')

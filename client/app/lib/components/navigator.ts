@@ -31,7 +31,7 @@ export class NavigatorPathMap {
 }
 
 /**
- * Common navigator.
+ * pi-navigator component
  */
 
 @Component({
@@ -82,7 +82,7 @@ export class NavigatorComponent {
 export class NavigatorGroupComponent {
 
   @HostBinding('style.display') _display = 'block';
-  
+
   @Input() group = '';
   @Input() items: NavigatorItem[] = [];
   @Input() navigatorState: navigator.NavigatorState = navigator.initialState;

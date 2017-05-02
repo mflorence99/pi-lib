@@ -18,6 +18,8 @@ import { LocalStorageModule } from 'angular-2-local-storage';
 import { NoopPageComponent } from './containers/noop/page';
 import { NoopPageModule } from './containers/noop/module';
 import { PiModule } from './lib';
+import { PipesPageComponent } from './containers/pipes/page';
+import { PipesPageModule } from './containers/pipes/module';
 import { RootComponent } from './containers/root';
 import { RouterModule } from '@angular/router';
 import { RouterStoreModule } from '@ngrx/router-store';
@@ -36,7 +38,7 @@ import { storeFreeze } from 'ngrx-store-freeze';
  * pi-lib demo app module
  */
 
-const DECLARATIONS = [
+const COMPONENTS = [
   RootComponent,
   SidebarComponent
 ];
@@ -63,6 +65,7 @@ const MODULES_INTERNAL = [
   GPIOPageModule,
   NoopPageModule,
   PiModule,
+  PipesPageModule,
   SplashPageModule
 ];
 
@@ -72,7 +75,13 @@ const ROUTES = [
   {path: 'gpio',             component: GPIOPageComponent},
   {path: 'home',             component: SplashPageComponent},
   {path: 'noop',             component: NoopPageComponent},
+  {path: 'pipes',            component: PipesPageComponent},
   {path: '**',               component: FourOhFourPageComponent}
+];
+
+const SERVICES = [
+  GPIOPinsService,
+  HighlightJsService
 ];
 
 // see: https://www.npmjs.com/package/ngrx-store-freeze
@@ -85,11 +94,7 @@ const appStore = compose(...metaReducers)(reducers);
   bootstrap: [RootComponent],
 
   declarations: [
-    ...DECLARATIONS
-  ],
-
-  exports: [
-    ...DECLARATIONS
+    ...COMPONENTS
   ],
 
   imports: [
@@ -106,8 +111,7 @@ const appStore = compose(...metaReducers)(reducers);
   ],
 
   providers: [
-    GPIOPinsService,
-    HighlightJsService
+    ...SERVICES
   ],
 
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

@@ -16,7 +16,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 export class EllipsizePipe implements PipeTransform {
 
   transform(s: string,
-            max = 100) {
+            max = 100): string {
     return (s.length > max)? `${s.substring(0, max)}\u2026` : s;
   }
 

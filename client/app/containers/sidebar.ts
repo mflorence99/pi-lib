@@ -30,7 +30,8 @@ export class SidebarComponent {
   navigatorItems: NavigatorItem[] = [
     new NavigatorItem('/home', 'home', 'Welcome!'),
     new NavigatorItem('/gpio', 'calculator', 'GPIO Pins', 'Raspberry Pi'),
-    new NavigatorItem('/forms', 'th', 'Forms', 'Components')
+    new NavigatorItem('/forms', 'th', 'Forms', 'Components'),
+    new NavigatorItem('/pipes', 'filter', 'Pipes', 'Components')
   ];
 
   /** ctor */

@@ -17,6 +17,7 @@ import { RouterModule } from '@angular/router';
  * @NgModule({ ... imports: [PiModule, ...] ...})
  */
 
+export * from './components/code-viewer';
 export * from './components/multi-selector';
 export * from './components/no-data-on-page';
 export * from './components/polymer-app';
@@ -26,14 +27,16 @@ export * from './containers/404-page';
 export * from './pipes/breakable';
 export * from './pipes/ellipsize';
 export * from './pipes/jsonify';
+export * from './pipes/linkify';
+export * from './pipes/markdown';
+export * from './pipes/moment';
+export * from './pipes/numeral';
 export * from './services/env';
 export * from './utils';
 
-const DECLARATIONS = [
-  lib.BreakablePipe,
-  lib.EllipsizePipe,
+const COMPONENTS = [
+  lib.CodeViewerComponent,
   lib.FourOhFourPageComponent,
-  lib.JSONifyPipe,
   lib.MultiSelectorComponent,
   lib.MultiSelectorControlDirective,
   lib.NavigatorComponent,
@@ -44,18 +47,33 @@ const DECLARATIONS = [
   lib.PolymerFormComponent
 ];
 
-const PROVIDERS = [
+const PIPES = [
+  lib.BreakablePipe,
+  lib.DateFormatPipe,
+  lib.DurationPipe,
+  lib.FromUnixTimePipe,
+  lib.EllipsizePipe,
+  lib.JSONifyPipe,
+  lib.LinkifyPipe,
+  lib.MarkdownPipe,
+  lib.NumeralPipe,
+  lib.UTCFormatPipe
+];
+
+const SERVICES = [
   lib.EnvService
 ];
 
 @NgModule({
 
   declarations: [
-    ...DECLARATIONS
+    ...COMPONENTS,
+    ...PIPES
   ],
 
   exports: [
-    ...DECLARATIONS
+    ...COMPONENTS,
+    ...PIPES
   ],
 
   imports: [
@@ -67,7 +85,7 @@ const PROVIDERS = [
   ],
 
   providers: [
-    ...PROVIDERS
+    ...SERVICES
   ],
 
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
@@ -79,7 +97,7 @@ export class PiModule {
     return {
       ngModule: PiModule,
       providers: [
-        ...PROVIDERS
+        ...SERVICES
       ]
     };
   }
