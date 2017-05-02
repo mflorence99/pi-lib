@@ -1,3 +1,11 @@
+<paper-checkbox
+  #disabler
+  (change)="disabled = disabler.checked">
+  Disable form
+</paper-checkbox>
+
+<hr>
+
 <pi-polymer-form
   #form
   focus="name"
@@ -135,12 +143,13 @@
     fxLayoutAlign="end center"
     fxLayoutGap="16px">
     <paper-button
-      (click)="form.reset()">
+      (click)="form.reset()"
+      [disabled]="disabled || working">
       Reset
     </paper-button>
     <paper-button
       (click)="form.submit()"
-      [disabled]="!form.isValid()"
+      [disabled]="disabled || !form.isValid()"
       *ngIf="!working"
       primary
       raised>

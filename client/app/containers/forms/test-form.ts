@@ -18,6 +18,8 @@ import { Observable } from 'rxjs/Observable';
 
 export class TestFormComponent implements AfterViewInit {
 
+  @HostBinding('style.cursor') get isWorking()
+    { return this.working? 'wait' : 'default'; }
   @HostBinding('style.display') _display = 'block';
 
   @Input() disabled = false;
@@ -60,8 +62,7 @@ export class TestFormComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     // NOTE: normally we'd filer at least isValid
-    this.stream = this.form.stream
-      .do(x => console.log(x));
+    this.stream = this.form.stream;
   }
 
 }

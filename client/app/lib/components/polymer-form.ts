@@ -345,7 +345,7 @@ export class PolymerFormComponent implements AfterContentInit {
       control.listen(this.listener.bind(this));
     });
     this.model.isValid = this.isValid();
-    this.stream.emit(this.model);
+    this.next();
   }
 
   /** Set a control by name */
@@ -360,7 +360,7 @@ export class PolymerFormComponent implements AfterContentInit {
   submit() {
     this.model.isValid = this.isValid();
     this.model.submitted = true;
-    this.stream.emit(this.model);
+    this.next();
   }
 
   // listeners
@@ -400,11 +400,15 @@ export class PolymerFormComponent implements AfterContentInit {
       this.model.submitted = false;
       this.model.values[control.name] = control.value;
       this.model.validities[control.name] = control.isValid();
-      this.stream.emit(this.model);
+      this.next();
       // make value sticky
       if (this.key && control.sticky && control.isValid())
         this.lstor.set(`${this.key}.${control.name}`, control.value);
     }, 0);
+  }
+
+  private next() {
+    this.stream.emit(Object.assign({}, this.model));
   }
 
 }
