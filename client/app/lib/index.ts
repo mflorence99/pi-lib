@@ -18,6 +18,7 @@ import { RouterModule } from '@angular/router';
  */
 
 export * from './components/code-viewer';
+export * from './components/markdown';
 export * from './components/multi-selector';
 export * from './components/no-data-on-page';
 export * from './components/polymer-app';
@@ -37,6 +38,7 @@ export * from './utils';
 const COMPONENTS = [
   lib.CodeViewerComponent,
   lib.FourOhFourPageComponent,
+  lib.MarkdownComponent,
   lib.MultiSelectorComponent,
   lib.MultiSelectorControlDirective,
   lib.NavigatorComponent,

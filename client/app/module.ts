@@ -15,6 +15,8 @@ import { GPIOPinsEffects } from './effects/gpio-pins';
 import { GPIOPinsService } from './services/gpio-pins';
 import { HttpModule } from '@angular/http';
 import { LocalStorageModule } from 'angular-2-local-storage';
+import { MarkdownPageComponent } from './containers/markdown/page';
+import { MarkdownPageModule } from './containers/markdown/module';
 import { NoopPageComponent } from './containers/noop/page';
 import { NoopPageModule } from './containers/noop/module';
 import { PiModule } from './lib';
@@ -28,11 +30,7 @@ import { SplashPageComponent } from './containers/splash/page';
 import { SplashPageModule } from './containers/splash/module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
-import { combineReducers } from '@ngrx/store';
-import { compose } from '@ngrx/core/compose';
-import { environment } from '../environments/environment';
 import { reducers } from './reducers';
-import { storeFreeze } from 'ngrx-store-freeze';
 
 /**
  * pi-lib demo app module
@@ -63,6 +61,7 @@ const MODULES_EXTERNAL = [
 const MODULES_INTERNAL = [
   FormsPageModule,
   GPIOPageModule,
+  MarkdownPageModule,
   NoopPageModule,
   PiModule,
   PipesPageModule,
@@ -74,6 +73,7 @@ const ROUTES = [
   {path: 'forms',            component: FormsPageComponent},
   {path: 'gpio',             component: GPIOPageComponent},
   {path: 'home',             component: SplashPageComponent},
+  {path: 'markdown',         component: MarkdownPageComponent},
   {path: 'noop',             component: NoopPageComponent},
   {path: 'pipes',            component: PipesPageComponent},
   {path: '**',               component: FourOhFourPageComponent}
@@ -85,9 +85,11 @@ const SERVICES = [
 ];
 
 // see: https://www.npmjs.com/package/ngrx-store-freeze
-const metaReducers = environment.production?
-  [storeFreeze, combineReducers] : [combineReducers];
-const appStore = compose(...metaReducers)(reducers);
+// NOTE: this is recommended, but seems to seriously confuse Webpack and create build errors
+
+// const metaReducers = environment.production?
+//   [storeFreeze, combineReducers] : [combineReducers];
+// const appStore = compose(...metaReducers)(reducers);
 
 @NgModule({
 
@@ -104,7 +106,7 @@ const appStore = compose(...metaReducers)(reducers);
     EffectsModule.run(GPIOPinsEffects),
     RouterModule.forRoot(ROUTES, { useHash: true }),
     RouterStoreModule.connectRouter(),
-    StoreModule.provideStore(appStore),
+    StoreModule.provideStore(reducers),
     StoreDevtoolsModule.instrumentOnlyWithExtension({
         maxAge: 5
       })

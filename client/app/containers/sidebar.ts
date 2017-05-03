@@ -29,6 +29,7 @@ export class SidebarComponent {
     new NavigatorItem('/home', 'home', 'Welcome!'),
     new NavigatorItem('/gpio', 'calculator', 'GPIO Pins', 'Raspberry Pi'),
     new NavigatorItem('/forms', 'th', 'Forms', 'Components'),
+    new NavigatorItem('/markdown', 'code', 'Markdown', 'Components'),
     new NavigatorItem('/pipes', 'filter', 'Pipes', 'Components')
   ];
 

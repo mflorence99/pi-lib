@@ -1,6 +1,6 @@
-import {} from '@types/marked';
+import { } from '@types/marked';
 
-import {Pipe, PipeTransform} from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 
 /**
  * Pipe wrapper around marked.js

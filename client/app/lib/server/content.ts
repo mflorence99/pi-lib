@@ -8,5 +8,9 @@ import * as path from 'path';
 export function content(req: express.Request,
                         res: express.Response) {
     const name = req.path.substring(1);
-    res.sendFile(path.join(__dirname, '../dist', name? name : 'home.html'));
+    if (name.startsWith('bower_components'))
+      res.sendFile(path.join(__dirname, '../../../..', name));
+    else if (name)
+      res.sendFile(path.join(__dirname, '../../../../dist', name));
+    else res.sendFile(path.join(__dirname, '../../../../dist', 'home.html'));
 };

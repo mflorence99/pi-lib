@@ -11,7 +11,7 @@
         "app/lib/elements.html",
         "app/lib/startup.html",
         "app/lib/theme.html",
-        "bower_components",
+        "assets",
         "elements.html",
         "favicon.ico",
         "theme.html"

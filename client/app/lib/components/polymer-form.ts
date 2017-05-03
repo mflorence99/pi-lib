@@ -1,4 +1,5 @@
 import { AfterContentInit } from '@angular/core';
+import { AutoUnsubscribe } from '../decorators/auto-unsubscribe';
 import { ChangeDetectionStrategy } from '@angular/core';
 import { Component } from '@angular/core';
 import { ContentChildren } from '@angular/core';
@@ -10,6 +11,7 @@ import { Input } from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { OnDestroy } from '@angular/core';
 import { QueryList } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
 
 /**
  * pi-polymer-form model
@@ -277,6 +279,7 @@ export class PolymerControlDirective implements OnDestroy {
   templateUrl: 'polymer-form.html'
 })
 
+@AutoUnsubscribe() 
 export class PolymerFormComponent implements AfterContentInit {
 
   @ContentChildren(PolymerControlDirective) controls: QueryList<PolymerControlDirective>;
@@ -290,6 +293,7 @@ export class PolymerFormComponent implements AfterContentInit {
   private model = new PolymerForm();
   private ready: boolean;
   private seed = new PolymerFormValuesMap();
+  private subscription: Subscription;
   private timer = null;
 
   /** ctor */
@@ -382,7 +386,7 @@ export class PolymerFormComponent implements AfterContentInit {
     this.reset();
     this.ready = true;
     // reset whenever the list changes
-    this.controls.changes.subscribe(() => {
+    this.subscription = this.controls.changes.subscribe(() => {
       this.reseed();
       this.reset();
     });

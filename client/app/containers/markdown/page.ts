@@ -2,14 +2,14 @@ import { Component } from '@angular/core';
 import { flyInOut } from '../../lib/animations';
 
 /**
- * Pipes demo page
+ * Markdown demo page
  */
 
 @Component({
   animations: [flyInOut()],
-  selector: 'pi-pipes-page',
+  selector: 'pi-markdown-page',
   styleUrls: ['page.less'],
   templateUrl: 'page.html'
 })
 
-export class PipesPageComponent { }
+export class MarkdownPageComponent { }
