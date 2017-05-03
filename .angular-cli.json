@@ -8,13 +8,10 @@
       "root": "client",
       "outDir": "dist",
       "assets": [
-        "app/lib/elements.html",
         "app/lib/startup.html",
-        "app/lib/theme.html",
         "assets",
-        "elements.html",
         "favicon.ico",
-        "theme.html"
+        "vulcanized.html"
       ],
       "index": "home.html",
       "main": "main.ts",
@@ -27,6 +24,7 @@
         "../node_modules/font-awesome/css/font-awesome.min.css"
       ],
       "scripts": [
+        "../bower_components/webcomponentsjs/webcomponents-loader.js",
         "../node_modules/marked/marked.min.js",
         "../node_modules/numeral/min/numeral.min.js"
       ],
