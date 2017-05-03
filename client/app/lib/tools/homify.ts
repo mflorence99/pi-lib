@@ -14,12 +14,25 @@ import * as yargs from 'yargs';
  */
 
 const argv = yargs.argv;
-
 const base = process.cwd();
+
+/**
+ * We use apply before ng build or ng serve. It prepares home.html
+ * by injecting the build-time ENV. This is exactly what we want for testing.
+ * The angular/cli toolchain will subsequently inject its own dependencies
+ * as deternined by angular-cli.json into home.html.
+ */
 
 if (argv.client)
   apply(path.join(base, './client', 'index.html'),
         path.join(base, './client', 'home.html'));
+
+/**
+ * We use remove + apply before running our production Express srver, which now
+ * assumes responsibility for deploying static content, taking over from ng serve.
+ * We remove any build-time ENV already in <head>, taking care not to remove
+ * angular/cli's own injections. Then we apply the run-time ENV back into <head>.
+ */
 
 else if (argv.server && fs.existsSync(path.join(base, './dist', 'home.html'))) {
   const stream = remove(path.join(base, './dist', 'home.html'),
@@ -29,6 +42,10 @@ else if (argv.server && fs.existsSync(path.join(base, './dist', 'home.html'))) {
           path.join(base, './dist', 'home.html'));
   });
 }
+
+/**
+ * Inject the current ENV (suitably redacted) into <head>...</head>
+ */
 
 function apply(src: string,
                dest: string) {
@@ -46,11 +63,15 @@ function apply(src: string,
   return write(src, dest, search, replace);
 };
 
+/**
+ * Remove any injected ENV from anywhere
+ */
+
 function remove(src: string,
                 dest: string) {
   console.log(chalk.cyan('Homify remove'), `${src} => ${dest}`);
-  const search = /<script>ENV.+<\/script><\/head>/;
-  const replace = '</head>';
+  const search = /<script>ENV.+<\/script>/;
+  const replace = '';
   return write(src, dest, search, replace);
 };
 
