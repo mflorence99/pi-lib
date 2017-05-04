@@ -1,10 +1,10 @@
 import * as navigator from '../actions/navigator';
 
 export interface NavigatorState {
-  badges: {
+  badges?: {
     [path: string]: number;
   };
-  expando: {
+  expando?: {
     [group: string]: boolean;
   };
 };

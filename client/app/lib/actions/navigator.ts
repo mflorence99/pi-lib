@@ -27,7 +27,7 @@ export class InitAction implements Action {
 
 export class LoadAction implements Action {
   type = ActionTypes.LOAD;
-  constructor(public payload: any) { }
+  constructor(public payload: NavigatorState) { }
 }
 
 export class NoopAction implements Action {
@@ -60,7 +60,7 @@ export function init(): InitAction {
   return new InitAction();
 }
 
-export function load(state: any | NavigatorState): LoadAction {
+export function load(state: NavigatorState): LoadAction {
   return new LoadAction(state);
 }
 

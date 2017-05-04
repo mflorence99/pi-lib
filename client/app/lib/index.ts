@@ -33,6 +33,7 @@ export * from './pipes/linkify';
 export * from './pipes/markdown';
 export * from './pipes/moment';
 export * from './pipes/numeral';
+export * from './services/configurator';
 export * from './services/env';
 export * from './utils';
 
@@ -64,7 +65,8 @@ const PIPES = [
 ];
 
 const SERVICES = [
-  lib.EnvService
+  lib.EnvService,
+  lib.ConfiguratorService
 ];
 
 @NgModule({

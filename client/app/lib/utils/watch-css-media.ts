@@ -18,6 +18,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/startWith';
 
 import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 
 export interface MediaEvent {
   matches: boolean;
@@ -37,8 +38,7 @@ export function WatchCSSMedia () {
         };
     }
 
-    function addQuery (query, callback, transform): Observable<any> {
-        query = `(${query})`;
+    function addQuery (query, callback, transform?): Subscription {
         transform = transform || defaultTransform;
 
         const mql = matchMedia(query),
@@ -47,7 +47,7 @@ export function WatchCSSMedia () {
                 (cb: MediaQueryListListener) => mql.removeListener(cb)
             );
 
-        event$.startWith({
+        const subscription = event$.startWith({
             matches: mql.matches,
             media: query,
             originalEvent: null,
@@ -56,7 +56,7 @@ export function WatchCSSMedia () {
             .map(event => transform(event, event$))
             .subscribe(callback);
 
-        return event$;
+        return subscription;
     }
 
     return {
@@ -77,7 +77,7 @@ export function WatchCSSMedia () {
          * @description
          * General function to create a media query listener from a specified media query
          */
-        addQuery: (query, callback, transform) => {
+        addQuery: (query, callback, transform?): Subscription => {
             return addQuery(query, callback, transform);
         },
         /**
@@ -109,8 +109,8 @@ export function WatchCSSMedia () {
          * @description
          * Shortcut method to add an event listener for orientation changes
          */
-        onOrientationChange: (callback) => {
-            const query = 'orientation: landscape';
+        onOrientationChange: (callback): Subscription => {
+            const query = '(orientation: landscape)';
             return addQuery(query, callback,
                 (event, event$) => {
                     return {
@@ -142,8 +142,8 @@ export function WatchCSSMedia () {
          * creation of callbacks that fire when the browser crosses certain width thresholds without
          * having to use `window.on('resize');`
          */
-        onWidthGreaterThan: (min, callback, transform?) => {
-            return addQuery(`min-width: ${min}`, callback, transform);
+        onWidthGreaterThan: (min, callback, transform?): Subscription => {
+            return addQuery(`(min-width: ${min})`, callback, transform);
         },
         /**
          * @function onWidthLessThan
@@ -164,8 +164,8 @@ export function WatchCSSMedia () {
          * creation of callbacks that fire when the browser crosses certain width thresholds without
          * having to use `window.on('resize');`
          */
-        onWidthLessThan: (max, callback, transform?) => {
-            return addQuery(`max-width: ${max}`, callback, transform);
+        onWidthLessThan: (max, callback, transform?): Subscription => {
+            return addQuery(`(max-width: ${max})`, callback, transform);
         }
 
     };

@@ -12,7 +12,7 @@ export const ActionTypes = {
 
 export class LoadAction implements Action {
   type = ActionTypes.LOAD;
-  constructor(public payload: any | GPIOPinsState) { }
+  constructor(public payload: GPIOPinsState) { }
 }
 
 export class ListenAction implements Action {
@@ -47,7 +47,7 @@ export type Actions
  * look a lot more like imperative functions
  */
 
-export function load(state: any | GPIOPinsState): LoadAction {
+export function load(state: GPIOPinsState): LoadAction {
   return new LoadAction(state);
 }
 

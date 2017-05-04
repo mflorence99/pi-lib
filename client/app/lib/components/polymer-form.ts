@@ -279,7 +279,7 @@ export class PolymerControlDirective implements OnDestroy {
   templateUrl: 'polymer-form.html'
 })
 
-@AutoUnsubscribe() 
+@AutoUnsubscribe()
 export class PolymerFormComponent implements AfterContentInit {
 
   @ContentChildren(PolymerControlDirective) controls: QueryList<PolymerControlDirective>;
@@ -287,7 +287,7 @@ export class PolymerFormComponent implements AfterContentInit {
   @Input() focus: string;
   @Input() key: string;
 
-  readonly stream = new EventEmitter<PolymerForm>();
+  stream = new EventEmitter<PolymerForm>();
 
   private controlByName = {};
   private model = new PolymerForm();
