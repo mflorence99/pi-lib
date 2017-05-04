@@ -8,6 +8,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { NavigatorEffects } from './effects/navigator';
 import { RouterEffects } from './effects/router';
 import { RouterModule } from '@angular/router';
+import { WindowEffects } from './effects/window';
 
 /**
  * pi-lib module definition
@@ -82,6 +83,7 @@ const SERVICES = [
     CommonModule,
     EffectsModule.run(RouterEffects),
     EffectsModule.run(NavigatorEffects),
+    EffectsModule.run(WindowEffects),
     FlexLayoutModule,
     RouterModule
   ],

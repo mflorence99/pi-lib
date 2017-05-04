@@ -1,7 +1,7 @@
 import { } from '@types/marked';
 import 'rxjs/add/observable/from';
 
-import { Component, ElementRef, Input, OnDestroy } from '@angular/core';
+import { Component, ElementRef, Input } from '@angular/core';
 import { Http, Response } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
@@ -14,7 +14,7 @@ import { Observable } from 'rxjs/Observable';
   templateUrl: 'markdown.html'
 })
 
-export class MarkdownComponent implements OnDestroy {
+export class MarkdownComponent {
 
   private static cache = {};
 
@@ -31,25 +31,9 @@ export class MarkdownComponent implements OnDestroy {
         .do((response: Response) => MarkdownComponent.cache[uri] = response)
         .map((response: Response) => response.text())
         .subscribe((md: string) => {
-          this.cleanup();
           this.element.nativeElement.innerHTML = marked(md);
         });
     }
   }
-
-  // lifecycle methods
-
-  ngOnDestroy() {
-    this.cleanup();
-  }
-
-  // private methods
-
-  private cleanup() {
-    // // clean up crap left over by CodeMirror
-    // let junk = null;
-    // while (junk = this.window.document.querySelector('.gclp-code-grabber'))
-    //   junk.parentNode.removeChild(junk);
-  }
-
+  
 }

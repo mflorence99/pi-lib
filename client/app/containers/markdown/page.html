@@ -1,13 +1,9 @@
 <main
-  [@flyInOut]="'in'"
-  fxLayout="row"
-  fxLayoutAlign="space-between start">
+  [@flyInOut]="'in'">
 
-  <pi-markdown [src]="'assets/overview.md'">
-    Please standby ...
-  </pi-markdown>
-
-  <pi-markdown [src]="'assets/datatool.md'">
+  <pi-markdown
+    [ngClass]="windowState | async"
+    [src]="'assets/overview.md'">
     Please standby ...
   </pi-markdown>
 

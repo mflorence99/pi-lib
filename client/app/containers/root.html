@@ -1,29 +1,28 @@
-<main
-  fxFlexFill
-  fxLayout="row"
-  fxLayoutAlign="start start">
+<main>
 
-  <aside
-    fxFlex="0 0 240px"
-    fxFlexFill>
+  <aside [ngClass]="windowState | async">
 
-    <pi-sidebar
-      fxFlexFill>
+    <pi-sidebar fxFlexFill>
     </pi-sidebar>
 
   </aside>
 
-  <section
-    fxFlex="grow"
-    fxFlexFill>
+  <section [ngClass]="windowState | async">
 
     <header
       fxLayout="row"
-      fxLayoutAlign="center center">
+      fxLayoutAlign="space-between center"> 
+
+      <paper-icon-button
+        (click)="toggleSidebar()"
+        icon="menu">
+      </paper-icon-button>
 
       <div class="title">
         <code>pi-lib</code> Demo App and Test Bed
       </div>
+
+      <div>&nbsp;</div>
 
     </header>
 

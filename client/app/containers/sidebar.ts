@@ -4,6 +4,7 @@ import * as router from '@ngrx/router-store';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { AppState } from '../reducers';
+import { AutoUnsubscribe } from '../lib/decorators/auto-unsubscribe';
 import { NavigatorItem } from '../lib/components/navigator';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
@@ -19,6 +20,7 @@ import { Store } from '@ngrx/store';
   styleUrls: ['sidebar.less']
 })
 
+@AutoUnsubscribe()
 export class SidebarComponent {
   routerState: Observable<router.RouterState>;
   navigatorState: Observable<navigator.NavigatorState>;
