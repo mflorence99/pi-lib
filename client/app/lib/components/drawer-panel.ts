@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy } from '@angular/core';
 import { Component } from '@angular/core';
 import { ElementRef } from '@angular/core';
 import { EventEmitter } from '@angular/core';
+import { HostListener } from '@angular/core';
 import { Input } from '@angular/core';
 
 /**
@@ -64,13 +65,25 @@ export class DrawerPanelComponent implements AfterViewInit {
     this.opened.emit(true);
   }
 
+  // listeners
+
+  @HostListener('window:resize') onResize() {
+    this.setup();
+  }
+
   // lifecycle methods
 
   ngAfterViewInit() {
     this.el = this.element.nativeElement;
+    this.setup();
+  }
+
+  // private methods
+
+  private setup () {
     switch (this.position) {
       case 'bottom':
-        this.el.style.left = '${(this.el.parentElement.offsetWidth - this.el.offsetWidth) / 2}px';
+        this.el.style.left = `${(this.el.parentElement.offsetWidth - this.el.offsetWidth) / 2}px`;
         this.el.style.bottom = '0';
         this.el.style.transform = `translateY(${this.el.offsetHeight}px)`;
         break;
@@ -87,7 +100,7 @@ export class DrawerPanelComponent implements AfterViewInit {
         this.el.style.transform = `translateX(${this.el.offsetWidth}px)`;
         break;
       case 'top':
-        this.el.style.left = '${(this.el.parentElement.offsetWidth - this.el.offsetWidth) / 2}px';
+        this.el.style.left = `${(this.el.parentElement.offsetWidth - this.el.offsetWidth) / 2}px`;
         this.el.style.top = '0';
         this.el.style.transform = `translateY(-${this.el.offsetHeight}px)`;
         break;

@@ -27,22 +27,32 @@ export class WindowEffects {
 
   /**
    * Listen for sidebar toggle actions to record last-used window state
+   *
+   * NOTE: see the dispatchEvent() hack here and below. The idea is that components
+   * who would normally ned to be aware of window size changes also need to know when
+   * the geometry of the app has changed due to the sidebar showing or hiding. An
+   * additional hack sets the timeout duration as just a little longer than the animation
+   * duration.
    */
 
   @Effect() listen: Observable<Action> = this.actions
     .ofType(window.ActionTypes.TOGGLE_SIDEBAR)
     .withLatestFrom(this.store.select('window'), (action, state) => state)
     .do((state: WindowState) => this.lstor.set(window.ActionTypes.LOAD, state))
+    .do((state: WindowState) => setTimeout(() => dispatchEvent(new Event('resize')), 600))
     .map((state: WindowState) => window.noop());
 
   /**
    * Listen for an init action to load last-used window state
+   *
+   * NOTE: see above nites on dispatchEvent()
    */
 
   @Effect() init: Observable<Action> = this.actions
     .ofType(window.ActionTypes.INIT)
     .startWith(window.init())
     .map((action: Action) => {
+      setTimeout(() => dispatchEvent(new Event('resize')), 600);
       const state = this.lstor.get(window.ActionTypes.LOAD) || <any>{};
       return window.load(state);
     });
