@@ -15,7 +15,7 @@
     "noEmitOnError": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "noUnusedParameters": false,
     "pretty": true,
     "rootDir": ".",
     "sourceMap": true,

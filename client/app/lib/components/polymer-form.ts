@@ -41,9 +41,9 @@ export class PolymerFormValuesMap {
  * are obliged to expose an <input type=hidden> via element.nativeElement._proxy.
  */
 
-enum Control {CHECKBOX, COMBOBOX, DATE, HIDDEN, INPUT, MULTI, RADIO, SLIDER, TOGGLE}
+export enum Control {CHECKBOX, COMBOBOX, DATE, HIDDEN, INPUT, MULTI, RADIO, SLIDER, TOGGLE}
 
-type ListenerCallback = (control: PolymerControlDirective) => void;
+export type ListenerCallback = (control: PolymerControlDirective) => void;
 
 @Directive ({
   selector: '[libPolymerControl]'

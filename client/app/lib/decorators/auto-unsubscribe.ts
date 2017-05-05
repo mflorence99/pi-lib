@@ -21,7 +21,7 @@ export function AutoUnsubscribe(blacklist: string[] = []) {
         const property = this[key];
         if (property
          && (typeof property.unsubscribe === 'function')
-         && !blacklist.includes(key)) {
+         && (blacklist.indexOf(key) === -1)) {
           console.log(`@AutoUnsubscribe() to ${key}`);
           property.unsubscribe();
         }

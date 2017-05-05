@@ -1,3 +1,4 @@
+import * as chalk from 'chalk';
 import * as del from 'del';
 import * as gulp from 'gulp';
 import * as inliner from 'gulp-inline-ng2-template';
@@ -53,7 +54,7 @@ function inline() {
   return gulp.src(globs)
     .pipe(inliner({
         base: './',
-        removeLineBreaks: true,
+        removeLineBreaks: false,
         styleProcessor: toCSS,
         templateProcessor: minify,
         useRelativePaths: true
@@ -63,6 +64,7 @@ function inline() {
 
 // minify HTML
 function minify(path, ext, file, cb) {
+  console.log('Inlining HTML', chalk.blue(`${path}`));
   const output = minifier.minify(file, {
     caseSensitive: true,
     collapseInlineTagWhitespace: true,
@@ -77,8 +79,11 @@ function minify(path, ext, file, cb) {
 
 // convert styles to CSS
 function toCSS(path, ext, file, cb) {
+  console.log('Inlining LESS', chalk.green(`${path}`));
   less.render(file, {compress: true}, function(e, output) {
-    cb(null, output.css);
+    if (e)
+      console.log(chalk.red(e, `${path}`), chalk.yellow(file));
+    else cb(null, output.css);
   });
 }
 

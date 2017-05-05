@@ -10,7 +10,7 @@ import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'lib-markdown',
-  styleUrls: ['markdown.html'],
+  styleUrls: ['markdown.less'],
   templateUrl: 'markdown.html'
 })
 
