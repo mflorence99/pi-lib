@@ -2,14 +2,14 @@ import { Component } from '@angular/core';
 import { flyInOut } from '../../lib/animations';
 
 /**
- * pi-polymer-form demo page
+ * pi-drawer-panel demo page
  */
 
 @Component({
   animations: [flyInOut()],
-  selector: 'pi-forms-page',
+  selector: 'pi-drawers-page',
   styleUrls: ['page.less'],
   templateUrl: 'page.html'
 })
 
-export class FormsPageComponent { }
+export class DrawersPageComponent { }

@@ -24,6 +24,7 @@ const MEDIA_SIZE_BREAKS: MediaSizeBreaks = {
 const NAVIGATOR_ITEMS: NavigatorItem[] = [
   new NavigatorItem('/home', 'home', 'Welcome!'),
   new NavigatorItem('/gpio', 'calculator', 'GPIO Pins', 'Raspberry Pi'),
+  new NavigatorItem('/drawers', 'window-maximize', 'Drawers', 'Components'),
   new NavigatorItem('/forms', 'th', 'Forms', 'Components'),
   new NavigatorItem('/markdown', 'code', 'Markdown', 'Components'),
   new NavigatorItem('/pipes', 'filter', 'Pipes', 'Components')
@@ -50,7 +51,7 @@ export class RootComponent {
     setTimeout(() => {
       configurator.configureMediaSizeBreaks(MEDIA_SIZE_BREAKS);
       configurator.configureNavigator(NAVIGATOR_ITEMS);
-    }, 1);
+    }, 0);
   }
 
   /**

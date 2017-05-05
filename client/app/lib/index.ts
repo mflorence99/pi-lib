@@ -19,6 +19,8 @@ import { WindowEffects } from './effects/window';
  */
 
 export * from './components/code-viewer';
+export * from './components/drawer-container';
+export * from './components/drawer-panel';
 export * from './components/markdown';
 export * from './components/multi-selector';
 export * from './components/no-data-on-page';
@@ -39,6 +41,8 @@ export * from './utils';
 
 const COMPONENTS = [
   lib.CodeViewerComponent,
+  lib.DrawerContainerComponent,
+  lib.DrawerPanelComponent,
   lib.FourOhFourPageComponent,
   lib.MarkdownComponent,
   lib.MultiSelectorComponent,

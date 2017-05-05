@@ -270,6 +270,9 @@ export class PolymerControlDirective implements OnDestroy {
 
 /**
  * pi-form component
+ *
+ * Holds Polymer components (line paper-input) in a reactive, potentially
+ * dynamic, form.
  */
 
 @Component({
@@ -289,11 +292,11 @@ export class PolymerFormComponent implements AfterContentInit {
 
   stream = new EventEmitter<PolymerForm>();
 
+  private changes: Subscription;
   private controlByName = {};
   private model = new PolymerForm();
   private ready: boolean;
   private seed = new PolymerFormValuesMap();
-  private subscription: Subscription;
   private timer = null;
 
   /** ctor */
@@ -386,7 +389,7 @@ export class PolymerFormComponent implements AfterContentInit {
     this.reset();
     this.ready = true;
     // reset whenever the list changes
-    this.subscription = this.controls.changes.subscribe(() => {
+    this.changes = this.controls.changes.subscribe(() => {
       this.reseed();
       this.reset();
     });

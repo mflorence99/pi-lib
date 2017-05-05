@@ -4,6 +4,8 @@ import { HighlightJsModule, HighlightJsService } from 'angular2-highlight-js';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { DrawersPageComponent } from './containers/drawers/page';
+import { DrawersPageModule } from './containers/drawers/module';
 import { EffectsModule } from '@ngrx/effects';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsPageComponent } from './containers/forms/page';
@@ -59,6 +61,7 @@ const MODULES_EXTERNAL = [
 ];
 
 const MODULES_INTERNAL = [
+  DrawersPageModule,
   FormsPageModule,
   GPIOPageModule,
   MarkdownPageModule,
@@ -70,6 +73,7 @@ const MODULES_INTERNAL = [
 
 const ROUTES = [
   {path: '',                 component: SplashPageComponent},
+  {path: 'drawers',          component: DrawersPageComponent},
   {path: 'forms',            component: FormsPageComponent},
   {path: 'gpio',             component: GPIOPageComponent},
   {path: 'home',             component: SplashPageComponent},

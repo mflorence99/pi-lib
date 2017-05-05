@@ -1,0 +1,85 @@
+<pi-drawer-container
+  [@flyInOut]="'in'"
+  fxFlexFill
+  fxLayout="row"
+  fxLayoutAlign="center center">
+
+  <div fxLayout="column">
+
+    <div fxLayout="row">
+
+      <div fxFlex="0 0 64px">&nbsp;</div>
+
+      <paper-icon-button
+        (click)="topDrawer.open()"
+        fxFlex="0 0 64px"
+        icon="arrow-upward">
+      </paper-icon-button>
+
+      <div fxFlex="0 0 64px">&nbsp;</div>
+
+    </div>
+
+    <div fxLayout="row">
+
+      <paper-icon-button
+        (click)="leftDrawer.open()"
+        fxFlex="0 0 64px"
+        icon="arrow-back">
+      </paper-icon-button>
+
+      <div
+        fxFlex="0 0 64px"
+        style="text-align: center">
+        Open<br>Drawer
+      </div>
+
+      <paper-icon-button
+        (click)="rightDrawer.open()"
+        fxFlex="0 0 64px"
+        icon="arrow-forward">
+      </paper-icon-button>
+
+    </div>
+
+    <div fxLayout="row">
+
+      <div fxFlex="0 0 64px">&nbsp;</div>
+
+      <paper-icon-button
+        (click)="bottomDrawer.open()"
+        fxFlex="0 0 64px"
+        icon="arrow-downward">
+      </paper-icon-button>
+
+      <div fxFlex="0 0 64px">&nbsp;</div>
+
+    </div>
+
+  </div>
+
+  <pi-drawer-panel
+    #bottomDrawer
+    position="bottom">
+    Bottom side panel
+  </pi-drawer-panel>
+
+  <pi-drawer-panel
+    #leftDrawer
+    position="left">
+    Left side panel
+  </pi-drawer-panel>
+
+  <pi-drawer-panel
+    #rightDrawer
+    position="right">
+    Right side panel
+  </pi-drawer-panel>
+
+  <pi-drawer-panel
+    #topDrawer
+    position="top">
+    Top side panel
+  </pi-drawer-panel>
+
+</pi-drawer-container>

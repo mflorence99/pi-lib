@@ -39,7 +39,7 @@ export class NavigatorEffects {
     .ofType(navigator.ActionTypes.INIT)
     .startWith(navigator.init())
     .map((action: Action) => {
-      const expando = this.lstor.get(navigator.ActionTypes.EXPANDO) || {};
+      const expando = this.lstor.get(navigator.ActionTypes.EXPANDO) || <any>{};
       return navigator.load({expando});
     });
 

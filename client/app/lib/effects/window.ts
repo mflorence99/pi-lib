@@ -43,7 +43,7 @@ export class WindowEffects {
     .ofType(window.ActionTypes.INIT)
     .startWith(window.init())
     .map((action: Action) => {
-      const state = this.lstor.get(window.ActionTypes.LOAD) || {};
+      const state = this.lstor.get(window.ActionTypes.LOAD) || <any>{};
       return window.load(state);
     });
 
@@ -63,7 +63,6 @@ export class WindowEffects {
       Object.keys(mediaSizeBreak).forEach(key => {
         const query = mediaSizeBreak[key];
         const listener = watcher.addQuery(query, (event: MediaEvent) => {
-          console.log(`${key} ${query} ${event.matches}`);
           if (event.matches)
             this.store.dispatch(window.mediaBreak({[key]: true}));
         });
