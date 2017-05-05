@@ -3,7 +3,6 @@ import * as express from 'express';
 import * as https from 'https';
 import * as rpio from 'rpio';
 
-import { cert } from './lib/cert';
 import { config } from './config';
 
 /**
@@ -91,7 +90,8 @@ export function routes(app: express.Application) {
  */
 
 export function ws(app: express.Application,
-                   port: number) {
+                   port: number,
+                   cert: any) {
 
   const server = https.createServer(cert).listen(port);
   const WebSocket = require('ws');
