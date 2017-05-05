@@ -5,7 +5,7 @@ import * as fs from 'fs';
  */
 
 export const cert = {
-  key  : fs.readFileSync(`${__dirname}/ssl/key.pem`),
-  ca   : fs.readFileSync(`${__dirname}/ssl/csr.pem`),
-  cert : fs.readFileSync(`${__dirname}/ssl/cert.pem`)
+  key  : fs.readFileSync(`${__dirname}/key.pem`),
+  ca   : fs.readFileSync(`${__dirname}/csr.pem`),
+  cert : fs.readFileSync(`${__dirname}/cert.pem`)
 };
