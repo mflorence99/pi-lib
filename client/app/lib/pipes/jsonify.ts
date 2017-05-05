@@ -7,11 +7,11 @@ import { Pipe, PipeTransform } from '@angular/core';
  *
  * NOTE: quotemarks are dropped for readability so the output is not real JSON.
  *
- * {{ {complex: 'data', structure: []} | piJSONify }}
+ * {{ {complex: 'data', structure: []} | libJSONify }}
  *
  */
 
-@Pipe({ name: 'piJSONify' })
+@Pipe({ name: 'libJSONify' })
 
 export class JSONifyPipe implements PipeTransform {
 

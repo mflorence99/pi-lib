@@ -6,12 +6,12 @@ import { Pipe, PipeTransform } from '@angular/core';
  * non-breakabke soecial characters (like underscore).
  *
  * <a [href]="{{'very_long_URL'}}">
- *   {{'very_long_URL' | piBreakable}}
+ *   {{'very_long_URL' | libBreakable}}
  * </a>
  *
  */
 
-@Pipe({ name: 'piBreakable' })
+@Pipe({ name: 'libBreakable' })
 
 export class BreakablePipe implements PipeTransform {
 

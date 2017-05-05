@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
  * Pipe wrapper around moment.js
  */
 
-@Pipe({ name: 'piDateFormat' })
+@Pipe({ name: 'libDateFormat' })
 
 export class DateFormatPipe implements PipeTransform {
 

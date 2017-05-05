@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/Observable';
 /** Markdowncomponent */
 
 @Component({
-  selector: 'pi-markdown',
+  selector: 'lib-markdown',
   styleUrls: ['markdown.html'],
   templateUrl: 'markdown.html'
 })
@@ -35,5 +35,5 @@ export class MarkdownComponent {
         });
     }
   }
-  
+
 }

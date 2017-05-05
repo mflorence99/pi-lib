@@ -20,7 +20,7 @@ const LIGHT_STRIDE = {h: 120, v: 120};
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'pi-gpio-pins',
+  selector: 'lib-gpio-pins',
   templateUrl: 'pins.html',
   styleUrls: ['pins.less']
 })

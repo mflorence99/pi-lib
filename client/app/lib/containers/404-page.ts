@@ -7,7 +7,7 @@ import { flyInOut } from '../animations';
 
 @Component({
   animations: [flyInOut()],
-  selector: 'pi-404-page',
+  selector: 'lib-404-page',
   styleUrls: ['404-page.less'],
   templateUrl: '404-page.html'
 })

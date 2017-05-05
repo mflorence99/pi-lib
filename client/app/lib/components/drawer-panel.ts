@@ -7,14 +7,14 @@ import { HostListener } from '@angular/core';
 import { Input } from '@angular/core';
 
 /**
- * pi-drawer-panel component
+ * lib-drawer-panel component
  *
  * Slidable drawer panel, top, right, bottom, left.
  */
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'pi-drawer-panel',
+  selector: 'lib-drawer-panel',
   styleUrls: ['drawer-panel.less'],
   templateUrl: 'drawer-panel.html'
 })

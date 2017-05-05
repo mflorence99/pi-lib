@@ -14,7 +14,7 @@ import { flyInOut } from '../../lib/animations';
 
 @Component({
   animations: [flyInOut()],
-  selector: 'pi-gpio-page',
+  selector: 'lib-gpio-page',
   styleUrls: ['page.less'],
   templateUrl: 'page.html'
 })

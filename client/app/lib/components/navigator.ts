@@ -31,12 +31,12 @@ export class NavigatorPathMap {
 }
 
 /**
- * pi-navigator component
+ * lib-navigator component
  */
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'pi-navigator',
+  selector: 'lib-navigator',
   styleUrls: ['navigator.less'],
   templateUrl: 'navigator.html'
 })
@@ -74,7 +74,7 @@ export class NavigatorComponent {
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'pi-navigator-group',
+  selector: 'lib-navigator-group',
   styleUrls: ['navigator-group.less'],
   templateUrl: 'navigator-group.html'
 })

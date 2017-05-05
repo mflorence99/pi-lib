@@ -15,7 +15,7 @@ import { Store } from '@ngrx/store';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'pi-sidebar',
+  selector: 'lib-sidebar',
   templateUrl: 'sidebar.html',
   styleUrls: ['sidebar.less']
 })

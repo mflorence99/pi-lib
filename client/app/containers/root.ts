@@ -32,7 +32,7 @@ const NAVIGATOR_ITEMS: NavigatorItem[] = [
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'pi-root',
+  selector: 'lib-root',
   templateUrl: 'root.html',
   styleUrls: ['root.less']
 })
@@ -45,7 +45,7 @@ export class RootComponent {
   constructor(configurator: ConfiguratorService,
               env: EnvService,
               private store: Store<AppState>) {
-    console.log('<pi-root> loading', config, env);
+    console.log('<lib-root> loading', config, env);
     this.windowState = store.select(state => state.window);
     // configure the app
     setTimeout(() => {

@@ -7,7 +7,7 @@ import { flyInOut } from '../../lib/animations';
 
 @Component({
   animations: [flyInOut()],
-  selector: 'pi-splash-page',
+  selector: 'lib-splash-page',
   styleUrls: ['page.less'],
   templateUrl: 'page.html'
 })

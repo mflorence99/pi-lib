@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
  * Pipe wrapper around marked.js
  */
 
-@Pipe({ name: 'piMarkdown' })
+@Pipe({ name: 'libMarkdown' })
 
 export class MarkdownPipe implements PipeTransform {
 

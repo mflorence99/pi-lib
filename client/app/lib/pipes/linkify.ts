@@ -7,7 +7,7 @@ import { Pipe, PipeTransform } from '@angular/core';
  * NOTE: must pipe into [innerHTML]
  */
 
-@Pipe({ name: 'piLinkify' })
+@Pipe({ name: 'libLinkify' })
 
 export class LinkifyPipe implements PipeTransform {
 

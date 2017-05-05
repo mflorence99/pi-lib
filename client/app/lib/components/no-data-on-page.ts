@@ -5,15 +5,15 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
  *
  * Offsets text with FontAwesome icon, default fa-info-circle.
  *
- * <pi-no-data-on-page [faIcon]="'bars'">
+ * <lib-no-data-on-page [faIcon]="'bars'">
  *   No data to show here, sorry!
- * </pi-no-data-on-page>
+ * </lib-no-data-on-page>
  *
  */
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'pi-no-data-on-page',
+  selector: 'lib-no-data-on-page',
   styleUrls: ['no-data-on-page.less'],
   templateUrl: 'no-data-on-page.html'
 })

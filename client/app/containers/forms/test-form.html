@@ -6,7 +6,7 @@
 
 <hr>
 
-<pi-polymer-form
+<lib-polymer-form
   #form
   focus="name"
   fxLayout="column"
@@ -23,7 +23,7 @@
       max="70"
       min="18"
       name="age"
-      piPolymerControl
+      libPolymerControl
       prevent-invalid-input
       required
       type="number">
@@ -36,19 +36,19 @@
   <div style="display: flex; justify-content: space-between">
     <paper-checkbox
       [sticky]="true"
-      piPolymerControl
+      libPolymerControl
       name="red">
       Red
     </paper-checkbox>
     <paper-checkbox
       [sticky]="true"
-      piPolymerControl
+      libPolymerControl
       name="green">
       Green
     </paper-checkbox>
     <paper-checkbox
       [sticky]="true"
-      piPolymerControl
+      libPolymerControl
       name="blue">
       Blue
     </paper-checkbox>
@@ -61,7 +61,7 @@
       error-message="Name is always required"
       label="Name"
       name="name"
-      piPolymerControl
+      libPolymerControl
       prevent-invalid-input
       required
       type="text">
@@ -78,7 +78,7 @@
   <div>
     <paper-radio-group
       [sticky]="true"
-      piPolymerControl
+      libPolymerControl
       name="gender">
       <paper-radio-button
         name="male">
@@ -94,7 +94,7 @@
   <div>
     <paper-toggle-button
       [sticky]="true"
-      piPolymerControl
+      libPolymerControl
       name="active">
       Active on/off
     </paper-toggle-button>
@@ -108,7 +108,7 @@
       max="100"
       min="0"
       name="severity"
-      piPolymerControl
+      libPolymerControl
       primary
       snap
       style="width: 100%">
@@ -120,22 +120,22 @@
       [sticky]="true"
       label="Count"
       name="count"
-      piPolymerControl
+      libPolymerControl
       type="number">
     </paper-input>
   </div>
 
   <div>
-    <pi-multi-selector
+    <lib-multi-selector
       [items]="feedIDs"
       [required]="true"
       [sticky]="true"
       errorMessage="Feed IDs are always required"
       label="Feed IDs"
       name="feedIDs"
-      piPolymerControl
+      libPolymerControl
       separator=",">
-    </pi-multi-selector>
+    </lib-multi-selector>
   </div>
 
   <div
@@ -161,4 +161,4 @@
     </paper-spinner>
   </div>
 
-</pi-polymer-form>
+</lib-polymer-form>

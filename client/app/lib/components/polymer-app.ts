@@ -5,8 +5,8 @@ import { ChangeDetectionStrategy, Component, HostListener } from '@angular/core'
  *
  * Place somewhere at root level on the main page.
  *
- * <pi-polymer-app>
- * </pi-no-data-on-page>
+ * <lib-polymer-app>
+ * </lib-no-data-on-page>
  *
  * <main>
  *   ...
@@ -18,7 +18,7 @@ declare var Polymer: any;
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'pi-polymer-app',
+  selector: 'lib-polymer-app',
   templateUrl: 'polymer-app.html',
   styleUrls: ['polymer-app.less']
 })

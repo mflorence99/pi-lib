@@ -8,7 +8,7 @@ import { PolymerForm } from '../../lib/components/polymer-form';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'pi-test-ctrl',
+  selector: 'lib-test-ctrl',
   styleUrls: ['test-ctrl.less'],
   templateUrl: 'test-ctrl.html'
 })

@@ -14,7 +14,7 @@ import { ViewChild } from '@angular/core';
 import { ViewChildren } from '@angular/core';
 
 /**
- * pi-multi-selector model
+ * lib-multi-selector model
  */
 
 export interface MultiSelectorItem {
@@ -23,13 +23,13 @@ export interface MultiSelectorItem {
 }
 
 /**
- * piMultiSelectorControl directive
+ * libMultiSelectorControl directive
  *
- * NOTE: we place this before the pi-multi-selector component to make its QueryList work
+ * NOTE: we place this before the lib-multi-selector component to make its QueryList work
  */
 
 @Directive ({
-  selector: '[piMultiSelectorControl]'
+  selector: '[libMultiSelectorControl]'
 })
 
 export class MultiSelectorControlDirective {
@@ -46,12 +46,12 @@ export class MultiSelectorControlDirective {
 }
 
 /**
- * pi-multi-selector component
+ * lib-multi-selector component
  */
 
 @Component({
   changeDetection: ChangeDetectionStrategy.Default,
-  selector: 'pi-multi-selector',
+  selector: 'lib-multi-selector',
   styleUrls: ['multi-selector.less'],
   templateUrl: 'multi-selector.html'
 })

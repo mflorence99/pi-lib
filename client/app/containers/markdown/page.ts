@@ -13,7 +13,7 @@ import { flyInOut } from '../../lib/animations';
 
 @Component({
   animations: [flyInOut()],
-  selector: 'pi-markdown-page',
+  selector: 'lib-markdown-page',
   styleUrls: ['page.less'],
   templateUrl: 'page.html'
 })

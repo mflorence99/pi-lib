@@ -7,7 +7,7 @@ import { Pipe, PipeTransform } from '@angular/core';
  * Pipe wrapper around moment.js
  */
 
-@Pipe({ name: 'piFromUnixTime' })
+@Pipe({ name: 'libFromUnixTime' })
 export class FromUnixTimePipe implements PipeTransform {
 
   transform(value: any): any {

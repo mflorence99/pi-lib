@@ -4,14 +4,14 @@
   fxLayoutAlign="start start"
   fxLayoutGap="32px">
 
-  <pi-test-form
+  <lib-test-form
     #form
     fxFlex="0 0 240px">
-  </pi-test-form>
+  </lib-test-form>
 
-  <pi-test-ctrl
+  <lib-test-ctrl
     (working)="form.working = $event"
     [form]="form.stream | async">
-  </pi-test-ctrl>
+  </lib-test-ctrl>
 
 </main>

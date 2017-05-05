@@ -11,7 +11,7 @@ import { Observable } from 'rxjs/Observable';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.Default,
-  selector: 'pi-test-form',
+  selector: 'lib-test-form',
   styleUrls: ['test-form.less'],
   templateUrl: 'test-form.html'
 })

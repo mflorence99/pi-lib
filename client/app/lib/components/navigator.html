@@ -3,12 +3,12 @@
   fxLayoutAlign="start stretch"
   fxLayoutGap="12px">
 
-  <pi-navigator-group
+  <lib-navigator-group
     *ngFor="let group of groups"
     [group]="group"
     [items]="itemsByGroup[group]"
     [navigatorState]="navigatorState"
     [routerState]="routerState">
-  </pi-navigator-group>
+  </lib-navigator-group>
 
 </nav>

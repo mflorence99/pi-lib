@@ -14,7 +14,7 @@ import { QueryList } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 /**
- * pi-polymer-form model
+ * lib-polymer-form model
  */
 
 export class PolymerForm {
@@ -33,11 +33,11 @@ export class PolymerFormValuesMap {
 }
 
 /**
- * piPolymerControl directive
+ * libPolymerControl directive
  *
- * NOTE: we place this before the pi-form component to make its QueryList work
+ * NOTE: we place this before the lib-form component to make its QueryList work
  *
- * NOTE: Angular components that wrap Polymer components (like pi-multi-selector)
+ * NOTE: Angular components that wrap Polymer components (like lib-multi-selector)
  * are obliged to expose an <input type=hidden> via element.nativeElement._proxy.
  */
 
@@ -46,7 +46,7 @@ enum Control {CHECKBOX, COMBOBOX, DATE, HIDDEN, INPUT, MULTI, RADIO, SLIDER, TOG
 type ListenerCallback = (control: PolymerControlDirective) => void;
 
 @Directive ({
-  selector: '[piPolymerControl]'
+  selector: '[libPolymerControl]'
 })
 
 export class PolymerControlDirective implements OnDestroy {
@@ -80,7 +80,7 @@ export class PolymerControlDirective implements OnDestroy {
       this.ctrl = Control.INPUT;
     else if ((tagName === 'input') && (type === 'hidden'))
       this.ctrl = Control.HIDDEN;
-    else if (tagName === 'pi-multi-selector')
+    else if (tagName === 'lib-multi-selector')
       this.ctrl = Control.MULTI;
     else if (tagName === 'paper-radio-group')
       this.ctrl = Control.RADIO;
@@ -88,7 +88,7 @@ export class PolymerControlDirective implements OnDestroy {
       this.ctrl = Control.SLIDER;
     else if (tagName === 'paper-toggle-button')
       this.ctrl = Control.TOGGLE;
-    else throw new Error(`pi-polymer-form <${tagName}> not supported`);
+    else throw new Error(`lib-polymer-form <${tagName}> not supported`);
   }
 
   /** Clear the control */
@@ -269,7 +269,7 @@ export class PolymerControlDirective implements OnDestroy {
 }
 
 /**
- * pi-form component
+ * lib-form component
  *
  * Holds Polymer components (line paper-input) in a reactive, potentially
  * dynamic, form.
@@ -277,7 +277,7 @@ export class PolymerControlDirective implements OnDestroy {
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'pi-polymer-form',
+  selector: 'lib-polymer-form',
   styleUrls: ['polymer-form.less'],
   templateUrl: 'polymer-form.html'
 })

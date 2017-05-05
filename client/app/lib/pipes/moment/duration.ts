@@ -7,7 +7,7 @@ import { Pipe, PipeTransform } from '@angular/core';
  * Pipe wrapper around moment.js
  */
 
-@Pipe({ name: 'piDuration' })
+@Pipe({ name: 'libDuration' })
 
 export class DurationPipe implements PipeTransform {
 

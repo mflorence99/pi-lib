@@ -11,14 +11,14 @@ import { QueryList } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 /**
- * pi-drawer-container
+ * lib-drawer-container
  *
- * Used to hold pi-drawer-panels
+ * Used to hold lib-drawer-panels
  */
 
 @Component({
   changeDetection: ChangeDetectionStrategy.Default,
-  selector: 'pi-drawer-container',
+  selector: 'lib-drawer-container',
   styleUrls: ['drawer-container.less'],
   templateUrl: 'drawer-container.html'
 })

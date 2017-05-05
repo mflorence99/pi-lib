@@ -7,7 +7,7 @@ declare var numeral: any;
  * Pipe wrapper around numeral.js
  */
 
-@Pipe({ name: 'piNumeral' })
+@Pipe({ name: 'libNumeral' })
 
 export class NumeralPipe implements PipeTransform {
 

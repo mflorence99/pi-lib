@@ -3,12 +3,12 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, V
 import { HighlightJsService } from 'angular2-highlight-js';
 
 /**
- * pi-code-viewer component
+ * lib-code-viewer component
  */
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'pi-code-viewer',
+  selector: 'lib-code-viewer',
   styleUrls: ['code-viewer.less'],
   templateUrl: 'code-viewer.html'
 })

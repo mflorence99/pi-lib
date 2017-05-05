@@ -6,12 +6,12 @@ import { Pipe, PipeTransform } from '@angular/core';
  * By default, N is 100.
  *
  * <a [href]="{{'very_long_URL'}}">
- *   {{'very_long_URL' | piEllipsize:64 | piBreakable}}
+ *   {{'very_long_URL' | libEllipsize:64 | libBreakable}}
  * </a>
  *
  */
 
-@Pipe({ name: 'piEllipsize' })
+@Pipe({ name: 'libEllipsize' })
 
 export class EllipsizePipe implements PipeTransform {
 
