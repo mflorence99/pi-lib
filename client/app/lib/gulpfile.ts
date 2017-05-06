@@ -37,7 +37,6 @@ function compile() {
 // copy root files
 function copyRoot() {
   const globs = [
-    path.join(source, 'elements.html'),
     path.join(source, 'package.json'),
     path.join(source, 'startup.html'),
     path.join(source, 'theme.html')
