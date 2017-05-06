@@ -114,7 +114,7 @@
       font-weight: 200;
       margin: 0;
       padding-left: 40px;
-    } 
+    }
 
     lib-markdown h1,
     lib-markdown h2,
@@ -460,6 +460,48 @@
       --paper-spinner-layer-2-color: var(--primary-color);
       --paper-spinner-layer-3-color: var(--primary-color);
       --paper-spinner-layer-4-color: var(--primary-color);
+    }
+
+    table[standard] {
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin: 24px 0 128px 0;
+      overflow-y: auto;
+      width: 100%;
+    }
+
+    table[standard] tbody td {
+      padding: 4px 8px 4px 0;
+      text-align: left;
+    }
+
+    table[standard] tbody td[index] {
+      font-weight: bold;
+      text-align: right;
+    }
+
+    table[standard] tbody tr {
+      border-bottom: 1px solid #eeeeee;
+      cursor: pointer;
+      vertical-align: top;
+    }
+
+    table[standard] tbody tr:hover {
+      background-color: #e0e0e0;
+    }
+
+    table[standard] tbody tr.selected {
+      border-bottom: 1px solid var(--primary-color);
+    }
+
+    table[standard] thead th {
+      padding: 4px 8px 4px 0;
+      text-align: left;
+    }
+
+    table[standard] thead tr:last-child {
+      border-bottom: 2px solid #bdbdbd;
+      vertical-align: bottom;
     }
 
   </style>

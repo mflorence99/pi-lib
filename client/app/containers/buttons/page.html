@@ -1,0 +1,657 @@
+<main
+  [@flyInOut]="'in'">
+
+  <table
+    standard>
+
+    <thead>
+      <tr>
+        <th></th>
+        <th>big</th>
+        <th>medium</th>
+        <th>small</th>
+        <th>primary</th>
+        <th>secondary</th>
+        <th>info</th>
+        <th>success</th>
+        <th>warning</th>
+        <th>error</th>
+        <th>toggles</th>
+        <th>disabled</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr>
+
+        <td>
+          <code>
+            &lt;iron-icon &hellip; &gt;
+          </code>
+        </td>
+
+        <td>
+          <iron-icon
+            big
+            icon="cloud">
+          </iron-icon>
+          <paper-tooltip>cloud</paper-tooltip>
+        </td>
+
+        <td>
+          <iron-icon
+            medium
+            icon="dns">
+          </iron-icon>
+          <paper-tooltip>dns</paper-tooltip>
+        </td>
+
+        <td>
+          <iron-icon
+            small
+            icon="fingerprint">
+          </iron-icon>
+          <paper-tooltip>fingerprint</paper-tooltip>
+        </td>
+
+        <td>
+          <iron-icon
+            primary
+            icon="help"></iron-icon>
+          <paper-tooltip>help</paper-tooltip>
+        </td>
+
+        <td>
+          <iron-icon
+          secondary
+          icon="mail"></iron-icon>
+          <paper-tooltip>mail</paper-tooltip>
+        </td>
+
+        <td>
+          <iron-icon
+            info
+            icon="shopping-cart"></iron-icon>
+          <paper-tooltip>shopping-cart</paper-tooltip>
+        </td>
+
+        <td>
+          <iron-icon
+            success
+            icon="open-with"></iron-icon>
+          <paper-tooltip>open-with</paper-tooltip>
+        </td>
+
+        <td>
+          <iron-icon
+            warning
+            icon="pan-tool"></iron-icon>
+          <paper-tooltip>pan-tool</paper-tooltip>
+        </td>
+
+        <td>
+          <iron-icon
+            error
+            icon="pets"></iron-icon>
+          <paper-tooltip>pets</paper-tooltip>
+        </td>
+
+        <td></td>
+        <td></td>
+
+      </tr>
+
+      <tr>
+        <td>
+          <code>
+            &lt;paper-button &hellip; &gt;
+          </code>
+        </td>
+
+        <td></td>
+        <td></td>
+        <td></td>
+
+        <td>
+          <paper-button
+            primary
+            raised>Primary
+          </paper-button>
+        </td>
+
+        <td>
+          <paper-button
+            secondary
+            raised>
+            Secondary
+          </paper-button>
+        </td>
+
+        <td>
+          <paper-button
+            (click)="infoDlg.open()"
+            info
+            raised>
+            Info
+          </paper-button>
+        </td>
+
+        <td>
+          <paper-button
+            (click)="successDlg.open()"
+            success
+            raised>
+            Success
+          </paper-button>
+        </td>
+
+        <td>
+          <paper-button
+            (click)="warningDlg.open()"
+            warning
+            raised>
+            Warning
+          </paper-button>
+        </td>
+
+        <td>
+          <paper-button
+            (click)="errorDlg.open()"
+            error
+            raised>
+            Error
+          </paper-button>
+        </td>
+
+        <td>
+          <paper-button
+            toggles>
+            Toggles
+          </paper-button>
+        </td>
+
+        <td>
+          <paper-button
+            disabled>
+            Disabled
+          </paper-button>
+        </td>
+
+      </tr>
+
+      <tr>
+        <td>
+          <code>
+            &lt;paper-fab &hellip; &gt;
+          </code>
+        </td>
+
+        <td></td>
+        <td></td>
+        <td></td>
+
+        <td>
+          <div>
+            <paper-fab
+              primary
+              icon="help">
+            </paper-fab>
+          </div>
+        </td>
+
+        <td>
+          <div>
+            <paper-fab
+              secondary
+              icon="mail">
+            </paper-fab>
+          </div>
+        </td>
+
+        <td>
+          <div>
+            <paper-fab
+              (click)="infoDlg.open()"
+              info
+              icon="shopping-cart">
+            </paper-fab>
+          </div>
+        </td>
+
+        <td>
+          <div>
+            <paper-fab
+              (click)="successDlg.open()"
+              success
+              icon="open-with">
+            </paper-fab>
+          </div>
+        </td>
+
+        <td>
+          <div>
+            <paper-fab
+              (click)="warningDlg.open()"
+              warning
+              icon="pan-tool">
+            </paper-fab>
+          </div>
+        </td>
+
+        <td>
+          <div>
+            <paper-fab
+              (click)="errorDlg.open()"
+              error
+              icon="pets">
+            </paper-fab>
+          </div>
+        </td>
+
+        <td></td>
+
+        <td>
+          <div>
+            <paper-fab
+              disabled
+              icon="home">
+            </paper-fab>
+          </div>
+        </td>
+
+      </tr>
+
+      <tr>
+        <td>
+          <code>
+            &lt;paper-fab mini &hellip; &gt;
+          </code>
+        </td>
+
+        <td></td>
+        <td></td>
+        <td></td>
+
+        <td>
+          <div>
+            <paper-fab
+              mini
+              primary
+              icon="help">
+            </paper-fab>
+          </div>
+        </td>
+
+        <td>
+          <div>
+            <paper-fab
+              mini
+              secondary
+              icon="mail">
+            </paper-fab>
+          </div>
+        </td>
+
+        <td>
+          <div>
+            <paper-fab
+              (click)="infoDlg.open()"
+              mini
+              info
+              icon="shopping-cart">
+            </paper-fab>
+          </div>
+        </td>
+
+        <td>
+          <div>
+            <paper-fab
+              (click)="successDlg.open()"
+              mini
+              success
+              icon="open-with">
+            </paper-fab>
+          </div>
+        </td>
+
+        <td>
+          <div>
+            <paper-fab
+              (click)="warningDlg.open()"
+              mini
+              warning
+              icon="pan-tool">
+            </paper-fab>
+          </div>
+        </td>
+
+        <td>
+          <div>
+            <paper-fab
+              (click)="errorDlg.open()"
+              mini
+              error
+              icon="pets">
+            </paper-fab>
+          </div>
+        </td>
+
+        <td></td>
+
+        <td>
+          <div>
+            <paper-fab
+              mini
+              disabled
+              icon="home">
+            </paper-fab>
+          </div>
+        </td>
+
+      </tr>
+
+      <tr>
+        <td>
+          <code>
+            &lt;paper-icon-button &hellip; &gt;
+          </code>
+        </td>
+
+        <td></td>
+        <td></td>
+        <td></td>
+
+        <td>
+          <paper-icon-button
+            primary
+            icon="help">
+          </paper-icon-button>
+        </td>
+
+        <td>
+          <paper-icon-button
+            secondary
+            icon="mail">
+          </paper-icon-button>
+        </td>
+
+        <td>
+          <paper-icon-button
+            (click)="infoDlg.open()"
+            info
+            icon="shopping-cart">
+          </paper-icon-button>
+        </td>
+
+        <td>
+          <paper-icon-button
+            (click)="successDlg.open()"
+            success
+            icon="open-with">
+          </paper-icon-button>
+        </td>
+
+        <td>
+          <paper-icon-button
+            (click)="warningDlg.open()"
+            warning
+            icon="pan-tool">
+          </paper-icon-button>
+        </td>
+
+        <td>
+          <paper-icon-button
+            (click)="errorDlg.open()"
+            error
+            icon="pets">
+          </paper-icon-button>
+        </td>
+
+        <td></td>
+
+        <td>
+          <paper-icon-button
+            disabled
+            icon="home">
+          </paper-icon-button>
+        </td>
+
+      </tr>
+
+    </tbody>
+
+  </table>
+
+  <section
+    fxFlexLayout="row"
+    fxLayoutAlign="center center"
+    fxLayoutGap="32px">
+
+    <paper-card
+      animated
+      animated-shadow
+      info
+      heading="Info Card">
+
+      <div
+        class="card-content">
+
+        <p>The rain in Spain falls mainly on the plain.</p>
+
+      </div>
+
+      <div
+        class="card-actions">
+        <paper-button
+          (click)="infoDlg.open()"
+          info
+          raised>
+          OK
+        </paper-button>
+      </div>
+
+    </paper-card>
+
+    <paper-card
+      animated
+      animated-shadow
+      success
+      heading="Success Card">
+
+      <div
+        class="card-content">
+
+        <p>The rain in Spain falls mainly on the plain.</p>
+
+      </div>
+
+      <div
+        class="card-actions">
+        <paper-button
+          (click)="successDlg.open()"
+          success
+          raised>
+          OK
+        </paper-button>
+      </div>
+
+    </paper-card>
+
+    <paper-card
+      animated
+      animated-shadow
+      warning
+      heading="Warning Card">
+
+      <div
+        class="card-content">
+
+        <p>The rain in Spain falls mainly on the plain.</p>
+
+      </div>
+
+      <div
+        class="card-actions">
+        <paper-button
+          (click)="warningDlg.open()"
+          warning
+          raised>
+          OK
+        </paper-button>
+      </div>
+
+    </paper-card>
+
+    <paper-card
+      animated
+      animated-shadow
+      error
+      heading="Error Card">
+
+      <div
+        class="card-content">
+
+        <p>The rain in Spain falls mainly on the plain.</p>
+
+      </div>
+
+      <div
+        class="card-actions">
+        <paper-button
+          (click)="errorDlg.open()"
+          error
+          raised>
+          OK
+        </paper-button>
+      </div>
+
+    </paper-card>
+
+  </section>
+
+</main>
+
+<paper-dialog
+  #infoDlg
+  entry-animation="scale-up-animation"
+  exit-animation="fade-out-animation"
+  info>
+
+  <h2>Info Dialog with Progress Bar</h2>
+
+  <paper-progress
+    max="100"
+    value="50">
+  </paper-progress>
+
+  <div>The rain in Spain falls mainly on the plain.</div>
+
+  <div
+    class="buttons">
+    <paper-button
+      (click)="infoDlg.close()"
+      info>
+      Cancel
+    </paper-button>
+    <paper-button
+      (click)="infoDlg.close()"
+      info raised>
+      OK
+    </paper-button>
+  </div>
+
+</paper-dialog>
+
+<paper-dialog
+  #successDlg
+  entry-animation="scale-up-animation"
+  exit-animation="fade-out-animation"
+  success>
+
+  <h2>Success Dialog with Progress Bar</h2>
+
+  <paper-progress
+    max="100"
+    value="50">
+  </paper-progress>
+
+  <div>The rain in Spain falls mainly on the plain.</div>
+
+  <div
+    class="buttons">
+    <paper-button
+      (click)="successDlg.close()"
+      success>
+      Cancel
+    </paper-button>
+    <paper-button
+      (click)="successDlg.close()"
+      success raised>
+      OK
+    </paper-button>
+  </div>
+
+</paper-dialog>
+
+<paper-dialog
+  #warningDlg
+  entry-animation="scale-up-animation"
+  exit-animation="fade-out-animation"
+  warning>
+
+  <h2>Warning Dialog with Progress Bar</h2>
+
+  <paper-progress
+    max="100"
+    value="50">
+  </paper-progress>
+
+  <div>The rain in Spain falls mainly on the plain.</div>
+
+  <div
+    class="buttons">
+    <paper-button
+      (click)="warningDlg.close()"
+      warning>
+      Cancel
+    </paper-button>
+    <paper-button
+      (click)="warningDlg.close()"
+      warning raised>
+      OK
+    </paper-button>
+  </div>
+
+</paper-dialog>
+
+<paper-dialog
+  #errorDlg
+  entry-animation="scale-up-animation"
+  exit-animation="fade-out-animation"
+  error>
+
+  <h2>Warning Dialog with Progress Bar</h2>
+
+  <paper-progress
+    max="100"
+    value="50">
+  </paper-progress>
+
+  <div>The rain in Spain falls mainly on the plain.</div>
+
+  <div
+    class="buttons">
+    <paper-button
+      (click)="errorDlg.close()"
+      error>
+      Cancel
+    </paper-button>
+    <paper-button
+      (click)="errorDlg.close()"
+      error raised>
+      OK
+    </paper-button>
+  </div>
+
+</paper-dialog>
