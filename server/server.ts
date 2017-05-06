@@ -1,7 +1,6 @@
 import * as bodyParser from 'body-parser';
 import * as express from 'express';
 import * as fs from 'fs';
-import * as gpio from './gpio';
 
 import { config } from './config';
 import { content } from './lib/content';
@@ -24,8 +23,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors);
 
 app.get('/isalive', isalive);
-gpio.routes(app);
 app.get('*', content);
 
 deploy(app, 3000, cert);
-gpio.ws(app, 4000, cert);

@@ -23,7 +23,6 @@ const MEDIA_SIZE_BREAKS: MediaSizeBreaks = {
 
 const NAVIGATOR_ITEMS: NavigatorItem[] = [
   new NavigatorItem('/home', 'home', 'Welcome!'),
-  new NavigatorItem('/gpio', 'calculator', 'GPIO Pins', 'Raspberry Pi'),
   new NavigatorItem('/drawers', 'window-maximize', 'Drawers', 'Components'),
   new NavigatorItem('/forms', 'th', 'Forms', 'Components'),
   new NavigatorItem('/markdown', 'code', 'Markdown', 'Components'),

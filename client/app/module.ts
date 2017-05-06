@@ -6,15 +6,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { DrawersPageComponent } from './containers/drawers/page';
 import { DrawersPageModule } from './containers/drawers/module';
-import { EffectsModule } from '@ngrx/effects';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsPageComponent } from './containers/forms/page';
 import { FormsPageModule } from './containers/forms/module';
 import { FourOhFourPageComponent } from './lib/containers/404-page';
-import { GPIOPageComponent } from './containers/gpio/page';
-import { GPIOPageModule } from './containers/gpio/module';
-import { GPIOPinsEffects } from './effects/gpio-pins';
-import { GPIOPinsService } from './services/gpio-pins';
 import { HttpModule } from '@angular/http';
 import { LocalStorageModule } from 'angular-2-local-storage';
 import { MarkdownPageComponent } from './containers/markdown/page';
@@ -63,7 +58,6 @@ const MODULES_EXTERNAL = [
 const MODULES_INTERNAL = [
   DrawersPageModule,
   FormsPageModule,
-  GPIOPageModule,
   MarkdownPageModule,
   NoopPageModule,
   PiModule,
@@ -75,7 +69,6 @@ const ROUTES = [
   {path: '',                 component: SplashPageComponent},
   {path: 'drawers',          component: DrawersPageComponent},
   {path: 'forms',            component: FormsPageComponent},
-  {path: 'gpio',             component: GPIOPageComponent},
   {path: 'home',             component: SplashPageComponent},
   {path: 'markdown',         component: MarkdownPageComponent},
   {path: 'noop',             component: NoopPageComponent},
@@ -84,7 +77,6 @@ const ROUTES = [
 ];
 
 const SERVICES = [
-  GPIOPinsService,
   HighlightJsService
 ];
 
@@ -107,7 +99,6 @@ const SERVICES = [
     ...MODULES_ANGULAR,
     ...MODULES_EXTERNAL,
     ...MODULES_INTERNAL,
-    EffectsModule.run(GPIOPinsEffects),
     RouterModule.forRoot(ROUTES, { useHash: true }),
     RouterStoreModule.connectRouter(),
     StoreModule.provideStore(reducers),
