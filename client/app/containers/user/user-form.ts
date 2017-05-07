@@ -1,5 +1,4 @@
 import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/publish';
 
 import { AfterViewInit, ChangeDetectionStrategy, Component, Input, ViewChild } from '@angular/core';
 import { UserState, initialState } from '../../lib/reducers/user';
