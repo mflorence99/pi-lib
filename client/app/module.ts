@@ -32,6 +32,9 @@ import { SplashPageComponent } from './containers/splash/page';
 import { SplashPageModule } from './containers/splash/module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
+import { ToolbarComponent } from './containers/toolbar';
+import { UserPageComponent } from './containers/user/page';
+import { UserPageModule } from './containers/user/module';
 import { reducers } from './reducers';
 
 /**
@@ -40,7 +43,8 @@ import { reducers } from './reducers';
 
 const COMPONENTS = [
   RootComponent,
-  SidebarComponent
+  SidebarComponent,
+  ToolbarComponent
 ];
 
 const MODULES_ANGULAR = [
@@ -70,7 +74,8 @@ const MODULES_INTERNAL = [
   NoopPageModule,
   PiModule,
   PipesPageModule,
-  SplashPageModule
+  SplashPageModule,
+  UserPageModule
 ];
 
 const ROUTES = [
@@ -83,6 +88,7 @@ const ROUTES = [
   {path: 'markdown',         component: MarkdownPageComponent},
   {path: 'noop',             component: NoopPageComponent},
   {path: 'pipes',            component: PipesPageComponent},
+  {path: 'user',             component: UserPageComponent},
   {path: '**',               component: FourOhFourPageComponent}
 ];
 

@@ -20,7 +20,7 @@ import 'rxjs/add/operator/startWith';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 
-export interface MediaEvent {
+export class MediaEvent {
   matches: boolean;
 }
 

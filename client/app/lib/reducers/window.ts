@@ -6,7 +6,7 @@ import * as window from '../actions/window';
  * muti=ually exclusive
  */
 
-export interface WindowState {
+export class WindowState {
   large?: boolean;
   medium?: boolean;
   small?: boolean;

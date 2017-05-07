@@ -288,6 +288,7 @@ export class PolymerFormComponent implements AfterContentInit {
   @ContentChildren(PolymerControlDirective) controls: QueryList<PolymerControlDirective>;
 
   @Input() focus: string;
+  @Input() initialState = {};
   @Input() key: string;
 
   stream = new EventEmitter<PolymerForm>();
@@ -331,6 +332,8 @@ export class PolymerFormComponent implements AfterContentInit {
     this.controls.forEach((control: PolymerControlDirective) => {
       if (!this.seed[control.name] && this.key && control.sticky)
         this.seed[control.name] = <any>this.lstor.get(`${this.key}.${control.name}`);
+      if (!this.seed[control.name] && this.initialState[control.name])
+        this.seed[control.name] = this.initialState[control.name];
       if (!this.seed[control.name])
         this.seed[control.name] = control.dflt;
     });

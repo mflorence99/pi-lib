@@ -17,7 +17,7 @@ import { ViewChildren } from '@angular/core';
  * lib-multi-selector model
  */
 
-export interface MultiSelectorItem {
+export class MultiSelectorItem {
   label: string;
   value: string;
 }

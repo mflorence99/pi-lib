@@ -8,6 +8,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { NavigatorEffects } from './effects/navigator';
 import { RouterEffects } from './effects/router';
 import { RouterModule } from '@angular/router';
+import { UserEffects } from './effects/user';
 import { WindowEffects } from './effects/window';
 
 /**
@@ -21,6 +22,7 @@ import { WindowEffects } from './effects/window';
 export * from './components/code-viewer';
 export * from './components/drawer-container';
 export * from './components/drawer-panel';
+export * from './components/gravatar';
 export * from './components/markdown';
 export * from './components/multi-selector';
 export * from './components/no-data-on-page';
@@ -44,6 +46,7 @@ const COMPONENTS = [
   lib.DrawerContainerComponent,
   lib.DrawerPanelComponent,
   lib.FourOhFourPageComponent,
+  lib.GravatarComponent,
   lib.MarkdownComponent,
   lib.MultiSelectorComponent,
   lib.MultiSelectorControlDirective,
@@ -89,6 +92,7 @@ const SERVICES = [
     CommonModule,
     EffectsModule.run(RouterEffects),
     EffectsModule.run(NavigatorEffects),
+    EffectsModule.run(UserEffects),
     EffectsModule.run(WindowEffects),
     FlexLayoutModule,
     RouterModule

@@ -9,22 +9,8 @@
 
   <section [ngClass]="windowState | async">
 
-    <header
-      fxLayout="row"
-      fxLayoutAlign="space-between center">
-
-      <paper-icon-button
-        (click)="toggleSidebar()"
-        icon="menu">
-      </paper-icon-button>
-
-      <div class="title">
-        <code>pi-lib</code> Demo App and Test Bed
-      </div>
-
-      <div>&nbsp;</div>
-
-    </header>
+    <lib-toolbar [userState]="userState | async">
+    </lib-toolbar>
 
     <div class="content">
       <router-outlet></router-outlet>

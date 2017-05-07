@@ -1,0 +1,18 @@
+<main
+  [@flyInOut]="'in'"
+  fxLayout="row"
+  fxLayoutAlign="start start"
+  fxLayoutGap="32px">
+
+  <lib-user-form
+    #form
+    fxFlex="0 0 320px"
+    [userState]="userState | async">
+  </lib-user-form>
+
+  <lib-user-ctrl
+    (working)="form.working = $event"
+    [form]="form.stream | async">
+  </lib-user-ctrl>
+
+</main>

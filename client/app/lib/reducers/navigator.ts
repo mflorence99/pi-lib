@@ -1,6 +1,6 @@
 import * as navigator from '../actions/navigator';
 
-export interface NavigatorState {
+export class NavigatorState {
   badges?: {
     [path: string]: number;
   };

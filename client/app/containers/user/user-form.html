@@ -1,0 +1,67 @@
+<lib-polymer-form
+  #form
+  focus="name"
+  fxLayout="column"
+  fxLayoutAlign="start stretch"
+  fxLayoutGap="16px"
+  [initialState]="userState">
+
+  <div>
+    <paper-input
+      auto-validate
+      error-message="Name is always required"
+      label="Name"
+      name="name"
+      libPolymerControl
+      prevent-invalid-input
+      required
+      type="text">
+      <div slot="suffix">
+        <paper-icon-button
+          (click)="form.clear('name')"
+          icon="clear">
+        </paper-icon-button>
+        <paper-tooltip>Clear name</paper-tooltip>
+      </div>
+    </paper-input>
+  </div>
+
+  <div>
+    <paper-textarea
+      auto-validate
+      error-message="Gravatar is always required"
+      label="Gravatar"
+      max-rows="4"
+      name="gravatar"
+      libPolymerControl
+      prevent-invalid-input
+      required
+      type="text">
+      <div slot="suffix">
+        <paper-icon-button
+          (click)="form.clear('gravatar')"
+          icon="clear">
+        </paper-icon-button>
+        <paper-tooltip>Clear gravatar</paper-tooltip>
+      </div>
+    </paper-textarea>
+  </div>
+
+  <div
+    fxFlexLayout="row"
+    fxLayoutAlign="end center"
+    fxLayoutGap="16px">
+    <paper-button
+      (click)="form.reset()">
+      Reset
+    </paper-button>
+    <paper-button
+      (click)="form.submit()"
+      [disabled]="!form.isValid()"
+      primary
+      raised>
+      Save
+    </paper-button>
+  </div>
+
+</lib-polymer-form>

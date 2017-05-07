@@ -1,3 +1,4 @@
+import * as user from '../lib/reducers/user';
 import * as window from '../lib/reducers/window';
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
@@ -10,7 +11,6 @@ import { NavigatorItem } from '../lib/components/navigator';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { config } from '../config';
-import { toggleSidebar } from '../lib/actions/window';
 
 /**
  * pi-lib demo app root
@@ -23,12 +23,19 @@ const MEDIA_SIZE_BREAKS: MediaSizeBreaks = {
 
 const NAVIGATOR_ITEMS: NavigatorItem[] = [
   new NavigatorItem('/home', 'home', 'Welcome!'),
+
+  // components
+
   new NavigatorItem('/buttons', 'window-restore', 'Buttons & Dialogs', 'Components'),
   new NavigatorItem('/charts', 'area-chart', 'Google Charts', 'Components'),
   new NavigatorItem('/drawers', 'window-maximize', 'Drawer Panels', 'Components'),
   new NavigatorItem('/forms', 'th', 'Polymer Forms', 'Components'),
   new NavigatorItem('/markdown', 'code', 'Markdown', 'Components'),
-  new NavigatorItem('/pipes', 'filter', 'Miscellaneous Pipes', 'Components')
+  new NavigatorItem('/pipes', 'filter', 'Miscellaneous Pipes', 'Components'),
+
+  // users & authentication
+
+  new NavigatorItem('/user', 'filter', 'User Details', 'Users & Authentication')
 ];
 
 @Component({
@@ -40,28 +47,21 @@ const NAVIGATOR_ITEMS: NavigatorItem[] = [
 
 @AutoUnsubscribe()
 export class RootComponent {
+  userState: Observable<user.UserState>;
   windowState: Observable<window.WindowState>;
 
   /** ctor */
   constructor(configurator: ConfiguratorService,
               env: EnvService,
-              private store: Store<AppState>) {
+              store: Store<AppState>) {
     console.log('<lib-root> loading', config, env);
+    this.userState = store.select(state => state.user);
     this.windowState = store.select(state => state.window);
     // configure the app
     setTimeout(() => {
       configurator.withMediaSizeBreaks(MEDIA_SIZE_BREAKS);
       configurator.withNavigatorItems(NAVIGATOR_ITEMS);
     }, 0);
-  }
-
-  /**
-   * Toggle the sidebar
-   *
-   * NOTE: this really belongs in a header component we don't have
-   */
-  toggleSidebar() {
-    this.store.dispatch(toggleSidebar());
   }
 
 }

@@ -7,6 +7,7 @@ import * as window from '../actions/window';
 import { Actions, Effect } from '@ngrx/effects';
 import { ConfiguratorService, MediaSizeBreaks } from '../services/configurator';
 import { MediaEvent, WatchCSSMedia } from '../utils/watch-css-media';
+import { WindowState, initialState } from '../reducers/window';
 
 import { Action } from '@ngrx/store';
 import { Injectable } from '@angular/core';
@@ -14,7 +15,6 @@ import { LocalStorageService } from 'angular-2-local-storage';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/Subscription';
-import { WindowState } from '../reducers/window';
 
 /**
  * Side-effects for window actions
@@ -53,7 +53,7 @@ export class WindowEffects {
     .startWith(window.init())
     .map((action: Action) => {
       setTimeout(() => dispatchEvent(new Event('resize')), 600);
-      const state = this.lstor.get(window.ActionTypes.LOAD) || <any>{};
+      const state = this.lstor.get(window.ActionTypes.LOAD) || initialState;
       return window.load(state);
     });
 

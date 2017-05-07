@@ -28,7 +28,7 @@ export class ConfiguratorService {
  * Model media size breaks
  */
 
-export interface MediaSizeBreaks {
+export class MediaSizeBreaks {
   large?: string;
   medium?: string;
   small?: string;

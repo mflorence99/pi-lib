@@ -60,7 +60,7 @@ export class TestFormComponent implements AfterViewInit {
   // lifecycle methods
 
   ngAfterViewInit() {
-    // NOTE: normally we'd filer at least isValid
+    // NOTE: normally we'd filter at least isValid
     this.stream = this.form.stream;
   }
 

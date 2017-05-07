@@ -18,7 +18,7 @@ export class NavigatorItem {
               public options: NavigatorItemOptions = {}) { }
 }
 
-export interface NavigatorItemOptions {
+export class NavigatorItemOptions {
   something?: boolean;
 }
 

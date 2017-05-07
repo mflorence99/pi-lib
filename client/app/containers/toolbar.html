@@ -1,0 +1,18 @@
+  <header
+    fxLayout="row"
+    fxLayoutAlign="space-between center">
+
+    <paper-icon-button
+      (click)="toggleSidebar()"
+      icon="menu">
+    </paper-icon-button>
+
+    <div class="title">
+      <code>pi-lib</code> Demo App and Test Bed
+    </div>
+
+    <lib-gravatar
+      [src]="userState.gravatar">
+    </lib-gravatar>
+
+  </header>

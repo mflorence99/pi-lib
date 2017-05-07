@@ -2,15 +2,19 @@ import { CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule } from '@angular/
 
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { NoopPageComponent } from './page';
 import { PiModule } from '../../lib';
+import { UserCtrlComponent } from './user-ctrl';
+import { UserFormComponent } from './user-form';
+import { UserPageComponent } from './page';
 
 /**
- * Noop page module
+ * User page module
  */
 
 const COMPONENTS = [
-  NoopPageComponent
+  UserCtrlComponent,
+  UserFormComponent,
+  UserPageComponent
 ];
 
 const MODULES = [
@@ -33,10 +37,10 @@ const MODULES = [
 
 })
 
-export class NoopPageModule {
+export class UserPageModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: NoopPageModule,
+      ngModule: UserPageModule,
       providers: [ ]
     };
   }

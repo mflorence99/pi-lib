@@ -5,7 +5,7 @@ main {
   width: 100%;
 
   @cxAside: 240px;
-  @cyHeader: 60px;
+  @cyToolbar: 60px;
 
   aside {
     box-shadow: 1px 0 8px 0px #333;
@@ -36,22 +36,12 @@ main {
       width: calc(~'100% - @{cxAside}');
     }
 
-    header {
-      background-color: var(--primary-color);
-      color: white;
-      height: @cyHeader;
-      padding: 16px;
-      width: 100%;
-
-      .title {
-        font-size: 24px;
-        font-weight: 400;
-      }
-
+    lib-toolbar {
+      height: @cyToolbar;
     }
 
     .content {
-      height: calc(~'100% - @{cyHeader}');
+      height: calc(~'100% - @{cyToolbar}');
     }
 
   }
