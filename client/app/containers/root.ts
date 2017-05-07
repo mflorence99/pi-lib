@@ -50,8 +50,8 @@ export class RootComponent {
     this.windowState = store.select(state => state.window);
     // configure the app
     setTimeout(() => {
-      configurator.configureMediaSizeBreaks(MEDIA_SIZE_BREAKS);
-      configurator.configureNavigator(NAVIGATOR_ITEMS);
+      configurator.withMediaSizeBreaks(MEDIA_SIZE_BREAKS);
+      configurator.withNavigatorItems(NAVIGATOR_ITEMS);
     }, 0);
   }
 

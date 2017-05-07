@@ -13,12 +13,12 @@ export class ConfiguratorService {
   navigatorItems = new EventEmitter<NavigatorItem[]>();
 
   /** Configure media size breaks */
-  public configureMediaSizeBreaks(mediaSizeBreaks: MediaSizeBreaks) {
+  public withMediaSizeBreaks(mediaSizeBreaks: MediaSizeBreaks) {
     this.mediaSizeBreaks.emit(mediaSizeBreaks);
   }
 
   /** Configure navigator */
-  public configureNavigator(navigatorItems: NavigatorItem[]) {
+  public withNavigatorItems(navigatorItems: NavigatorItem[]) {
     this.navigatorItems.emit(navigatorItems);
   }
 
