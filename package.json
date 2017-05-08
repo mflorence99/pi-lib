@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@angular/animations": "^4.0.1",
-    "@angular/cli": "1.0.0",
+    "@angular/cli": "^1.0.2",
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.0",
     "@angular/compiler-cli": "^4.0.0",
@@ -97,6 +97,6 @@
     "zone.js": "^0.8.9"
   },
   "devDependencies": {
-    "@angular/cli": "1.0.0"
+    "@angular/cli": "^1.0.2"
   }
 }

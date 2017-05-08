@@ -1,12 +1,16 @@
-import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
-import { NavigationCancel, NavigationEnd, NavigationStart, Router } from '@angular/router';
+import * as router from '@ngrx/router-store';
+
+import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
+
+import { routeAnimation } from '../animations';
 
 /**
  * This is all crap until Angular 4.1 releases route transitions
  */
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.Default,
+  animations: [routeAnimation()],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'lib-route-animation',
   styleUrls: ['route-animation.less'],
   templateUrl: 'route-animation.html'
@@ -14,20 +18,11 @@ import { NavigationCancel, NavigationEnd, NavigationStart, Router } from '@angul
 
 export class RouteAnimationComponent {
 
-  private entering: boolean;
-
-  @HostBinding('style.opacity') get opacity() {
-    return 1;
+  @HostBinding('@routeAnimation') get trigger() {
+    console.log(this.routerState);
+    return this.routerState.path;
   }
 
-  constructor(router: Router) {
-    router.events.subscribe(event => {
-      if (event instanceof NavigationStart)
-        setTimeout(() => this.entering = false, 0);
-      else if ((event instanceof NavigationEnd)
-            || (event instanceof NavigationCancel))
-        setTimeout(() => this.entering = true, 0);
-    });
-  }
+  @Input() routerState: router.RouterState = router.initialState;
 
 }

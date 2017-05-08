@@ -12,7 +12,7 @@
     <lib-toolbar [userState]="userState | async">
     </lib-toolbar>
 
-    <lib-route-animation class="content">
+    <lib-route-animation class="content" [routerState]="routerState | async">
       <router-outlet></router-outlet>
     </lib-route-animation>
 

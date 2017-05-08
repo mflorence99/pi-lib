@@ -1,3 +1,4 @@
+import * as router from '@ngrx/router-store';
 import * as user from '../lib/reducers/user';
 import * as window from '../lib/reducers/window';
 
@@ -47,6 +48,7 @@ const NAVIGATOR_ITEMS: NavigatorItem[] = [
 
 @AutoUnsubscribe()
 export class RootComponent {
+  routerState: Observable<router.RouterState>;
   userState: Observable<user.UserState>;
   windowState: Observable<window.WindowState>;
 
@@ -55,6 +57,7 @@ export class RootComponent {
               env: EnvService,
               store: Store<AppState>) {
     console.log('<lib-root> loading', config, env);
+    this.routerState = store.select(state => state.router);
     this.userState = store.select(state => state.user);
     this.windowState = store.select(state => state.window);
     // configure the app
