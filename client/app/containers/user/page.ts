@@ -4,14 +4,12 @@ import { AppState } from '../../reducers';
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
-import { flyInOut } from '../../lib/animations';
 
 /**
  * User demo page
  */
 
 @Component({
-  animations: [flyInOut()],
   selector: 'lib-user-page',
   styleUrls: ['page.less'],
   templateUrl: 'page.html'

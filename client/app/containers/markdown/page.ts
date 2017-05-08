@@ -5,14 +5,12 @@ import { AutoUnsubscribe } from '../../lib/decorators/auto-unsubscribe';
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
-import { flyInOut } from '../../lib/animations';
 
 /**
  * Markdown demo page
  */
 
 @Component({
-  animations: [flyInOut()],
   selector: 'lib-markdown-page',
   styleUrls: ['page.less'],
   templateUrl: 'page.html'

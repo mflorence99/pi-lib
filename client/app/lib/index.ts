@@ -29,6 +29,7 @@ export * from './components/no-data-on-page';
 export * from './components/polymer-app';
 export * from './components/polymer-form';
 export * from './components/navigator';
+export * from './components/route-animation';
 export * from './containers/404-page';
 export * from './pipes/breakable';
 export * from './pipes/ellipsize';
@@ -55,7 +56,8 @@ const COMPONENTS = [
   lib.NoDataOnPageComponent,
   lib.PolymerAppComponent,
   lib.PolymerControlDirective,
-  lib.PolymerFormComponent
+  lib.PolymerFormComponent,
+  lib.RouteAnimationComponent
 ];
 
 const PIPES = [

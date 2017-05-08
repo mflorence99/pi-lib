@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-import { flyInOut } from '../../lib/animations';
 
 /**
  * Google charts demp page
  */
 
 @Component({
-  animations: [flyInOut()],
   selector: 'lib-charts-page',
   styleUrls: ['page.less'],
   templateUrl: 'page.html'
