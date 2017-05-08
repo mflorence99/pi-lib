@@ -1,6 +1,7 @@
 import * as user from '../actions/user';
 
 export class UserState {
+  emailAddress?: string;
   gravatar?: string;
   name?: string;
 };
