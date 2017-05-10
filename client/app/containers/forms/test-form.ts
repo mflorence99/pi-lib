@@ -1,5 +1,3 @@
-import 'rxjs/add/observable/of';
-
 import { ChangeDetectionStrategy, Component, HostBinding, Input, ViewChild } from '@angular/core';
 
 import { MultiSelectorItem } from '../../lib/components/multi-selector';

@@ -1,5 +1,3 @@
-import 'rxjs/add/observable/of';
-
 import { ChangeDetectionStrategy, Component, Input, ViewChild } from '@angular/core';
 import { UserState, initialState } from '../../lib/reducers/user';
 
