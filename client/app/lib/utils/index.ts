@@ -53,6 +53,21 @@ export function makeEncodedSearchParams(): URLSearchParams {
 }
 
 /**
+ * Parse initial search parameters
+ */
+export function parseInitialSearchParams(): URLSearchParams {
+  const params = new URLSearchParams();
+  if (location.search.length > 1) {
+    const raw = location.search.substring(1).split('&');
+    raw.forEach(param => {
+      const pair = param.split('=');
+      params.set(pair[0], pair[1]);
+    });
+  }
+  return params;
+}
+
+/**
  * Guarantee unique string
  */
 const uniqueCache: { [label: string]: boolean } = {};
