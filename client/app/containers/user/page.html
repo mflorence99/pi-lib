@@ -4,14 +4,14 @@
   fxLayoutGap="32px">
 
   <lib-user-form
-    #form
+    #userForm
     fxFlex="0 0 320px"
     [userState]="userState | async">
   </lib-user-form>
 
   <lib-user-ctrl
-    (working)="form.working = $event"
-    [form]="form.stream | async">
+    (working)="userForm.working = $event"
+    [userState]="userForm.form.stream | async">
   </lib-user-ctrl>
 
 </main>

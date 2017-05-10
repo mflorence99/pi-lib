@@ -19,9 +19,9 @@ export class UserCtrlComponent {
 
   // property accessors / mutators
 
-  @Input() set form(form: PolymerForm) {
-    if (form && form.submitted)
-      setTimeout(() => this.store.dispatch(newUser(form.values)), 0);
+  @Input() set userState(userState: PolymerForm) {
+    if (userState && userState.submitted)
+      setTimeout(() => this.store.dispatch(newUser(userState.values)), 0);
   }
 
   /** ctor */

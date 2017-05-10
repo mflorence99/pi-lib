@@ -20,15 +20,15 @@ export class TestCtrlComponent {
 
   // property accessors / mutators
 
-  @Input() set form(form: PolymerForm) {
-    if (form) {
+  @Input() set testData(testData: PolymerForm) {
+    if (testData) {
       // simulate long-running submit
-      if (form.submitted) {
+      if (testData.submitted) {
         this.working.emit(true);
         setTimeout(() => this.working.emit(false), 2000);
       }
-      // convert the form to json
-      this.json = JSON.stringify(form, null, ' ');
+      // convert the test data to json
+      this.json = JSON.stringify(testData, null, ' ');
     }
   }
 

@@ -2,9 +2,9 @@ import { AfterViewInit } from '@angular/core';
 import { ChangeDetectionStrategy } from '@angular/core';
 import { Component } from '@angular/core';
 import { ElementRef } from '@angular/core';
-import { EventEmitter } from '@angular/core';
 import { HostListener } from '@angular/core';
 import { Input } from '@angular/core';
+import { Subject } from 'rxjs/Subject';
 
 /**
  * lib-drawer-panel component
@@ -22,7 +22,7 @@ import { Input } from '@angular/core';
 export class DrawerPanelComponent implements AfterViewInit {
   @Input() position: 'top' | 'right' | 'bottom' | 'left' = 'left';
 
-  opened = new EventEmitter<boolean>();
+  opened = new Subject<boolean>();
 
   private el: HTMLElement;
 
@@ -46,7 +46,7 @@ export class DrawerPanelComponent implements AfterViewInit {
       break;
     }
     // now report as closed
-    this.opened.emit(false);
+    this.opened.next(false);
   }
 
   /** Open drawer */
@@ -62,7 +62,7 @@ export class DrawerPanelComponent implements AfterViewInit {
       break;
     }
     // now report as open
-    this.opened.emit(true);
+    this.opened.next(true);
   }
 
   // listeners

@@ -5,12 +5,12 @@ import { Component } from '@angular/core';
 import { ContentChildren } from '@angular/core';
 import { Directive } from '@angular/core';
 import { ElementRef } from '@angular/core';
-import { EventEmitter } from '@angular/core';
 import { HostListener } from '@angular/core';
 import { Input } from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { OnDestroy } from '@angular/core';
 import { QueryList } from '@angular/core';
+import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
 
 /**
@@ -291,7 +291,7 @@ export class PolymerFormComponent implements AfterContentInit {
   @Input() initialState = {};
   @Input() key: string;
 
-  stream = new EventEmitter<PolymerForm>();
+  stream = new Subject<PolymerForm>();
 
   private changes: Subscription;
   private controlByName = {};
@@ -416,7 +416,7 @@ export class PolymerFormComponent implements AfterContentInit {
   }
 
   private next() {
-    this.stream.emit(Object.assign({}, this.model));
+    this.stream.next(Object.assign({}, this.model));
   }
 
 }

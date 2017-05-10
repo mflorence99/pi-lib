@@ -4,13 +4,13 @@
   fxLayoutGap="32px">
 
   <lib-test-form
-    #form
+    #testForm
     fxFlex="0 0 240px">
   </lib-test-form>
 
   <lib-test-ctrl
-    (working)="form.working = $event"
-    [form]="form.stream | async">
+    (working)="testForm.working = $event"
+    [testData]="testForm.form.stream | async">
   </lib-test-ctrl>
 
 </main>

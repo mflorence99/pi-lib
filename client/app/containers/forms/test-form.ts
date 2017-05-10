@@ -1,9 +1,8 @@
 import 'rxjs/add/observable/of';
 
-import { AfterViewInit, ChangeDetectionStrategy, Component, HostBinding, Input, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input, ViewChild } from '@angular/core';
 
 import { MultiSelectorItem } from '../../lib/components/multi-selector';
-import { Observable } from 'rxjs/Observable';
 
 /**
  * Test form component
@@ -16,7 +15,7 @@ import { Observable } from 'rxjs/Observable';
   templateUrl: 'test-form.html'
 })
 
-export class TestFormComponent implements AfterViewInit {
+export class TestFormComponent {
 
   @HostBinding('style.cursor') get isWorking()
     { return this.working? 'wait' : 'default'; }
@@ -54,14 +53,5 @@ export class TestFormComponent implements AfterViewInit {
     {label: 'Y-Feed', value: '2500'},
     {label: 'Z-Feed', value: '2600'},
   ];
-
-  stream = Observable.of(null);
-
-  // lifecycle methods
-
-  ngAfterViewInit() {
-    // NOTE: normally we'd filter at least isValid
-    this.stream = this.form.stream;
-  }
 
 }

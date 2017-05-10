@@ -19,7 +19,6 @@ import { routeAnimation } from '../animations';
 export class RouteAnimationComponent {
 
   @HostBinding('@routeAnimation') get trigger() {
-    console.log(this.routerState);
     return this.routerState.path;
   }
 

@@ -1,6 +1,6 @@
-import {EventEmitter, Injectable} from '@angular/core';
-
+import {Injectable} from '@angular/core';
 import { NavigatorItem } from '../components/navigator';
+import { Subject } from 'rxjs/Subject';
 
 /**
  * Provides configuraton settings for pi-lib components.
@@ -9,17 +9,17 @@ import { NavigatorItem } from '../components/navigator';
 @Injectable()
 export class ConfiguratorService {
 
-  mediaSizeBreaks = new EventEmitter<MediaSizeBreaks>();
-  navigatorItems = new EventEmitter<NavigatorItem[]>();
+  mediaSizeBreaks = new Subject<MediaSizeBreaks>();
+  navigatorItems = new Subject<NavigatorItem[]>();
 
   /** Configure media size breaks */
   public withMediaSizeBreaks(mediaSizeBreaks: MediaSizeBreaks) {
-    this.mediaSizeBreaks.emit(mediaSizeBreaks);
+    this.mediaSizeBreaks.next(mediaSizeBreaks);
   }
 
   /** Configure navigator */
   public withNavigatorItems(navigatorItems: NavigatorItem[]) {
-    this.navigatorItems.emit(navigatorItems);
+    this.navigatorItems.next(navigatorItems);
   }
 
 }
