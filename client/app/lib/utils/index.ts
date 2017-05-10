@@ -48,7 +48,7 @@ export function handleHttpError(error: Response): string {
 /**
  * Make a special pi-lib search params
  */
-export function makeSearchParams(): URLSearchParams {
+export function makeEncodedSearchParams(): URLSearchParams {
   return new URLSearchParams('', new LibQueryEncoder());
 }
 
