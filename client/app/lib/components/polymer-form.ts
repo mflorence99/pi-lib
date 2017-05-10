@@ -91,6 +91,17 @@ export class PolymerControlDirective implements OnDestroy {
     else throw new Error(`lib-polymer-form <${tagName}> not supported`);
   }
 
+  /** Can this control be sticky? */
+  canStick(): boolean {
+    switch (this.ctrl) {
+      case Control.INPUT:
+        const type = this.el.type? this.el.type.toLowerCase() : null;
+        return type !== 'password';
+      default:
+        return true;
+    }
+  }
+
   /** Clear the control */
   clear() {
     switch (this.ctrl) {
@@ -327,13 +338,19 @@ export class PolymerFormComponent implements AfterContentInit {
     }, true);
   }
 
-  /** Reseed the form by finding every control's default or initial value */
+  /**
+   * Re-seed the form by finding every control's default or initial value
+   *
+   * NOTE: passwords can never be sticky!
+   */
   reseed() {
     this.controls.forEach((control: PolymerControlDirective) => {
-      if (!this.seed[control.name] && this.key && control.sticky)
-        this.seed[control.name] = <any>this.lstor.get(`${this.key}.${control.name}`);
-      if (!this.seed[control.name] && this.initialState[control.name])
-        this.seed[control.name] = this.initialState[control.name];
+      if (control.canStick()) {
+        if (!this.seed[control.name] && this.key && control.sticky)
+          this.seed[control.name] = <any>this.lstor.get(`${this.key}.${control.name}`);
+        if (!this.seed[control.name] && this.initialState[control.name])
+          this.seed[control.name] = this.initialState[control.name];
+      }
       if (!this.seed[control.name])
         this.seed[control.name] = control.dflt;
     });
