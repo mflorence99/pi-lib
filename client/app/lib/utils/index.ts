@@ -1,4 +1,6 @@
-import { Response } from '@angular/http';
+import { Response, URLSearchParams } from '@angular/http';
+
+import { LibQueryEncoder } from './query-encoder';
 
 /**
  * Common utility functions
@@ -41,6 +43,13 @@ export function handleHttpError(error: Response): string {
   const msg = `Status ${error.status}: ${error.statusText || dflt}`;
   console.log(msg);
   return msg;
+}
+
+/**
+ * Make a special pi-lib search params
+ */
+export function makeSearchParams(): URLSearchParams {
+  return new URLSearchParams('', new LibQueryEncoder());
 }
 
 /**

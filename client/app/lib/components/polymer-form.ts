@@ -427,7 +427,10 @@ export class PolymerFormComponent implements AfterContentInit {
       this.model.validities[control.name] = control.isValid();
       this.next();
       // make value sticky
-      if (this.key && control.sticky && control.isValid())
+      if (this.key
+       && control.sticky
+       && control.canStick()
+       && control.isValid())
         this.lstor.set(`${this.key}.${control.name}`, control.value);
     }, 0);
   }
