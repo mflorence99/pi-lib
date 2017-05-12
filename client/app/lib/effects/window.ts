@@ -60,7 +60,7 @@ export class WindowEffects {
   // we should strongly-type the Store, but we can't because it belongs
   // to someone else and we're in a common library
   constructor(private actions: Actions,
-              configurator: ConfiguratorService,
+                      configurator: ConfiguratorService,
               private lstor: LocalStorageService,
               private store: Store<any>) {
     const watcher = WatchCSSMedia();

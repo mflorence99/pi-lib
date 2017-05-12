@@ -91,6 +91,20 @@
     </paper-radio-group>
   </div>
 
+  <div class="fieldset">
+    <vaadin-combo-box
+      [sticky]="true"
+      auto-validate
+      error-message="Period is always required"
+      [items]="minutes"
+      label="Period"
+      libPolymerControl
+      name="period"
+      prevent-invalid-input
+      required>
+    </vaadin-combo-box>
+  </div>
+
   <div>
     <paper-toggle-button
       [sticky]="true"

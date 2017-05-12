@@ -60,8 +60,8 @@ export function parseInitialSearchParams(): URLSearchParams {
   if (location.search.length > 1) {
     const raw = location.search.substring(1).split('&');
     raw.forEach(param => {
-      const pair = param.split('=');
-      params.set(pair[0], pair[1]);
+      const [k, v] = param.split('=');
+      params.set(k, v);
     });
   }
   return params;

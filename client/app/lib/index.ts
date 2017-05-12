@@ -5,6 +5,7 @@ import {CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule} from '@angular/co
 import { CommonModule } from '@angular/common';
 import { EffectsModule } from '@ngrx/effects';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { LaunchURLEffects } from './effects/launch-url';
 import { NavigatorEffects } from './effects/navigator';
 import { RouterEffects } from './effects/router';
 import { RouterModule } from '@angular/router';
@@ -92,8 +93,9 @@ const SERVICES = [
 
   imports: [
     CommonModule,
-    EffectsModule.run(RouterEffects),
+    EffectsModule.run(LaunchURLEffects),
     EffectsModule.run(NavigatorEffects),
+    EffectsModule.run(RouterEffects),
     EffectsModule.run(UserEffects),
     EffectsModule.run(WindowEffects),
     FlexLayoutModule,

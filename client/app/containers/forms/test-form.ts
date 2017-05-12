@@ -52,4 +52,14 @@ export class TestFormComponent {
     {label: 'Z-Feed', value: '2600'},
   ];
 
+minutes = [
+    {label: '15 mins', value: '15'},
+    {label: '30 mins', value: '30'},
+    {label: '1 hour', value: '60'},
+    {label: '3 hours', value: '180'},
+    {label: '6 hours', value: '360'},
+    {label: '12 hours', value: '720'},
+    {label: '24 hours', value: '1440'}
+  ];
+
 }

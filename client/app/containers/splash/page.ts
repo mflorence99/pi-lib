@@ -1,7 +1,12 @@
+import * as launchURL from '../../lib/reducers/launch-url';
+
+import { AppState } from '../../reducers';
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
 
 /**
- * Empty page
+ * Splash page
  */
 
 @Component({
@@ -10,4 +15,12 @@ import { Component } from '@angular/core';
   templateUrl: 'page.html'
 })
 
-export class SplashPageComponent { }
+export class SplashPageComponent {
+  launchURL: Observable<launchURL.LaunchURLState>;
+
+  /** ctor */
+  constructor(store: Store<AppState>) {
+    this.launchURL = store.select(state => state.launchURL);
+  }
+
+}
