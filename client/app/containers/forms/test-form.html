@@ -93,15 +93,22 @@
 
   <div class="fieldset">
     <vaadin-combo-box
+      [items]="partners"
       [sticky]="true"
       auto-validate
-      error-message="Period is always required"
-      [items]="minutes"
-      label="Period"
+      error-message="Partner is always required"
+      item-label-path="label"
+      item-value-path="value"
+      label="Partner"
       libPolymerControl
-      name="period"
+      name="partner"
       prevent-invalid-input
       required>
+      <ng-template>
+        <paper-icon-item style="padding: 0">
+          <img src="[[item.logo]]" style="max-height: 48px">
+        </paper-icon-item>
+      </ng-template>
     </vaadin-combo-box>
   </div>
 

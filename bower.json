@@ -27,7 +27,8 @@
     "paper-fab": "PolymerElements/paper-fab#2.0-preview",
     "paper-progress": "PolymerElements/paper-progress#2.0-preview",
     "paper-dialog": "PolymerElements/paper-dialog#2.0-preview",
-    "vaadin-combo-box": "^2"
+    "vaadin-combo-box": "^2",
+    "paper-item": "PolymerElements/paper-item#2.0-preview"
   },
   "resolutions": {
     "polymer": "^2",
