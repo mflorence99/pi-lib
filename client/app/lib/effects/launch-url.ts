@@ -9,7 +9,6 @@ import { LaunchURLState, initialState } from '../reducers/launch-url';
 import { Action } from '@ngrx/store';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Store } from '@ngrx/store';
 import { parseInitialSearchParams } from '../utils';
 
 /**
@@ -23,20 +22,16 @@ export class LaunchURLEffects {
    * Listen for an init action to load last-used user state
    */
 
-  @Effect({dispatch: false}) init: Observable<LaunchURLState> = this.actions
+  @Effect() init: Observable<Action> = this.actions
     .ofType(launchURL.ActionTypes.INIT)
     .startWith(launchURL.init())
     .map((action: Action) => {
       const state: LaunchURLState = Object.assign({}, initialState);
       state.location = location;
       state.search = parseInitialSearchParams();
-      return state;
-    })
-    .do((state: LaunchURLState) => this.store.dispatch(launchURL.load(state)));
+      return launchURL.load(state);
+    });
 
-  // we should strongly-type the Store, but we can't because it belongs
-  // to someone else and we're in a common library
-  constructor(private actions: Actions,
-              private store: Store<any>) { }
+  constructor(private actions: Actions) { }
 
 }
