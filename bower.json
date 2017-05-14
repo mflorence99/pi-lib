@@ -8,7 +8,7 @@
     "iron-label": "PolymerElements/iron-label#2.0-preview",
     "neon-animation": "PolymerElements/neon-animation#2.0-preview",
     "paper-badge": "PolymerElements/paper-badge#2.0-preview",
-    "paper-button": "PolymerElements/paper-button#2.0-preview",
+    "paper-button": "PolymerElements/paper-button#master",
     "paper-card": "PolymerElements/paper-card#2.0-preview",
     "paper-checkbox": "PolymerElements/paper-checkbox#2.0-preview",
     "paper-dialog": "PolymerElements/paper-dialog#2.0-preview",
@@ -32,7 +32,8 @@
     "webcomponentsjs": "webcomponents/webcomponentsjs#^1"
   },
   "resolutions": {
-    "polymer": "^2.0.0-rc.1"
+    "polymer": "^2.0.0-rc.1",
+    "paper-button": "master"
   },
   "ignore": [
     "**/*"
