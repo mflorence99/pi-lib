@@ -8,6 +8,7 @@ import { LaunchURLState, initialState } from '../reducers/launch-url';
 
 import { Action } from '@ngrx/store';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { parseInitialSearchParams } from '../utils';
 
@@ -22,7 +23,7 @@ export class LaunchURLEffects {
    * Listen for an init action to load last-used user state
    */
 
-  @Effect({dispatch: false}) init = this.actions
+  @Effect({dispatch: false}) init: Observable<LaunchURLState> = this.actions
     .ofType(launchURL.ActionTypes.INIT)
     .startWith(launchURL.init())
     .map((action: Action) => {
