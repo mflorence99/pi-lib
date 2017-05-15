@@ -300,7 +300,7 @@ export class PolymerFormComponent implements AfterContentInit {
 
   @Input() focus: string;
   @Input() initialState = {};
-  @Input() key: string;
+  @Input() stickyKey: string;
 
   stream = new Subject<PolymerForm>();
 
@@ -346,8 +346,8 @@ export class PolymerFormComponent implements AfterContentInit {
   reseed() {
     this.controls.forEach((control: PolymerControlDirective) => {
       if (control.canStick()) {
-        if (!this.seed[control.name] && this.key && control.sticky)
-          this.seed[control.name] = <any>this.lstor.get(`${this.key}.${control.name}`);
+        if (!this.seed[control.name] && this.stickyKey && control.sticky)
+          this.seed[control.name] = <any>this.lstor.get(`${this.stickyKey}.${control.name}`);
         if (!this.seed[control.name] && this.initialState[control.name])
           this.seed[control.name] = this.initialState[control.name];
       }
@@ -427,11 +427,11 @@ export class PolymerFormComponent implements AfterContentInit {
       this.model.validities[control.name] = control.isValid();
       this.next();
       // make value sticky
-      if (this.key
+      if (this.stickyKey
        && control.sticky
        && control.canStick()
        && control.isValid())
-        this.lstor.set(`${this.key}.${control.name}`, control.value);
+        this.lstor.set(`${this.stickyKey}.${control.name}`, control.value);
     }, 0);
   }
 
