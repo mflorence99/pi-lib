@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { EffectsModule } from '@ngrx/effects';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LaunchURLEffects } from './effects/launch-url';
+import { LogEffects } from './effects/log';
 import { NavigatorEffects } from './effects/navigator';
 import { RouterEffects } from './effects/router';
 import { RouterModule } from '@angular/router';
@@ -94,6 +95,7 @@ const SERVICES = [
   imports: [
     CommonModule,
     EffectsModule.run(LaunchURLEffects),
+    EffectsModule.run(LogEffects),
     EffectsModule.run(NavigatorEffects),
     EffectsModule.run(RouterEffects),
     EffectsModule.run(UserEffects),

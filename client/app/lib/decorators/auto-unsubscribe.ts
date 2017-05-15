@@ -22,7 +22,7 @@ export function AutoUnsubscribe(blacklist: string[] = []) {
         if (property
          && (typeof property.unsubscribe === 'function')
          && (blacklist.indexOf(key) === -1)) {
-          console.log(`@AutoUnsubscribe() to ${key}`);
+          console.log('%c @AutoUnsubscribe()', 'color: gray', `to ${key}`);
           property.unsubscribe();
         }
       });

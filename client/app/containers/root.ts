@@ -56,7 +56,7 @@ export class RootComponent {
   constructor(configurator: ConfiguratorService,
               env: EnvService,
               store: Store<AppState>) {
-    console.log('<lib-root> loading', config, env);
+    console.log('%c <lib-root> loading', 'color: blue', config, env);
     this.routerState = store.select(state => state.router);
     this.userState = store.select(state => state.user);
     this.windowState = store.select(state => state.window);

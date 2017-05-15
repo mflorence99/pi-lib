@@ -33,7 +33,7 @@ export class PolymerAppComponent {
     this.loaded = true;
     this.loading = false;
     // successful startup signature
-    console.log('<polymer-app> loaded');
+    console.log('%c <polymer-app> loaded', 'color: blue');
   }
 
 }
