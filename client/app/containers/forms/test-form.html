@@ -68,7 +68,8 @@
       <div slot="suffix">
         <paper-icon-button
           (click)="form.clear('name')"
-          icon="clear">
+          icon="clear"
+          suffix>
         </paper-icon-button>
         <paper-tooltip>Clear name</paper-tooltip>
       </div>
@@ -104,11 +105,18 @@
       name="partner"
       prevent-invalid-input
       required>
-      <ng-template>
+      <iron-icon
+        icon="account-box"
+        primary
+        small
+        slot="prefix"
+        style="margin-right: 8px">
+      </iron-icon>
+      <template>
         <paper-icon-item style="padding: 0">
-          <img src="[[item.logo]]" style="max-height: 48px">
+          <img src="[[item.logo]]" style="max-height: 48px" item-icon>
         </paper-icon-item>
-      </ng-template>
+      </template>
     </vaadin-combo-box>
   </div>
 

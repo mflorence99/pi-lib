@@ -33,7 +33,17 @@
   },
   "resolutions": {
     "polymer": "^2.0.0-rc.1",
-    "paper-button": "master"
+    "paper-button": "master",
+    "iron-flex-layout": "1 - 2",
+    "paper-styles": "1 - 2",
+    "iron-meta": "1 - 2",
+    "iron-checked-element-behavior": "1 - 2",
+    "paper-behaviors": "1 - 2",
+    "paper-ripple": "1 - 2",
+    "iron-a11y-keys-behavior": "1 - 2",
+    "iron-behaviors": "1 - 2",
+    "iron-form-element-behavior": "1 - 2",
+    "iron-validatable-behavior": "1 - 2"
   },
   "ignore": [
     "**/*"

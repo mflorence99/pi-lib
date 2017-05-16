@@ -19,7 +19,8 @@
       <div slot="suffix">
         <paper-icon-button
           (click)="form.clear('name')"
-          icon="clear">
+          icon="clear"
+          suffix>
         </paper-icon-button>
         <paper-tooltip>Clear name</paper-tooltip>
       </div>
@@ -37,13 +38,6 @@
       prevent-invalid-input
       required
       type="text">
-      <div slot="suffix">
-        <paper-icon-button
-          (click)="form.clear('gravatar')"
-          icon="clear">
-        </paper-icon-button>
-        <paper-tooltip>Clear gravatar</paper-tooltip>
-      </div>
     </paper-textarea>
   </div>
 
