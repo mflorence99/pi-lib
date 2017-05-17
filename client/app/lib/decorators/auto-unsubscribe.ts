@@ -1,3 +1,5 @@
+import { EventEmitter } from '@angular/core';
+
 /**
  * Decorator to automatically unsubscribe from anything that's subscribable
  * when a component is destroyed.
@@ -20,6 +22,7 @@ export function AutoUnsubscribe(blacklist: string[] = []) {
       Object.keys(this).forEach(key => {
         const property = this[key];
         if (property
+         && (!(property instanceof EventEmitter))
          && (typeof property.unsubscribe === 'function')
          && (blacklist.indexOf(key) === -1)) {
           console.log('%c @AutoUnsubscribe()', 'color: gray', `to ${key}`);

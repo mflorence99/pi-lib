@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
+import { AutoUnsubscribe } from '../../lib/decorators/auto-unsubscribe';
 import { PolymerForm } from '../../lib/components/polymer-form';
 
 /**
@@ -13,6 +14,7 @@ import { PolymerForm } from '../../lib/components/polymer-form';
   templateUrl: 'test-ctrl.html'
 })
 
+@AutoUnsubscribe()
 export class TestCtrlComponent {
   @Output() working = new EventEmitter<boolean>();
 
