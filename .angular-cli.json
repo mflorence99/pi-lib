@@ -25,6 +25,7 @@
       ],
       "scripts": [
         "../bower_components/webcomponentsjs/webcomponents-loader.js",
+        "../node_modules/hammerjs/hammer.min.js",
         "../node_modules/marked/marked.min.js",
         "../node_modules/numeral/min/numeral.min.js"
       ],
