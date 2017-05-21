@@ -41,7 +41,7 @@ export function deepCopy<T>(obj: T): T {
 export function handleHttpError(error: Response): string {
   const dflt = 'Unknown error; server possibly down';
   const msg = `Status ${error.status}: ${error.statusText || dflt}`;
-  console.log('%c ${msg}', 'color: red');
+  console.log(`%c ${msg}`, 'color: red');
   return msg;
 }
 
