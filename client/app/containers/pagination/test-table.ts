@@ -1,20 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { PagedData, PagedDataState } from '../../lib/services/paged-datasource';
 
 import { Subject } from 'rxjs/Subject';
-import { TestDataPage } from './test-ctrl';
-
-/**
- * Model the page state
- */
-
-export class PageState {
-  index = 0;
-}
-
-export class SortState {
-  column = '';
-  dir = 1;
-}
 
 /**
  * Test table component
@@ -28,9 +15,8 @@ export class SortState {
 })
 
 export class TestTableComponent {
-  @Input() page = new TestDataPage();
+  @Input() page = new PagedData();
 
-  pageState = new Subject<PageState>();
-  sortState = new Subject<SortState>();
+  state = new Subject<PagedDataState>();
 
 }

@@ -42,6 +42,7 @@ export * from './pipes/moment';
 export * from './pipes/numeral';
 export * from './services/configurator';
 export * from './services/env';
+export * from './services/paged-datasource';
 export * from './utils';
 
 const COMPONENTS = [
@@ -76,8 +77,9 @@ const PIPES = [
 ];
 
 const SERVICES = [
+  lib.ConfiguratorService,
   lib.EnvService,
-  lib.ConfiguratorService
+  lib.PagedDataSourceService
 ];
 
 @NgModule({
