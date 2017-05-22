@@ -1,18 +1,24 @@
 <main>
 
-  <aside [ngClass]="windowState | async">
+  <aside
+    [ngClass]="windowState | async">
 
-    <lib-sidebar fxFlexFill>
+    <lib-sidebar
+      fxFlexFill>
     </lib-sidebar>
 
   </aside>
 
-  <section [ngClass]="windowState | async">
+  <section
+    [ngClass]="windowState | async">
 
-    <lib-toolbar [userState]="userState | async">
+    <lib-toolbar
+      [ngClass]="windowState | async"
+      [userState]="userState | async">
     </lib-toolbar>
 
     <lib-route-animation
+      [ngClass]="windowState | async"
       [routerState]="routerState | async"
       class="content">
       <router-outlet></router-outlet>

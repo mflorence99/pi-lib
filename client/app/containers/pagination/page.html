@@ -1,0 +1,14 @@
+<main>
+
+  <lib-test-table
+    [page]="testCtrl.page | async"
+    #testTable>
+  </lib-test-table>
+
+  <lib-test-ctrl
+    [pageState]="testTable.pageState | async"
+    [sortState]="testTable.sortState | async"
+    #testCtrl>
+  </lib-test-ctrl>
+
+</main>

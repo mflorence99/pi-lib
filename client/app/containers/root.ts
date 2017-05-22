@@ -25,7 +25,7 @@ const MEDIA_SIZE_BREAKS: MediaSizeBreaks = {
 const NAVIGATOR_ITEMS: NavigatorItem[] = [
   new NavigatorItem('/home', 'home', 'Welcome!'),
 
-  // components
+  // general components
 
   new NavigatorItem('/buttons', 'window-restore', 'Buttons & Dialogs', 'Components'),
   new NavigatorItem('/charts', 'area-chart', 'Google Charts', 'Components'),
@@ -34,9 +34,13 @@ const NAVIGATOR_ITEMS: NavigatorItem[] = [
   new NavigatorItem('/markdown', 'code', 'Markdown', 'Components'),
   new NavigatorItem('/pipes', 'filter', 'Miscellaneous Pipes', 'Components'),
 
-  // users & authentication
+  // pagination
 
-  new NavigatorItem('/user', 'filter', 'User Details', 'Users & Authentication')
+  new NavigatorItem('/pagination', 'sort-amount-asc', 'All-in-one Test', 'Pagination & Sort'),
+
+  // reducers
+
+  new NavigatorItem('/user', 'filter', 'User State', 'Reducers')
 ];
 
 @Component({

@@ -21,6 +21,8 @@ import { MarkdownPageModule } from './containers/markdown/module';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { NoopPageComponent } from './containers/noop/page';
 import { NoopPageModule } from './containers/noop/module';
+import { PaginationPageComponent } from './containers/pagination/page';
+import { PaginationPageModule } from './containers/pagination/module';
 import { PiModule } from './lib';
 import { PipesPageComponent } from './containers/pipes/page';
 import { PipesPageModule } from './containers/pipes/module';
@@ -73,6 +75,7 @@ const MODULES_INTERNAL = [
   MarkdownPageModule,
   NoopPageModule,
   PiModule,
+  PaginationPageModule,
   PipesPageModule,
   SplashPageModule,
   UserPageModule
@@ -87,6 +90,7 @@ const ROUTES = [
   {path: 'home',             component: SplashPageComponent},
   {path: 'markdown',         component: MarkdownPageComponent},
   {path: 'noop',             component: NoopPageComponent},
+  {path: 'pagination',       component: PaginationPageComponent},
   {path: 'pipes',            component: PipesPageComponent},
   {path: 'user',             component: UserPageComponent},
   {path: '**',               component: FourOhFourPageComponent}

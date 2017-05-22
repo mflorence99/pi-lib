@@ -8,6 +8,7 @@ main {
   margin: 32px;
 
   lib-markdown {
+    column-count: 1;
     display: block;
 
     &.large {
@@ -15,8 +16,8 @@ main {
       column-gap: 32px;
     }
 
-    &.small {
-      column-count: 1;
+    &.withPrinter {
+      column-count: 1 !important;
     }
 
   }
