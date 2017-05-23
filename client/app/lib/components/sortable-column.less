@@ -1,0 +1,20 @@
+:host {
+  align-items: flex-end;
+  display: flex;
+  justify-content: flex-start;
+
+  &[numeric] {
+    justify-content: flex-end;
+  }
+
+}
+
+.content {
+  cursor: pointer;
+
+  &[disabled] {
+    cursor: default;
+    font-weight: normal;
+  }
+
+}

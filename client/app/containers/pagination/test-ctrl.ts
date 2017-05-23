@@ -10,8 +10,14 @@ import { Subject } from 'rxjs/Subject';
  */
 
 export class TestDataItem extends PagedDataItem {
+  amount: number;
+  city: string;
+  emailAddress: string;
   firstName: string;
+  jobTitle: string;
   lastName: string;
+  phoneNumber: string;
+  state: string;
 }
 
 /**
@@ -25,7 +31,6 @@ export class TestDataItem extends PagedDataItem {
 })
 
 export class TestCtrlComponent implements AfterViewInit {
-  @Input() state = new PagedDataState();
 
   page = new Subject<PagedData>();
 
@@ -34,20 +39,32 @@ export class TestCtrlComponent implements AfterViewInit {
  testData: TestDataItem[] = [];
 
   constructor(private dataSource: PagedDataSourceService) {
-    for (let i = 0; i < 500; i++) {
+    for (let i = 0; i < 10; i++) {
       const item = new TestDataItem();
+      item.amount = Number(Faker.finance.amount());
+      item.city = Faker.address.city();
+      item.emailAddress = Faker.internet.email();
       item.firstName = Faker.name.firstName();
+      item.jobTitle = Faker.name.jobTitle();
       item.lastName = Faker.name.lastName();
+      item.phoneNumber = Faker.phone.phoneNumber();
+      item.state = Faker.address.state();
       this.testData[i] = item;
     }
   }
 
+  @Input() set state(state: PagedDataState) {
+    if (state) {
+      const page = new PagedData();
+      page.index = 0;
+      page.numItems = this.testData.length;
+      page.items = this.dataSource.xxx(this.testData, {column: state.column, dir: state.dir, index: 0, stride: state.stride});
+      // we need this because of circular relationship between table & controller
+      setTimeout(() => this.page.next(page), 0);
+    }
+  }
+
   ngAfterViewInit() {
-    const page = new PagedData();
-    page.index = 0;
-    page.numItems = this.testData.length;
-    page.items = this.dataSource.xxx(this.testData, {column: 'lastName', dir: 1, index: 0, stride: 100});
-    this.page.next(page);
   }
 
 }

@@ -1,7 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { PagedData, PagedDataState } from '../../lib/services/paged-datasource';
+import { ChangeDetectionStrategy, Component, Input, ViewChild } from '@angular/core';
 
-import { Subject } from 'rxjs/Subject';
+import { PagedData } from '../../lib/services/paged-datasource';
 
 /**
  * Test table component
@@ -15,8 +14,9 @@ import { Subject } from 'rxjs/Subject';
 })
 
 export class TestTableComponent {
+
   @Input() page = new PagedData();
 
-  state = new Subject<PagedDataState>();
+  @ViewChild('table') table;
 
 }

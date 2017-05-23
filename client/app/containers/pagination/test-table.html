@@ -1,19 +1,103 @@
-<table standard>
+<lib-paged-datatable
+  [stride]="10"
+  #table
+  stickyKey="lib.test-table">
 
   <thead>
     <tr>
+
       <th></th>
-      <th>First Name</th>
-      <th>Last Name</th>
+
+      <th>
+        <lib-sortable-column
+          [sticky]="true"
+          column="firstName">
+          First Name
+        </lib-sortable-column>
+      </th>
+
+      <th>
+        <lib-sortable-column
+          [sticky]="true"
+          column="lastName">
+          Last Name
+        </lib-sortable-column>
+      </th>
+
+      <th>
+        <lib-sortable-column
+          [sticky]="true"
+          column="emailAddress">
+          Email Address
+        </lib-sortable-column>
+      </th>
+
+      <th>
+        <lib-sortable-column
+          [sticky]="true"
+          column="jobTitle">
+          Job Title
+        </lib-sortable-column>
+      </th>
+
+      <th>
+        <lib-sortable-column
+          [sticky]="true"
+          column="phoneNumber">
+          Phone
+        </lib-sortable-column>
+      </th>
+
+      <th>
+        <lib-sortable-column
+          [sticky]="true"
+          column="city">
+          City
+        </lib-sortable-column>
+      </th>
+
+      <th>
+        <lib-sortable-column
+          [sticky]="true"
+          column="State">
+          State
+        </lib-sortable-column>
+      </th>
+
+      <th>
+        <lib-sortable-column
+          [sticky]="true"
+          column="amount"
+          numeric>
+          Balance
+        </lib-sortable-column>
+      </th>
+
     </tr>
   </thead>
 
   <tbody>
     <tr *ngFor="let item of page?.items; let ix = index">
+
       <td index>{{page.index + ix + 1}}.</td>
+
       <td>{{item.firstName}}</td>
+
       <td>{{item.lastName}}</td>
+
+      <td>{{item.emailAddress}}</td>
+
+      <td>{{item.jobTitle}}</td>
+
+      <td>{{item.phoneNumber}}</td>
+
+      <td>{{item.city}}</td>
+
+      <td>{{item.state}}</td>
+
+      <td numeric>{{item.amount | currency:'USD':true:'1.2-2'}}</td>
+
     </tr>
   </tbody>
 
-</table>
+</lib-paged-datatable>

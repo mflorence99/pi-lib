@@ -1,0 +1,27 @@
+<div
+  (click)="sort()"
+  [attr.disabled]="disabled? 'true' : null"
+  class="content">
+  <ng-content></ng-content>
+</div>
+
+<iron-icon
+  *ngIf="((model?.column === column) && (model?.dir === 1))"
+  icon="arrow-upward"
+  primary
+  small>
+</iron-icon>
+
+<iron-icon
+  *ngIf="((model?.column === column) && (model?.dir === -1))"
+  icon="arrow-downward"
+  secondary
+  small>
+</iron-icon>
+
+<iron-icon
+  [style.visibility]="'hidden'"
+  *ngIf="(model?.column !== column)"
+  icon="remove"
+  small>
+</iron-icon>

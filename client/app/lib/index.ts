@@ -27,11 +27,13 @@ export * from './components/drawer-panel';
 export * from './components/gravatar';
 export * from './components/markdown';
 export * from './components/multi-selector';
+export * from './components/navigator';
 export * from './components/no-data-on-page';
+export * from './components/paged-datatable';
 export * from './components/polymer-app';
 export * from './components/polymer-form';
-export * from './components/navigator';
 export * from './components/route-animation';
+export * from './components/sortable-column';
 export * from './containers/404-page';
 export * from './pipes/breakable';
 export * from './pipes/ellipsize';
@@ -57,10 +59,12 @@ const COMPONENTS = [
   lib.NavigatorComponent,
   lib.NavigatorGroupComponent,
   lib.NoDataOnPageComponent,
+  lib.PagedDataTableComponent,
   lib.PolymerAppComponent,
   lib.PolymerControlDirective,
   lib.PolymerFormComponent,
-  lib.RouteAnimationComponent
+  lib.RouteAnimationComponent,
+  lib.SortableColumnComponent
 ];
 
 const PIPES = [

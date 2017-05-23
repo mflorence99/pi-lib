@@ -32,13 +32,11 @@ export class PagedDataSourceService {
 
   xxx(items: PagedDataItem[],
       state: PagedDataState): PagedDataItem[] {
-    items.sort((a, b) => {
-      const p = (state.dir > 0)? a : b;
-      const q = (state.dir > 0)? b : a;
-      if (p[state.column] > q[state.column])
-        return +1;
-      if (q[state.column] > p[state.column])
-        return -1;
+    items.sort((a: PagedDataItem, b: PagedDataItem) => {
+      if (a[state.column] < b[state.column])
+        return -1 * state.dir;
+      else if (a[state.column] > b[state.column])
+        return 1 * state.dir;
       else return 0;
     });
     return items.slice(state.index, state.stride);
