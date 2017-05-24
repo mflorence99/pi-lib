@@ -1,11 +1,17 @@
 <main>
 
+  <lib-test-filter
+    #testFilter>
+  </lib-test-filter>
+
   <lib-test-table
     [page]="testCtrl.page | async"
     #testTable>
   </lib-test-table>
 
   <lib-test-ctrl
+    (working)="testFilter.working = testTable.working = $event"
+    [filter]="testFilter.form.stream | async"
     [state]="testTable.table.state | async"
     #testCtrl>
   </lib-test-ctrl>

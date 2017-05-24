@@ -1,4 +1,8 @@
+import 'rxjs/add/observable/from';
+
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { PolymerFormValuesMap } from '../../lib/components/polymer-form';
 
 /**
  * Model core data structures
@@ -6,8 +10,8 @@ import { Injectable } from '@angular/core';
 
 export class PagedData {
   index = 0;
-  numItems = 0;
   items: PagedDataItem[] = [];
+  maxItems = 0;
 }
 
 export class PagedDataItem {
@@ -28,18 +32,14 @@ export class PagedDataState {
 @Injectable()
 export class PagedDataSourceService {
 
-  // TEMP
+  /** ctor */
+  constructor() { }
 
-  xxx(items: PagedDataItem[],
-      state: PagedDataState): PagedDataItem[] {
-    items.sort((a: PagedDataItem, b: PagedDataItem) => {
-      if (a[state.column] < b[state.column])
-        return -1 * state.dir;
-      else if (a[state.column] > b[state.column])
-        return 1 * state.dir;
-      else return 0;
-    });
-    return items.slice(state.index, state.stride);
+  /** Designed to be overriden */
+  load(state: PagedDataState,
+       filter: PolymerFormValuesMap,
+       reset: boolean): Observable<PagedData> {
+    return Observable.from([]);
   }
 
 }

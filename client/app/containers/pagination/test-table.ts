@@ -15,7 +15,8 @@ import { PagedData } from '../../lib/services/paged-datasource';
 
 export class TestTableComponent {
 
-  @Input() page = new PagedData();
+  @Input() working: boolean;
+  @Input() page: PagedData;
 
   @ViewChild('table') table;
 

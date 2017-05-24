@@ -29,6 +29,7 @@ export * from './components/markdown';
 export * from './components/multi-selector';
 export * from './components/navigator';
 export * from './components/no-data-on-page';
+export * from './components/pageable-data';
 export * from './components/paged-datatable';
 export * from './components/polymer-app';
 export * from './components/polymer-form';
@@ -59,6 +60,7 @@ const COMPONENTS = [
   lib.NavigatorComponent,
   lib.NavigatorGroupComponent,
   lib.NoDataOnPageComponent,
+  lib.PageableDataComponent,
   lib.PagedDataTableComponent,
   lib.PolymerAppComponent,
   lib.PolymerControlDirective,

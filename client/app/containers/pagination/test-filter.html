@@ -1,0 +1,44 @@
+<lib-polymer-form
+  #form
+  focus="firstName"
+  fxLayout="row"
+  fxLayoutAlign="end center"
+  fxLayoutGap="16px"
+  [initialState]="{}"
+  stickyKey="lib.test-filter">
+
+  <paper-input
+    auto-validate
+    error-message="First name is always required"
+    label="First Name"
+    name="firstName"
+    libPolymerControl
+    prevent-invalid-input
+    required
+    type="text"
+    [sticky]="true">
+    <div slot="suffix">
+      <paper-icon-button
+        (click)="form.clear('firstName')"
+        icon="clear"
+        suffix>
+      </paper-icon-button>
+      <paper-tooltip>Clear first name</paper-tooltip>
+    </div>
+  </paper-input>
+
+  <paper-button
+    (click)="form.submit()"
+    [disabled]="!form.isValid()"
+    *ngIf="!working"
+    primary
+    raised>
+    Filter
+  </paper-button>
+
+  <paper-spinner
+    [active]="working"
+    *ngIf="working">
+  </paper-spinner>
+
+</lib-polymer-form>

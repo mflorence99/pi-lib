@@ -1,5 +1,26 @@
-<table standard>
+<table
+  [ngClass]="{working: working}"
+  *ngIf="page?.maxItems"
+  standard>
 
-  <ng-content></ng-content>
+  <ng-content select="thead"></ng-content>
+  <ng-content select="tbody"></ng-content>
 
 </table>
+
+<paper-spinner
+  [active]="working"
+  *ngIf="working">
+</paper-spinner>
+
+<ng-content
+  *ngIf="!page?.maxItems"
+  select="lib-no-data-on-page">
+</ng-content>
+
+<lib-pageable-data
+  (changed)="listenForScroll()"
+  [disabled]="disabled"
+  [page]="page"
+  [state]="model">
+</lib-pageable-data>

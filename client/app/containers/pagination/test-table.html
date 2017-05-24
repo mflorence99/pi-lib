@@ -1,7 +1,19 @@
 <lib-paged-datatable
-  [stride]="10"
+  [disabled]="false"
+  [page]="page"
+  [stride]="100"
+  [working]="working"
   #table
   stickyKey="lib.test-table">
+
+  <lib-no-data-on-page>
+    <span *ngIf="!page">
+      Enter search criteria and hit FILTER
+    </span>
+    <span *ngIf="page && !page.maxItems">
+      No results match your filter criteria
+    </span>
+  </lib-no-data-on-page>
 
   <thead>
     <tr>

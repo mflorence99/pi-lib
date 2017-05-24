@@ -5,6 +5,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { PaginationPageComponent } from './page';
 import { PiModule } from '../../lib';
 import { TestCtrlComponent } from './test-ctrl';
+import { TestDataSourceService } from './test-datasource';
+import { TestFilterComponent } from './test-filter';
 import { TestTableComponent } from './test-table';
 
 /**
@@ -14,6 +16,7 @@ import { TestTableComponent } from './test-table';
 const COMPONENTS = [
   PaginationPageComponent,
   TestCtrlComponent,
+  TestFilterComponent,
   TestTableComponent
 ];
 
@@ -21,6 +24,10 @@ const MODULES = [
   CommonModule,
   FlexLayoutModule,
   PiModule
+];
+
+const SERVICES = [
+  TestDataSourceService
 ];
 
 @NgModule({
@@ -33,7 +40,10 @@ const MODULES = [
     ...MODULES
   ],
 
-  
+  providers: [
+    ...SERVICES
+  ],
+
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 
 })

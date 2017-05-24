@@ -6,14 +6,14 @@
 </div>
 
 <iron-icon
-  *ngIf="((model?.column === column) && (model?.dir === 1))"
+  *ngIf="((state?.column === column) && (state?.dir === 1))"
   icon="arrow-upward"
   primary
   small>
 </iron-icon>
 
 <iron-icon
-  *ngIf="((model?.column === column) && (model?.dir === -1))"
+  *ngIf="((state?.column === column) && (state?.dir === -1))"
   icon="arrow-downward"
   secondary
   small>
@@ -21,7 +21,7 @@
 
 <iron-icon
   [style.visibility]="'hidden'"
-  *ngIf="(model?.column !== column)"
+  *ngIf="(state?.column !== column)"
   icon="remove"
   small>
 </iron-icon>
