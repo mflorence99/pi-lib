@@ -1,10 +1,13 @@
 import { AfterViewInit } from '@angular/core';
 import { ChangeDetectionStrategy } from '@angular/core';
 import { Component } from '@angular/core';
+import { DrawerContainerComponent } from './drawer-container';
 import { ElementRef } from '@angular/core';
 import { HostListener } from '@angular/core';
+import { Injector } from '@angular/core';
 import { Input } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
+import { OnDestroy } from '@angular/core';
+import { OnInit } from '@angular/core';
 
 /**
  * lib-drawer-panel component
@@ -19,15 +22,15 @@ import { Subject } from 'rxjs/Subject';
   templateUrl: 'drawer-panel.html'
 })
 
-export class DrawerPanelComponent implements AfterViewInit {
+export class DrawerPanelComponent implements AfterViewInit, OnDestroy, OnInit {
   @Input() position: 'top' | 'right' | 'bottom' | 'left' = 'left';
 
-  opened = new Subject<boolean>();
-
+  private container: DrawerContainerComponent;
   private el: HTMLElement;
 
   /** ctor */
-  constructor(private element: ElementRef) { }
+  constructor(private element: ElementRef,
+              private injector: Injector) { }
 
   /** Close drawer */
   close() {
@@ -46,7 +49,7 @@ export class DrawerPanelComponent implements AfterViewInit {
       break;
     }
     // now report as closed
-    this.opened.next(false);
+    this.container.closed(this);
   }
 
   /** Open drawer */
@@ -62,7 +65,7 @@ export class DrawerPanelComponent implements AfterViewInit {
       break;
     }
     // now report as open
-    this.opened.next(true);
+    this.container.opened(this);
   }
 
   // listeners
@@ -76,6 +79,15 @@ export class DrawerPanelComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.el = this.element.nativeElement;
     this.setup();
+  }
+
+  ngOnDestroy() {
+    this.container.drawers[this.position] = null;
+  }
+
+  ngOnInit() {
+    this.container = this.injector.get(DrawerContainerComponent);
+    this.container.drawers[this.position] = this;
   }
 
   // private methods

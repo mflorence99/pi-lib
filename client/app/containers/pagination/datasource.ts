@@ -18,6 +18,7 @@ export class TestDataItem extends PagedDataItem {
   city: string;
   emailAddress: string;
   firstName: string;
+  id: string;
   jobTitle: string;
   lastName: string;
   phoneNumber: string;
@@ -45,6 +46,7 @@ export class TestDataSourceService extends PagedDataSourceService {
       item.city = Faker.address.city();
       item.emailAddress = Faker.internet.email();
       item.firstName = Faker.name.firstName();
+      item.id = Faker.random.uuid();
       item.jobTitle = Faker.name.jobTitle();
       item.lastName = Faker.name.lastName();
       item.phoneNumber = Faker.phone.phoneNumber();
@@ -63,7 +65,21 @@ export class TestDataSourceService extends PagedDataSourceService {
     page.index = reset? 0 : state.index;
     page.items = filtered.slice(state.index, state.index + state.stride);
     page.maxItems = filtered.length;
-    return Observable.from([page]).delay(SIMULATED_SERVER_LATENCY);
+    return Observable.from([page])
+      .delay(SIMULATED_SERVER_LATENCY);
+  }
+
+  /** Save data */
+  save(data: PolymerFormValuesMap): Observable<TestDataItem> {
+    const saved = Object.assign(new TestDataItem(), data);
+    return Observable.from([saved])
+      .delay(SIMULATED_SERVER_LATENCY)
+      .do((item: TestDataItem) => {
+        const ix = this.testData.findIndex(orig => orig.id === item.id);
+        if (ix !== -1)
+          this.testData[ix] = item;
+        else this.testData.unshift(item);
+      });
   }
 
   // private methods

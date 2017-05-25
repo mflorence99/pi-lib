@@ -1,14 +1,6 @@
-import 'rxjs/add/observable/merge';
-
-import { AfterContentInit } from '@angular/core';
-import { AutoUnsubscribe } from '../decorators/auto-unsubscribe';
 import { ChangeDetectionStrategy } from '@angular/core';
 import { Component } from '@angular/core';
-import { ContentChildren } from '@angular/core';
 import { DrawerPanelComponent } from './drawer-panel';
-import { Observable } from 'rxjs/Observable';
-import { QueryList } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
 
 /**
  * lib-drawer-container
@@ -23,42 +15,34 @@ import { Subscription } from 'rxjs/Subscription';
   templateUrl: 'drawer-container.html'
 })
 
-@AutoUnsubscribe()
-export class DrawerContainerComponent implements AfterContentInit  {
-  @ContentChildren(DrawerPanelComponent) drawers: QueryList<DrawerPanelComponent>;
+export class DrawerContainerComponent {
+
+  drawers = {
+    bottom: null as DrawerPanelComponent,
+    left: null as DrawerPanelComponent,
+    right: null as DrawerPanelComponent,
+    top: null as DrawerPanelComponent
+  };
 
   masked: boolean;
 
-  private changes: Subscription;
-  private listeners: Subscription;
-
   /** Close all the drawers */
   closeAll() {
-    this.drawers.forEach(drawer => drawer.close());
-  }
-
-  // lifecycle methods
-
-  ngAfterContentInit() {
-    this.listen();
-    // re-listen whenever the drawers change
-    this.changes = this.drawers.changes.subscribe(() => {
-      this.listeners.unsubscribe();
-      this.listen();
+    Object.keys(this.drawers).forEach(position => {
+      const drawer = this.drawers[position];
+      if (drawer)
+        drawer.close();
     });
   }
 
-  // private methods
+  /** A drawer has been closed */
+  closed(drawer: DrawerPanelComponent) {
+    this.masked = false;
+  }
 
-  private listen() {
-    const emitters = this.drawers.reduce((acc, drawer) => {
-      acc.push(drawer.opened);
-      return acc;
-    }, []);
-    // un/mask the container when and drawer closes/opens
-    this.listeners = Observable.merge(...emitters)
-      .do((open: boolean) => this.masked = open)
-      .subscribe();
+  /** A drawer has been opened */
+  opened(drawer: DrawerPanelComponent) {
+    this.masked = true;
   }
 
 }

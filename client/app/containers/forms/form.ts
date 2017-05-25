@@ -9,8 +9,8 @@ import { MultiSelectorItem } from '../../lib/components/multi-selector';
 @Component({
   changeDetection: ChangeDetectionStrategy.Default,
   selector: 'lib-test-form',
-  styleUrls: ['test-form.less'],
-  templateUrl: 'test-form.html'
+  styleUrls: ['form.less'],
+  templateUrl: 'form.html'
 })
 
 export class TestFormComponent {

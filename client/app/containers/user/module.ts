@@ -3,8 +3,8 @@ import { CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule } from '@angular/
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { PiModule } from '../../lib';
-import { UserCtrlComponent } from './user-ctrl';
-import { UserFormComponent } from './user-form';
+import { UserCtrlComponent } from './ctrl';
+import { UserFormComponent } from './form';
 import { UserPageComponent } from './page';
 
 /**

@@ -8,8 +8,8 @@ import { UserState, initialState } from '../../lib/reducers/user';
 @Component({
   changeDetection: ChangeDetectionStrategy.Default,
   selector: 'lib-user-form',
-  styleUrls: ['user-form.less'],
-  templateUrl: 'user-form.html'
+  styleUrls: ['form.less'],
+  templateUrl: 'form.html'
 })
 
 export class UserFormComponent {

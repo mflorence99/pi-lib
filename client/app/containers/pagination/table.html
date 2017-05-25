@@ -2,7 +2,7 @@
   [disabled]="false"
   [page]="page"
   [stride]="100"
-  [working]="working"
+  [loading]="loading"
   #table
   stickyKey="lib.test-table">
 
@@ -56,7 +56,7 @@
         <lib-sortable-column
           [sticky]="true"
           column="phoneNumber">
-          Phone
+          Phone Number
         </lib-sortable-column>
       </th>
 
@@ -89,7 +89,10 @@
   </thead>
 
   <tbody>
-    <tr *ngFor="let item of page?.items; let ix = index">
+    <tr
+      (click)="table.select(item)"
+      [class.selected]="table.isSelected(item)"
+      *ngFor="let item of page?.items; let ix = index">
 
       <td index>{{page.index + ix + 1}}.</td>
 

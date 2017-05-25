@@ -10,8 +10,8 @@ import { PolymerForm } from '../../lib/components/polymer-form';
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'lib-test-ctrl',
-  styleUrls: ['test-ctrl.less'],
-  templateUrl: 'test-ctrl.html'
+  styleUrls: ['ctrl.less'],
+  templateUrl: 'ctrl.html'
 })
 
 @AutoUnsubscribe()

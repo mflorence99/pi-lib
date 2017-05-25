@@ -9,7 +9,7 @@
 
   <paper-input
     auto-validate
-    error-message="First name is always required"
+    error-message="First name filter is required"
     label="First Name"
     name="firstName"
     libPolymerControl
@@ -30,15 +30,15 @@
   <paper-button
     (click)="form.submit()"
     [disabled]="!form.isValid()"
-    *ngIf="!working"
+    *ngIf="!loading"
     primary
     raised>
     Filter
   </paper-button>
 
   <paper-spinner
-    [active]="working"
-    *ngIf="working">
+    [active]="loading"
+    *ngIf="loading">
   </paper-spinner>
 
 </lib-polymer-form>

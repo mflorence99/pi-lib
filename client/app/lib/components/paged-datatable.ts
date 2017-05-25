@@ -1,6 +1,6 @@
 import 'rxjs/add/observable/merge';
 
-import { PagedData, PagedDataState } from '../services/paged-datasource';
+import { PagedData, PagedDataItem, PagedDataState } from '../services/paged-datasource';
 
 import { AfterContentInit } from '@angular/core';
 import { AutoUnsubscribe } from '../decorators/auto-unsubscribe';
@@ -37,12 +37,14 @@ export class PagedDataTableComponent implements AfterContentInit, OnChanges, OnI
   @Input() page: PagedData;
   @Input() stickyKey: string;
   @Input() stride = 100;
-  @Input() working: boolean;
+  @Input() loading: boolean;
 
+  selected = new Subject<PagedDataItem>();
   state = new Subject<PagedDataState>();
 
   private changes: Subscription;
   private model = new PagedDataState();
+  private selectedItem: PagedDataItem;
   private sortListeners: Subscription;
 
   /** ctor */
@@ -50,19 +52,30 @@ export class PagedDataTableComponent implements AfterContentInit, OnChanges, OnI
 
   /** Listen for scroll requests */
   listenForScroll() {
-    this.next(false);
+    this.newState(false);
+  }
+
+  /** Is ths item selected? */
+  isSelected(item: PagedDataItem) {
+    return item === this.selectedItem;
+  }
+
+  /** Select an item */
+  select(item: PagedDataItem) {
+    this.selectedItem = item;
+    this.newSelection();
   }
 
   // lifecycle methods
 
   ngAfterContentInit() {
     this.listenForSort();
-    this.next(true);
+    this.newState(true);
     // re-listen whenever the columns change
     this.changes = this.columns.changes.subscribe(() => {
       this.sortListeners.unsubscribe();
       this.listenForSort();
-      this.next(true);
+      this.newState(true);
     });
   }
 
@@ -95,11 +108,15 @@ export class PagedDataTableComponent implements AfterContentInit, OnChanges, OnI
         // make sort sticky
         if (this.stickyKey && column.sticky)
           this.lstor.set(`${this.stickyKey}.state`, this.model);
-        this.next(true);
+        this.newState(true);
       });
   }
 
-  private next(reset: boolean) {
+  private newSelection() {
+    this.selected.next(Object.assign({}, this.selectedItem));
+  }
+
+  private newState(reset: boolean) {
     if (reset)
       this.model.index = 0;
     this.state.next(Object.assign({}, this.model));

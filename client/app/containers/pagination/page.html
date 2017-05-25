@@ -1,19 +1,28 @@
-<main>
+<lib-drawer-container>
+  <main>
 
-  <lib-test-filter
-    #testFilter>
-  </lib-test-filter>
+    <lib-test-filter
+      #testFilter>
+    </lib-test-filter>
 
-  <lib-test-table
-    [page]="testCtrl.page | async"
-    #testTable>
-  </lib-test-table>
+    <lib-test-table
+      [page]="testCtrl.page | async"
+      #testTable>
+    </lib-test-table>
 
-  <lib-test-ctrl
-    (working)="testFilter.working = testTable.working = $event"
-    [filter]="testFilter.form.stream | async"
-    [state]="testTable.table.state | async"
-    #testCtrl>
-  </lib-test-ctrl>
+    <lib-test-ctrl
+      (loading)="testFilter.loading = testTable.loading = $event"
+      (saving)="testDrawer.saving = $event"
+      [filter]="testFilter.form.stream | async"
+      [state]="testTable.table.state | async"
+      [update]="testDrawer.form.stream | async"
+      #testCtrl>
+    </lib-test-ctrl>
 
-</main>
+    <lib-test-drawer
+      [item]="testTable.table.selected | async"
+      #testDrawer>
+    </lib-test-drawer>
+
+  </main>
+</lib-drawer-container>

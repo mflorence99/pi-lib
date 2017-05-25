@@ -1,5 +1,5 @@
 <table
-  [ngClass]="{working: working}"
+  [ngClass]="{loading: loading}"
   *ngIf="page?.maxItems"
   standard>
 
@@ -9,8 +9,8 @@
 </table>
 
 <paper-spinner
-  [active]="working"
-  *ngIf="working">
+  [active]="loading"
+  *ngIf="loading">
 </paper-spinner>
 
 <ng-content

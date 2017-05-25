@@ -7,13 +7,13 @@ import { ChangeDetectionStrategy, Component, Input, ViewChild } from '@angular/c
 @Component({
   changeDetection: ChangeDetectionStrategy.Default,
   selector: 'lib-test-filter',
-  styleUrls: ['test-filter.less'],
-  templateUrl: 'test-filter.html'
+  styleUrls: ['filter.less'],
+  templateUrl: 'filter.html'
 })
 
 export class TestFilterComponent {
-  
-  @Input() working: boolean;
+
+  @Input() loading: boolean;
 
   @ViewChild('form') form;
 

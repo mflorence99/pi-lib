@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsPageComponent } from './page';
 import { PiModule } from '../../lib';
-import { TestCtrlComponent } from './test-ctrl';
-import { TestFormComponent } from './test-form';
+import { TestCtrlComponent } from './ctrl';
+import { TestFormComponent } from './form';
 
 /**
  * Forms page module

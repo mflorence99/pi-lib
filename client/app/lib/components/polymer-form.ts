@@ -8,8 +8,10 @@ import { ElementRef } from '@angular/core';
 import { HostListener } from '@angular/core';
 import { Input } from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
+import { OnChanges } from '@angular/core';
 import { OnDestroy } from '@angular/core';
 import { QueryList } from '@angular/core';
+import { SimpleChanges } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -294,12 +296,12 @@ export class PolymerControlDirective implements OnDestroy {
 })
 
 @AutoUnsubscribe()
-export class PolymerFormComponent implements AfterContentInit {
+export class PolymerFormComponent implements AfterContentInit, OnChanges {
 
   @ContentChildren(PolymerControlDirective) controls: QueryList<PolymerControlDirective>;
 
   @Input() focus: string;
-  @Input() initialState = {};
+  @Input() initialState: any;
   @Input() stickyKey: string;
 
   stream = new Subject<PolymerForm>();
@@ -346,9 +348,9 @@ export class PolymerFormComponent implements AfterContentInit {
   reseed() {
     this.controls.forEach((control: PolymerControlDirective) => {
       if (control.canStick()) {
-        if (!this.seed[control.name] && this.stickyKey && control.sticky)
+        if (this.stickyKey && control.sticky)
           this.seed[control.name] = <any>this.lstor.get(`${this.stickyKey}.${control.name}`);
-        if (!this.seed[control.name] && this.initialState[control.name])
+        else if (this.initialState && this.initialState[control.name])
           this.seed[control.name] = this.initialState[control.name];
       }
       if (!this.seed[control.name])
@@ -370,7 +372,7 @@ export class PolymerFormComponent implements AfterContentInit {
       control.listen(this.listener.bind(this));
     });
     this.model.isValid = this.isValid();
-    this.next();
+    this.newModel();
   }
 
   /** Set a control by name */
@@ -385,7 +387,7 @@ export class PolymerFormComponent implements AfterContentInit {
   submit() {
     this.model.isValid = this.isValid();
     this.model.submitted = true;
-    this.next();
+    this.newModel();
   }
 
   // listeners
@@ -415,6 +417,13 @@ export class PolymerFormComponent implements AfterContentInit {
     });
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['initialState'] && this.ready) {
+      this.reseed();
+      this.reset();
+    }
+  }
+
   // private methods
 
   private listener(control: PolymerControlDirective) {
@@ -425,7 +434,7 @@ export class PolymerFormComponent implements AfterContentInit {
       this.model.submitted = false;
       this.model.values[control.name] = control.value;
       this.model.validities[control.name] = control.isValid();
-      this.next();
+      this.newModel();
       // make value sticky
       if (this.stickyKey
        && control.sticky
@@ -435,7 +444,7 @@ export class PolymerFormComponent implements AfterContentInit {
     }, 0);
   }
 
-  private next() {
+  private newModel() {
     this.stream.next(Object.assign({}, this.model));
   }
 

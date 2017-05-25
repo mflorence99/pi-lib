@@ -9,13 +9,13 @@ import { PagedData } from '../../lib/services/paged-datasource';
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'lib-test-table',
-  styleUrls: ['test-table.less'],
-  templateUrl: 'test-table.html'
+  styleUrls: ['table.less'],
+  templateUrl: 'table.html'
 })
 
 export class TestTableComponent {
 
-  @Input() working: boolean;
+  @Input() loading: boolean;
   @Input() page: PagedData;
 
   @ViewChild('table') table;

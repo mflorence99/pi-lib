@@ -1,0 +1,143 @@
+<lib-drawer-panel
+  #drawer
+  position="left">
+
+  <header>
+    <h3>{{item?.firstName}} {{item?.lastName}}</h3>
+  </header>
+
+  <lib-polymer-form
+    [initialState]="item"
+    #form
+    focus="firstName"
+    fxLayout="column"
+    fxLayoutAlign="start stretch"
+    fxLayoutGap="16px">
+
+    <input
+      libPolymerControl
+      name="id"
+      type="hidden">
+
+    <paper-input
+      auto-validate
+      error-message="First name is always required"
+      label="First Name"
+      name="firstName"
+      libPolymerControl
+      prevent-invalid-input
+      required
+      type="text">
+    </paper-input>
+
+    <paper-input
+      auto-validate
+      error-message="Last name is always required"
+      label="Last Name"
+      name="lastName"
+      libPolymerControl
+      prevent-invalid-input
+      required
+      type="text">
+    </paper-input>
+
+    <paper-input
+      auto-validate
+      error-message="Email address is always required"
+      label="Email Address"
+      name="emailAddress"
+      libPolymerControl
+      prevent-invalid-input
+      required
+      type="text">
+    </paper-input>
+
+    <paper-textarea
+      auto-validate
+      error-message="Job title is always required"
+      label="Job Title"
+      name="jobTitle"
+      libPolymerControl
+      prevent-invalid-input
+      required
+      type="text">
+    </paper-textarea>
+
+    <paper-input
+      auto-validate
+      error-message="Phone is always required"
+      label="Phone Number"
+      name="phoneNumber"
+      libPolymerControl
+      prevent-invalid-input
+      required
+      type="text">
+    </paper-input>
+
+    <paper-input
+      auto-validate
+      error-message="City is always required"
+      label="City"
+      name="city"
+      libPolymerControl
+      prevent-invalid-input
+      required
+      type="text">
+    </paper-input>
+
+    <paper-input
+      auto-validate
+      error-message="State is always required"
+      label="State"
+      name="state"
+      libPolymerControl
+      prevent-invalid-input
+      required
+      type="text">
+    </paper-input>
+
+    <paper-input
+      auto-validate
+      error-message="Amount must be between $0.00 and $999.99"
+      label="Amount"
+      max="999.99"
+      min="0"
+      name="amount"
+      libPolymerControl
+      prevent-invalid-input
+      required
+      step="0.01"
+      type="number">
+    </paper-input>
+
+    <div>&nbsp;</div>
+
+    <div
+      fxFlexLayout="row"
+      fxLayoutAlign="end center"
+      fxLayoutGap="16px">
+
+      <paper-button
+        (click)="form.reset()">
+        Reset
+      </paper-button>
+
+      <paper-button
+        (click)="form.submit()"
+        [disabled]="!form.isValid()"
+        *ngIf="!saving"
+        primary
+        raised>
+        Save
+      </paper-button>
+
+      <paper-spinner
+        [active]="saving"
+        *ngIf="saving">
+      </paper-spinner>
+
+    </div>
+
+  </lib-polymer-form>
+
+</lib-drawer-panel>

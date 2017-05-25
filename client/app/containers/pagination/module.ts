@@ -4,10 +4,11 @@ import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { PaginationPageComponent } from './page';
 import { PiModule } from '../../lib';
-import { TestCtrlComponent } from './test-ctrl';
-import { TestDataSourceService } from './test-datasource';
-import { TestFilterComponent } from './test-filter';
-import { TestTableComponent } from './test-table';
+import { TestCtrlComponent } from './ctrl';
+import { TestDataSourceService } from './datasource';
+import { TestDrawerComponent } from './drawer';
+import { TestFilterComponent } from './filter';
+import { TestTableComponent } from './table';
 
 /**
  * Pagination page module
@@ -16,6 +17,7 @@ import { TestTableComponent } from './test-table';
 const COMPONENTS = [
   PaginationPageComponent,
   TestCtrlComponent,
+  TestDrawerComponent,
   TestFilterComponent,
   TestTableComponent
 ];
