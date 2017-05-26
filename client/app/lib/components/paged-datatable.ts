@@ -16,6 +16,7 @@ import { QueryList } from '@angular/core';
 import { SortableColumnComponent } from '../components/sortable-column';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
+import { config } from '../config';
 
 /**
  * Sortable, pageable data table encapsulation
@@ -36,7 +37,7 @@ export class PagedDataTableComponent implements AfterContentInit, OnChanges, OnI
   @Input() disabled: boolean;
   @Input() page: PagedData;
   @Input() stickyKey: string;
-  @Input() stride = 100;
+  @Input() stride = config.pagedDataTableDefaultStride;
   @Input() loading: boolean;
 
   selected = new Subject<PagedDataItem>();

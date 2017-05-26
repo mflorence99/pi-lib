@@ -15,7 +15,13 @@ export class NavigatorItem {
               public faIcon: string,
               public tag: string,
               public group = '',
+              public nodeFinders: NavigatorItemNodeFinder[] = [],
               public options: NavigatorItemOptions = {}) { }
+}
+
+export class NavigatorItemNodeFinder {
+  selector: string;
+  text: string;
 }
 
 export class NavigatorItemOptions {
@@ -80,7 +86,6 @@ export class NavigatorComponent {
 })
 
 export class NavigatorGroupComponent {
-
   @Input() group = '';
   @Input() items: NavigatorItem[] = [];
   @Input() navigatorState: navigator.NavigatorState = navigator.initialState;
@@ -94,5 +99,23 @@ export class NavigatorGroupComponent {
   expando(group: string) {
     this.store.dispatch(expando(group));
   }
+
+}
+
+/**
+ * Navigator item.
+ */
+
+@Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'lib-navigator-item',
+  styleUrls: ['navigator-item.less'],
+  templateUrl: 'navigator-item.html'
+})
+
+export class NavigatorItemComponent {
+  @Input() item: NavigatorItem;
+  @Input() navigatorState: navigator.NavigatorState;
+  @Input() routerState: router.RouterState;
 
 }

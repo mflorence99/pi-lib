@@ -5,7 +5,9 @@
 
 export class Config {
 
-  dummy = true;
+  noDataOnPageDefaultIcon = 'info-circle';
+  nodeFinderFlashTime = 1000;
+  pagedDataTableDefaultStride = 100;
 
 }
 

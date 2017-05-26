@@ -1,0 +1,40 @@
+:host {
+  display: block;
+}
+
+paper-button {
+  display: block;
+  font-size: 16px;
+  text-transform: none;
+  width: calc(~'100% - 12px');
+
+  &.selected {
+    background-color: var(--navigator-hilite-background-color);
+    color: var(--navigator-hilite-text-color);
+  }
+
+  i {
+    transform: rotate(0);
+    transition: transform 0.25s ease-in-out;
+
+    &.up {
+      transform: rotate(0);
+    }
+
+    &.down {
+      transform: rotate(180deg);
+    }
+
+    &.selected {
+      color: var(--primary-color);
+    }
+
+  }
+
+}
+
+lib-node-finder {
+  display: block;
+  margin-left: 36px;
+
+}

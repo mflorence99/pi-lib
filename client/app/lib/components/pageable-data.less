@@ -16,9 +16,9 @@ nav {
 
     .background {
       align-items: center;
-      background-color: #1c2f38;
-      border-left: 24px solid #1c2f38;
-      border-right: 24px solid #1c2f38;
+      background-color: var(--navigator-background-color);
+      border-left: 24px solid var(--navigator-background-color);
+      border-right: 24px solid var(--navigator-background-color);
       display: flex;
       flex-direction: column;
       margin: 0 -16px;
@@ -34,13 +34,13 @@ nav {
         width: 120px;
 
         .number {
-          color: #8db3c7;
+          color: var(--navigator-text-color);
           font-size: 32px;
           transition: color 0.25s;
         }
 
         .active {
-          color: #eef6f6;
+          color: var(--navigator-hilite-text-color);
           font-size: 44px;
         }
 

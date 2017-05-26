@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
+import { config } from '../config';
+
 /**
  * Standard treatment for "no data to display" UI.
  *
@@ -19,6 +21,6 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 })
 
 export class NoDataOnPageComponent {
-  @Input() faIcon = 'info-circle';
+  @Input() faIcon = config.noDataOnPageDefaultIcon;
 
 }

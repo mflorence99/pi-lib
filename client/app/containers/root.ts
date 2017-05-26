@@ -31,7 +31,10 @@ const NAVIGATOR_ITEMS: NavigatorItem[] = [
   new NavigatorItem('/charts', 'area-chart', 'Google Charts', 'Components'),
   new NavigatorItem('/drawers', 'window-maximize', 'Drawer Panels', 'Components'),
   new NavigatorItem('/forms', 'th', 'Polymer Forms', 'Components'),
-  new NavigatorItem('/markdown', 'code', 'Markdown', 'Components'),
+  new NavigatorItem('/markdown', 'code', 'Markdown', 'Components', [
+    {selector: 'lib-markdown h3', text: 'Installation'},
+    {selector: 'lib-markdown h3', text: 'Examples'}
+  ]),
   new NavigatorItem('/pipes', 'filter', 'Miscellaneous Pipes', 'Components'),
 
   // pagination

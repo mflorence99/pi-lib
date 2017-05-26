@@ -16,6 +16,11 @@
       border-radius: 4px;
     }
 
+    @keyframes node-finder-flasher {
+      0%, 100% { background-color: white; }
+      25%, 75% { background-color: #fff9c4; }
+    }
+
     html {
 
       --primary-text-color: var(--paper-grey-900);
@@ -200,6 +205,10 @@
 
     lib-markdown table tr:nth-child(2n) {
       background-color: var(--paper-grey-100);
+    }
+
+    .node-finder-flash {
+      animation: node-finder-flasher 1s ease-in-out;
     }
 
     p {

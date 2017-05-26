@@ -28,6 +28,7 @@ export * from './components/gravatar';
 export * from './components/markdown';
 export * from './components/multi-selector';
 export * from './components/navigator';
+export * from './components/node-finder';
 export * from './components/no-data-on-page';
 export * from './components/pageable-data';
 export * from './components/paged-datatable';
@@ -59,7 +60,9 @@ const COMPONENTS = [
   lib.MultiSelectorControlDirective,
   lib.NavigatorComponent,
   lib.NavigatorGroupComponent,
+  lib.NavigatorItemComponent,
   lib.NoDataOnPageComponent,
+  lib.NodeFinderComponent,
   lib.PageableDataComponent,
   lib.PagedDataTableComponent,
   lib.PolymerAppComponent,

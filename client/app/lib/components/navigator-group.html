@@ -13,30 +13,11 @@
 <iron-collapse
   [opened]="!group || navigatorState.expando[group]">
 
-  <paper-button
-    [ngClass]="{selected: item.path === routerState.path}"
+  <lib-navigator-item
     *ngFor="let item of items"
-    class="item">
-
-    <div
-      [routerLink]="item.path"
-      fxFlexLayout="row"
-      fxLayoutAlign="space-between center">
-
-      <div>
-        <i
-          [ngClass]="{selected: item.path === routerState.path}"
-          class="fa fa-fw fa-{{item.faIcon}}">
-        </i>
-        {{item.tag}}
-      </div>
-
-      <div *ngIf="navigatorState.badges[item.path]">
-        <paper-badge [label]="navigatorState.badges[item.path]"></paper-badge>
-      </div>
-
-    </div>
-
-  </paper-button>
+    [item]="item"
+    [navigatorState]="navigatorState"
+    [routerState]="routerState">
+  </lib-navigator-item>
 
 </iron-collapse>
