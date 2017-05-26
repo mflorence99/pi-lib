@@ -8,7 +8,6 @@ import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class ConfiguratorService {
-
   mediaSizeBreaks = new Subject<MediaSizeBreaks>();
   navigatorItems = new Subject<NavigatorItem[]>();
 
