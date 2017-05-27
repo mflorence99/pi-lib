@@ -67,7 +67,8 @@ export class NavigatorComponent {
   @Input() set navigatorItems(items: NavigatorItem[]) {
     if (items) {
       this.itemsByGroup = items.reduce((acc, item) => {
-        (acc[item.options.group] = (acc[item.options.group] || [])).push(item);
+        const group = item.options.group || '';
+        (acc[group] = (acc[group] || [])).push(item);
         return acc;
       }, new NavigatorGroupMap());
       this.itemsByPath = items.reduce((acc, item) => {
