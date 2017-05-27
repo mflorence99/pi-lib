@@ -6,16 +6,40 @@
     fxFlexLayout="row"
     fxLayoutAlign="space-between center">
 
-    <div>
-      <i
-        [ngClass]="{selected: item.path === routerState.path}"
-        class="fa fa-fw fa-{{item.faIcon}}">
-      </i>
-      {{item.tag | libBreakable}}
+    <div
+      fxFlexLayout="row"
+      fxLayoutAlign="start start"
+      fxLayoutGap="4px">
+      <div>
+        <i
+          [ngClass]="{selected: item.path === routerState.path}"
+          class="fa fa-fw fa-{{item.faIcon}}">
+        </i>
+      </div>
+      <div>{{item.tag | libBreakable}}</div>
     </div>
 
-    <div *ngIf="navigatorState.badges[item.path]">
-      <paper-badge [label]="navigatorState.badges[item.path]"></paper-badge>
+    <div
+      *ngIf="item.options.annotations"
+      fxLayout="row"
+      fxLayoutAlign="end center"
+      fxLayoutWrap>
+
+      <div
+        *ngFor="let annotation of item.options.annotations"
+        [ngStyle]="annotation.style"
+        [ngClass]="annotation.clazz"
+        class="annotation">
+        {{annotation.text}}
+      </div>
+
+    </div>
+
+    <div
+      *ngIf="navigatorState.badges[item.path]">
+      <paper-badge
+        [label]="navigatorState.badges[item.path]">
+      </paper-badge>
     </div>
 
   </div>
@@ -23,13 +47,13 @@
 </paper-button>
 
 <iron-collapse
-  [opened]="item.path === routerState.path"
-  #nodeFinders>
+  *ngIf="item.options.nodeFinders"
+  [opened]="item.path === routerState.path">
 
   <lib-node-finder
     [selector]="finder.selector"
     [text]="finder.text"
-    *ngFor="let finder of item.nodeFinders">
+    *ngFor="let finder of item.options.nodeFinders">
   </lib-node-finder>
 
 </iron-collapse>

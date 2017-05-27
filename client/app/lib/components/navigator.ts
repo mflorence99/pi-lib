@@ -14,9 +14,13 @@ export class NavigatorItem {
   constructor(public path: string,
               public faIcon: string,
               public tag: string,
-              public group = '',
-              public nodeFinders: NavigatorItemNodeFinder[] = [],
               public options: NavigatorItemOptions = {}) { }
+}
+
+export class NavigatorItemAnnotation {
+  clazz?: string;
+  style?: any;
+  text: string;
 }
 
 export class NavigatorItemNodeFinder {
@@ -25,7 +29,9 @@ export class NavigatorItemNodeFinder {
 }
 
 export class NavigatorItemOptions {
-  something?: boolean;
+  group?: string;
+  annotations?: NavigatorItemAnnotation[];
+  nodeFinders?: NavigatorItemNodeFinder[];
 }
 
 export class NavigatorGroupMap {
@@ -61,7 +67,7 @@ export class NavigatorComponent {
   @Input() set navigatorItems(items: NavigatorItem[]) {
     if (items) {
       this.itemsByGroup = items.reduce((acc, item) => {
-        (acc[item.group] = (acc[item.group] || [])).push(item);
+        (acc[item.options.group] = (acc[item.options.group] || [])).push(item);
         return acc;
       }, new NavigatorGroupMap());
       this.itemsByPath = items.reduce((acc, item) => {

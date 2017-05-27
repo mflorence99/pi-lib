@@ -27,23 +27,34 @@ const NAVIGATOR_ITEMS: NavigatorItem[] = [
 
   // general components
 
-  new NavigatorItem('/buttons', 'window-restore', 'Buttons & Dialogs', 'Components'),
-  new NavigatorItem('/charts', 'area-chart', 'Google Charts', 'Components'),
-  new NavigatorItem('/drawers', 'window-maximize', 'Drawer Panels', 'Components'),
-  new NavigatorItem('/forms', 'th', 'Polymer Forms', 'Components'),
-  new NavigatorItem('/markdown', 'code', 'Markdown', 'Components', [
-    {selector: 'lib-markdown h3', text: 'Installation'},
-    {selector: 'lib-markdown h3', text: 'Examples'}
-  ]),
-  new NavigatorItem('/pipes', 'filter', 'Miscellaneous Pipes', 'Components'),
+  new NavigatorItem('/buttons', 'window-restore', 'Buttons & Dialogs',
+    {group: 'Components'}),
+  new NavigatorItem('/charts', 'area-chart', 'Google Charts',
+    {group: 'Components', annotations: [
+      {style: {color: 'red'}, text: 'GET'},
+      {clazz: 'x', text: 'PUT'},
+      {style: {color: 'green'}, text: 'DELETE'}]
+    }),
+  new NavigatorItem('/drawers', 'window-maximize', 'Drawer Panels',
+    {group: 'Components'}),
+  new NavigatorItem('/forms', 'th', 'Polymer Forms',
+    {group: 'Components'}),
+  new NavigatorItem('/markdown', 'code', 'Markdown',
+    {group: 'Components', nodeFinders: [
+      {selector: 'lib-markdown h3', text: 'Installation'},
+      {selector: 'lib-markdown h3', text: 'Examples'}]
+  }),
+  new NavigatorItem('/pipes', 'filter', 'Miscellaneous Pipes',
+    {group: 'Components'}),
 
   // pagination
 
-  new NavigatorItem('/pagination', 'sort-amount-asc', 'All-in-one Test', 'Pagination & Sort'),
+  new NavigatorItem('/pagination', 'sort-amount-asc', 'All-in-one Test',
+    {group: 'Pagination & Sort'}),
 
   // reducers
 
-  new NavigatorItem('/user', 'filter', 'User State', 'Reducers')
+  new NavigatorItem('/user', 'filter', 'User State', {group: 'Reducers'})
 ];
 
 @Component({
