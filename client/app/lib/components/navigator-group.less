@@ -6,4 +6,19 @@
 paper-button {
   display: block;
   width: calc(~'100% - 12px');
+
+  i {
+    transform: rotate(0);
+    transition: transform 0.25s ease-in-out;
+
+    &.up {
+      transform: rotate(0);
+    }
+
+    &.down {
+      transform: rotate(180deg);
+    }
+
+  }
+
 }
