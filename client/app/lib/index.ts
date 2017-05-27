@@ -36,7 +36,7 @@ export * from './components/polymer-app';
 export * from './components/polymer-form';
 export * from './components/route-animation';
 export * from './components/sortable-column';
-export * from './containers/404-page';
+export * from './pages/404-page';
 export * from './pipes/breakable';
 export * from './pipes/ellipsize';
 export * from './pipes/jsonify';
