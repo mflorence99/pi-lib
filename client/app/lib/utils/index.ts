@@ -36,6 +36,24 @@ export function deepCopy<T>(obj: T): T {
 }
 
 /**
+ * Decode a key that was used in a route
+ *
+ * NOTE: we need characters that are NOT URL encoded
+ */
+export function decodeRoute(key: string): string {
+  return atob(key.replace(/_/g, '='));
+}
+
+/**
+ * Encode a key so it can be used in a route
+ *
+ * NOTE: we need characters that are NOT URL encoded
+ */
+export function encodeRoute(key: string): string {
+  return btoa(key).replace(/=/g, '_');
+}
+
+/**
  * Extract English description of HTTP error from response
  */
 export function handleHttpError(error: Response): string {
