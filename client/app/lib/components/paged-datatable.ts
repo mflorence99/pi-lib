@@ -88,7 +88,7 @@ export class PagedDataTableComponent implements AfterContentInit, OnChanges, OnI
 
   ngOnInit() {
     if (this.stickyKey)
-      this.model = <any>this.lstor.get(`${this.stickyKey}.state`);
+      this.model = <any>this.lstor.get(`${this.stickyKey}.state`) || this.model;
     // but we always start from the beginning
     this.model.index = 0;
     this.model.stride = this.stride;
