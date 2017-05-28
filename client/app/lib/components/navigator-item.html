@@ -1,8 +1,8 @@
 <paper-button
+  (click)="navigate(item)"
   [ngClass]="{selected: item.path === routerState.path}">
 
   <div
-    [routerLink]="item.path"
     fxFlexLayout="row"
     fxLayoutAlign="space-between center">
 
@@ -41,6 +41,11 @@
         [label]="navigatorState.badges[item.path]">
       </paper-badge>
     </div>
+
+    <paper-tooltip
+      *ngIf="item.options.tooltip">
+      {{item.options.tooltip}}
+    </paper-tooltip>
 
   </div>
 

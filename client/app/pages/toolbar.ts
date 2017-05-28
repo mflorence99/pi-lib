@@ -1,5 +1,7 @@
+import * as page from '../lib/reducers/page';
+import * as user from '../lib/reducers/user';
+
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { UserState, initialState } from '../lib/reducers/user';
 
 import { AppState } from '../reducers';
 import { Store } from '@ngrx/store';
@@ -17,7 +19,8 @@ import { toggleSidebar } from '../lib/actions/window';
 })
 
 export class ToolbarComponent {
-  @Input() userState: UserState = initialState;
+  @Input() pageState: page.PageState = page.initialState;
+  @Input() userState: user.UserState = user.initialState;
 
   /** ctor */
   constructor(private store: Store<AppState>) { }

@@ -2,14 +2,22 @@
     fxLayout="row"
     fxLayoutAlign="space-between center">
 
-    <paper-icon-button
-      (click)="toggleSidebar()"
-      icon="menu">
-    </paper-icon-button>
+    <div
+      fxLayout="row"
+      fxLayoutAlign="start center"
+      fxLayoutGap="16px">
 
-    <h1>
-      <code>pi-lib</code> Demo App and Test Bed
-    </h1>
+      <paper-icon-button
+        (click)="toggleSidebar()"
+        icon="menu">
+      </paper-icon-button>
+
+      <h2>
+        <code>pi-lib</code> Demo App
+        <span *ngIf="pageState.title"> &bull; {{pageState.title}}</span>
+      </h2>
+
+    </div>
 
     <lib-gravatar
       [src]="userState.gravatar">

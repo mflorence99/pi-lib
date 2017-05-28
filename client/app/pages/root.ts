@@ -1,3 +1,4 @@
+import * as page from '../lib/reducers/page';
 import * as router from '@ngrx/router-store';
 import * as user from '../lib/reducers/user';
 import * as window from '../lib/reducers/window';
@@ -28,33 +29,36 @@ const NAVIGATOR_ITEMS: NavigatorItem[] = [
   // general components
 
   new NavigatorItem('/buttons', 'window-restore', 'Buttons & Dialogs',
-    {group: 'Components'}),
+    {group: 'Components', tooltip: 'A gallery of all button, dialog and card styles'}),
   new NavigatorItem('/charts', 'area-chart', 'Google Charts',
-    {group: 'Components', annotations: [
+    {group: 'Components', tooltip: 'Sample Google Chart with arbitrary annotations',
+     annotations: [
       {style: {color: 'red'}, text: 'GET'},
       {clazz: 'x', text: 'PUT'},
       {style: {color: 'green'}, text: 'DELETE'}]
     }),
   new NavigatorItem('/drawers', 'window-maximize', 'Drawer Panels',
-    {group: 'Components'}),
+    {group: 'Components', tooltip: 'Test page for all drawer styles'}),
   new NavigatorItem('/forms', 'th', 'Polymer Forms',
-    {group: 'Components'}),
+    {group: 'Components', tooltip: 'Test page for forms and all possible components'}),
   new NavigatorItem('/markdown', 'code', 'Markdown',
-    {group: 'Components', nodeFinders: [
+    {group: 'Components', tooltip: 'Markdown test page with node finders',
+     nodeFinders: [
       {selector: 'lib-markdown h3', text: 'Installation'},
       {selector: 'lib-markdown h3', text: 'Examples'}]
   }),
   new NavigatorItem('/pipes', 'filter', 'Miscellaneous Pipes',
-    {group: 'Components'}),
+    {group: 'Components', tooltip: 'Test page for all pipes'}),
 
   // pagination
 
   new NavigatorItem('/pagination', 'sort-amount-asc', 'All-in-one Test',
-    {group: 'Pagination & Sort'}),
+    {group: 'Pagination & Sort', tooltip: 'Test page for all aspects of pagination'}),
 
   // reducers
 
-  new NavigatorItem('/user', 'filter', 'User State', {group: 'Reducers'})
+  new NavigatorItem('/user', 'filter', 'User State',
+    {group: 'Reducers', tooltip: 'Test user state by manual entry of parameters'})
 ];
 
 @Component({
@@ -66,6 +70,7 @@ const NAVIGATOR_ITEMS: NavigatorItem[] = [
 
 @AutoUnsubscribe()
 export class RootComponent {
+  pageState: Observable<page.PageState>;
   routerState: Observable<router.RouterState>;
   userState: Observable<user.UserState>;
   windowState: Observable<window.WindowState>;
@@ -75,6 +80,7 @@ export class RootComponent {
               env: EnvService,
               store: Store<AppState>) {
     console.log('%c <lib-root> loading', 'color: blue', config, env);
+    this.pageState = store.select(state => state.page);
     this.routerState = store.select(state => state.router);
     this.userState = store.select(state => state.user);
     this.windowState = store.select(state => state.window);

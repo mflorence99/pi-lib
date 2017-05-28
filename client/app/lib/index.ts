@@ -8,6 +8,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { LaunchURLEffects } from './effects/launch-url';
 import { LogEffects } from './effects/log';
 import { NavigatorEffects } from './effects/navigator';
+import { PageEffects } from './effects/page';
 import { RouterEffects } from './effects/router';
 import { RouterModule } from '@angular/router';
 import { UserEffects } from './effects/user';
@@ -108,6 +109,7 @@ const SERVICES = [
     EffectsModule.run(LaunchURLEffects),
     EffectsModule.run(LogEffects),
     EffectsModule.run(NavigatorEffects),
+    EffectsModule.run(PageEffects),
     EffectsModule.run(RouterEffects),
     EffectsModule.run(UserEffects),
     EffectsModule.run(WindowEffects),

@@ -5,6 +5,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 import { expando } from '../actions/navigator';
+import { go } from '@ngrx/router-store';
+import { title } from '../actions/page';
 
 /**
  * Model navigator
@@ -32,6 +34,7 @@ export class NavigatorItemOptions {
   group?: string;
   annotations?: NavigatorItemAnnotation[];
   nodeFinders?: NavigatorItemNodeFinder[];
+  tooltip?: string;
 }
 
 export class NavigatorGroupMap {
@@ -124,5 +127,15 @@ export class NavigatorItemComponent {
   @Input() item: NavigatorItem;
   @Input() navigatorState: navigator.NavigatorState;
   @Input() routerState: router.RouterState;
+
+  // we should strongly-type the Store, but we can't because it belongs
+  // to someone else and we're in a common library
+  constructor(private store: Store<any>) { }
+
+  /** Nagigate to an item */
+  navigate(item: NavigatorItem) {
+    this.store.dispatch(go([item.path]));
+    this.store.dispatch(title(item.tag));
+  }
 
 }
