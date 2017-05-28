@@ -40,11 +40,11 @@ export class PagedDataTableComponent implements AfterContentInit, OnChanges, OnI
   @Input() stride = config.pagedDataTableDefaultStride;
   @Input() loading: boolean;
 
+  model = new PagedDataState();
   selected = new Subject<PagedDataItem>();
   state = new Subject<PagedDataState>();
 
   private changes: Subscription;
-  private model = new PagedDataState();
   private selectedItem: PagedDataItem;
   private sortListeners: Subscription;
 
