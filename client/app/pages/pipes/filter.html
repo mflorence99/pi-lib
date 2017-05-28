@@ -1,0 +1,42 @@
+<lib-polymer-form
+  #form
+  focus="number"
+  fxLayout="row"
+  fxLayoutAlign="end start"
+  fxLayoutGap="16px"
+  [initialState]="{}"
+  stickyKey="lib.test-filter">
+
+  <paper-input
+    auto-validate
+    error-message="Number is required"
+    label="Test Number"
+    name="number"
+    libPolymerControl
+    prevent-invalid-input
+    required
+    type="number"
+    [sticky]="true">
+  </paper-input>
+
+  <vaadin-date-picker
+    auto-validate
+    error-message="Date is required"
+    label="UTC Date"
+    libPolymerControl
+    name="date"
+    prevent-invalid-input
+    required
+    [sticky]="true">
+  </vaadin-date-picker>
+
+  <paper-button
+    (click)="form.submit()"
+    [disabled]="!form.isValid()"
+    fxFlexAlign="center"
+    primary
+    raised>
+    Filter
+  </paper-button>
+
+</lib-polymer-form>

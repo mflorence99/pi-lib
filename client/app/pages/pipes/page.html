@@ -1,9 +1,11 @@
 <main>
 
-  <p><b>NOTE</b> TBD until vaadin-date available.</p>
+  <lib-test-filter
+    #testFilter>
+  </lib-test-filter>
 
-  <p>{{10000 | libDuration:'minute'}}
-
-  <p>{{1493701301751 | libFromUnixTime | libUTCFormat:'YYYY-MM-DD HH:mm'}}
+  <lib-test-pipes
+    [filter]="testFilter.form.stream | async">
+  </lib-test-pipes>
 
 </main>

@@ -4,13 +4,17 @@ import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { PiModule } from '../../lib';
 import { PipesPageComponent } from './page';
+import { TestFilterComponent } from './filter';
+import { TestPipesComponent } from './pipes';
 
 /**
  * Pipes page module
  */
 
 const COMPONENTS = [
-  PipesPageComponent
+  PipesPageComponent,
+  TestFilterComponent,
+  TestPipesComponent
 ];
 
 const MODULES = [

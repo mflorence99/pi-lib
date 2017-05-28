@@ -1,0 +1,173 @@
+<section
+  *ngIf="valid">
+
+  <table
+    standard>
+
+    <thead>
+      <tr>
+        <th
+          *ngFor="let h of header">
+          {{h}}
+        </th>
+        <th>Select line to see details</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr
+        (click)="annotate('libUTCFormat', 'YYYY-MM-DD HH:mm')"
+        [class.selected]="selected === 'libUTCFormat'">
+        <td>
+          <code>libUTCFormat</code>
+        </td>
+        <td>
+          {{date | libFromUnixTime | libUTCFormat:"YYYY-MM-DD HH:mm"}}
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>See date represented in various UTC formats</td>
+      </tr>
+
+      <tr
+        (click)="annotate('libDateFormat', 'YYYY-MM-DD HH:mm', 'D MMM, YYYY hh:mm a', 'dddd MMMM Do, YYYY')"
+        [class.selected]="selected === 'libDateFormat'">
+        <td>
+          <code>libDateFormat</code>
+        </td>
+        <td>
+          {{date | libFromUnixTime | libDateFormat:"YYYY-MM-DD HH:mm"}}
+        </td>
+        <td>
+          {{date | libFromUnixTime | libDateFormat:"D MMM, YYYY hh:mm a"}}
+        </td>
+        <td>
+          {{date | libFromUnixTime | libDateFormat:"dddd MMMM Do, YYYY"}}
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Seed date represented in various formats</td>
+      </tr>
+
+      <tr
+        (click)="annotate('amDuration', 'years', 'months', 'days', 'hours', 'minutes', 'seconds')"
+        [class.selected]="selected === 'libDuration'">
+        <td>
+          <code>libDuration</code>
+        </td>
+        <td>
+          {{number | libDuration:"years"}}
+        </td>
+        <td>
+          {{number | libDuration:"months"}}
+        </td>
+        <td>
+          {{number | libDuration:"days"}}
+        </td>
+        <td>
+          {{number | libDuration:"hours"}}
+        </td>
+        <td>
+          {{number | libDuration:"minutes"}}
+        </td>
+        <td>
+          {{number | libDuration:"seconds"}}
+        </td>
+        <td>Seed number represented as various time units</td>
+      </tr>
+
+      <tr
+        (click)="annotate('libNumeral', '0.0a', '0.0b', '0o')"
+        [class.selected]="selected === 'libNumeral'">
+        <td>
+          <code>libNumeral</code>
+        </td>
+        <td>
+          {{number | libNumeral:"0.0a"}}
+        </td>
+        <td>
+          {{number | libNumeral:"0.0b"}}
+        </td>
+        <td>
+          {{number | libNumeral:"0o"}}
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Seed number represented in various numeral formats</td>
+      </tr>
+
+    </tbody>
+
+  </table>
+
+  <table
+    standard>
+
+    <thead>
+      <tr>
+        <th></th>
+        <th>Original</th>
+        <th>Filtered</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr>
+        <td><code>libBreakable</code></td>
+        <td>
+          This_long_string_with_underscores_is_now_breakable
+        </td>
+        <td>
+          <div style="max-width: 300px">
+            {{'This_long_string_with_underscores_is_now_breakable' | libBreakable}}
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td><code>libBreakable</code></td>
+        <td>
+          This long string has been truncated with ellipsis at 32 characters
+        </td>
+        <td>
+          {{'This long string has been truncated with ellipsis at 32 characters' | libEllipsize:32}}
+        </td>
+      </tr>
+
+      <tr>
+        <td><code>libJSONify</code></td>
+        <td>
+          &#123;an: 'object', can: 'be', viewed: ['as', 'a', 'string']&#125;
+        </td>
+        <td>
+          {{{an: 'object', can: 'be', viewed: ['as', 'a', 'string']} | libJSONify}}
+        </td>
+      </tr>
+
+      <tr>
+        <td><code>libLinkify</code></td>
+        <td>
+          These URLs: http://www.google.com, www.washingtonpost.com and mflo999@gmail.com have been linkified!
+        </td>
+        <td
+          [innerHTML]="'These URLs: http://www.google.com, www.washingtonpost.com and mflo999@gmail.com have been linkified!' | libLinkify">
+        </td>
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</section>
+
+<lib-no-data-on-page
+  *ngIf="!valid">
+  Enter a seed date and number to get started
+</lib-no-data-on-page>
