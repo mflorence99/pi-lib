@@ -43,7 +43,7 @@ export class PageEffects {
     const ix = orig.indexOf(' - ');
     if (ix === -1)
       this.title.setTitle(`${orig} - ${text}`);
-    else this.title.setTitle(`${orig.substring(ix)} - ${text}`);
+    else this.title.setTitle(`${orig.substring(0, ix)} - ${text}`);
   }
 
 }
