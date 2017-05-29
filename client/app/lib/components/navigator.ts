@@ -18,7 +18,7 @@ export class NavigatorItem {
               public faIcon: string,
               public tag: string,
               public options: NavigatorItemOptions = {}) { }
-              
+
 }
 
 export class NavigatorItemAnnotation {
@@ -138,7 +138,9 @@ export class NavigatorItemComponent {
   navigate(item: NavigatorItem) {
     this.store.dispatch(go([item.path]));
     this.store.dispatch(page.reset());
-    this.store.dispatch(page.statusText(`${item.tag} ... ${item.options.tooltip}`));
+    if (item.options.tooltip)
+      this.store.dispatch(page.statusText(`${item.tag} ... ${item.options.tooltip}`));
+    else this.store.dispatch(page.statusText(item.tag));
     this.store.dispatch(page.title(item.tag));
   }
 
