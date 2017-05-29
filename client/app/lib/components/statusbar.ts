@@ -1,4 +1,4 @@
-import * as page from '../../lib/reducers/page';
+import * as page from '../reducers/page';
 
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
