@@ -37,6 +37,7 @@ export * from './components/polymer-app';
 export * from './components/polymer-form';
 export * from './components/route-animation';
 export * from './components/sortable-column';
+export * from './components/statusbar';
 export * from './pages/404-page';
 export * from './pipes/breakable';
 export * from './pipes/ellipsize';
@@ -70,7 +71,8 @@ const COMPONENTS = [
   lib.PolymerControlDirective,
   lib.PolymerFormComponent,
   lib.RouteAnimationComponent,
-  lib.SortableColumnComponent
+  lib.SortableColumnComponent,
+  lib.StatusbarComponent
 ];
 
 const PIPES = [

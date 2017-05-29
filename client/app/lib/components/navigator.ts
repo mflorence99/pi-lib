@@ -1,4 +1,5 @@
 import * as navigator from '../reducers/navigator';
+import * as page from '../actions/page';
 import * as router from '@ngrx/router-store';
 
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
@@ -6,17 +7,18 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { expando } from '../actions/navigator';
 import { go } from '@ngrx/router-store';
-import { title } from '../actions/page';
 
 /**
  * Model navigator
  */
 
 export class NavigatorItem {
+
   constructor(public path: string,
               public faIcon: string,
               public tag: string,
               public options: NavigatorItemOptions = {}) { }
+              
 }
 
 export class NavigatorItemAnnotation {
@@ -132,10 +134,12 @@ export class NavigatorItemComponent {
   // to someone else and we're in a common library
   constructor(private store: Store<any>) { }
 
-  /** Nagigate to an item */
+  /** Navigate to an item */
   navigate(item: NavigatorItem) {
     this.store.dispatch(go([item.path]));
-    this.store.dispatch(title(item.tag));
+    this.store.dispatch(page.reset());
+    this.store.dispatch(page.statusText(`${item.tag} ... ${item.options.tooltip}`));
+    this.store.dispatch(page.title(item.tag));
   }
 
 }

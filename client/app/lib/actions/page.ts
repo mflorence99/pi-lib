@@ -4,6 +4,7 @@ import { unique } from '../utils';
 export const ActionTypes = {
   NOOP:          unique('[Page] Noop'),
   NUM_RESULTS:   unique('[Page] Set numResults'),
+  RESET:         unique('[Page] Reset'),
   STATUS_TEXT:   unique('[Page] Set statusText'),
   TITLE:         unique('[Page] Set title'),
 };
@@ -16,6 +17,11 @@ export class NoopAction implements Action {
 export class NumResultsAction implements Action {
   type = ActionTypes.NUM_RESULTS;
   constructor(public payload: number) { }
+}
+
+export class ResetAction implements Action {
+  type = ActionTypes.RESET;
+  constructor(public payload: any = null) { }
 }
 
 export class StatusTextAction implements Action {
@@ -31,6 +37,7 @@ export class TitleAction implements Action {
 export type Actions
   = NoopAction
   | NumResultsAction
+  | ResetAction
   | StatusTextAction
   | TitleAction;
 
@@ -45,6 +52,10 @@ export function noop(): NoopAction {
 
 export function numResults(count: number): NumResultsAction {
   return new NumResultsAction(count);
+}
+
+export function reset(): ResetAction {
+  return new ResetAction();
 }
 
 export function statusText(text: string): StatusTextAction {

@@ -1,0 +1,13 @@
+<footer
+  fxFlexFill
+  fxLayout="row"
+  fxLayoutAlign="space-between center">
+
+  <div>{{pageState.statusText}}</div>
+
+  <div
+    *ngIf="pageState.numResults !== null">
+    {{pageState.numResults | i18nPlural:{"=0": "No results", "=1": "One result", "other": "# results"} }}
+  </div>
+
+</footer>

@@ -6,6 +6,7 @@ main {
 
   @cxAside: 240px;
   @cyToolbar: 60px;
+  @cyStatusbar: 24px;
 
   aside {
     height: 100%;
@@ -35,6 +36,15 @@ main {
       width: calc(~'100% - @{cxAside}');
     }
 
+    lib-statusbar {
+      height: @cyStatusbar;
+
+      &.withPrinter {
+        display: none;
+      }
+
+    }
+
     lib-toolbar {
       height: @cyToolbar;
 
@@ -45,7 +55,7 @@ main {
     }
 
     .content {
-      height: calc(~'100% - @{cyToolbar}');
+      height: calc(~'100% - @{cyStatusbar} - @{cyToolbar}');
 
       &.withPrinter {
         height: 100%;

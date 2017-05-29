@@ -7,9 +7,9 @@ export class PageState {
 };
 
 export const initialState: PageState = {
-  numResults: 0,
-  statusText: '',
-  title: ''
+  numResults: null,
+  statusText: null,
+  title: null
 };
 
 export function reducer(state = initialState,
@@ -18,6 +18,9 @@ export function reducer(state = initialState,
 
     case page.ActionTypes.NUM_RESULTS:
       return Object.assign({}, state, {numResults: action.payload});
+
+    case page.ActionTypes.RESET:
+      return Object.assign({}, initialState);
 
     case page.ActionTypes.STATUS_TEXT:
       return Object.assign({}, state, {statusText: action.payload});

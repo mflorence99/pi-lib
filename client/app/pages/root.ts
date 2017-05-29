@@ -28,37 +28,59 @@ const NAVIGATOR_ITEMS: NavigatorItem[] = [
 
   // general components
 
-  new NavigatorItem('/buttons', 'window-restore', 'Buttons & Dialogs',
-    {group: 'Components', tooltip: 'A gallery of all button, dialog and card styles'}),
-  new NavigatorItem('/charts', 'area-chart', 'Google Charts',
-    {group: 'Components', tooltip: 'Sample Google Chart with arbitrary annotations',
-     annotations: [
+  new NavigatorItem('/buttons', 'window-restore', 'Buttons & Dialogs', {
+    group: 'Components',
+    tooltip: 'A gallery of all button, dialog and card styles'
+  }),
+
+  new NavigatorItem('/charts', 'area-chart', 'Google Charts', {
+    group: 'Components',
+    tooltip: 'Sample Google Chart with arbitrary annotations',
+    annotations: [
       {style: {color: 'red'}, text: 'GET'},
       {clazz: 'x', text: 'PUT'},
-      {style: {color: 'green'}, text: 'DELETE'}]
-    }),
-  new NavigatorItem('/drawers', 'window-maximize', 'Drawer Panels',
-    {group: 'Components', tooltip: 'Test page for all drawer styles'}),
-  new NavigatorItem('/forms', 'th', 'Polymer Forms',
-    {group: 'Components', tooltip: 'Test page for forms and all possible components'}),
-  new NavigatorItem('/markdown', 'code', 'Markdown',
-    {group: 'Components', tooltip: 'Markdown test page with node finders',
-     nodeFinders: [
-      {selector: 'lib-markdown h3', text: 'Installation'},
-      {selector: 'lib-markdown h3', text: 'Examples'}]
+      {style: {color: 'green'}, text: 'DELETE'}
+    ]
   }),
-  new NavigatorItem('/pipes', 'filter', 'Miscellaneous Pipes',
-    {group: 'Components', tooltip: 'Test page for all pipes'}),
+
+  new NavigatorItem('/drawers', 'window-maximize', 'Drawer Panels', {
+    group: 'Components',
+    tooltip: 'Test page for all drawer styles'
+  }),
+
+  new NavigatorItem('/forms', 'th', 'Polymer Forms', {
+    group: 'Components',
+    tooltip: 'Test page for forms and all possible components'
+  }),
+
+  new NavigatorItem('/markdown', 'code', 'Markdown', {
+    group: 'Components',
+    tooltip: 'Markdown test page with node finders',
+    nodeFinders: [
+      {selector: 'lib-markdown h3', text: 'Installation'},
+      {selector: 'lib-markdown h3', text: 'Examples'}
+    ]
+  }),
+
+  new NavigatorItem('/pipes', 'filter', 'Miscellaneous Pipes', {
+    group: 'Components',
+    tooltip: 'Test page for all pipes'
+  }),
 
   // pagination
 
-  new NavigatorItem('/pagination', 'sort-amount-asc', 'All-in-one Test',
-    {group: 'Pagination & Sort', tooltip: 'Test page for all aspects of pagination'}),
+  new NavigatorItem('/pagination', 'sort-amount-asc', 'All-in-one Test', {
+    group: 'Pagination & Sort',
+    tooltip: 'Test page for all aspects of pagination'
+  }),
 
   // reducers
 
-  new NavigatorItem('/user', 'filter', 'User State',
-    {group: 'Reducers', tooltip: 'Test user state by manual entry of parameters'})
+  new NavigatorItem('/user', 'filter', 'User State', {
+    group: 'Reducers',
+    tooltip: 'Test user state by manual entry of parameters'
+  })
+  
 ];
 
 @Component({
