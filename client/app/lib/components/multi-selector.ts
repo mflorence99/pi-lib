@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy } from '@angular/core';
 import { Component } from '@angular/core';
 import { Directive } from '@angular/core';
-import { DoCheck } from '@angular/core';
 import { ElementRef } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 import { HostBinding } from '@angular/core';
@@ -56,7 +55,7 @@ export class MultiSelectorControlDirective {
   templateUrl: 'multi-selector.html'
 })
 
-export class MultiSelectorComponent implements DoCheck, OnInit {
+export class MultiSelectorComponent implements OnInit {
 
   @HostBinding('class.in-focus') get inFocus() { return this.focussed; }
   @HostBinding('class.out-of-focus') get outOfFocus() { return !this.focussed; }
@@ -168,12 +167,6 @@ export class MultiSelectorComponent implements DoCheck, OnInit {
   }
 
   // lifecycle methods
-
-  ngDoCheck() {
-    const multi = this.element.nativeElement;
-    if (multi._items && (multi._items !== this.items))
-      this.items = multi._items;
-  }
 
   ngOnInit() {
     this.input = this._proxy.nativeElement;

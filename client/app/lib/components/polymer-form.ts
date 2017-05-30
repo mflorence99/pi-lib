@@ -302,6 +302,7 @@ export class PolymerFormComponent implements AfterContentInit, OnChanges {
 
   @Input() focus: string;
   @Input() initialState: any;
+  @Input() preSubmit: boolean;
   @Input() stickyKey: string;
 
   stream = new Subject<PolymerForm>();
@@ -372,6 +373,7 @@ export class PolymerFormComponent implements AfterContentInit, OnChanges {
       control.listen(this.listener.bind(this));
     });
     this.model.isValid = this.isValid();
+    this.model.submitted = this.model.isValid && this.preSubmit;
     this.newModel();
   }
 
@@ -408,7 +410,7 @@ export class PolymerFormComponent implements AfterContentInit, OnChanges {
 
   ngAfterContentInit() {
     this.reseed();
-    this.reset();
+    setTimeout(() => this.reset(), 0);
     this.ready = true;
     // reset whenever the list changes
     this.changes = this.controls.changes.subscribe(() => {
@@ -420,7 +422,7 @@ export class PolymerFormComponent implements AfterContentInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if (changes['initialState'] && this.ready) {
       this.reseed();
-      this.reset();
+      setTimeout(() => this.reset(), 0);
     }
   }
 
