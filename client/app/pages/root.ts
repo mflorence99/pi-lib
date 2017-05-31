@@ -13,6 +13,7 @@ import { NavigatorItem } from '../lib/components/navigator';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { config } from '../config';
+import { nextTick } from '../lib/utils';
 
 /**
  * pi-lib demo app root
@@ -80,7 +81,7 @@ const NAVIGATOR_ITEMS: NavigatorItem[] = [
     group: 'Reducers',
     tooltip: 'Test user state by manual entry of parameters'
   })
-  
+
 ];
 
 @Component({
@@ -107,10 +108,10 @@ export class RootComponent {
     this.userState = store.select(state => state.user);
     this.windowState = store.select(state => state.window);
     // configure the app
-    setTimeout(() => {
+    nextTick(() => {
       configurator.withMediaSizeBreaks(MEDIA_SIZE_BREAKS);
       configurator.withNavigatorItems(NAVIGATOR_ITEMS);
-    }, 0);
+    });
   }
 
 }

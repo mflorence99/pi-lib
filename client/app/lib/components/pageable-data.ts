@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { PagedData, PagedDataState } from '../services/paged-datasource';
 
+import { nextTick } from '../utils';
+
 /**
  * Paginator control for paged-datatable
  */
@@ -111,7 +113,7 @@ export class PageableDataComponent implements OnChanges {
   }
 
   private shift() {
-    setTimeout(() => {
+    nextTick(() => {
       const divs = this.numbers? this.numbers.nativeElement.querySelectorAll('div') : null;
       if (divs && divs.length) {
         let ix = 0, offset = 0;
@@ -121,7 +123,7 @@ export class PageableDataComponent implements OnChanges {
         const xlate = (this.numbers.nativeElement.offsetWidth / 2) - offset;
         this.numbers.nativeElement.style.transform = `translateX(${xlate}px)`;
       }
-    }, 0);
+    });
   }
 
 }

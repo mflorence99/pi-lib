@@ -4,6 +4,7 @@ import { AppState } from '../../reducers';
 import { PolymerForm } from '../../lib/components/polymer-form';
 import { Store } from '@ngrx/store';
 import { newUser } from '../../lib/actions/user';
+import { nextTick } from '../../lib/utils';
 
 /**
  * User controller
@@ -21,7 +22,7 @@ export class UserCtrlComponent {
 
   @Input() set userState(userState: PolymerForm) {
     if (userState && userState.submitted)
-      setTimeout(() => this.store.dispatch(newUser(userState.values)), 0);
+      nextTick(() => this.store.dispatch(newUser(userState.values)));
   }
 
   /** ctor */

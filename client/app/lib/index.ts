@@ -5,14 +5,7 @@ import {CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule} from '@angular/co
 import { CommonModule } from '@angular/common';
 import { EffectsModule } from '@ngrx/effects';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { LaunchURLEffects } from './effects/launch-url';
-import { LogEffects } from './effects/log';
-import { NavigatorEffects } from './effects/navigator';
-import { PageEffects } from './effects/page';
-import { RouterEffects } from './effects/router';
 import { RouterModule } from '@angular/router';
-import { UserEffects } from './effects/user';
-import { WindowEffects } from './effects/window';
 
 /**
  * pi-lib module definition
@@ -38,6 +31,13 @@ export * from './components/polymer-form';
 export * from './components/route-animation';
 export * from './components/sortable-column';
 export * from './components/statusbar';
+export * from './effects/launch-url';
+export * from './effects/log';
+export * from './effects/navigator';
+export * from './effects/page';
+export * from './effects/router';
+export * from './effects/user';
+export * from './effects/window';
 export * from './pages/404-page';
 export * from './pipes/breakable';
 export * from './pipes/ellipsize';
@@ -108,13 +108,13 @@ const SERVICES = [
 
   imports: [
     CommonModule,
-    EffectsModule.run(LaunchURLEffects),
-    EffectsModule.run(LogEffects),
-    EffectsModule.run(NavigatorEffects),
-    EffectsModule.run(PageEffects),
-    EffectsModule.run(RouterEffects),
-    EffectsModule.run(UserEffects),
-    EffectsModule.run(WindowEffects),
+    EffectsModule.run(lib.LaunchURLEffects),
+    EffectsModule.run(lib.LogEffects),
+    EffectsModule.run(lib.NavigatorEffects),
+    EffectsModule.run(lib.PageEffects),
+    EffectsModule.run(lib.RouterEffects),
+    EffectsModule.run(lib.UserEffects),
+    EffectsModule.run(lib.WindowEffects),
     FlexLayoutModule,
     RouterModule
   ],

@@ -71,6 +71,13 @@ export function makeEncodedSearchParams(): URLSearchParams {
 }
 
 /**
+ * Run code on next tick
+ */
+export function nextTick(f: Function): void {
+  setTimeout(f, 0);
+}
+
+/**
  * Parse initial search parameters
  */
 export function parseInitialSearchParams(): URLSearchParams {

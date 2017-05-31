@@ -14,6 +14,7 @@ import { QueryList } from '@angular/core';
 import { SimpleChanges } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
+import { nextTick } from '../utils';
 
 /**
  * lib-polymer-form model
@@ -312,7 +313,6 @@ export class PolymerFormComponent implements AfterContentInit, OnChanges {
   private model = new PolymerForm();
   private ready: boolean;
   private seed = new PolymerFormValuesMap();
-  private timer = null;
 
   /** ctor */
   constructor(private lstor: LocalStorageService) { }
@@ -397,32 +397,27 @@ export class PolymerFormComponent implements AfterContentInit, OnChanges {
   @HostListener('keydown', ['$event']) onKeyDown(event) {
     if (this.isValid()
      && (event.key === 'Enter')
-     && (event.target.tagName.toLowerCase() !== 'paper-textarea')) {
-      // we will have emitted data for the keydown inside whatever control
-      // the user was in when they hit ENTER -- we don't need it now
-      if (this.timer)
-        clearTimeout(this.timer);
+     && (event.target.tagName.toLowerCase() !== 'paper-textarea'))
       this.submit();
-    }
   }
 
   // lifecycle methods
 
   ngAfterContentInit() {
     this.reseed();
-    setTimeout(() => this.reset(), 0);
+    nextTick(() => this.reset());
     this.ready = true;
     // reset whenever the list changes
     this.changes = this.controls.changes.subscribe(() => {
       this.reseed();
-      this.reset();
+      nextTick(() => this.reset());
     });
   }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['initialState'] && this.ready) {
       this.reseed();
-      setTimeout(() => this.reset(), 0);
+      nextTick(() => this.reset());
     }
   }
 
@@ -431,7 +426,7 @@ export class PolymerFormComponent implements AfterContentInit, OnChanges {
   private listener(control: PolymerControlDirective) {
     // NOTE: we have to do this because some controls (like DATE)
     // don't set valid at the same time they set value
-    this.timer = setTimeout(() => {
+    nextTick(() => {
       this.model.isValid = this.isValid();
       this.model.submitted = false;
       this.model.values[control.name] = control.value;
@@ -443,7 +438,7 @@ export class PolymerFormComponent implements AfterContentInit, OnChanges {
        && control.canStick()
        && control.isValid())
         this.lstor.set(`${this.stickyKey}.${control.name}`, control.value);
-    }, 0);
+    });
   }
 
   private newModel() {
