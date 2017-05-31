@@ -31,6 +31,7 @@ export * from './components/polymer-form';
 export * from './components/route-animation';
 export * from './components/sortable-column';
 export * from './components/statusbar';
+export * from './directives/days-of-week';
 export * from './effects/launch-url';
 export * from './effects/log';
 export * from './effects/navigator';
@@ -53,6 +54,8 @@ export * from './utils';
 
 const COMPONENTS = [
   lib.CodeViewerComponent,
+  lib.DaysOfWeekComboDirective,
+  lib.DaysOfWeekMultiDirective,
   lib.DrawerContainerComponent,
   lib.DrawerPanelComponent,
   lib.FourOhFourPageComponent,

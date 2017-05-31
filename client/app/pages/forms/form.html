@@ -4,6 +4,12 @@
   Disable form
 </paper-checkbox>
 
+<iron-list [items]="['apple', 'pear']" as="item">
+  <ng-template polymer-template>
+    <div>XXX [[item]]</div>
+  </ng-template>
+</iron-list>
+
 <hr>
 
 <lib-polymer-form
@@ -96,6 +102,7 @@
     <vaadin-combo-box
       [items]="partners"
       [sticky]="true"
+      as="item"
       auto-validate
       error-message="Partner is always required"
       item-label-path="label"
@@ -107,6 +114,27 @@
       required>
       <iron-icon
         icon="account-box"
+        primary
+        small
+        slot="prefix"
+        style="margin-right: 8px">
+      </iron-icon>
+    </vaadin-combo-box>
+  </div>
+
+  <div class="fieldset">
+    <vaadin-combo-box
+      [sticky]="true"
+      auto-validate
+      error-message="Day of week is always required"
+      label="Day of Week"
+      libDaysOfWeek
+      libPolymerControl
+      name="dayOfWeek"
+      prevent-invalid-input
+      required>
+      <iron-icon
+        icon="date-range"
         primary
         small
         slot="prefix"
@@ -151,12 +179,12 @@
 
   <div>
     <lib-multi-selector
-      [items]="feedIDs"
       [required]="true"
       [sticky]="true"
-      errorMessage="Feed IDs are always required"
-      label="Feed IDs"
-      name="feedIDs"
+      errorMessage="Days of week are always required"
+      label="Days Of Week"
+      name="daysOfWeek"
+      libDaysOfWeek
       libPolymerControl
       separator=",">
     </lib-multi-selector>

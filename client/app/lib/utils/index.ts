@@ -93,6 +93,16 @@ export function parseInitialSearchParams(): URLSearchParams {
 }
 
 /**
+ * Convert strings to vaadin-combo-box style items
+ */
+export function toVaadinItems(tokens: string[]): {label, value}[] {
+  return tokens.reduce((acc, token) => {
+    acc.push({label: token, value: token});
+    return acc;
+  }, []);
+}
+
+/**
  * Guarantee unique string
  */
 const uniqueCache: { [label: string]: boolean } = {};

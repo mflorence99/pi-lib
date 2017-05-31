@@ -1,3 +1,4 @@
+import { AfterViewInit } from '@angular/core';
 import { ChangeDetectionStrategy } from '@angular/core';
 import { Component } from '@angular/core';
 import { Directive } from '@angular/core';
@@ -55,7 +56,7 @@ export class MultiSelectorControlDirective {
   templateUrl: 'multi-selector.html'
 })
 
-export class MultiSelectorComponent implements OnInit {
+export class MultiSelectorComponent implements AfterViewInit, OnInit {
 
   @HostBinding('class.in-focus') get inFocus() { return this.focussed; }
   @HostBinding('class.out-of-focus') get outOfFocus() { return !this.focussed; }
@@ -167,6 +168,12 @@ export class MultiSelectorComponent implements OnInit {
   }
 
   // lifecycle methods
+
+  ngAfterViewInit() {
+    this.controls.changes.subscribe(() => {
+      // NOTE: we don't seem to have to do anything, just react to new items
+    });
+  }
 
   ngOnInit() {
     this.input = this._proxy.nativeElement;
