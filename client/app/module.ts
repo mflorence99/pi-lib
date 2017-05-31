@@ -26,7 +26,6 @@ import { PaginationPageModule } from './pages/pagination/module';
 import { PiModule } from './lib';
 import { PipesPageComponent } from './pages/pipes/page';
 import { PipesPageModule } from './pages/pipes/module';
-import { PolymerModule } from '@codebakery/origami';
 import { RootComponent } from './pages/root';
 import { RouterModule } from '@angular/router';
 import { RouterStoreModule } from '@ngrx/router-store';
@@ -65,8 +64,7 @@ const MODULES_EXTERNAL = [
       prefix: 'pi-lib',
       storageType: 'localStorage'
     }),
-  Ng2GoogleChartsModule,
-  PolymerModule
+  Ng2GoogleChartsModule
 ];
 
 const MODULES_INTERNAL = [

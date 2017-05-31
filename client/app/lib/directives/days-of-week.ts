@@ -1,4 +1,4 @@
-import { AfterViewInit, Directive, ElementRef, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Directive, ElementRef, ViewContainerRef } from '@angular/core';
 
 import { MultiSelectorComponent } from '../components/multi-selector';
 import { toVaadinItems } from '../utils';
@@ -13,6 +13,16 @@ const DAYS_OF_WEEK = [
   'Friday',
   'Saturday',
   'Sunday'
+];
+
+const DAYS_OF_WEEK_ALT = [
+  'lundi',
+  'mardi',
+  'mercredi',
+  'jeudi',
+  'vendredi',
+  'samedi',
+  'dimanche'
 ];
 
 /**
@@ -43,14 +53,23 @@ export class DaysOfWeekComboDirective {
 export class DaysOfWeekMultiDirective implements AfterViewInit {
 
   /** ctor */
-  constructor(private vcf: ViewContainerRef) { }
+  constructor(private cdf: ChangeDetectorRef,
+              private vcf: ViewContainerRef) { }
 
   // lifecyce methids
 
   ngAfterViewInit() {
-    // https://github.com/angular/angular/issues/8277
-    const multi: MultiSelectorComponent = (<any>this.vcf)._data.componentView.component;
-    multi.items = toVaadinItems(DAYS_OF_WEEK);
+    const choices = [DAYS_OF_WEEK, DAYS_OF_WEEK_ALT];
+    let ix = 0;
+    const changer = () => {
+      // https://github.com/angular/angular/issues/8277
+      const multi: MultiSelectorComponent = (<any>this.vcf)._data.componentView.component;
+      const choice = choices[ix++ % choices.length];
+      multi.items = toVaadinItems(choice);
+      this.cdf.markForCheck();
+      setTimeout(changer, 5000);
+    };
+    changer();
   }
 
 }

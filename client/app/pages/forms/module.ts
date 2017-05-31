@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsPageComponent } from './page';
 import { PiModule } from '../../lib';
+import { PolymerModule } from '@codebakery/origami';
 import { TestCtrlComponent } from './ctrl';
 import { TestFormComponent } from './form';
 
@@ -20,7 +21,8 @@ const COMPONENTS = [
 const MODULES = [
   CommonModule,
   FlexLayoutModule,
-  PiModule
+  PiModule,
+  PolymerModule
 ];
 
 @NgModule({

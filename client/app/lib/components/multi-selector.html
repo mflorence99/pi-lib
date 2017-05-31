@@ -17,16 +17,20 @@
 
 <div class="multi-selector-items">
 
-  <paper-checkbox
-    (blur)="focus(false)"
-    (change)="check($event, item)"
-    (focus)="focus(true)"
-    [checked]="isChecked(item)"
-    [label]="item.label"
-    *ngFor="let item of items"
-    libMultiSelectorControl>
-    {{item.label}}
-  </paper-checkbox>
+  <div
+    *ngFor="let item of items">
+
+    <paper-checkbox
+      (blur)="focus(false)"
+      (change)="check($event, item)"
+      (focus)="focus(true)"
+      [checked]="isChecked(item)"
+      [label]="item.label"
+      libMultiSelectorControl>
+      {{item.label}}
+    </paper-checkbox>
+
+  </div>
 
 </div>
 

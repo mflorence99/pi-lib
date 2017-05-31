@@ -4,12 +4,6 @@
   Disable form
 </paper-checkbox>
 
-<iron-list [items]="['apple', 'pear']" as="item">
-  <ng-template polymer-template>
-    <div>XXX [[item]]</div>
-  </ng-template>
-</iron-list>
-
 <hr>
 
 <lib-polymer-form
@@ -102,7 +96,6 @@
     <vaadin-combo-box
       [items]="partners"
       [sticky]="true"
-      as="item"
       auto-validate
       error-message="Partner is always required"
       item-label-path="label"
@@ -112,6 +105,9 @@
       name="partner"
       prevent-invalid-input
       required>
+      <ng-template polymer>
+        <img src=[[item.logo]] style="max-height: 32px">
+      </ng-template>
       <iron-icon
         icon="account-box"
         primary
