@@ -100,13 +100,6 @@ const SERVICES = [
   HighlightJsService
 ];
 
-// see: https://www.npmjs.com/package/ngrx-store-freeze
-// NOTE: this is recommended, but seems to seriously confuse Webpack and create build errors
-
-// const metaReducers = environment.production?
-//   [storeFreeze, combineReducers] : [combineReducers];
-// const appStore = compose(...metaReducers)(reducers);
-
 @NgModule({
 
   bootstrap: [RootComponent],
