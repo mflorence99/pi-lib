@@ -6,11 +6,14 @@ import { EventEmitter } from '@angular/core';
 import { HostBinding } from '@angular/core';
 import { HostListener } from '@angular/core';
 import { Input } from '@angular/core';
+import { OnChanges } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { Output } from '@angular/core';
 import { QueryList } from '@angular/core';
+import { SimpleChanges } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { ViewChildren } from '@angular/core';
+import { toVaadinItems } from '../utils';
 
 /**
  * lib-multi-selector model
@@ -55,7 +58,7 @@ export class MultiSelectorControlDirective {
   templateUrl: 'multi-selector.html'
 })
 
-export class MultiSelectorComponent implements OnInit {
+export class MultiSelectorComponent implements OnChanges, OnInit {
 
   @HostBinding('class.in-focus') get inFocus() { return this.focussed; }
   @HostBinding('class.out-of-focus') get outOfFocus() { return !this.focussed; }
@@ -167,6 +170,14 @@ export class MultiSelectorComponent implements OnInit {
   }
 
   // lifecycle methods
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['items']
+     && this.items
+     && (this.items.length > 0)
+     && (typeof this.items[0] === 'string'))
+      this.items = toVaadinItems(<any>this.items);
+  }
 
   ngOnInit() {
     this.input = this._proxy.nativeElement;
