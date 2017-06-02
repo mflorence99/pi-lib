@@ -2,7 +2,12 @@
   fxFlexLayout="row"
   fxLayoutAlign="space-between end">
 
-  <div class="label">{{label}}</div>
+  <div
+    fxFlexLayout="row"
+    fxLayoutAlign="start center">
+    <ng-content select="[slot=prefix]"></ng-content>
+    <div class="label">{{label}}</div>
+  </div>
 
   <div>
     <paper-icon-button
