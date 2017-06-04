@@ -44,10 +44,8 @@ export class CodeViewerComponent implements AfterViewInit {
   // private methods
 
   private fill(code: string) {
-    if (code) {
-      const el = this.snippet.nativeElement;
-      el.innerHTML = code;
-      this.hljs.highlight(el);
-    }
+    const el = this.snippet.nativeElement;
+    el.innerHTML = code? code : '';
+    this.hljs.highlight(el);
   }
 }
