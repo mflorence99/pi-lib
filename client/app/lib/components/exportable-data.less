@@ -1,0 +1,51 @@
+:host {
+  bottom: 32px;
+  display: block;
+  position: absolute;
+  left: 32px;
+}
+
+nav {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 16px;
+
+  .background {
+    background-color: var(--navigator-background-color);
+    border-left: 24px solid var(--navigator-background-color);
+    border-right: 24px solid var(--navigator-background-color);
+    margin: 0 -16px;
+    overflow: hidden;
+
+    .progress {
+      color: var(--navigator-text-color);
+      height: 48px;
+      width: 120px;
+
+      .bar {
+        color: var(--navigator-hilite-text-color);
+        width: 100%;
+
+        paper-progress {
+          padding-top: 4px;
+          width: 100%;
+        }
+
+      }
+
+    }
+
+    paper-fab {
+      z-index: 1;
+    }
+
+  }
+
+  .status {
+    background-color: white;
+    color: black;
+    font-size: 10px;
+    padding: 2px;
+    text-align: center;
+  }
+
+}

@@ -18,6 +18,8 @@ import { RouterModule } from '@angular/router';
 export * from './components/code-viewer';
 export * from './components/drawer-container';
 export * from './components/drawer-panel';
+export * from './components/export-to-csv';
+export * from './components/exportable-data';
 export * from './components/gravatar';
 export * from './components/markdown';
 export * from './components/multi-selector';
@@ -58,6 +60,8 @@ const COMPONENTS = [
   lib.DaysOfWeekMultiDirective,
   lib.DrawerContainerComponent,
   lib.DrawerPanelComponent,
+  lib.ExportToCSVComponent,
+  lib.ExportableDataComponent,
   lib.FourOhFourPageComponent,
   lib.GravatarComponent,
   lib.MarkdownComponent,

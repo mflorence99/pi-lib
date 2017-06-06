@@ -24,5 +24,14 @@
       #testDrawer>
     </lib-test-drawer>
 
+    <lib-exportable-data
+      [datasource]="testData"
+      [fields]="exportFields"
+      [filter]="testFilter.form.stream | async"
+      [header]="exportHeader"
+      [state]="testTable.table.state | async"
+      filename="testdata">
+    </lib-exportable-data>
+
   </main>
 </lib-drawer-container>

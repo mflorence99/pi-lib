@@ -1,0 +1,78 @@
+<nav>
+
+  <div
+    fxLayout="row"
+    fxLayoutAlign="space-between center">
+
+    <paper-fab
+      (click)="start()"
+      [disabled]="!ready"
+      icon="cloud-queue"
+      mini
+      primary>
+    </paper-fab>
+
+    <div
+      class="background"
+      fxLayout="column"
+      fxLayoutAlign="center center">
+
+      <div
+        *ngIf="ready"
+        class="progress"
+        fxLayout="row"
+        fxLayoutAlign="center center">
+        Export to CSV&nbsp;&hellip;&nbsp;
+      </div>
+
+      <div
+        *ngIf="running || complete"
+        class="progress"
+        fxLayout="row"
+        fxLayoutAlign="center center">
+        <div
+          class="bar"
+          fxLayout="column"
+          fxLayoutAlign="center center">
+          <div>{{progress | percent:'1.0-0'}}</div>
+          <paper-progress
+            [value]="progress"
+            max="1"
+            min="0"
+            step="0.01">
+          </paper-progress>
+        </div>
+      </div>
+
+    </div>
+
+    <paper-fab
+      (click)="running? cancel() : download()"
+      [disabled]="ready"
+      [icon]="running? 'clear' : 'file-download'"
+      mini
+      primary>
+    </paper-fab>
+
+  </div>
+
+  <div
+    [ngStyle]="{visibility: running? 'visible' : 'hidden'}"
+    class="status">
+    <span
+      *ngIf="eta">
+      Ready in {{eta | libDuration:"milliseconds"}}
+    </span>
+    <span
+      *ngIf="!eta">
+      Please standby&nbsp;&hellip;&nbsp;
+    </span>
+  </div>
+
+</nav>
+
+<lib-export-to-csv
+  [filename]="filename + '.csv'"
+  #toCSV
+  style="display: none">
+</lib-export-to-csv>
