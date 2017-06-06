@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, ViewChild } from '@angular/core';
 import { PagedData, PagedDataSourceService, PagedDataState } from '../services/paged-datasource';
-import { PolymerForm, PolymerFormValuesMap } from '../../lib/components/polymer-form';
+import { PolymerForm, PolymerFormValuesMap } from './polymer-form';
 
 import { AutoUnsubscribe } from '../decorators/auto-unsubscribe';
 import { ExportToCSVComponent } from './export-to-csv';
