@@ -15,6 +15,8 @@ import { PagedData } from '../../lib/services/paged-datasource';
 
 export class TestTableComponent {
 
+  @Input() fields = [];
+  @Input() headers = [];
   @Input() loading: boolean;
   @Input() page: PagedData;
 

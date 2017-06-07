@@ -27,7 +27,7 @@ export class ExportableDataComponent {
   @Input() fields: string[] = [];
   @Input() filename: string;
   @Input() filter: PolymerForm;
-  @Input() header: string[] = [];
+  @Input() headers: string[] = [];
   @Input() state: PagedDataState;
   @Input() stride = STRIDE;
 
@@ -74,8 +74,8 @@ export class ExportableDataComponent {
     this.ready = false;
     this.running = true;
     this.ts = Date.now();
-    // inject header
-    this.results = [this.header];
+    // inject headers
+    this.results = [this.headers];
     // freeze the filter & state and start downloading
     this.frozenFilter = Object.assign({}, this.filter.values);
     this.frozenState = Object.assign({}, this.state, {index: 0});

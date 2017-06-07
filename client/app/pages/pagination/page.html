@@ -6,6 +6,8 @@
     </lib-test-filter>
 
     <lib-test-table
+      [fields]="fields"
+      [headers]="headers"
       [page]="testCtrl.page | async"
       #testTable>
     </lib-test-table>
@@ -26,9 +28,9 @@
 
     <lib-exportable-data
       [datasource]="testData"
-      [fields]="exportFields"
+      [fields]="fields"
       [filter]="testFilter.form.stream | async"
-      [header]="exportHeader"
+      [headers]="headers"
       [state]="testTable.table.state | async"
       filename="testdata">
     </lib-exportable-data>

@@ -20,68 +20,12 @@
 
       <th></th>
 
-      <th>
+      <th
+        *ngFor="let header of headers; let ix = index">
         <lib-sortable-column
-          [sticky]="true"
-          column="firstName">
-          First Name
-        </lib-sortable-column>
-      </th>
-
-      <th>
-        <lib-sortable-column
-          [sticky]="true"
-          column="lastName">
-          Last Name
-        </lib-sortable-column>
-      </th>
-
-      <th>
-        <lib-sortable-column
-          [sticky]="true"
-          column="emailAddress">
-          Email Address
-        </lib-sortable-column>
-      </th>
-
-      <th>
-        <lib-sortable-column
-          [sticky]="true"
-          column="jobTitle">
-          Job Title
-        </lib-sortable-column>
-      </th>
-
-      <th>
-        <lib-sortable-column
-          [sticky]="true"
-          column="phoneNumber">
-          Phone Number
-        </lib-sortable-column>
-      </th>
-
-      <th>
-        <lib-sortable-column
-          [sticky]="true"
-          column="city">
-          City
-        </lib-sortable-column>
-      </th>
-
-      <th>
-        <lib-sortable-column
-          [sticky]="true"
-          column="state">
-          State
-        </lib-sortable-column>
-      </th>
-
-      <th>
-        <lib-sortable-column
-          [sticky]="true"
-          column="amount"
-          numeric>
-          Balance
+          [column]="fields[ix]"
+          [sticky]="true">
+          {{header}}
         </lib-sortable-column>
       </th>
 
@@ -96,21 +40,10 @@
 
       <td index>{{page.index + ix + 1}}.</td>
 
-      <td>{{item.firstName}}</td>
-
-      <td>{{item.lastName}}</td>
-
-      <td>{{item.emailAddress}}</td>
-
-      <td>{{item.jobTitle}}</td>
-
-      <td>{{item.phoneNumber}}</td>
-
-      <td>{{item.city}}</td>
-
-      <td>{{item.state}}</td>
-
-      <td numeric>{{item.amount | currency:'USD':true:'1.2-2'}}</td>
+      <td
+        *ngFor="let field of fields">
+        {{item[field]}}
+      </td>
 
     </tr>
   </tbody>

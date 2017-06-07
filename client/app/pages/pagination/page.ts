@@ -13,8 +13,8 @@ import { TestDataSourceService } from './datasource';
 
 export class PaginationPageComponent {
 
-  exportFields = ['firstName', 'lastName', 'emailAddress', 'jobTitle', 'phoneNumber', 'city', 'state', 'amount'];
-  exportHeader = ['First Name', 'Last Name', 'Email Address', 'Job Title', 'Phone Number', 'City', 'State', 'Balance'];
+  fields = ['firstName', 'lastName', 'emailAddress', 'jobTitle', 'phoneNumber', 'city', 'state', 'amount'];
+  headers = ['First Name', 'Last Name', 'Email Address', 'Job Title', 'Phone Number', 'City', 'State', 'Balance'];
 
   /** ctor */
   constructor(public testData: TestDataSourceService) { }
