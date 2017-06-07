@@ -39,6 +39,7 @@ export class PagedDataTableComponent implements AfterContentInit, OnChanges, OnI
   @Input() stickyKey: string;
   @Input() stride = config.pagedDataTableDefaultStride;
   @Input() loading: boolean;
+  @Input() width = config.pagedDataTableDefaultWidth;
 
   model = new PagedDataState();
   selected = new Subject<PagedDataItem>();
