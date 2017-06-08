@@ -65,6 +65,13 @@ export function handleHttpError(error: Response): string {
 }
 
 /**
+ * Is this object empty?
+ */
+export function isObjectEmpty(obj: any): boolean {
+    return (Object.getOwnPropertyNames(obj).length === 0);
+}
+
+/**
  * Make a special pi-lib search params
  */
 export function makeEncodedSearchParams(): URLSearchParams {

@@ -39,7 +39,6 @@
     "@types/faker": "^4.1.0",
     "@types/jasmine": "2.5.38",
     "@types/marked": "0.0.28",
-    "@types/moment": "^2.13.0",
     "@types/node": "~6.0.60",
     "@types/numeral": "0.0.20",
     "angular-2-local-storage": "^1.0.1",
