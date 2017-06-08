@@ -37,11 +37,6 @@ export class PolymerFormValuesMap {
 
 /**
  * libPolymerControl directive
- *
- * NOTE: we place this before the lib-form component to make its QueryList work
- *
- * NOTE: Angular components that wrap Polymer components (like lib-multi-selector)
- * are obliged to expose an <input type=hidden> via element.nativeElement._proxy.
  */
 
 export enum Control {CHECKBOX, COMBOBOX, DATE, HIDDEN, INPUT, MULTI, RADIO, SLIDER, TOGGLE}
@@ -381,8 +376,10 @@ export class PolymerFormComponent implements AfterContentInit, OnChanges {
   set(name: string,
       value: boolean | number | string) {
     const control = this.controlByName[name];
-    if (control)
+    if (control) {
       control.value = value;
+      this.model.values[control.name] = control.value;
+    }
   }
 
   /** Submit this form */

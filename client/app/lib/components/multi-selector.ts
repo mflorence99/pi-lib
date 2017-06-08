@@ -26,8 +26,6 @@ export class MultiSelectorItem {
 
 /**
  * libMultiSelectorControl directive
- *
- * NOTE: we place this before the lib-multi-selector component to make its QueryList work
  */
 
 @Directive ({
