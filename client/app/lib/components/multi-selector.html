@@ -55,7 +55,7 @@
 </div>
 
 <input
-  [attr.required]="required"
+  [attr.required]="required? 'true' : null"
   #proxy
   type="hidden"
   value="">

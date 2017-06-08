@@ -67,7 +67,7 @@ export class DaysOfWeekMultiDirective implements AfterViewInit {
       const choice = choices[ix++ % choices.length];
       multi.items = toVaadinItems(choice);
       this.cdf.markForCheck();
-      setTimeout(changer, 5000);
+      // setTimeout(changer, 5000);
     };
     changer();
   }

@@ -13,9 +13,6 @@ import { TestDataSourceService } from './datasource';
 
 export class PaginationPageComponent {
 
-  fields = ['firstName', 'lastName', 'emailAddress', 'jobTitle', 'phoneNumber', 'city', 'state', 'amount'];
-  headers = ['First Name', 'Last Name', 'Email Address', 'Job Title', 'Phone Number', 'City', 'State', 'Balance'];
-
   /** ctor */
   constructor(public testData: TestDataSourceService) { }
 

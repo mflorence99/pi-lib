@@ -1,36 +1,50 @@
 <lib-drawer-container>
   <main>
 
-    <lib-test-filter
-      #testFilter>
-    </lib-test-filter>
+    <div
+      fxLayout="row"
+      fxLayoutAlign="space-between center">
+
+      <paper-button
+        (click)="testSelector.drawer.open()">
+        Select Columns
+      </paper-button>
+
+      <lib-test-filter
+        #testFilter>
+      </lib-test-filter>
+
+    </div>
 
     <lib-test-table
-      [fields]="fields"
-      [headers]="headers"
+      [columns]="testSelector.columns | async"
       [page]="testCtrl.page | async"
       #testTable>
     </lib-test-table>
 
     <lib-test-ctrl
       (loading)="testFilter.loading = testTable.loading = $event"
-      (saving)="testDrawer.saving = $event"
+      (saving)="testSaver.saving = $event"
       [filter]="testFilter.form.stream | async"
       [state]="testTable.table.state | async"
-      [update]="testDrawer.form.stream | async"
+      [update]="testSaver.form.stream | async"
       #testCtrl>
     </lib-test-ctrl>
 
-    <lib-test-drawer
+    <lib-test-saver
       [item]="testTable.table.selected | async"
-      #testDrawer>
-    </lib-test-drawer>
+      #testSaver>
+    </lib-test-saver>
+
+    <lib-test-selector
+      #testSelector>
+    </lib-test-selector>
 
     <lib-exportable-data
       [datasource]="testData"
-      [fields]="fields"
+      [fields]="testSelector.allFields"
       [filter]="testFilter.form.stream | async"
-      [headers]="headers"
+      [headers]="testSelector.allHeaders"
       [state]="testTable.table.state | async"
       filename="testdata">
     </lib-exportable-data>

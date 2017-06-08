@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, ViewChild } from '@angular/core';
 
 import { PagedData } from '../../lib/services/paged-datasource';
+import { SelectedColumn } from './selector';
 
 /**
  * Test table component
@@ -15,8 +16,7 @@ import { PagedData } from '../../lib/services/paged-datasource';
 
 export class TestTableComponent {
 
-  @Input() fields = [];
-  @Input() headers = [];
+  @Input() columns: SelectedColumn[] = [];
   @Input() loading: boolean;
   @Input() page: PagedData;
 

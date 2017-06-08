@@ -3,17 +3,17 @@ import { ChangeDetectionStrategy, Component, Input, ViewChild } from '@angular/c
 import { TestDataItem } from './datasource';
 
 /**
- * Test drawer component
+ * Test saver component
  */
 
 @Component({
   changeDetection: ChangeDetectionStrategy.Default,
-  selector: 'lib-test-drawer',
-  styleUrls: ['drawer.less'],
-  templateUrl: 'drawer.html'
+  selector: 'lib-test-saver',
+  styleUrls: ['saver.less'],
+  templateUrl: 'saver.html'
 })
 
-export class TestDrawerComponent {
+export class TestSaverComponent {
 
   @ViewChild('drawer') drawer;
   @ViewChild('form') form;

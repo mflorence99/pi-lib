@@ -21,11 +21,11 @@
       <th></th>
 
       <th
-        *ngFor="let header of headers; let ix = index">
+        *ngFor="let column of columns">
         <lib-sortable-column
-          [column]="fields[ix]"
+          [column]="column.field"
           [sticky]="true">
-          {{header}}
+          {{column.header}}
         </lib-sortable-column>
       </th>
 
@@ -41,8 +41,8 @@
       <td index>{{page.index + ix + 1}}.</td>
 
       <td
-        *ngFor="let field of fields">
-        {{item[field]}}
+        *ngFor="let column of columns">
+        {{item[column.field]}}
       </td>
 
     </tr>

@@ -6,8 +6,9 @@ import { PaginationPageComponent } from './page';
 import { PiModule } from '../../lib';
 import { TestCtrlComponent } from './ctrl';
 import { TestDataSourceService } from './datasource';
-import { TestDrawerComponent } from './drawer';
 import { TestFilterComponent } from './filter';
+import { TestSaverComponent } from './saver';
+import { TestSelectorComponent } from './selector';
 import { TestTableComponent } from './table';
 
 /**
@@ -17,8 +18,9 @@ import { TestTableComponent } from './table';
 const COMPONENTS = [
   PaginationPageComponent,
   TestCtrlComponent,
-  TestDrawerComponent,
   TestFilterComponent,
+  TestSaverComponent,
+  TestSelectorComponent,
   TestTableComponent
 ];
 

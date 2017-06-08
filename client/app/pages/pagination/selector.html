@@ -1,0 +1,30 @@
+<lib-drawer-panel
+  #drawer
+  position="right">
+
+  <header>
+    <h3>Select Columns</h3>
+  </header>
+
+  <lib-polymer-form
+    #form
+    fxLayout="column"
+    fxLayoutAlign="start stretch"
+    fxLayoutGap="16px"
+    stickyKey="lib.lib-test-selector">
+
+    <ng-container
+      *ngFor="let field of allFields; let ix = index">
+
+      <paper-checkbox
+        [name]="field"
+        [sticky]="true"
+        libPolymerControl>
+        {{allHeaders[ix]}}
+      </paper-checkbox>
+
+    </ng-container>
+
+  </lib-polymer-form>
+
+</lib-drawer-panel>
