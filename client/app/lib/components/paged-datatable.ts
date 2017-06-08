@@ -23,7 +23,7 @@ import { config } from '../config';
  */
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.Default,
   selector: 'lib-paged-datatable',
   styleUrls: ['paged-datatable.less'],
   templateUrl: 'paged-datatable.html'

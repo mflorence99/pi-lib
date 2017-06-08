@@ -32,8 +32,8 @@ export class TestCtrlComponent implements OnChanges {
 
   page = new Subject<PagedData>();
 
-  private loader: Subscription;
-  private saver: Subscription;
+  private subToLoader: Subscription;
+  private subToSaver: Subscription;
 
   /** ctor */
   constructor(private store: Store<AppState>,
@@ -58,10 +58,10 @@ export class TestCtrlComponent implements OnChanges {
       this.store.dispatch(statusText('Loading test data ... please standby'));
       this.loading.emit(true);
       // cancel any prior request
-      if (this.loader)
-        this.loader.unsubscribe();
+      if (this.subToLoader)
+        this.subToLoader.unsubscribe();
       // issue a new load request
-      this.loader = this.testData.load(this.state, this.filter.values, reset)
+      this.subToLoader = this.testData.load(this.state, this.filter.values, reset)
         .subscribe((page: PagedData) => {
           this.store.dispatch(numResults(page.maxItems));
           this.store.dispatch(statusText(''));
@@ -76,10 +76,10 @@ export class TestCtrlComponent implements OnChanges {
       this.store.dispatch(statusText(`Saving item ${this.update.values.id} ... please standby`));
       this.saving.emit(true);
       // cancel any prior request
-      if (this.saver)
-        this.saver.unsubscribe();
+      if (this.subToSaver)
+        this.subToSaver.unsubscribe();
       // issue a new load request
-      this.saver = this.testData.save(this.update.values)
+      this.subToSaver = this.testData.save(this.update.values)
         .subscribe((item: TestDataItem) => {
           this.saving.emit(false);
           this.load(false);
