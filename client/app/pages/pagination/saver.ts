@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, ViewChild } from '@angular/core';
 
+import { DrawerPanelComponent } from '../../lib/components/drawer-panel';
+import { PolymerFormComponent } from '../../lib/components/polymer-form';
 import { TestDataItem } from './datasource';
 
 /**
@@ -15,8 +17,8 @@ import { TestDataItem } from './datasource';
 
 export class TestSaverComponent {
 
-  @ViewChild('drawer') drawer;
-  @ViewChild('form') form;
+  @ViewChild('drawer') drawer: DrawerPanelComponent;
+  @ViewChild('form') form: PolymerFormComponent;
 
   private _item: TestDataItem;
   private _saving: boolean;

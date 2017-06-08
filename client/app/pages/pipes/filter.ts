@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
 
+import { PolymerFormComponent } from '../../lib/components/polymer-form';
+
 /**
  * Test filter component
  */
@@ -12,6 +14,6 @@ import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
 })
 
 export class TestFilterComponent {
-  @ViewChild('form') form;
+  @ViewChild('form') form: PolymerFormComponent;
 
 }

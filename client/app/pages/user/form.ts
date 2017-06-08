@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input, ViewChild } from '@angular/core';
 import { UserState, initialState } from '../../lib/reducers/user';
 
+import { PolymerFormComponent } from '../../lib/components/polymer-form';
+
 /**
  * Test form component
  */
@@ -13,7 +15,9 @@ import { UserState, initialState } from '../../lib/reducers/user';
 })
 
 export class UserFormComponent {
+
   @Input() userState: UserState = initialState;
-  @ViewChild('form') form;
+  
+  @ViewChild('form') form: PolymerFormComponent;
 
 }

@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, HostBinding, Input, ViewChild } from '@angular/core';
 
 import { MultiSelectorItem } from '../../lib/components/multi-selector';
+import { PolymerFormComponent } from '../../lib/components/polymer-form';
 
 /**
  * Test form component
@@ -21,7 +22,7 @@ export class TestFormComponent {
   @Input() disabled = false;
   @Input() working = false;
 
-  @ViewChild('form') form;
+  @ViewChild('form') form: PolymerFormComponent;
 
   feedIDs: MultiSelectorItem[] = [
     {label: 'A-Feed', value: '0100'},
