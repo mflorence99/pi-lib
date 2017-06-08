@@ -68,6 +68,13 @@ export class PagedDataTableComponent implements AfterContentInit, OnChanges, OnI
     this.newSelection();
   }
 
+  /** Sort on a column */
+  sort(column: SortableColumnComponent) {
+    if (this.stickyKey && column.sticky)
+      this.lstor.set(`${this.stickyKey}.state`, this.model);
+    this.newState(true);
+  }
+
   // lifecycle methods
 
   ngAfterContentInit() {
@@ -107,10 +114,7 @@ export class PagedDataTableComponent implements AfterContentInit, OnChanges, OnI
     }, []);
     this.sortListeners = Observable.merge(...sorters)
       .subscribe((column: SortableColumnComponent) => {
-        // make sort sticky
-        if (this.stickyKey && column.sticky)
-          this.lstor.set(`${this.stickyKey}.state`, this.model);
-        this.newState(true);
+        this.sort(column);
       });
   }
 
