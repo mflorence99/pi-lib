@@ -64,7 +64,7 @@ export class TestCtrlComponent implements OnChanges {
       this.subToLoader = this.testData.load(this.state, this.filter.values, reset)
         .subscribe((page: PagedData) => {
           this.store.dispatch(numResults(page.maxItems));
-          this.store.dispatch(statusText(''));
+          this.store.dispatch(statusText('Loaded test data'));
           this.loading.emit(false);
           this.newPage(page);
         });
@@ -81,6 +81,7 @@ export class TestCtrlComponent implements OnChanges {
       // issue a new load request
       this.subToSaver = this.testData.save(this.update.values)
         .subscribe((item: TestDataItem) => {
+          this.store.dispatch(statusText(`Saved item ${this.update.values.id}`));
           this.saving.emit(false);
           this.load(false);
         });
