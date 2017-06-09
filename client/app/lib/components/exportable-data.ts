@@ -28,6 +28,7 @@ export class ExportableDataComponent {
   @Input() filename: string;
   @Input() filter: PolymerForm;
   @Input() headers: string[] = [];
+  @Input() page: PagedData;
   @Input() state: PagedDataState;
   @Input() stride = STRIDE;
 

@@ -32,7 +32,6 @@ import { RouterStoreModule } from '@ngrx/router-store';
 import { SidebarComponent } from './pages/sidebar';
 import { SplashPageComponent } from './pages/splash/page';
 import { SplashPageModule } from './pages/splash/module';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { ToolbarComponent } from './pages/toolbar';
 import { UserPageComponent } from './pages/user/page';
@@ -114,10 +113,7 @@ const SERVICES = [
     ...MODULES_INTERNAL,
     RouterModule.forRoot(ROUTES, { useHash: true }),
     RouterStoreModule.connectRouter(),
-    StoreModule.provideStore(reducers),
-    StoreDevtoolsModule.instrumentOnlyWithExtension({
-        maxAge: 5
-      })
+    StoreModule.provideStore(reducers)
   ],
 
   providers: [

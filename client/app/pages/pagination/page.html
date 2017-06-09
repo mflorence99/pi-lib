@@ -45,6 +45,7 @@
       [fields]="testSelector.allFields"
       [filter]="testFilter.form.stream | async"
       [headers]="testSelector.allHeaders"
+      [page]="testCtrl.page | async"
       [state]="testTable.table.state | async"
       filename="testdata">
     </lib-exportable-data>
