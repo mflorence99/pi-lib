@@ -59,7 +59,9 @@ export class PolymerControlDirective implements OnDestroy {
 
   // private methods
   private static isEmpty(value: any) {
-    return (value === undefined) || (value === null) || (value === '');
+    // see https://stackoverflow.com/questions/2647867/
+    // how-to-determine-if-variable-is-undefined-or-null
+    return (value == null) || (value === '');
   }
 
   /** ctor */
@@ -346,7 +348,10 @@ export class PolymerFormComponent implements AfterContentInit, OnChanges {
       if (control.canStick()) {
         if (this.stickyKey && control.sticky)
           this.seed[control.name] = <any>this.lstor.get(`${this.stickyKey}.${control.name}`);
-        else if (this.initialState && this.initialState[control.name])
+        // see https://stackoverflow.com/questions/2647867/
+        //  how-to-determine-if-variable-is-undefined-or-null
+        else if (this.initialState
+             && (this.initialState[control.name] == null))
           this.seed[control.name] = this.initialState[control.name];
       }
       if (!this.seed[control.name])
