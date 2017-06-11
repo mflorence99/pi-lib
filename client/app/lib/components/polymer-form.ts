@@ -351,7 +351,7 @@ export class PolymerFormComponent implements AfterContentInit, OnChanges {
         // see https://stackoverflow.com/questions/2647867/
         //  how-to-determine-if-variable-is-undefined-or-null
         else if (this.initialState
-             && (this.initialState[control.name] == null))
+             && (this.initialState[control.name] != null))
           this.seed[control.name] = this.initialState[control.name];
       }
       if (!this.seed[control.name])
