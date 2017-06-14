@@ -15,6 +15,7 @@ import { RouterModule } from '@angular/router';
  * @NgModule({ ... imports: [PiModule, ...] ...})
  */
 
+ export * from './components/animated-router-outlet';
 export * from './components/code-viewer';
 export * from './components/drawer-container';
 export * from './components/drawer-panel';
@@ -30,7 +31,6 @@ export * from './components/pageable-data';
 export * from './components/paged-datatable';
 export * from './components/polymer-app';
 export * from './components/polymer-form';
-export * from './components/route-animation';
 export * from './components/sortable-column';
 export * from './components/statusbar';
 export * from './directives/days-of-week';
@@ -55,6 +55,7 @@ export * from './services/paged-datasource';
 export * from './utils';
 
 const COMPONENTS = [
+  lib.AnimatedRouterOutletComponent,
   lib.CodeViewerComponent,
   lib.DaysOfWeekComboDirective,
   lib.DaysOfWeekMultiDirective,
@@ -77,7 +78,6 @@ const COMPONENTS = [
   lib.PolymerAppComponent,
   lib.PolymerControlDirective,
   lib.PolymerFormComponent,
-  lib.RouteAnimationComponent,
   lib.SortableColumnComponent,
   lib.StatusbarComponent
 ];

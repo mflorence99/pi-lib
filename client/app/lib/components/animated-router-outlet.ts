@@ -5,18 +5,18 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular
 import { routeAnimation } from '../animations';
 
 /**
- * This is all crap until Angular 4.1 releases route transitions
+ * Animate a router outlet
  */
 
 @Component({
   animations: [routeAnimation()],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'lib-route-animation',
-  styleUrls: ['route-animation.less'],
-  templateUrl: 'route-animation.html'
+  selector: 'lib-animated-router-outlet',
+  styleUrls: ['animated-router-outlet.less'],
+  templateUrl: 'animated-router-outlet.html'
 })
 
-export class RouteAnimationComponent {
+export class AnimatedRouterOutletComponent {
 
   @HostBinding('@routeAnimation') get trigger() {
     return this.routerState.path;

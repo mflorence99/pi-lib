@@ -1,4 +1,4 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import { animate, group, query, state, style, transition, trigger } from '@angular/animations';
 
 import { AnimationEntryMetadata } from '@angular/core';
 
@@ -8,9 +8,29 @@ import { AnimationEntryMetadata } from '@angular/core';
 
 export function routeAnimation(): AnimationEntryMetadata {
   return trigger('routeAnimation', [
+    transition(':enter', []),
     transition('* => *', [
-      style({transform: 'translateX(-100%)'}),
-      animate('0.25s ease-in-out', style({transform: 'translateX(0%)'}))
+      group([
+        query(':enter', [
+          style({
+            'background-color': 'white',
+            overflow: 'hidden',
+            transform: 'translateX(-100%)',
+            width: '100%'
+          }),
+          animate('0.33s ease-in-out', style({transform: 'translateX(0%)'}))
+        ], {optional: true}),
+        query(':leave', [
+          style({
+            left: 0,
+            position: 'absolute',
+            top: 0,
+            width: '100%',
+            'z-index': -1, 
+          }),
+          animate('0.33s ease-in-out', style({transform: 'translateX(100%)'}))
+        ], {optional: true})
+      ])
     ])
   ]);
 }

@@ -20,12 +20,11 @@
       [userState]="userState | async">
     </lib-toolbar>
 
-    <lib-route-animation
+    <lib-animated-router-outlet
       [ngClass]="windowState | async"
       [routerState]="routerState | async"
       class="content">
-      <router-outlet></router-outlet>
-    </lib-route-animation>
+    </lib-animated-router-outlet>
 
     <lib-statusbar
       [pageState]="pageState | async">
