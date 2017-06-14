@@ -1,7 +1,7 @@
 import { } from '@types/marked';
 import 'rxjs/add/observable/from';
 
-import { Component, ElementRef, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Input } from '@angular/core';
 import { Http, Response } from '@angular/http';
 
 import { AutoUnsubscribe } from '../decorators/auto-unsubscribe';
@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs/Subscription';
 /** Markdowncomponent */
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.Default,
   selector: 'lib-markdown',
   styleUrls: ['markdown.less'],
   templateUrl: 'markdown.html'
