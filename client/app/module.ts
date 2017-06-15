@@ -87,7 +87,7 @@ const ROUTES = [
   {path: 'drawers',          component: DrawersPageComponent},
   {path: 'forms',            component: FormsPageComponent},
   {path: 'home',             component: SplashPageComponent},
-  {path: 'markdown',         component: MarkdownPageComponent},
+  {path: 'markdown/:doc',    component: MarkdownPageComponent},
   {path: 'noop',             component: NoopPageComponent},
   {path: 'pagination',       component: PaginationPageComponent},
   {path: 'pipes',            component: PipesPageComponent},

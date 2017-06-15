@@ -54,12 +54,25 @@ const NAVIGATOR_ITEMS: NavigatorItem[] = [
     tooltip: 'Test page for forms and all possible components'
   }),
 
-  new NavigatorItem('/markdown', 'code', 'Markdown', {
+  new NavigatorItem('/markdown/readthat.md', 'file-text', 'Markdown Test #1', {
     group: 'Components',
-    tooltip: 'Markdown test page with node finders',
+    tooltip: 'A basic introduction to part 1 for beginners',
+    nodeFinders: [
+      {selector: 'lib-markdown h1', text: 'Introduction'},
+      {selector: 'lib-markdown h3', text: 'Example'},
+      {selector: 'lib-markdown h3', text: 'SystemJS Configuration'}
+    ]
+  }),
+
+  new NavigatorItem('/markdown/readthis.md', 'file-text', 'Markdown Test #2', {
+    group: 'Components',
+    tooltip: 'Full API spec for advanced programmers',
     nodeFinders: [
       {selector: 'lib-markdown h3', text: 'Installation'},
-      {selector: 'lib-markdown h3', text: 'Examples'}
+      {selector: 'lib-markdown h3', text: 'Examples'},
+      {selector: 'lib-markdown h3', text: 'Introduction'},
+      {selector: 'lib-markdown h3', text: 'Setup'},
+      {selector: 'lib-markdown h2', text: 'Contributing'}
     ]
   }),
 
