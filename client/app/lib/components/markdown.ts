@@ -37,7 +37,7 @@ export class MarkdownComponent {
   @Input() set src(uri: string) {
     if (uri) {
       const cached = MarkdownComponent.cache[uri];
-      this.subToLoader = (cached && false? Observable.from([cached]) : this.http.get(uri))
+      this.subToLoader = (cached? Observable.from([cached]) : this.http.get(uri))
         .do((response: Response) => MarkdownComponent.cache[uri] = response)
         .map((response: Response) => response.text())
         .subscribe((md: string) => {
