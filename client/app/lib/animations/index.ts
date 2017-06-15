@@ -19,17 +19,17 @@ export function routeAnimation(): AnimationEntryMetadata {
             width: '100%'
           }),
           animate('0.33s ease-in-out', style({transform: 'translateX(0%)'}))
-        ], {optional: true}),
+        ], {optional: true, limit: 1}),
         query(':leave', [
           style({
             left: 0,
             position: 'absolute',
             top: 0,
             width: '100%',
-            'z-index': -1, 
+            'z-index': -1,
           }),
           animate('0.33s ease-in-out', style({transform: 'translateX(100%)'}))
-        ], {optional: true})
+        ], {optional: true, limit: 1})
       ])
     ])
   ]);
