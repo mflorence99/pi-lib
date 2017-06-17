@@ -119,7 +119,7 @@ export class PagedDataTableComponent implements AfterContentInit, OnChanges, OnI
   }
 
   private newSelection() {
-    this.selected.next(Object.assign({}, this.selectedItem));
+    this.selected.next(Object.assign(Object.create(this.selectedItem), this.selectedItem));
   }
 
   private newState(reset: boolean) {
