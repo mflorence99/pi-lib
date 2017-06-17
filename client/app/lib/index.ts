@@ -33,6 +33,7 @@ export * from './components/polymer-app';
 export * from './components/polymer-form';
 export * from './components/sortable-column';
 export * from './components/statusbar';
+export * from './components/tiny-button';
 export * from './directives/days-of-week';
 export * from './effects/launch-url';
 export * from './effects/log';
@@ -79,7 +80,8 @@ const COMPONENTS = [
   lib.PolymerControlDirective,
   lib.PolymerFormComponent,
   lib.SortableColumnComponent,
-  lib.StatusbarComponent
+  lib.StatusbarComponent,
+  lib.TinyButtonComponent
 ];
 
 const PIPES = [

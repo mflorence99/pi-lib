@@ -1,0 +1,12 @@
+<i
+  [ngClass]="'fa-' + faIcon"
+  primary
+  class="fa fa-lg">
+</i>
+
+<paper-ripple></paper-ripple>
+
+<paper-tooltip
+  *ngIf="toolt">
+  {{tooltip}}
+</paper-tooltip>

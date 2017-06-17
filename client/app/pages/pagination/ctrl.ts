@@ -49,10 +49,6 @@ export class TestCtrlComponent implements OnChanges {
 
   // private methods
 
-  private newPage(page: PagedData) {
-    this.page.next(page);
-  }
-
   private load(reset: boolean) {
     if (this.filter && this.filter.submitted && this.state) {
       this.store.dispatch(statusText('Loading test data ... please standby'));
@@ -66,7 +62,7 @@ export class TestCtrlComponent implements OnChanges {
           this.store.dispatch(numResults(page.maxItems));
           this.store.dispatch(statusText('Loaded test data'));
           this.loading.emit(false);
-          this.newPage(page);
+          this.page.next(page);
         });
     }
   }

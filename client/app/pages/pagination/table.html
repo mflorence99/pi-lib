@@ -29,6 +29,8 @@
         </lib-sortable-column>
       </th>
 
+      <th></th>
+
     </tr>
   </thead>
 
@@ -43,6 +45,13 @@
       <td
         *ngFor="let column of columns">
         {{item[column.field]}}
+      </td>
+
+      <td>
+        <lib-tiny-button
+          faIcon="snowflake-o"
+          tooltip="This does nothing">
+        </lib-tiny-button>
       </td>
 
     </tr>
