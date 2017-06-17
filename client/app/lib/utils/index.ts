@@ -105,7 +105,7 @@ export function parseInitialSearchParams(): URLSearchParams {
  */
 export function reverseMap(obj: any): any {
   return Object.keys(obj).reduce((acc, k) => {
-    acc[obj[k]] = k;
+    acc[String(obj[k])] = k;
     return acc;
   }, {});
 }
@@ -125,7 +125,7 @@ export function toVaadinItems(tokens: string[]): {label, value}[] {
  */
 export function toVaadinLookup(items: {label, value}[]): any {
   return items.reduce((acc, item) => {
-    acc[item.value] = item.label;
+    acc[String(item.value)] = item.label;
     return acc;
   }, {});
 }
