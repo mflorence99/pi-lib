@@ -101,6 +101,16 @@ export function parseInitialSearchParams(): URLSearchParams {
 }
 
 /**
+ * Simple map reversal
+ */
+export function reverseMap(obj: any): any {
+  return Object.keys(obj).reduce((acc, k) => {
+    acc[obj[k]] = k;
+    return acc;
+  }, {});
+}
+
+/**
  * Convert strings to vaadin-combo-box style items
  */
 export function toVaadinItems(tokens: string[]): {label, value}[] {
