@@ -121,6 +121,16 @@ export function toVaadinItems(tokens: string[]): {label, value}[] {
 }
 
 /**
+ * Convert vaadin-combo-box style items to a lookup table
+ */
+export function toVaadinLookup(items: {label, value}[]): any {
+  return items.reduce((acc, item) => {
+    acc[item.value] = item.label;
+    return acc;
+  }, {});
+}
+
+/**
  * Guarantee unique string
  */
 const uniqueCache: { [label: string]: boolean } = {};
