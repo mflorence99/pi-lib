@@ -125,7 +125,7 @@ export class PagedDataTableComponent implements AfterContentInit, OnChanges, OnI
   private newState(reset: boolean) {
     if (reset)
       this.model.index = 0;
-    this.state.next(Object.assign({}, this.model));
+    this.state.next(Object.assign(Object.create(this.model), this.model));
   }
 
 }

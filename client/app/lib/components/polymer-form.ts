@@ -348,10 +348,7 @@ export class PolymerFormComponent implements AfterContentInit, OnChanges {
       if (control.canStick()) {
         if (this.stickyKey && control.sticky)
           this.seed[control.name] = <any>this.lstor.get(`${this.stickyKey}.${control.name}`);
-        // see https://stackoverflow.com/questions/2647867/
-        //  how-to-determine-if-variable-is-undefined-or-null
-        else if (this.initialState
-             && (this.initialState[control.name] != null))
+        else if (this.initialState)
           this.seed[control.name] = this.initialState[control.name];
       }
       if (!this.seed[control.name])
@@ -444,7 +441,7 @@ export class PolymerFormComponent implements AfterContentInit, OnChanges {
   }
 
   private newModel() {
-    this.stream.next(Object.assign({}, this.model));
+    this.stream.next(Object.assign(Object.create(this.model), this.model));
   }
 
 }
