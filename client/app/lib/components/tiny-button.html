@@ -1,12 +1,24 @@
-<i
-  [ngClass]="'fa-' + faIcon"
-  primary
-  class="fa fa-lg">
-</i>
+<div
+  fxLayout="row"
+  fxLayoutAlign="start center"
+  fxLayoutGap="4px">
+
+  <i
+    [ngClass]="'fa-' + faIcon"
+    primary
+    class="fa fa-lg">
+  </i>
+
+  <div
+    class="prompt">
+    <ng-content></ng-content>
+  </div>
+
+</div>
 
 <paper-ripple></paper-ripple>
 
 <paper-tooltip
-  *ngIf="toolt">
+  *ngIf="tooltip">
   {{tooltip}}
 </paper-tooltip>
