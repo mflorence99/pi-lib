@@ -42,9 +42,4 @@ export class PagedDataSourceService {
     return Observable.from([]);
   }
 
-  /** Designed to be overriden */
-  save(data: PolymerFormValuesMap): Observable<PagedDataItem> {
-    return Observable.from([]);
-  }
-
 }
