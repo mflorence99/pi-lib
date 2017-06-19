@@ -351,7 +351,7 @@ export class PolymerFormComponent implements AfterContentInit, OnChanges {
         else if (this.initialState)
           this.seed[control.name] = this.initialState[control.name];
       }
-      if (!this.seed[control.name])
+      if (this.seed[control.name] == null)
         this.seed[control.name] = control.dflt;
     });
   }
