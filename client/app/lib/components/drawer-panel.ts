@@ -82,7 +82,9 @@ export class DrawerPanelComponent implements AfterViewInit, OnDestroy, OnInit {
   }
 
   ngOnDestroy() {
-    this.container.drawers[this.position] = null;
+    // don't assume completely initialized
+    if (this.container)
+      this.container.drawers[this.position] = null;
   }
 
   ngOnInit() {
