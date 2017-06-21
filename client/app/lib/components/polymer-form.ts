@@ -296,7 +296,7 @@ export class PolymerControlDirective implements OnDestroy {
 @AutoUnsubscribe()
 export class PolymerFormComponent implements AfterContentInit, OnChanges {
 
-  @ContentChildren(PolymerControlDirective) controls: QueryList<PolymerControlDirective>;
+  @ContentChildren(PolymerControlDirective, {descendants: true}) controls: QueryList<PolymerControlDirective>;
 
   @Input() focus: string;
   @Input() initialState: any;
