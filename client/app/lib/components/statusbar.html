@@ -3,7 +3,28 @@
   fxLayout="row"
   fxLayoutAlign="space-between center">
 
-  <div>{{pageState.statusText}}</div>
+  <div
+    [ngClass]="{
+      normal: pageState.statusLevel === statusLevel.NORMAL,
+      info: pageState.statusLevel === statusLevel.INFO,
+      warning: pageState.statusLevel === statusLevel.WARNING,
+      error: pageState.statusLevel === statusLevel.ERROR
+    }"
+    class="statusText">
+
+    <span
+      *ngIf="[statusLevel.NORMAL, statusLevel.INFO].indexOf(pageState.statusLevel) !== -1">
+      <i class="fa fa-info-circle fa-lg"></i>
+    </span>
+
+    <span
+      *ngIf="[statusLevel.WARNING, statusLevel.ERROR].indexOf(pageState.statusLevel) !== -1">
+      <i class="fa fa-exclamation-circle fa-lg"></i>
+    </span>
+
+    {{pageState.statusText}}
+
+  </div>
 
   <div
     *ngIf="pageState.numResults !== null">

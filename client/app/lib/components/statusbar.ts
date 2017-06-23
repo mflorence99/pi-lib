@@ -16,4 +16,6 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 export class StatusbarComponent {
   @Input() pageState: page.PageState = page.initialState;
 
+  statusLevel = page.StatusLevel;
+
 }

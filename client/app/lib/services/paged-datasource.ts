@@ -11,7 +11,7 @@ import { PolymerFormValuesMap } from '../components/polymer-form';
 export class PagedData {
   index = 0;
   items: PagedDataItem[] = [];
-  lookup = {};
+  lookup: any = {};
   maxItems = 0;
 }
 
