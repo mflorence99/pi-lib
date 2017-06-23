@@ -14,12 +14,12 @@
 
     <span
       *ngIf="[statusLevel.NORMAL, statusLevel.INFO].indexOf(pageState.statusLevel) !== -1">
-      <i class="fa fa-info-circle fa-lg"></i>
+      <i class="fa fa-info-circle fa-lg"></i>&nbsp;
     </span>
 
     <span
       *ngIf="[statusLevel.WARNING, statusLevel.ERROR].indexOf(pageState.statusLevel) !== -1">
-      <i class="fa fa-exclamation-circle fa-lg"></i>
+      <i class="fa fa-exclamation-circle fa-lg"></i>&nbsp;
     </span>
 
     {{pageState.statusText}}
