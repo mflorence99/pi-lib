@@ -6,6 +6,22 @@ import { AnimationEntryMetadata } from '@angular/core';
  * Common animation functions
  */
 
+export function inOutAnimation(): AnimationEntryMetadata {
+  return trigger('inOut', [
+    transition('* => *', [
+      group([
+        query(':enter', [
+          style({opacity: 0}),
+          animate('0.33s ease-in-out', style({opacity: 1}))
+        ], {optional: true, limit: 1}),
+        query(':leave', [
+          animate('0.33s ease-in-out', style({opacity: 0}))
+        ], {optional: true, limit: 1})
+      ])
+    ])
+  ]);
+}
+
 export function routeAnimation(): AnimationEntryMetadata {
   return trigger('routeAnimation', [
     transition(':enter', []),
