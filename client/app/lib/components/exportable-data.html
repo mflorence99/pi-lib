@@ -23,7 +23,12 @@
         class="progress"
         fxLayout="row"
         fxLayoutAlign="center center">
-        Export to CSV&nbsp;&hellip;&nbsp;
+        <span *ngIf="maxItems; else exportAll">
+          Export top {{maxItems | number}} items
+        </span>
+        <ng-template #exportAll>
+          Export to CSV&nbsp;&hellip;&nbsp;
+        </ng-template>
       </div>
 
       <div

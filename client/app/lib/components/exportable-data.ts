@@ -5,13 +5,12 @@ import { PolymerForm, PolymerFormValuesMap } from './polymer-form';
 import { AutoUnsubscribe } from '../decorators/auto-unsubscribe';
 import { ExportToCSVComponent } from './export-to-csv';
 import { Subscription } from 'rxjs/Subscription';
+import { config } from '../config';
 import { nextTick } from '../utils';
 
 /**
  * Exporter control for paged-datatable
  */
-
-const STRIDE = 100;
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -28,9 +27,10 @@ export class ExportableDataComponent {
   @Input() filename: string;
   @Input() filter: PolymerForm;
   @Input() headers: string[] = [];
+  @Input() maxItems = 0;
   @Input() page: PagedData;
   @Input() state: PagedDataState;
-  @Input() stride = STRIDE;
+  @Input() stride = config.pagedDataTableDefaultStride;
 
   @ViewChild('toCSV') toCSV: ExportToCSVComponent;
 
@@ -105,12 +105,14 @@ export class ExportableDataComponent {
           });
           // update progress
           this.frozenState.index += this.stride;
-          this.progress = Math.min(1, (this.frozenState.index / page.maxItems));
-          if (this.frozenState.index < page.maxItems) {
+          const maxItems = this.maxItems?
+            Math.min(this.maxItems, page.maxItems) : page.maxItems;
+          this.progress = Math.min(1, (this.frozenState.index / maxItems));
+          if (this.frozenState.index < maxItems) {
             // update eta
             const now = Date.now();
             const interval = now - this.ts;
-            this.eta = interval * ((page.maxItems - this.frozenState.index) / this.stride);
+            this.eta = interval * ((maxItems - this.frozenState.index) / this.stride);
             this.ts = now;
             // loop around again
             this.complete = false;
