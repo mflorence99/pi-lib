@@ -24,7 +24,7 @@
         fxLayout="row"
         fxLayoutAlign="center center">
         <span *ngIf="maxItems; else exportAll">
-          Export top {{maxItems | number}} items
+          Export top {{maxItems | number}}&nbsp;&hellip;&nbsp;
         </span>
         <ng-template #exportAll>
           Export to CSV&nbsp;&hellip;&nbsp;
