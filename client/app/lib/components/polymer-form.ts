@@ -320,6 +320,7 @@ export class PolymerFormComponent implements AfterContentInit, OnChanges {
     const control = this.controlByName[name];
     if (control) {
       control.clear();
+      this.model.values[control.name] = control.value;
       if (focus)
         control.focus();
     }
