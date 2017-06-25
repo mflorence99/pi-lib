@@ -195,23 +195,22 @@
     fxLayout="row"
     fxLayoutAlign="end center"
     fxLayoutGap="16px">
+
     <paper-button
       (click)="form.reset()"
       [disabled]="disabled || working">
       Reset
     </paper-button>
-    <paper-button
+
+    <lib-working-button
       (click)="form.submit()"
       [disabled]="disabled || !form.isValid()"
-      *ngIf="!working"
+      [working]="working"
       primary
       raised>
       Submit
-    </paper-button>
-    <paper-spinner
-      [active]="working"
-      *ngIf="working">
-    </paper-spinner>
+    </lib-working-button>
+
   </div>
 
 </lib-polymer-form>

@@ -1,0 +1,13 @@
+<paper-button
+  (click)="onClick($event)"
+  [disabled]="disabled"
+  [ngClass]="{hidden: working}"
+  primary
+  raised>
+  <ng-content></ng-content>
+</paper-button>
+
+<paper-spinner
+  [active]="working"
+  *ngIf="working">
+</paper-spinner>

@@ -28,18 +28,13 @@
     </div>
   </paper-input>
 
-  <paper-button
+  <lib-working-button
     (click)="form.submit()"
     [disabled]="!form.isValid()"
-    *ngIf="!loading"
+    [working]="loading"
     primary
     raised>
     Filter
-  </paper-button>
-
-  <paper-spinner
-    [active]="loading"
-    *ngIf="loading">
-  </paper-spinner>
+  </lib-working-button>
 
 </lib-polymer-form>

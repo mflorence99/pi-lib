@@ -122,19 +122,14 @@
         Reset
       </paper-button>
 
-      <paper-button
+      <lib-working-button
         (click)="form.submit()"
         [disabled]="!form.isValid()"
-        *ngIf="!saving"
+        [working]="saving"
         primary
         raised>
         Save
-      </paper-button>
-
-      <paper-spinner
-        [active]="saving"
-        *ngIf="saving">
-      </paper-spinner>
+      </lib-working-button>
 
     </div>
 
