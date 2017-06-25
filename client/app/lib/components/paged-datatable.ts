@@ -13,6 +13,7 @@ import { Observable } from 'rxjs/Observable';
 import { OnChanges } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { QueryList } from '@angular/core';
+import { SimpleChanges } from '@angular/core';
 import { SortableColumnComponent } from '../components/sortable-column';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
@@ -45,8 +46,8 @@ export class PagedDataTableComponent implements AfterContentInit, OnChanges, OnI
   selected = new Subject<PagedDataItem>();
   state = new Subject<PagedDataState>();
 
-  private changes: Subscription;
   private selectedItem: PagedDataItem;
+  private changes: Subscription;
   private sortListeners: Subscription;
 
   /** ctor */
@@ -65,7 +66,7 @@ export class PagedDataTableComponent implements AfterContentInit, OnChanges, OnI
   /** Select an item */
   select(item: PagedDataItem) {
     this.selectedItem = item;
-    this.newSelection();
+    this.selected.next(item? Object.assign(Object.create(item), item) : null);
   }
 
   /** Sort on a column */
@@ -88,10 +89,14 @@ export class PagedDataTableComponent implements AfterContentInit, OnChanges, OnI
     });
   }
 
-  ngOnChanges() {
-    // the page might be telling us that we must reset the index
-    if (this.page && (this.page.index !== this.model.index))
-      this.model.index = this.page.index;
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['page']) {
+      // the page might be telling us that we must reset the index
+      if (this.page && (this.page.index !== this.model.index))
+        this.model.index = this.page.index;
+      // now nothing is selected
+      this.select(null);
+    }
   }
 
   ngOnInit() {
@@ -116,10 +121,6 @@ export class PagedDataTableComponent implements AfterContentInit, OnChanges, OnI
       .subscribe((column: SortableColumnComponent) => {
         this.sort(column);
       });
-  }
-
-  private newSelection() {
-    this.selected.next(Object.assign(Object.create(this.selectedItem), this.selectedItem));
   }
 
   private newState(reset: boolean) {
