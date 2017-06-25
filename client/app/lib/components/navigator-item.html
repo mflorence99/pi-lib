@@ -10,13 +10,16 @@
       fxLayout="row"
       fxLayoutAlign="start start"
       fxLayoutGap="4px">
+
       <div>
         <i
           [ngClass]="{selected: item.path === routerState.path}"
           class="fa fa-fw fa-{{item.faIcon}}">
         </i>
       </div>
+
       <div>{{item.tag | libBreakable}}</div>
+      
     </div>
 
     <div
