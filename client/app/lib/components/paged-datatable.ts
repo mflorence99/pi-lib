@@ -18,6 +18,7 @@ import { SortableColumnComponent } from '../components/sortable-column';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
 import { config } from '../config';
+import { nextTick } from '../utils';
 
 /**
  * Sortable, pageable data table encapsulation
@@ -95,7 +96,7 @@ export class PagedDataTableComponent implements AfterContentInit, OnChanges, OnI
       if (this.page && (this.page.index !== this.model.index))
         this.model.index = this.page.index;
       // now nothing is selected
-      this.select(null);
+      nextTick(() => this.select(null));
     }
   }
 
