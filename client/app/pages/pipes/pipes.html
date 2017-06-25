@@ -132,12 +132,22 @@
       </tr>
 
       <tr>
-        <td><code>libBreakable</code></td>
+        <td><code>libEllipsize</code></td>
         <td>
           This long string has been truncated with ellipsis at 32 characters
         </td>
         <td>
           {{'This long string has been truncated with ellipsis at 32 characters' | libEllipsize:32}}
+        </td>
+      </tr>
+
+      <tr>
+        <td><code>libHTMLify</code></td>
+        <td>
+          I am &lt;b&gt;happy&lt;/b&gt; to &lt;i&gt;see&lt;/i&gt; you!
+        </td>
+        <td
+          [innerHTML]="'I am &lt;b&gt;happy&lt;/b&gt; to &lt;i&gt;see&lt;/i&gt; you!' | libHTMLify">
         </td>
       </tr>
 

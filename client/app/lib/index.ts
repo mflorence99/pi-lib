@@ -45,6 +45,7 @@ export * from './effects/window';
 export * from './pages/404-page';
 export * from './pipes/breakable';
 export * from './pipes/ellipsize';
+export * from './pipes/htmlify';
 export * from './pipes/jsonify';
 export * from './pipes/linkify';
 export * from './pipes/markdown';
@@ -90,6 +91,7 @@ const PIPES = [
   lib.DurationPipe,
   lib.FromUnixTimePipe,
   lib.EllipsizePipe,
+  lib.HTMLifyPipe,
   lib.JSONifyPipe,
   lib.LinkifyPipe,
   lib.MarkdownPipe,
