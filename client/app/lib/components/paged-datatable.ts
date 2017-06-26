@@ -34,7 +34,7 @@ import { nextTick } from '../utils';
 @AutoUnsubscribe()
 export class PagedDataTableComponent implements AfterContentInit, OnChanges, OnInit {
 
-  @ContentChildren(SortableColumnComponent) columns: QueryList<SortableColumnComponent>;
+  @ContentChildren(SortableColumnComponent, {descendants: true}) columns: QueryList<SortableColumnComponent>;
 
   @Input() disabled: boolean;
   @Input() page: PagedData;
