@@ -80,7 +80,9 @@ export class ExportableDataComponent {
     // freeze the filter & state and start downloading
     this.frozenFilter = Object.assign({}, this.filter.values);
     this.frozenState = Object.assign({}, this.state, {index: 0});
-    this.step();
+    if (this.datasource)
+      this.step();
+    else this.suck();
   }
 
   // private methods
@@ -121,6 +123,27 @@ export class ExportableDataComponent {
           }
         }
       });
+  }
+
+  private suck() {
+    this.cdf.markForCheck();
+    // eveeything is in the page we were given
+    this.complete = true;
+    this.eta = 0;
+    this.ready = false;
+    this.running = false;
+    if (this.page.items.length > 0) {
+      // inject detail
+      this.page.items.forEach(item => {
+        const detail = this.fields.reduce((acc, field) => {
+          acc.push(item[field]);
+          return acc;
+        }, []);
+        this.results.push(detail);
+      });
+      // update progress
+      this.progress = 1;
+    }
   }
 
 }
