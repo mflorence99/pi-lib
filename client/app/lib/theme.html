@@ -164,7 +164,7 @@
     }
 
     lib-markdown blockquote {
-      border-left: 5px solid var(--divider-color);
+      border-left: 5px solid var(--paper-grey-400);
       font-weight: 200;
       margin: 0;
       padding-left: 40px;
@@ -176,7 +176,7 @@
     lib-markdown h4,
     lib-markdown h5,
     lib-markdown h6 {
-      border-bottom: 1px solid var(--divider-color);
+      border-bottom: 1px solid var(--paper-grey-400);
       padding-bottom: 4px;
     }
 
@@ -213,7 +213,7 @@
 
     lib-markdown table td,
     lib-markdown table th {
-      border: 1px solid var(--divider-color);
+      border: 1px solid var(--paper-grey-400);
       padding: 6px 12px;
     }
 
@@ -541,6 +541,12 @@
       text-align: left;
     }
 
+    table[standard] tbody td[divider],
+    table[standard] tbody th[divider] {
+      border-left: 2px solid var(--paper-grey-400);
+      width: 0;
+    }
+
     table[standard] tbody td[error] {
       color: var(--error-color);
     }
@@ -555,13 +561,13 @@
     }
 
     table[standard] tbody tr {
-      border-bottom: 1px solid #eeeeee;
+      border-bottom: 1px solid var(--paper-grey-300);
       cursor: pointer;
       vertical-align: top;
     }
 
     table[standard] tbody tr:hover {
-      background-color: #e0e0e0;
+      background-color: var(--paper-grey-300);
     }
 
     table[standard] tbody tr.selected {
@@ -578,7 +584,7 @@
     }
 
     table[standard] thead tr:last-child {
-      border-bottom: 2px solid #bdbdbd;
+      border-bottom: 2px solid var(--paper-grey-400);
       vertical-align: bottom;
     }
 
