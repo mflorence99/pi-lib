@@ -43,4 +43,11 @@ export class PagedDataSourceService {
     return Observable.from([]);
   }
 
+  /** Designed to be overriden */
+  prepare(state: PagedDataState,
+          filter: PolymerFormValuesMap,
+          reset: boolean): PagedDataState {
+    return Object.assign(Object.create(state), {index: reset? 0 : state.index});
+  }
+
 }
