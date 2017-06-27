@@ -53,7 +53,7 @@ export class TestFormComponent {
     {label: 'Z-Feed', value: '2600'},
   ];
 
-partners = [
+  partners = [
     {label: 'Appcast', value: 'appcast', logo: 'assets/appcast.png'},
     {label: 'StartWire', value: 'startwire', logo: 'assets/startwire.png'}
   ];

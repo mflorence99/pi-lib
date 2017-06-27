@@ -203,7 +203,7 @@
     </paper-button>
 
     <lib-working-button
-      (click)="form.submit()"
+      (submit)="form.submit()"
       [disabled]="disabled || !form.isValid()"
       [working]="working"
       primary

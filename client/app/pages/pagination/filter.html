@@ -29,7 +29,7 @@
   </paper-input>
 
   <lib-working-button
-    (click)="form.submit()"
+    (submit)="form.submit()"
     [disabled]="!form.isValid()"
     [working]="loading"
     primary

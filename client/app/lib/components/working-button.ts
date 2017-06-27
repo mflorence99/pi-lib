@@ -15,11 +15,11 @@ export class WorkingButtonComponent {
   @Input() disabled: boolean;
   @Input() working: boolean;
 
-  @Output() click = new EventEmitter<any>();
+  @Output() submit = new EventEmitter<any>();
 
   /** Forward click events */
   onClick(event) {
-    this.click.emit(event);
+    this.submit.emit(event);
   }
 
 }
