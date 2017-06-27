@@ -9,6 +9,7 @@ import { PolymerForm } from '../../lib/components/polymer-form';
 import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
+import { nextTick } from '../../lib/utils';
 
 /**
  * Test ctrl component
@@ -51,7 +52,7 @@ export class TestCtrlComponent implements OnChanges {
 
   private load(reset: boolean) {
     if (this.filter && this.filter.submitted && this.state) {
-      this.store.dispatch(statusText('Loading test data ... please standby'));
+      nextTick(() => this.store.dispatch(statusText('Loading test data ... please standby')));
       this.loading.emit(true);
       // cancel any prior request
       if (this.subToLoader)
@@ -69,7 +70,7 @@ export class TestCtrlComponent implements OnChanges {
 
   private save() {
     if (this.update && this.update.submitted) {
-      this.store.dispatch(statusText(`Saving item ${this.update.values.id} ... please standby`));
+      nextTick(() => this.store.dispatch(statusText(`Saving item ${this.update.values.id} ... please standby`)));
       this.saving.emit(true);
       // cancel any prior request
       if (this.subToSaver)

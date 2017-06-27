@@ -15,7 +15,8 @@ import { RouterModule } from '@angular/router';
  * @NgModule({ ... imports: [PiModule, ...] ...})
  */
 
- export * from './components/animated-router-outlet';
+export * from './components/animated-router-outlet';
+export * from './components/circled-number';
 export * from './components/code-viewer';
 export * from './components/drawer-container';
 export * from './components/drawer-panel';
@@ -59,6 +60,7 @@ export * from './utils';
 
 const COMPONENTS = [
   lib.AnimatedRouterOutletComponent,
+  lib.CircledNumberComponent,
   lib.CodeViewerComponent,
   lib.DaysOfWeekComboDirective,
   lib.DaysOfWeekMultiDirective,

@@ -1,0 +1,37 @@
+:host {
+  align-items: center;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  font-size: 24px;
+  height: 44px;
+  justify-content: space-around;
+  margin: 0 6px 6px 0;
+  min-height: 44px;
+  min-width: 44px;
+  width: 44px;
+}
+
+:host[primary] {
+  background-color: var(--primary-color);
+}
+
+:host[secondary] {
+  background-color: var(--accent-color);
+}
+
+:host[info] {
+  background-color: var(--info-color);
+}
+
+:host[success] {
+  background-color: var(--success-color);
+}
+
+:host[warning] {
+  background-color: var(--warning-color);
+}
+
+:host[error] {
+  background-color: var(--error-color);
+}
