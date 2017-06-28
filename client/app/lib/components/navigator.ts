@@ -2,7 +2,7 @@ import * as navigator from '../reducers/navigator';
 import * as page from '../actions/page';
 import * as router from '@ngrx/router-store';
 
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 import { expando } from '../actions/navigator';
@@ -125,7 +125,7 @@ export class NavigatorGroupComponent {
   templateUrl: 'navigator-item.html'
 })
 
-export class NavigatorItemComponent {
+export class NavigatorItemComponent implements AfterViewInit {
   @Input() item: NavigatorItem;
   @Input() navigatorState: navigator.NavigatorState;
   @Input() routerState: router.RouterState;
@@ -142,6 +142,13 @@ export class NavigatorItemComponent {
       this.store.dispatch(page.statusText(`${item.tag} ... ${item.options.tooltip}`));
     else this.store.dispatch(page.statusText(item.tag));
     this.store.dispatch(page.title(item.tag));
+  }
+
+  // lifecycle methods
+
+  ngAfterViewInit() {
+    if (this.routerState.path === this.item.path)
+      this.navigate(this.item);
   }
 
 }

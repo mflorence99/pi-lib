@@ -10,6 +10,7 @@
       warning: pageState.statusLevel === statusLevel.WARNING,
       error: pageState.statusLevel === statusLevel.ERROR
     }"
+    *ngIf="pageState.statusText"
     class="statusText">
 
     <span
