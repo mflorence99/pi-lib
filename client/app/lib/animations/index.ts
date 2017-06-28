@@ -54,8 +54,8 @@ export function routeAnimation(): AnimationEntryMetadata {
 
 export function showHideAnimation(): AnimationEntryMetadata {
   return trigger('showHide', [
-    state('shown', style({height: '*', opacity: 1})),
-    state('hidden', style({height: 0, opacity: 0})),
+    state('shown', style({height: '*', opacity: 1, 'z-index': 1})),
+    state('hidden', style({height: 0, opacity: 0, 'z-index': -1})),
     transition('* => *', animate('0.25s ease-in-out'))
   ]);
 }
