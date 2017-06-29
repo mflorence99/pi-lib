@@ -35,6 +35,7 @@ export * from './components/polymer-form';
 export * from './components/sortable-column';
 export * from './components/statusbar';
 export * from './components/tiny-button';
+export * from './components/toolbar-controls';
 export * from './components/working-button';
 export * from './directives/days-of-week';
 export * from './effects/launch-url';
@@ -86,6 +87,7 @@ const COMPONENTS = [
   lib.SortableColumnComponent,
   lib.StatusbarComponent,
   lib.TinyButtonComponent,
+  lib.ToolbarControlsComponent,
   lib.WorkingButtonComponent
 ];
 

@@ -19,8 +19,18 @@
 
     </div>
 
-    <lib-gravatar
-      [src]="userState.gravatar">
-    </lib-gravatar>
+    <div
+      fxLayout="row"
+      fxLayoutAlign="end center"
+      fxLayoutGap="16px">
+
+      <lib-toolbar-controls>
+      </lib-toolbar-controls>
+
+      <lib-gravatar
+        [src]="userState.gravatar">
+      </lib-gravatar>
+
+    </div>
 
   </header>

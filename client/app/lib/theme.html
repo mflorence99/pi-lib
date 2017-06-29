@@ -226,6 +226,17 @@
       background-color: var(--paper-grey-100);
     }
 
+    lib-toolbar-controls paper-toggle-button {
+      --paper-toggle-button-checked-bar-color: var(--dark-primary-color);
+      --paper-toggle-button-checked-button-color: var(--dark-primary-color);
+      --paper-toggle-button-label-color: white;
+    }
+
+    lib-toolbar-controls paper-checkbox {
+      --paper-checkbox-label-color: white;
+      --paper-checkbox-unchecked-color: white;
+    }
+
     .node-finder-flash {
       animation: node-finder-flasher 1s ease-in-out;
     }
@@ -526,6 +537,10 @@
       --paper-spinner-layer-2-color: var(--primary-color);
       --paper-spinner-layer-3-color: var(--primary-color);
       --paper-spinner-layer-4-color: var(--primary-color);
+    }
+
+    paper-toggle-button {
+      cursor: pointer;
     }
 
     table[standard] {
