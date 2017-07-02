@@ -34,38 +34,42 @@ export class DrawerPanelComponent implements AfterViewInit, OnDestroy, OnInit {
 
   /** Close drawer */
   close() {
-    switch (this.position) {
-      case 'bottom':
-        this.el.style.transform = `translateY(${this.el.offsetHeight}px)`;
-      break;
-      case 'left':
-        this.el.style.transform = `translateX(-${this.el.offsetWidth}px)`;
-      break;
-      case 'right':
-        this.el.style.transform = `translateX(${this.el.offsetWidth}px)`;
-      break;
-      case 'top':
-        this.el.style.transform = `translateY(-${this.el.offsetHeight}px)`;
-      break;
+    if (this.el) {
+      switch (this.position) {
+        case 'bottom':
+          this.el.style.transform = `translateY(${this.el.offsetHeight}px)`;
+        break;
+        case 'left':
+          this.el.style.transform = `translateX(-${this.el.offsetWidth}px)`;
+        break;
+        case 'right':
+          this.el.style.transform = `translateX(${this.el.offsetWidth}px)`;
+        break;
+        case 'top':
+          this.el.style.transform = `translateY(-${this.el.offsetHeight}px)`;
+        break;
+      }
+      // now report as closed
+      this.container.closed(this);
     }
-    // now report as closed
-    this.container.closed(this);
   }
 
   /** Open drawer */
   open() {
-    switch (this.position) {
-      case 'left':
-      case 'right':
-        this.el.style.transform = `translateX(0px)`;
-      break;
-      case 'top':
-      case 'bottom':
-        this.el.style.transform = `translateY(0px)`;
-      break;
+    if (this.el) {
+      switch (this.position) {
+        case 'left':
+        case 'right':
+          this.el.style.transform = `translateX(0px)`;
+        break;
+        case 'top':
+        case 'bottom':
+          this.el.style.transform = `translateY(0px)`;
+        break;
+      }
+      // now report as open
+      this.container.opened(this);
     }
-    // now report as open
-    this.container.opened(this);
   }
 
   // listeners

@@ -1,8 +1,5 @@
-
 /**
  * Decorator to load controls into <lib-toolbar-controls> and hook into their events
- *
- * NOTE: very preliminary
  */
 
 export function ToolbarControl(def: {

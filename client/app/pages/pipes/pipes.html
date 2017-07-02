@@ -82,6 +82,23 @@
       </tr>
 
       <tr
+        (click)="annotate('libTimeAgo')"
+        [class.selected]="selected === 'libTimeAgo'">
+        <td>
+          <code>libTimeAgo</code>
+        </td>
+        <td>
+          {{date | libFromUnixTime | libTimeAgo}}
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Difference between selected date and today</td>
+      </tr>
+
+      <tr
         (click)="annotate('libNumeral', '0.0a', '0.0b', '0o')"
         [class.selected]="selected === 'libNumeral'">
         <td>

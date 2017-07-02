@@ -1,10 +1,11 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { PagedData, PagedDataState } from '../../lib/services/paged-datasource';
 import { TestDataItem, TestDataSourceService } from './datasource';
 import { numResults, statusText } from '../../lib/actions/page';
 
 import { AppState } from '../../reducers';
 import { AutoUnsubscribe } from '../../lib/decorators/auto-unsubscribe';
+import { OnChange } from '../../lib/decorators/onchange';
 import { PolymerForm } from '../../lib/components/polymer-form';
 import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs/Subject';
@@ -22,7 +23,7 @@ import { nextTick } from '../../lib/utils';
 })
 
 @AutoUnsubscribe()
-export class TestCtrlComponent implements OnChanges {
+export class TestCtrlComponent {
 
   @Input() filter: PolymerForm;
   @Input() state: PagedDataState;
@@ -40,17 +41,10 @@ export class TestCtrlComponent implements OnChanges {
   constructor(private store: Store<AppState>,
               private testData: TestDataSourceService) { }
 
-  /** When the filter or state change */
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['filter'] || changes['state'])
-      this.load(!!changes['filter']);
-    else if (changes['update'])
-      this.save();
-  }
+  // bind OnChange handlers
 
-  // private methods
-
-  private load(reset: boolean) {
+  @OnChange('filter', 'state') load(changed: boolean[]) {
+    const reset = changed[0];
     if (this.filter && this.filter.submitted && this.state) {
       nextTick(() => this.store.dispatch(statusText('Loading test data ... please standby')));
       this.loading.emit(true);
@@ -68,7 +62,7 @@ export class TestCtrlComponent implements OnChanges {
     }
   }
 
-  private save() {
+  @OnChange('update') save() {
     if (this.update && this.update.submitted) {
       nextTick(() => this.store.dispatch(statusText(`Saving item ${this.update.values.id} ... please standby`)));
       this.saving.emit(true);
@@ -80,7 +74,7 @@ export class TestCtrlComponent implements OnChanges {
         .subscribe((item: TestDataItem) => {
           this.store.dispatch(statusText(`Saved item ${this.update.values.id}`));
           this.saving.emit(false);
-          this.load(false);
+          this.load([false]);
         });
     }
   }

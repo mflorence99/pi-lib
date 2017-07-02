@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, ViewChild } from '@angular/core';
 
 import { DrawerPanelComponent } from '../../lib/components/drawer-panel';
+import { OnChange } from '../../lib/decorators/onchange';
 import { PolymerFormComponent } from '../../lib/components/polymer-form';
 import { TestDataItem } from './datasource';
 
@@ -17,29 +18,18 @@ import { TestDataItem } from './datasource';
 
 export class TestSaverComponent {
 
+  @Input() item: TestDataItem;
+  @Input() saving = false;
+
   @ViewChild('drawer') drawer: DrawerPanelComponent;
   @ViewChild('form') form: PolymerFormComponent;
 
-  private _item: TestDataItem;
-  private _saving: boolean;
+  // bind OnChange handlers
 
-  // accessors / mutators
-  // NOTE: OnChanges seems simpler but didn't work for boolean saving
-
-  @Input() get item() { return this._item; }
-
-  set item(item: TestDataItem) {
-    this._item = item;
-    if (item)
+  @OnChange('item') open() {
+    if (this.item)
       this.drawer.open();
+    else this.drawer.close();
   }
-
-  @Input() get saving() { return this._saving; }
-
-  set saving(state: boolean) {
-    this._saving = state;
-    if (!state)
-      this.drawer.close();
-  };
 
 }

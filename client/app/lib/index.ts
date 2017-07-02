@@ -102,6 +102,7 @@ const PIPES = [
   lib.LinkifyPipe,
   lib.MarkdownPipe,
   lib.NumeralPipe,
+  lib.TimeAgoPipe,
   lib.UTCFormatPipe
 ];
 
