@@ -16,7 +16,6 @@ export function OnChange(...inputs: string[]) {
       // what changed?
       const changes: SimpleChanges = arguments[0];
       const changed: boolean[] = inputs.map(input => changes[input] != null);
-      console.log(changes, changed);
       // if anything changed, call handler
       if (changed.some(item => item))
          method.apply(this, changed);
