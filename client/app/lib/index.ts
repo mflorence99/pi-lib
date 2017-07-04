@@ -22,6 +22,8 @@ export * from './components/drawer-container';
 export * from './components/drawer-panel';
 export * from './components/export-to-csv';
 export * from './components/exportable-data';
+export * from './components/google-map';
+export * from './components/google-map-infowindow';
 export * from './components/gravatar';
 export * from './components/markdown';
 export * from './components/multi-selector';
@@ -70,6 +72,8 @@ const COMPONENTS = [
   lib.ExportToCSVComponent,
   lib.ExportableDataComponent,
   lib.FourOhFourPageComponent,
+  lib.GoogleMapComponent,
+  lib.GoogleMapInfoWindowComponent,
   lib.GravatarComponent,
   lib.MarkdownComponent,
   lib.MultiSelectorComponent,

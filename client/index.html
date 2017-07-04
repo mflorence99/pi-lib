@@ -18,6 +18,12 @@
 
     <link rel="import" href="vulcanized.html">
 
+    <script>
+      var e = document.createElement("script");
+      e.src = "https://maps.googleapis.com/maps/api/js?key=" + ENV["GOOGLE_MAPS_API_KEY"];
+      document.body.appendChild(e);
+    </script>
+
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/styles/default.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script>
 

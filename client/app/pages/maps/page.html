@@ -1,0 +1,40 @@
+<lib-google-map
+  (markerClicked)="markerClicked($event)"
+  [markers]="markers"
+  stickyKey="lib.test-map"
+  #map>
+</lib-google-map>
+
+<lib-google-map-infowindow
+  #infoWindow>
+  <div>{{infoWindowData.blurb}}</div>
+</lib-google-map-infowindow>
+
+<header>
+
+  <div
+    fxLayout="row"
+    fxLayoutAlign="end center"
+    fxLayoutGap="16px">
+
+    <paper-checkbox
+      (change)="plot(jfk.checked, 'jfk')"
+      #jfk>
+      New York
+    </paper-checkbox>
+
+    <paper-checkbox
+      (change)="plot(sfo.checked, 'sfo')"
+      #sfo>
+      San Francisco
+    </paper-checkbox>
+
+    <paper-checkbox
+      (change)="plot(wash.checked, 'wash')"
+      #wash>
+      Washington
+    </paper-checkbox>
+
+  </div>
+
+</header>

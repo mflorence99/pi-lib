@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 /**
- * Google charts demp page
+ * Google charts demo page
  */
 
 @Component({

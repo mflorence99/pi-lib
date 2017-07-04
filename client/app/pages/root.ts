@@ -34,16 +34,6 @@ const NAVIGATOR_ITEMS: NavigatorItem[] = [
     tooltip: 'A gallery of all button, dialog and card styles'
   }),
 
-  new NavigatorItem('/charts', 'area-chart', 'Google Charts', {
-    group: 'Components',
-    tooltip: 'Sample Google Chart with arbitrary annotations',
-    annotations: [
-      {style: {color: 'red'}, text: 'GET'},
-      {clazz: 'x', text: 'PUT'},
-      {style: {color: 'green'}, text: 'DELETE'}
-    ]
-  }),
-
   new NavigatorItem('/drawers', 'window-maximize', 'Drawer Panels', {
     group: 'Components',
     tooltip: 'Test page for all drawer styles'
@@ -79,6 +69,18 @@ const NAVIGATOR_ITEMS: NavigatorItem[] = [
   new NavigatorItem('/pipes', 'filter', 'Miscellaneous Pipes', {
     group: 'Components',
     tooltip: 'Test page for all pipes'
+  }),
+
+  // Google
+
+  new NavigatorItem('/maps', 'map', 'Google Maps', {
+    group: 'Google Integrations',
+    tooltip: 'Sample Google map with test info window and markers'
+  }),
+
+  new NavigatorItem('/charts', 'area-chart', 'Google Charts', {
+    group: 'Google Integrations',
+    tooltip: 'Sample Google chart with arbitrary annotations'
   }),
 
   // pagination

@@ -16,6 +16,8 @@ import { FormsPageModule } from './pages/forms/module';
 import { FourOhFourPageComponent } from './lib/pages/404-page';
 import { HttpModule } from '@angular/http';
 import { LocalStorageModule } from 'angular-2-local-storage';
+import { MapsPageComponent } from './pages/maps/page';
+import { MapsPageModule } from './pages/maps/module';
 import { MarkdownPageComponent } from './pages/markdown/page';
 import { MarkdownPageModule } from './pages/markdown/module';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
@@ -71,6 +73,7 @@ const MODULES_INTERNAL = [
   ChartsPageModule,
   DrawersPageModule,
   FormsPageModule,
+  MapsPageModule,
   MarkdownPageModule,
   NoopPageModule,
   PiModule,
@@ -87,6 +90,7 @@ const ROUTES = [
   {path: 'drawers',          component: DrawersPageComponent},
   {path: 'forms',            component: FormsPageComponent},
   {path: 'home',             component: SplashPageComponent},
+  {path: 'maps',             component: MapsPageComponent},
   {path: 'markdown/:doc',    component: MarkdownPageComponent},
   {path: 'noop',             component: NoopPageComponent},
   {path: 'pagination',       component: PaginationPageComponent},
