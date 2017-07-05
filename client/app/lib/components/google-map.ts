@@ -2,9 +2,26 @@ import {} from '@types/googlemaps';
 
 import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output } from '@angular/core';
 
+import { GoogleMapInfoWindowComponent } from './google-map-infowindow';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { OnChange } from '../decorators/onchange';
 import { nextTick } from '../utils';
+
+/**
+ * Model map marker
+ */
+export class GoogleMapMarker {
+  icon: string;
+  infoWindow?: GoogleMapInfoWindowComponent;
+  infoWindowData: any;
+  map?: google.maps.Map;
+  position: {lat: number, lng: number};
+
+  constructor(obj: any) {
+    Object.assign(this, obj);
+  }
+
+}
 
 /**
  * Google map
@@ -28,8 +45,7 @@ import { nextTick } from '../utils';
 
 export class GoogleMapComponent implements AfterViewInit {
 
-  @Input() markers: any;
-  @Input() prams: any;
+  @Input() markers: GoogleMapMarker[];
   @Input() stickyKey: string;
 
   @Output() centerChanged = new EventEmitter<any>();
