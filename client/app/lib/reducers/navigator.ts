@@ -1,8 +1,13 @@
 import * as navigator from '../actions/navigator';
 
+export class BadgeState {
+  count: number;
+  severity?: 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error';
+}
+
 export class NavigatorState {
   badges?: {
-    [path: string]: number;
+    [path: string]: BadgeState;
   };
   expando?: {
     [group: string]: boolean;
@@ -19,7 +24,7 @@ export function reducer(state = initialState,
   switch (action.type) {
 
     case navigator.ActionTypes.BADGE:
-      const badges = Object.assign({}, state.badges, {[action.payload.path]: action.payload.count});
+      const badges = Object.assign({}, state.badges, {[action.payload.path]: action.payload.badge});
       return Object.assign({}, state, {badges});
 
     case navigator.ActionTypes.EXPANDO:

@@ -12,6 +12,7 @@ import { EnvService } from '../lib/services/env';
 import { NavigatorItem } from '../lib/components/navigator';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
+import { badge } from '../lib/actions/navigator';
 import { config } from '../config';
 import { nextTick } from '../lib/utils';
 
@@ -80,7 +81,7 @@ const NAVIGATOR_ITEMS: NavigatorItem[] = [
 
   new NavigatorItem('/charts', 'area-chart', 'Google Charts', {
     group: 'Google Integrations',
-    tooltip: 'Sample Google chart with arbitrary annotations'
+    tooltip: 'Sample Google chart'
   }),
 
   // pagination
@@ -126,6 +127,8 @@ export class RootComponent {
     nextTick(() => {
       configurator.withMediaSizeBreaks(MEDIA_SIZE_BREAKS);
       configurator.withNavigatorItems(NAVIGATOR_ITEMS);
+      // just a test
+      store.dispatch(badge('/user', {count: 3, severity: 'error'}));
     });
   }
 

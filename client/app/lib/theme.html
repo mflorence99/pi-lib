@@ -245,7 +245,42 @@
       line-height: 1.75;
     }
 
-    paper-button[primary] {
+    paper-badge {
+      --paper-badge-background: var(--accent-color);
+    }
+
+    paper-badge[primary],
+    paper-badge.primary {
+      --paper-badge-background: var(--primary-color);
+    }
+
+    paper-badge[secondary],
+    paper-badge.secondary {
+      --paper-badge-background: var(--accent-color);
+    }
+
+    paper-badge[info],
+    paper-badge.info {
+      --paper-badge-background: var(--info-color);
+    }
+
+    paper-badge[success],
+    paper-badge.success {
+      --paper-badge-background: var(--success-color);
+    }
+
+    paper-badge[warning],
+    paper-badge.warning {
+      --paper-badge-background: var(--warning-color);
+    }
+
+    paper-badge[error],
+    paper-badge.error {
+      --paper-badge-background: var(--error-color);
+    }
+
+    paper-button[primary],
+    paper-button.primary {
       color: var(--primary-color);
     }
 

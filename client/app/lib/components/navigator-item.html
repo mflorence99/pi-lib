@@ -19,7 +19,7 @@
       </div>
 
       <div>{{item.tag | libBreakable}}</div>
-      
+
     </div>
 
     <div
@@ -41,7 +41,8 @@
     <div
       *ngIf="navigatorState.badges[item.path]">
       <paper-badge
-        [label]="navigatorState.badges[item.path]">
+        [label]="navigatorState.badges[item.path].count"
+        [ngClass]="navigatorState.badges[item.path].severity">
       </paper-badge>
     </div>
 

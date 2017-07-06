@@ -1,5 +1,6 @@
+import { BadgeState, NavigatorState } from '../reducers/navigator';
+
 import { Action } from '@ngrx/store';
-import { NavigatorState } from '../reducers/navigator';
 import { unique } from '../utils';
 
 export const ActionTypes = {
@@ -12,7 +13,7 @@ export const ActionTypes = {
 
 export class BadgeAction implements Action {
   type = ActionTypes.BADGE;
-  constructor(public payload: {path, count}) { }
+  constructor(public payload: {path, badge}) { }
 }
 
 export class ExpandoAction implements Action {
@@ -48,8 +49,8 @@ export type Actions
  */
 
 export function badge(path: string,
-                      count: number): BadgeAction {
-  return new BadgeAction({path, count});
+                      badge: BadgeState): BadgeAction {
+  return new BadgeAction({path, badge});
 }
 
 export function expando(group: string): ExpandoAction {
