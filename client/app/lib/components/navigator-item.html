@@ -39,7 +39,7 @@
     </div>
 
     <div
-      *ngIf="navigatorState.badges[item.path]">
+      *ngIf="navigatorState.badges[item.path].count">
       <paper-badge
         [label]="navigatorState.badges[item.path].count"
         [ngClass]="navigatorState.badges[item.path].severity">
