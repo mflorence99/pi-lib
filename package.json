@@ -81,7 +81,7 @@
     "marked": "^0.3.6",
     "merge-stream": "^1.0.1",
     "moment": "^2.18.1",
-    "ng2-google-charts": "^2.1.0",
+    "ng2-google-charts": "^3",
     "ngrx-store-freeze": "^0.1.9",
     "numeral": "^2.0.6",
     "polymer-build": "^1.2.0",
