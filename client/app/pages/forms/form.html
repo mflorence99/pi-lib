@@ -105,9 +105,9 @@
       name="partner"
       prevent-invalid-input
       required>
-      <template>
+      <ng-template [polymer]="this" ngNonBindable>
         <img src=[[item.logo]] style="max-height: 32px">
-      </template>
+      </ng-template>
       <iron-icon
         icon="account-box"
         primary
