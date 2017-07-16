@@ -3,6 +3,7 @@ import { PolymerForm, PolymerFormComponent, PolymerFormValuesMap } from '../../l
 
 import { AutoUnsubscribe } from '../../lib/decorators/auto-unsubscribe';
 import { DrawerPanelComponent } from '../../lib/components/drawer-panel';
+import { LifecycleComponent } from '../../lib/components/lifecycle-component';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -27,7 +28,9 @@ export class SelectedColumn {
 })
 
 @AutoUnsubscribe()
-export class TestSelectorComponent implements AfterViewInit {
+export class TestSelectorComponent extends LifecycleComponent
+                                   implements AfterViewInit {
+
   @ViewChild('drawer') drawer: DrawerPanelComponent;
   @ViewChild('form') form: PolymerFormComponent;
 

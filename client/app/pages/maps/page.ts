@@ -3,6 +3,14 @@ import { Component, ViewChild } from '@angular/core';
 import { GoogleMapInfoWindowComponent } from '../../lib/components/google-map-infowindow';
 
 /**
+ * Model InfoWindowData
+ */
+
+export class InfoWindowData {
+  blurb: string;
+}
+
+/**
  * Google maps demo page
  */
 
@@ -21,9 +29,10 @@ export class MapsPageComponent {
     wash: {lat: 43.1831, lng: -72.0893, blurb: 'No ... THIS Washington'},
   };
 
-  infoWindowData = {};
-  locations = {};
+  infoWindowData = new InfoWindowData();
   markers = [];
+
+  private locations = {};
 
   /** Marker clicked */
   markerClicked(infoWindowData: any) {
@@ -39,12 +48,13 @@ export class MapsPageComponent {
     // rebuild markers
     this.markers = [];
     Object.keys(this.locations).forEach(key => {
+      const location = this.locations[key];
       const marker = {
         infoWindow: this.infoWindow,
         infoWindowData: {
-          blurb: this.locations[key].blurb
+          blurb: location.blurb
         },
-        position: {lat: this.locations[key].lat, lng: this.locations[key].lng}
+        position: {lat: location.lat, lng: location.lng}
       };
       this.markers.push(marker);
     });

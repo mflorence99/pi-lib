@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, ViewChild } from '@angular/core';
 
 import { DrawerPanelComponent } from '../../lib/components/drawer-panel';
+import { LifecycleComponent } from '../../lib/components/lifecycle-component';
 import { OnChange } from '../../lib/decorators/onchange';
 import { PolymerFormComponent } from '../../lib/components/polymer-form';
 import { TestDataItem } from './datasource';
@@ -16,7 +17,7 @@ import { TestDataItem } from './datasource';
   templateUrl: 'saver.html'
 })
 
-export class TestSaverComponent {
+export class TestSaverComponent extends LifecycleComponent {
 
   @Input() item: TestDataItem;
   @Input() saving = false;

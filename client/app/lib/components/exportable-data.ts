@@ -4,6 +4,7 @@ import { PolymerForm, PolymerFormValuesMap } from './polymer-form';
 
 import { AutoUnsubscribe } from '../decorators/auto-unsubscribe';
 import { ExportToCSVComponent } from './export-to-csv';
+import { LifecycleComponent } from './lifecycle-component';
 import { Subscription } from 'rxjs/Subscription';
 import { config } from '../config';
 import { nextTick } from '../utils';
@@ -20,7 +21,7 @@ import { nextTick } from '../utils';
 })
 
 @AutoUnsubscribe()
-export class ExportableDataComponent {
+export class ExportableDataComponent extends LifecycleComponent {
 
   @Input() datasource: PagedDataSourceService;
   @Input() fields: string[] = [];
@@ -47,7 +48,9 @@ export class ExportableDataComponent {
   private ts: number;
 
   /** ctor */
-  constructor(private cdf: ChangeDetectorRef) { }
+  constructor(private cdf: ChangeDetectorRef) {
+    super();
+  }
 
   /** Cancel the export */
   cancel() {

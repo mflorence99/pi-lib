@@ -8,6 +8,7 @@ import { ChangeDetectionStrategy } from '@angular/core';
 import { Component } from '@angular/core';
 import { ContentChildren } from '@angular/core';
 import { Input } from '@angular/core';
+import { LifecycleComponent } from './lifecycle-component';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { Observable } from 'rxjs/Observable';
 import { OnChanges } from '@angular/core';
@@ -32,7 +33,8 @@ import { nextTick } from '../utils';
 })
 
 @AutoUnsubscribe()
-export class PagedDataTableComponent implements AfterContentInit, OnChanges, OnInit {
+export class PagedDataTableComponent extends LifecycleComponent
+                                     implements AfterContentInit, OnChanges, OnInit {
 
   @ContentChildren(SortableColumnComponent, {descendants: true}) columns: QueryList<SortableColumnComponent>;
 
@@ -52,7 +54,9 @@ export class PagedDataTableComponent implements AfterContentInit, OnChanges, OnI
   private sortListeners: Subscription;
 
   /** ctor */
-  constructor(private lstor: LocalStorageService) {}
+  constructor(private lstor: LocalStorageService) {
+    super();
+  }
 
   /** Listen for scroll requests */
   listenForScroll() {

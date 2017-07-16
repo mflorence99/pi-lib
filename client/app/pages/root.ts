@@ -9,6 +9,7 @@ import { ConfiguratorService, MediaSizeBreaks } from '../lib/services/configurat
 import { AppState } from '../reducers';
 import { AutoUnsubscribe } from '../lib/decorators/auto-unsubscribe';
 import { EnvService } from '../lib/services/env';
+import { LifecycleComponent } from '../lib/components/lifecycle-component';
 import { NavigatorItem } from '../lib/components/navigator';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
@@ -108,7 +109,8 @@ const NAVIGATOR_ITEMS: NavigatorItem[] = [
 })
 
 @AutoUnsubscribe()
-export class RootComponent {
+export class RootComponent extends LifecycleComponent {
+
   pageState: Observable<page.PageState>;
   routerState: Observable<router.RouterState>;
   userState: Observable<user.UserState>;
@@ -118,6 +120,7 @@ export class RootComponent {
   constructor(configurator: ConfiguratorService,
               env: EnvService,
               store: Store<AppState>) {
+    super();
     console.log('%c <lib-root> loading', 'color: blue', config, env);
     this.pageState = store.select(state => state.page);
     this.routerState = store.select(state => state.router);

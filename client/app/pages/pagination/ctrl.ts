@@ -5,6 +5,7 @@ import { numResults, statusText } from '../../lib/actions/page';
 
 import { AppState } from '../../reducers';
 import { AutoUnsubscribe } from '../../lib/decorators/auto-unsubscribe';
+import { LifecycleComponent } from '../../lib/components/lifecycle-component';
 import { OnChange } from '../../lib/decorators/onchange';
 import { PolymerForm } from '../../lib/components/polymer-form';
 import { Store } from '@ngrx/store';
@@ -23,7 +24,7 @@ import { nextTick } from '../../lib/utils';
 })
 
 @AutoUnsubscribe()
-export class TestCtrlComponent {
+export class TestCtrlComponent extends LifecycleComponent {
 
   @Input() filter: PolymerForm;
   @Input() state: PagedDataState;
@@ -39,7 +40,9 @@ export class TestCtrlComponent {
 
   /** ctor */
   constructor(private store: Store<AppState>,
-              private testData: TestDataSourceService) { }
+              private testData: TestDataSourceService) {
+    super();
+  }
 
   // bind OnChange handlers
 

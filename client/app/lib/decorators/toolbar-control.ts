@@ -62,19 +62,19 @@ export function ToolbarControl(def: {
   }
 
   /**
-   * Create ngAfterViewInit
+   * Create ngOnInit
    */
 
   function init(ctor, method) {
-    const ngAfterViewInit = ctor.prototype.ngAfterViewInit;
-    ctor.prototype.ngAfterViewInit = function () {
+    const ngOnInit = ctor.prototype.ngOnInit;
+    ctor.prototype.ngOnInit = function () {
       const controls = document.querySelector('#theToolbarControls');
       const handler = event => method.apply(this, [event]);
       build(ctor, controls, handler);
-      // execute the original ngAfterViewInit
-      if (ngAfterViewInit
-       && (typeof ngAfterViewInit === 'function'))
-        ngAfterViewInit.apply(this, arguments);
+      // execute the original ngOnInit
+      if (ngOnInit
+       && (typeof ngOnInit === 'function'))
+        ngOnInit.apply(this, arguments);
     };
   }
 

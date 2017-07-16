@@ -5,6 +5,7 @@ import { ChangeDetectionStrategy, Component, Input, ViewChild } from '@angular/c
 import { Http, Response } from '@angular/http';
 
 import { AutoUnsubscribe } from '../decorators/auto-unsubscribe';
+import { LifecycleComponent } from './lifecycle-component';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -18,7 +19,7 @@ import { Subscription } from 'rxjs/Subscription';
 })
 
 @AutoUnsubscribe()
-export class MarkdownComponent {
+export class MarkdownComponent extends LifecycleComponent {
 
   private static cache = {};
 
@@ -30,7 +31,9 @@ export class MarkdownComponent {
   private subToLoader: Subscription;
 
   /** ctor */
-  constructor(private http: Http) { }
+  constructor(private http: Http) {
+    super();
+  }
 
   // property accessors / mutators
 

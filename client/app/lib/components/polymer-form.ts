@@ -7,6 +7,7 @@ import { Directive } from '@angular/core';
 import { ElementRef } from '@angular/core';
 import { HostListener } from '@angular/core';
 import { Input } from '@angular/core';
+import { LifecycleComponent } from './lifecycle-component';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { OnChanges } from '@angular/core';
 import { OnDestroy } from '@angular/core';
@@ -294,7 +295,8 @@ export class PolymerControlDirective implements OnDestroy {
 })
 
 @AutoUnsubscribe()
-export class PolymerFormComponent implements AfterContentInit, OnChanges {
+export class PolymerFormComponent extends LifecycleComponent
+                                  implements AfterContentInit, OnChanges {
 
   @ContentChildren(PolymerControlDirective, {descendants: true}) controls: QueryList<PolymerControlDirective>;
 
@@ -312,7 +314,9 @@ export class PolymerFormComponent implements AfterContentInit, OnChanges {
   private seed = new PolymerFormValuesMap();
 
   /** ctor */
-  constructor(private lstor: LocalStorageService) { }
+  constructor(private lstor: LocalStorageService) {
+    super();
+  }
 
   /** Clear a control by name, and optionally give it the focus */
   clear(name: string,

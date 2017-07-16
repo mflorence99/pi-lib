@@ -3,6 +3,7 @@ import {} from '@types/googlemaps';
 import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output } from '@angular/core';
 
 import { GoogleMapInfoWindowComponent } from './google-map-infowindow';
+import { LifecycleComponent } from '../../lib/components/lifecycle-component';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { OnChange } from '../decorators/onchange';
 import { nextTick } from '../utils';
@@ -43,7 +44,8 @@ export class GoogleMapMarker {
   templateUrl: 'google-map.html'
 })
 
-export class GoogleMapComponent implements AfterViewInit {
+export class GoogleMapComponent extends LifecycleComponent
+                                implements AfterViewInit {
 
   @Input() markers: GoogleMapMarker[];
   @Input() stickyKey: string;
@@ -59,7 +61,9 @@ export class GoogleMapComponent implements AfterViewInit {
 
   /** ctor */
   constructor(private element: ElementRef,
-              private lstor: LocalStorageService) { }
+              private lstor: LocalStorageService) {
+    super();
+  }
 
   /** Center the map */
   setCenter(lat: number,

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LifecycleComponent } from '../../lib/components/lifecycle-component';
 import { TestDataSourceService } from './datasource';
 import { ToolbarControl } from '../../lib/decorators/toolbar-control';
 
@@ -12,12 +13,14 @@ import { ToolbarControl } from '../../lib/decorators/toolbar-control';
   templateUrl: 'page.html'
 })
 
-export class PaginationPageComponent {
+export class PaginationPageComponent extends LifecycleComponent {
 
   xxx = 'Hello!';
 
   /** ctor */
-  constructor(public testData: TestDataSourceService) { }
+  constructor(public testData: TestDataSourceService) {
+    super();
+  }
 
   @ToolbarControl({
     order: 2,

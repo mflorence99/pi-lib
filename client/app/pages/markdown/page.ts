@@ -5,6 +5,7 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 
 import { AppState } from '../../reducers';
 import { AutoUnsubscribe } from '../../lib/decorators/auto-unsubscribe';
+import { LifecycleComponent } from '../../lib/components/lifecycle-component';
 import { MarkdownComponent } from '../../lib/components/markdown';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
@@ -21,7 +22,9 @@ import { Subscription } from 'rxjs/Subscription';
 })
 
 @AutoUnsubscribe()
-export class MarkdownPageComponent implements AfterViewInit {
+export class MarkdownPageComponent extends LifecycleComponent
+                                   implements AfterViewInit {
+
   @ViewChild('markdown') markdown: MarkdownComponent;
 
   windowState: Observable<window.WindowState>;
@@ -31,6 +34,7 @@ export class MarkdownPageComponent implements AfterViewInit {
   /** ctor */
   constructor(private route: ActivatedRoute,
                       store: Store<AppState>) {
+    super();
     this.windowState = store.select(state => state.window);
   }
 
