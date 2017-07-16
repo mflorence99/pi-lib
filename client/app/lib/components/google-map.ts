@@ -3,7 +3,7 @@ import {} from '@types/googlemaps';
 import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output } from '@angular/core';
 
 import { GoogleMapInfoWindowComponent } from './google-map-infowindow';
-import { LifecycleComponent } from '../../lib/components/lifecycle-component';
+import { LifecycleComponent } from './lifecycle-component';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { OnChange } from '../decorators/onchange';
 import { nextTick } from '../utils';
