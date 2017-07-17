@@ -44,6 +44,7 @@ export class PaginationPageComponent extends LifecycleComponent {
   @ToolbarControl({
     icon: 'help',
     order: 3,
+    tag: 'HELP',
     type: 'button'
   })
   whatsup(event) {

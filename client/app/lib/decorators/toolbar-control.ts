@@ -18,8 +18,17 @@ export function ToolbarControl(def: {
     let control = null;
     switch (def.type) {
       case 'button':
-        control = document.createElement('paper-icon-button');
-        control.icon = def.icon;
+        control = document.createElement('paper-button');
+        if (def.icon) {
+          const icon = <any>document.createElement('iron-icon');
+          icon.icon = def.icon;
+          control.appendChild(icon);
+        }
+        if (def.tag) {
+          const tag = <any>document.createElement('span');
+          tag.innerHTML = def.tag;
+          control.appendChild(tag);
+        }
         control.addEventListener('click', handler);
         break;
       case 'checkbox':
