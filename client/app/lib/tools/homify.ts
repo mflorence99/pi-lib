@@ -28,7 +28,7 @@ if (argv.client)
         path.join(base, './client', 'home.html'));
 
 /**
- * We use remove + apply before running our production Express srver, which now
+ * We use remove + apply before running our production Express server, which now
  * assumes responsibility for deploying static content, taking over from ng serve.
  * We remove any build-time ENV already in <head>, taking care not to remove
  * angular/cli's own injections. Then we apply the run-time ENV back into <head>.
