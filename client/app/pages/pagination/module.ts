@@ -1,4 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -27,7 +28,12 @@ const COMPONENTS = [
 const MODULES = [
   CommonModule,
   FlexLayoutModule,
-  PiModule
+  PiModule,
+  RouterModule
+];
+
+const ROUTES: Routes = [
+  {path: '', component: PaginationPageComponent}
 ];
 
 const SERVICES = [
@@ -41,7 +47,8 @@ const SERVICES = [
   ],
 
   imports: [
-    ...MODULES
+    ...MODULES,
+    RouterModule.forChild(ROUTES)
   ],
 
   providers: [

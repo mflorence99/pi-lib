@@ -4,9 +4,9 @@ import * as router from '@ngrx/router-store';
 
 import { AfterViewInit, ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { expando } from '../actions/navigator';
-import { go } from '@ngrx/router-store';
 
 /**
  * Model navigator
@@ -60,8 +60,8 @@ export class NavigatorPathMap {
 
 export class NavigatorComponent {
 
-  @Input() navigatorState: navigator.NavigatorState = navigator.initialState;
-  @Input() routerState: router.RouterState = router.initialState;
+  @Input() navigatorState: navigator.NavigatorState;
+  @Input() routerState: router.RouterReducerState;
 
   groups: string[] = [];
   itemsByGroup = new NavigatorGroupMap();
@@ -98,10 +98,11 @@ export class NavigatorComponent {
 })
 
 export class NavigatorGroupComponent {
+
   @Input() group = '';
   @Input() items: NavigatorItem[] = [];
-  @Input() navigatorState: navigator.NavigatorState = navigator.initialState;
-  @Input() routerState: router.RouterState = router.initialState;
+  @Input() navigatorState: navigator.NavigatorState;
+  @Input() routerState: router.RouterReducerState;
 
   // we should strongly-type the Store, but we can't because it belongs
   // to someone else and we're in a common library
@@ -126,17 +127,20 @@ export class NavigatorGroupComponent {
 })
 
 export class NavigatorItemComponent implements AfterViewInit {
+
   @Input() item: NavigatorItem;
   @Input() navigatorState: navigator.NavigatorState;
-  @Input() routerState: router.RouterState;
+  @Input() routerState: router.RouterReducerState;
 
   // we should strongly-type the Store, but we can't because it belongs
   // to someone else and we're in a common library
-  constructor(private store: Store<any>) { }
+  constructor(private routerService: Router,
+              private store: Store<any>) { }
 
   /** Navigate to an item */
   navigate(item: NavigatorItem) {
-    this.store.dispatch(go([item.path]));
+    console.log('%c Navigate to', 'color: orange', item.path);
+    this.routerService.navigate([item.path]);
     this.store.dispatch(page.reset());
     if (item.options.tooltip)
       this.store.dispatch(page.statusText(`${item.tag} ... ${item.options.tooltip}`));
@@ -147,7 +151,7 @@ export class NavigatorItemComponent implements AfterViewInit {
   // lifecycle methods
 
   ngAfterViewInit() {
-    if (this.routerState.path === this.item.path)
+    if (this.routerState && (this.routerState.state.url === this.item.path))
       this.navigate(this.item);
   }
 

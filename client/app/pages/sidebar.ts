@@ -24,7 +24,7 @@ import { Store } from '@ngrx/store';
 @AutoUnsubscribe()
 export class SidebarComponent extends LifecycleComponent {
 
-  routerState: Observable<router.RouterState>;
+  routerState: Observable<router.RouterReducerState>;
   navigatorState: Observable<navigator.NavigatorState>;
 
   /** ctor */

@@ -1,43 +1,26 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { HighlightJsModule, HighlightJsService } from 'angular2-highlight-js';
+import { RouterModule, Routes } from '@angular/router';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { ButtonsPageComponent } from './pages/buttons/page';
-import { ButtonsPageModule } from './pages/buttons/module';
-import { ChartsPageComponent } from './pages/charts/page';
-import { ChartsPageModule } from './pages/charts/module';
 import { CommonModule } from '@angular/common';
-import { DrawersPageComponent } from './pages/drawers/page';
-import { DrawersPageModule } from './pages/drawers/module';
+import { EffectsModule } from '@ngrx/effects';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormsPageComponent } from './pages/forms/page';
-import { FormsPageModule } from './pages/forms/module';
 import { FourOhFourPageComponent } from './lib/pages/404-page';
 import { HttpModule } from '@angular/http';
 import { LocalStorageModule } from 'angular-2-local-storage';
-import { MapsPageComponent } from './pages/maps/page';
-import { MapsPageModule } from './pages/maps/module';
-import { MarkdownPageComponent } from './pages/markdown/page';
-import { MarkdownPageModule } from './pages/markdown/module';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { NoopPageComponent } from './pages/noop/page';
 import { NoopPageModule } from './pages/noop/module';
-import { PaginationPageComponent } from './pages/pagination/page';
-import { PaginationPageModule } from './pages/pagination/module';
 import { PiModule } from './lib';
-import { PipesPageComponent } from './pages/pipes/page';
-import { PipesPageModule } from './pages/pipes/module';
 import { RootComponent } from './pages/root';
-import { RouterModule } from '@angular/router';
-import { RouterStoreModule } from '@ngrx/router-store';
 import { SidebarComponent } from './pages/sidebar';
 import { SplashPageComponent } from './pages/splash/page';
 import { SplashPageModule } from './pages/splash/module';
 import { StoreModule } from '@ngrx/store';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { ToolbarComponent } from './pages/toolbar';
-import { UserPageComponent } from './pages/user/page';
-import { UserPageModule } from './pages/user/module';
 import { reducers } from './reducers';
 
 /**
@@ -69,33 +52,24 @@ const MODULES_EXTERNAL = [
 ];
 
 const MODULES_INTERNAL = [
-  ButtonsPageModule,
-  ChartsPageModule,
-  DrawersPageModule,
-  FormsPageModule,
-  MapsPageModule,
-  MarkdownPageModule,
   NoopPageModule,
   PiModule,
-  PaginationPageModule,
-  PipesPageModule,
-  SplashPageModule,
-  UserPageModule
+  SplashPageModule
 ];
 
-const ROUTES = [
+const ROUTES: Routes = [
   {path: '',                 component: SplashPageComponent},
-  {path: 'buttons',          component: ButtonsPageComponent},
-  {path: 'charts',           component: ChartsPageComponent},
-  {path: 'drawers',          component: DrawersPageComponent},
-  {path: 'forms',            component: FormsPageComponent},
+  {path: 'buttons',          loadChildren: './pages/buttons/module#ButtonsPageModule'},
+  {path: 'charts',           loadChildren: './pages/charts/module#ChartsPageModule'},
+  {path: 'drawers',          loadChildren: './pages/drawers/module#DrawersPageModule'},
+  {path: 'forms',            loadChildren: './pages/forms/module#FormsPageModule'},
   {path: 'home',             component: SplashPageComponent},
-  {path: 'maps',             component: MapsPageComponent},
-  {path: 'markdown/:doc',    component: MarkdownPageComponent},
+  {path: 'maps',             loadChildren: './pages/maps/module#MapsPageModule'},
+  {path: 'markdown/:doc',    loadChildren: './pages/markdown/module#MarkdownPageModule'},
   {path: 'noop',             component: NoopPageComponent},
-  {path: 'pagination',       component: PaginationPageComponent},
-  {path: 'pipes',            component: PipesPageComponent},
-  {path: 'user',             component: UserPageComponent},
+  {path: 'pagination',       loadChildren: './pages/pagination/module#PaginationPageModule'},
+  {path: 'pipes',            loadChildren: './pages/pipes/module#PipesPageModule'},
+  {path: 'user',             loadChildren: './pages/user/module#UserPageModule'},
   {path: '**',               component: FourOhFourPageComponent}
 ];
 
@@ -115,9 +89,10 @@ const SERVICES = [
     ...MODULES_ANGULAR,
     ...MODULES_EXTERNAL,
     ...MODULES_INTERNAL,
+    EffectsModule.forRoot([]),
     RouterModule.forRoot(ROUTES, { useHash: true }),
-    RouterStoreModule.connectRouter(),
-    StoreModule.provideStore(reducers)
+    StoreRouterConnectingModule,
+    StoreModule.forRoot(reducers)
   ],
 
   providers: [

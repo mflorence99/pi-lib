@@ -18,7 +18,7 @@ export class AppState {
   launchURL: launchURL.LaunchURLState;
   navigator: navigator.NavigatorState;
   page: page.PageState;
-  router: router.RouterState;
+  router: router.RouterReducerState;
   user: user.UserState;
   window: window.WindowState;
 }

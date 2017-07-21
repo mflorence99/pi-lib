@@ -112,7 +112,7 @@ const NAVIGATOR_ITEMS: NavigatorItem[] = [
 export class RootComponent extends LifecycleComponent {
 
   pageState: Observable<page.PageState>;
-  routerState: Observable<router.RouterState>;
+  routerState: Observable<router.RouterReducerState>;
   userState: Observable<user.UserState>;
   windowState: Observable<window.WindowState>;
 

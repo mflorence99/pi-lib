@@ -18,10 +18,10 @@ import { routeAnimation } from '../animations';
 
 export class AnimatedRouterOutletComponent {
 
-  @HostBinding('@routeAnimation') get trigger() {
-    return this.routerState.path;
-  }
+  @Input() routerState: router.RouterReducerState;
 
-  @Input() routerState: router.RouterState = router.initialState;
+  @HostBinding('@routeAnimation') get trigger() {
+    return this.routerState? this.routerState.state.url : '/';
+  }
 
 }

@@ -18,7 +18,7 @@ export class LogEffects {
    */
 
   @Effect({dispatch: false}) logActions: Observable<Action> = this.actions
-    .do((action => console.log(`%c ${action.type}`, 'color: green', action.payload)));
+    .do(((action: any) => console.log(`%c ${action.type}`, 'color: green', action.payload)));
 
   /** ctor */
   constructor(private actions: Actions) { }

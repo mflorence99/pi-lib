@@ -130,13 +130,15 @@ const SERVICES = [
 
   imports: [
     CommonModule,
-    EffectsModule.run(lib.LaunchURLEffects),
-    EffectsModule.run(lib.LogEffects),
-    EffectsModule.run(lib.NavigatorEffects),
-    EffectsModule.run(lib.PageEffects),
-    EffectsModule.run(lib.RouterEffects),
-    EffectsModule.run(lib.UserEffects),
-    EffectsModule.run(lib.WindowEffects),
+    EffectsModule.forFeature([
+      lib.LaunchURLEffects,
+      lib.LogEffects,
+      lib.NavigatorEffects,
+      lib.PageEffects,
+      lib.RouterEffects,
+      lib.UserEffects,
+      lib.WindowEffects
+    ]),
     FlexLayoutModule,
     RouterModule
   ],
