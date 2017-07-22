@@ -28,9 +28,11 @@ export class RouterEffects {
     .ofType(ROUTER_NAVIGATION)
     .map(toPayload)
     .do((payload: RouterNavigationPayload) => {
+      const lastUsedRoute: string = this.lstor.get(LAST_USED_ROUTE);
       if (payload.routerState.url !== '/')
         this.lstor.set(LAST_USED_ROUTE, payload.routerState.url);
-      else this.router.navigate([<string>this.lstor.get(LAST_USED_ROUTE) || '/']);
+      else if (lastUsedRoute)
+        this.router.navigate([lastUsedRoute]);
     });
 
   /** ctor */
