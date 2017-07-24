@@ -20,7 +20,6 @@ export class AnimatedRouterOutletComponent implements OnInit {
   url: string;
 
   @HostBinding('@routeAnimation') get trigger() {
-    console.log('%c <lib-animated-router-outlet>', 'color: silver', this.url);
     return this.url;
   }
 
