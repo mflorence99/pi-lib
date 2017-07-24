@@ -1,6 +1,5 @@
-import * as router from '@ngrx/router-store';
-
-import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 
 import { routeAnimation } from '../animations';
 
@@ -16,12 +15,26 @@ import { routeAnimation } from '../animations';
   templateUrl: 'animated-router-outlet.html'
 })
 
-export class AnimatedRouterOutletComponent {
+export class AnimatedRouterOutletComponent implements OnInit {
 
-  @Input() routerState: router.RouterReducerState;
+  url: string;
 
   @HostBinding('@routeAnimation') get trigger() {
-    return this.routerState? this.routerState.state.url : '/';
+    console.log('%c <lib-animated-router-outlet>', 'color: silver', this.url);
+    return this.url;
+  }
+
+  /** ctor */
+  constructor(private router: Router) { }
+
+  // lifecycle methods
+
+  ngOnInit() {
+    this.router.events
+      .filter(event => event instanceof NavigationEnd)
+      .subscribe((event: NavigationEnd) => {
+        this.url = event.url;
+      });
   }
 
 }
