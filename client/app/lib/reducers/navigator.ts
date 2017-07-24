@@ -12,7 +12,7 @@ export class NavigatorState {
   expando?: {
     [group: string]: boolean;
   };
-};
+}
 
 export const initialState: NavigatorState = {
   badges: {},

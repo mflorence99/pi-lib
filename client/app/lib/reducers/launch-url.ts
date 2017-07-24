@@ -5,7 +5,7 @@ import { URLSearchParams } from '@angular/http';
 export class LaunchURLState {
   location: Location;
   search: URLSearchParams;
-};
+}
 
 export const initialState: LaunchURLState = {
   location: <Location>{},

@@ -1,13 +1,13 @@
 import * as page from '../actions/page';
 
-export enum StatusLevel {NORMAL, INFO, WARNING, ERROR};
+export enum StatusLevel {NORMAL, INFO, WARNING, ERROR}
 
 export class PageState {
   numResults: number;
   statusLevel: StatusLevel;
   statusText: string;
   title: string;
-};
+}
 
 export const initialState: PageState = {
   numResults: null,

@@ -13,7 +13,7 @@ export class WindowState {
   tiny?: boolean;
   withPrinter?: boolean;
   withSidebar?: boolean;
-};
+}
 
 export const initialState: WindowState = {
   large: false,
