@@ -1,5 +1,4 @@
 import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/startWith';
 
 import { Actions, Effect, toPayload } from '@ngrx/effects';
 import { ROUTER_NAVIGATION, RouterNavigationPayload } from '@ngrx/router-store';

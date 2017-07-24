@@ -1,3 +1,5 @@
+import 'rxjs/add/operator/do';
+
 import { ChangeDetectionStrategy, Component, HostBinding, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 
@@ -31,9 +33,8 @@ export class AnimatedRouterOutletComponent implements OnInit {
   ngOnInit() {
     this.router.events
       .filter(event => event instanceof NavigationEnd)
-      .subscribe((event: NavigationEnd) => {
-        this.url = event.url;
-      });
+      .do((event: NavigationEnd) => this.url = event.url)
+      .subscribe();
   }
 
 }

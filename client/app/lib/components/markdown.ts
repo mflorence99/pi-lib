@@ -1,5 +1,6 @@
 import { } from '@types/marked';
 import 'rxjs/add/observable/from';
+import 'rxjs/add/operator/do';
 
 import { ChangeDetectionStrategy, Component, Input, ViewChild } from '@angular/core';
 import { Http, Response } from '@angular/http';
