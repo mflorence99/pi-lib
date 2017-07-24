@@ -12,11 +12,13 @@ export class NavigatorState {
   expando?: {
     [group: string]: boolean;
   };
+  menu?: number;
 }
 
 export const initialState: NavigatorState = {
   badges: {},
-  expando: {}
+  expando: {},
+  menu: 0
 };
 
 export function reducer(state = initialState,
@@ -33,6 +35,9 @@ export function reducer(state = initialState,
 
     case navigator.ActionTypes.LOAD:
       return Object.assign({}, initialState, action.payload);
+
+    case navigator.ActionTypes.MENU:
+      return Object.assign({}, state, {menu: action.payload});
 
     default:
       return state;

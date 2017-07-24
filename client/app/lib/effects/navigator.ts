@@ -31,6 +31,16 @@ export class NavigatorEffects {
     .map((state: NavigatorState) => navigator.noop());
 
   /**
+   * Listen for toggle action to record last-used navigator state
+   */
+
+  @Effect() menu: Observable<Action> = this.actions
+    .ofType(navigator.ActionTypes.MENU)
+    .withLatestFrom(this.store.select('navigator'), (action, state) => state)
+    .do((state: NavigatorState) => this.lstor.set(navigator.ActionTypes.MENU, state.menu))
+    .map((state: NavigatorState) => navigator.noop());
+
+  /**
    * Listen for an init action to load last-used navigator state
    */
 
@@ -39,7 +49,8 @@ export class NavigatorEffects {
     .startWith(navigator.init())
     .map((action: Action) => {
       const expando = this.lstor.get(navigator.ActionTypes.EXPANDO) || <any>{};
-      return navigator.load({expando});
+      const menu = <number>this.lstor.get(navigator.ActionTypes.MENU) || 0;
+      return navigator.load({expando, menu});
     });
 
   // we should strongly-type the Store, but we can't because it belongs

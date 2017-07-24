@@ -8,6 +8,7 @@ export const ActionTypes = {
   EXPANDO: unique('[Navigator] Group expando'),
   INIT:    unique('[Navigator] Init'),
   LOAD:    unique('[Navigator] Load'),
+  MENU:    unique('[Navigator] Menu'),
   NOOP:    unique('[Navigator] Noop')
 };
 
@@ -31,6 +32,11 @@ export class LoadAction implements Action {
   constructor(public payload: NavigatorState) { }
 }
 
+export class MenuAction implements Action {
+  type = ActionTypes.MENU;
+  constructor(public payload: number) { }
+}
+
 export class NoopAction implements Action {
   type = ActionTypes.NOOP;
   constructor(public payload: any = null) { }
@@ -41,6 +47,7 @@ export type Actions
   | ExpandoAction
   | InitAction
   | LoadAction
+  | MenuAction
   | NoopAction;
 
 /**
@@ -63,6 +70,10 @@ export function init(): InitAction {
 
 export function load(state: NavigatorState): LoadAction {
   return new LoadAction(state);
+}
+
+export function menu(menu: number): MenuAction {
+  return new MenuAction(menu);
 }
 
 export function noop(): NoopAction {
