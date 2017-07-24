@@ -1,5 +1,4 @@
 import * as page from '../lib/reducers/page';
-import * as router from '@ngrx/router-store';
 import * as user from '../lib/reducers/user';
 import * as window from '../lib/reducers/window';
 
@@ -112,7 +111,6 @@ const NAVIGATOR_ITEMS: NavigatorItem[] = [
 export class RootComponent extends LifecycleComponent {
 
   pageState: Observable<page.PageState>;
-  routerState: Observable<router.RouterReducerState>;
   userState: Observable<user.UserState>;
   windowState: Observable<window.WindowState>;
 
@@ -123,7 +121,6 @@ export class RootComponent extends LifecycleComponent {
     super();
     console.log('%c <lib-root> loading', 'color: blue', config, env);
     this.pageState = store.select(state => state.page);
-    this.routerState = store.select(state => state.router);
     this.userState = store.select(state => state.user);
     this.windowState = store.select(state => state.window);
     // configure the app
