@@ -119,9 +119,9 @@ export class RootComponent extends LifecycleComponent {
   windowState: Observable<window.WindowState>;
 
   /** ctor */
-  constructor(configurator: ConfiguratorService,
-              env: EnvService,
-              store: Store<AppState>) {
+  constructor(public configurator: ConfiguratorService,
+                     env: EnvService,
+                     store: Store<AppState>) {
     super();
     console.log('%c <lib-root> loading', 'color: blue', config, env);
     this.navigatorState = store.select(state => state.navigator);

@@ -3,7 +3,7 @@ import * as router from '@ngrx/router-store';
 
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
-import { ConfiguratorService } from '../lib/services/configurator';
+import { NavigatorItem } from '../lib/components/navigator';
 
 /**
  * Demo app sidebar
@@ -18,10 +18,8 @@ import { ConfiguratorService } from '../lib/services/configurator';
 
 export class SidebarComponent {
 
+  @Input() navigatorItems: NavigatorItem[] = [];
   @Input() navigatorState: navigator.NavigatorState = navigator.initialState;
   @Input() routerState: router.RouterReducerState = <router.RouterReducerState>{};
-
-  /** ctor */
-  constructor(public configurator: ConfiguratorService) { }
 
 }

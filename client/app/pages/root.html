@@ -6,6 +6,7 @@
     [ngClass]="windowState | async">
 
     <lib-sidebar
+      [navigatorItems]="configurator.navigatorItems | async"
       [navigatorState]="navigatorState | async"
       [routerState]="routerState | async"
       fxFlexFill>
