@@ -1,14 +1,9 @@
 import * as navigator from '../lib/reducers/navigator';
 import * as router from '@ngrx/router-store';
 
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
-import { AppState } from '../reducers';
-import { AutoUnsubscribe } from '../lib/decorators/auto-unsubscribe';
 import { ConfiguratorService } from '../lib/services/configurator';
-import { LifecycleComponent } from '../lib/components/lifecycle-component';
-import { Observable } from 'rxjs/Observable';
-import { Store } from '@ngrx/store';
 
 /**
  * Demo app sidebar
@@ -21,18 +16,12 @@ import { Store } from '@ngrx/store';
   styleUrls: ['sidebar.less']
 })
 
-@AutoUnsubscribe()
-export class SidebarComponent extends LifecycleComponent {
+export class SidebarComponent {
 
-  routerState: Observable<router.RouterReducerState>;
-  navigatorState: Observable<navigator.NavigatorState>;
+  @Input() navigatorState: navigator.NavigatorState = navigator.initialState;
+  @Input() routerState: router.RouterReducerState = <router.RouterReducerState>{};
 
   /** ctor */
-  constructor(public configurator: ConfiguratorService,
-              store: Store<AppState>) {
-    super();
-    this.navigatorState = store.select(state => state.navigator);
-    this.routerState = store.select(state => state.router);
-  }
+  constructor(public configurator: ConfiguratorService) { }
 
 }

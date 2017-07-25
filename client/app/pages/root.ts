@@ -1,4 +1,6 @@
+import * as navigator from '../lib/reducers/navigator';
 import * as page from '../lib/reducers/page';
+import * as router from '@ngrx/router-store';
 import * as user from '../lib/reducers/user';
 import * as window from '../lib/reducers/window';
 
@@ -110,7 +112,9 @@ const NAVIGATOR_ITEMS: NavigatorItem[] = [
 @AutoUnsubscribe()
 export class RootComponent extends LifecycleComponent {
 
+  navigatorState: Observable<navigator.NavigatorState>;
   pageState: Observable<page.PageState>;
+  routerState: Observable<router.RouterReducerState>;
   userState: Observable<user.UserState>;
   windowState: Observable<window.WindowState>;
 
@@ -120,7 +124,9 @@ export class RootComponent extends LifecycleComponent {
               store: Store<AppState>) {
     super();
     console.log('%c <lib-root> loading', 'color: blue', config, env);
+    this.navigatorState = store.select(state => state.navigator);
     this.pageState = store.select(state => state.page);
+    this.routerState = store.select(state => state.router);
     this.userState = store.select(state => state.user);
     this.windowState = store.select(state => state.window);
     // configure the app
