@@ -28,8 +28,10 @@ export class RouterEffects {
     .map(toPayload)
     .do((payload: RouterNavigationPayload) => {
       const lastUsedRoute: string = this.lstor.get(LAST_USED_ROUTE);
-      if (payload.routerState.url !== '/')
-        this.lstor.set(LAST_USED_ROUTE, payload.routerState.url);
+      if (payload.routerState.url !== '/') {
+        if (payload.routerState.url !== '/gateway/partners')
+          this.lstor.set(LAST_USED_ROUTE, payload.routerState.url);
+      }
       else if (lastUsedRoute)
         this.router.navigate([lastUsedRoute]);
     });
