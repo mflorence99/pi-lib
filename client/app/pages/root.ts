@@ -34,22 +34,26 @@ const NAVIGATOR_ITEMS: NavigatorItem[] = [
 
   new NavigatorItem('/buttons', 'window-restore', 'Buttons & Dialogs', {
     group: 'Components',
-    tooltip: 'A gallery of all button, dialog and card styles'
+    tooltip: 'A gallery of all button, dialog and card styles',
+    sticky: true
   }),
 
   new NavigatorItem('/drawers', 'window-maximize', 'Drawer Panels', {
     group: 'Components',
-    tooltip: 'Test page for all drawer styles'
+    tooltip: 'Test page for all drawer styles',
+    sticky: true
   }),
 
   new NavigatorItem('/forms', 'th', 'Polymer Forms', {
     group: 'Components',
-    tooltip: 'Test page for forms and all possible components'
+    tooltip: 'Test page for forms and all possible components',
+    sticky: true
   }),
 
   new NavigatorItem('/markdown/readthat.md', 'file-text', 'Markdown Test #1', {
     group: 'Components',
     tooltip: 'A basic introduction to part 1 for beginners',
+    sticky: true,
     nodeFinders: [
       {selector: 'lib-markdown h1', text: 'Introduction'},
       {selector: 'lib-markdown h3', text: 'Example'},
@@ -60,6 +64,7 @@ const NAVIGATOR_ITEMS: NavigatorItem[] = [
   new NavigatorItem('/markdown/readthis.md', 'file-text', 'Markdown Test #2', {
     group: 'Components',
     tooltip: 'Full API spec for advanced programmers',
+    sticky: true,
     nodeFinders: [
       {selector: 'lib-markdown h3', text: 'Installation'},
       {selector: 'lib-markdown h3', text: 'Examples'},
@@ -71,33 +76,38 @@ const NAVIGATOR_ITEMS: NavigatorItem[] = [
 
   new NavigatorItem('/pipes', 'filter', 'Miscellaneous Pipes', {
     group: 'Components',
-    tooltip: 'Test page for all pipes'
+    tooltip: 'Test page for all pipes',
+    sticky: true
   }),
 
   // Google
 
   new NavigatorItem('/maps', 'map', 'Google Maps', {
     group: 'Google Integrations',
-    tooltip: 'Sample Google map with test info window and markers'
+    tooltip: 'Sample Google map with test info window and markers',
+    sticky: true
   }),
 
   new NavigatorItem('/charts', 'area-chart', 'Google Charts', {
     group: 'Google Integrations',
-    tooltip: 'Sample Google chart'
+    tooltip: 'Sample Google chart',
+    sticky: true
   }),
 
   // pagination
 
   new NavigatorItem('/pagination', 'sort-amount-asc', 'All-in-one Test', {
     group: 'Pagination & Sort',
-    tooltip: 'Test page for all aspects of pagination'
+    tooltip: 'Test page for all aspects of pagination',
+    sticky: true
   }),
 
   // reducers
 
   new NavigatorItem('/user', 'filter', 'User State', {
     group: 'Reducers',
-    tooltip: 'Test user state by manual entry of parameters'
+    tooltip: 'Test user state by manual entry of parameters',
+    sticky: false
   })
 
 ];

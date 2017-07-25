@@ -36,6 +36,7 @@ export class NavigatorItemOptions {
   group?: string;
   annotations?: NavigatorItemAnnotation[];
   nodeFinders?: NavigatorItemNodeFinder[];
+  sticky?: boolean;
   tooltip?: string;
 }
 

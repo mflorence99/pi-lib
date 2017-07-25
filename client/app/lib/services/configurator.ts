@@ -1,3 +1,5 @@
+import 'rxjs/add/operator/startWith';
+
 import { Injectable } from '@angular/core';
 import { NavigatorItem } from '../components/navigator';
 import { Subject } from 'rxjs/Subject';
@@ -8,8 +10,14 @@ import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class ConfiguratorService {
-  mediaSizeBreaks = new Subject<MediaSizeBreaks>();
-  navigatorItems = new Subject<NavigatorItem[]>();
+  mediaSizeBreaks: Subject<MediaSizeBreaks>;
+  navigatorItems: Subject<NavigatorItem[]>;
+
+  /** ctor */
+  constructor() {
+    this.mediaSizeBreaks = new Subject<MediaSizeBreaks>();
+    this.navigatorItems = new Subject<NavigatorItem[]>();
+  }
 
   /** Configure media size breaks */
   public withMediaSizeBreaks(mediaSizeBreaks: MediaSizeBreaks) {
