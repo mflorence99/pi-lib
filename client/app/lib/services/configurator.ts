@@ -10,8 +10,11 @@ import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class ConfiguratorService {
+
   mediaSizeBreaks: Subject<MediaSizeBreaks>;
   navigatorItems: Subject<NavigatorItem[]>;
+
+  baseNavigatorItems: NavigatorItem[] = [];
 
   /** ctor */
   constructor() {
@@ -20,13 +23,20 @@ export class ConfiguratorService {
   }
 
   /** Configure media size breaks */
-  public withMediaSizeBreaks(mediaSizeBreaks: MediaSizeBreaks) {
+  withMediaSizeBreaks(mediaSizeBreaks: MediaSizeBreaks) {
     this.mediaSizeBreaks.next(mediaSizeBreaks);
   }
 
   /** Configure navigator */
-  public withNavigatorItems(navigatorItems: NavigatorItem[]) {
-    this.navigatorItems.next(navigatorItems);
+
+  withNavigatorItems(navigatorItems: NavigatorItem[]) {
+    this.baseNavigatorItems = navigatorItems;
+    this.navigatorItems.next(this.baseNavigatorItems);
+  }
+
+  appendNavigatorItems(navigatorItems: NavigatorItem[]) {
+    this.baseNavigatorItems = this.baseNavigatorItems.concat(navigatorItems);
+    this.navigatorItems.next(this.baseNavigatorItems);
   }
 
 }
