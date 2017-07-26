@@ -32,7 +32,8 @@ export class ConfiguratorService {
 
   appendNavigatorItems(navigatorName: string,
                        navigatorItems: NavigatorItem[]) {
-    if (!this.alreadyAppended[navigatorName]) {
+    if (!this.alreadyAppended[navigatorName]
+     && (navigatorItems.length > 0)) {
       this.alreadyAppended[navigatorName] = true;
       this.theNavigatorItems = this.theNavigatorItems.concat(navigatorItems);
       this.navigatorItems.next(this.theNavigatorItems);
