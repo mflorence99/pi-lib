@@ -41,7 +41,7 @@
     "@types/marked": "^0.0.28",
     "@types/node": "^8.0.9",
     "@types/numeral": "^0.0.21",
-    "angular-2-local-storage": "^1.0.1",
+    "angular-2-local-storage": "1.0.1",
     "angular2-highlight-js": "^5.0.0",
     "angular2-websocket": "^0.9.1",
     "body-parser": "^1.17.1",
