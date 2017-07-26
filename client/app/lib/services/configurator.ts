@@ -11,16 +11,11 @@ import { Subject } from 'rxjs/Subject';
 @Injectable()
 export class ConfiguratorService {
 
-  mediaSizeBreaks: Subject<MediaSizeBreaks>;
-  navigatorItems: Subject<NavigatorItem[]>;
+  mediaSizeBreaks = new Subject<MediaSizeBreaks>();
+  navigatorItems = new Subject<NavigatorItem[]>();
 
-  baseNavigatorItems: NavigatorItem[] = [];
-
-  /** ctor */
-  constructor() {
-    this.mediaSizeBreaks = new Subject<MediaSizeBreaks>();
-    this.navigatorItems = new Subject<NavigatorItem[]>();
-  }
+  private alreadyAppended = {};
+  private theNavigatorItems: NavigatorItem[] = [];
 
   /** Configure media size breaks */
   withMediaSizeBreaks(mediaSizeBreaks: MediaSizeBreaks) {
@@ -30,13 +25,18 @@ export class ConfiguratorService {
   /** Configure navigator */
 
   withNavigatorItems(navigatorItems: NavigatorItem[]) {
-    this.baseNavigatorItems = navigatorItems;
-    this.navigatorItems.next(this.baseNavigatorItems);
+    this.alreadyAppended = {};
+    this.theNavigatorItems = navigatorItems;
+    this.navigatorItems.next(this.theNavigatorItems);
   }
 
-  appendNavigatorItems(navigatorItems: NavigatorItem[]) {
-    this.baseNavigatorItems = this.baseNavigatorItems.concat(navigatorItems);
-    this.navigatorItems.next(this.baseNavigatorItems);
+  appendNavigatorItems(navigatorName: string,
+                       navigatorItems: NavigatorItem[]) {
+    if (!this.alreadyAppended[navigatorName]) {
+      this.alreadyAppended[navigatorName] = true;
+      this.theNavigatorItems = this.theNavigatorItems.concat(navigatorItems);
+      this.navigatorItems.next(this.theNavigatorItems);
+    }
   }
 
 }
