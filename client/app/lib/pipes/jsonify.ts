@@ -19,7 +19,7 @@ export class JSONifyPipe implements PipeTransform {
     if ((s === null) || (s === undefined))
       return '';
     else if (Array.isArray(s) || (typeof s === 'object'))
-      return `${JSON.stringify(s).replace(new RegExp('"', 'g'), '')}`;
+      return `${JSON.stringify(s, null, ' ').replace(new RegExp('"', 'g'), '')}`;
     else return s;
   }
 
