@@ -5,6 +5,7 @@ import {CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule} from '@angular/co
 import { CommonModule } from '@angular/common';
 import { EffectsModule } from '@ngrx/effects';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { RouterModule } from '@angular/router';
 
 /**
@@ -125,7 +126,11 @@ const SERVICES = [
 
   exports: [
     ...COMPONENTS,
-    ...PIPES
+    ...PIPES,
+    CommonModule,
+    FlexLayoutModule,
+    Ng2GoogleChartsModule,
+    RouterModule
   ],
 
   imports: [
@@ -140,6 +145,7 @@ const SERVICES = [
       lib.WindowEffects
     ]),
     FlexLayoutModule,
+    Ng2GoogleChartsModule,
     RouterModule
   ],
 

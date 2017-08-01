@@ -4,13 +4,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { CommonModule } from '@angular/common';
 import { EffectsModule } from '@ngrx/effects';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { FourOhFourPageComponent } from './lib/pages/404-page';
 import { HttpModule } from '@angular/http';
 import { LocalStorageModule } from 'angular-2-local-storage';
-import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { NoopPageComponent } from './pages/noop/page';
 import { NoopPageModule } from './pages/noop/module';
 import { PiModule } from './lib';
@@ -36,10 +33,7 @@ const COMPONENTS = [
 const MODULES_ANGULAR = [
   BrowserAnimationsModule,
   BrowserModule,
-  CommonModule,
-  FlexLayoutModule,
-  HttpModule,
-  RouterModule
+  HttpModule
 ];
 
 const MODULES_EXTERNAL = [
@@ -47,8 +41,7 @@ const MODULES_EXTERNAL = [
   LocalStorageModule.withConfig({
       prefix: 'pi-lib',
       storageType: 'localStorage'
-    }),
-  Ng2GoogleChartsModule
+    })
 ];
 
 const MODULES_INTERNAL = [

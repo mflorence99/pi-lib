@@ -2,9 +2,6 @@ import { CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule } from '@angular/
 import { RouterModule, Routes } from '@angular/router';
 
 import { ChartsPageComponent } from './page';
-import { CommonModule } from '@angular/common';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { PiModule } from '../../lib';
 
 /**
@@ -16,11 +13,7 @@ const COMPONENTS = [
 ];
 
 const MODULES = [
-  CommonModule,
-  FlexLayoutModule,
-  Ng2GoogleChartsModule,
-  PiModule,
-  RouterModule
+  PiModule
 ];
 
 const ROUTES: Routes = [
