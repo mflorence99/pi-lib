@@ -2,8 +2,6 @@ import { CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule } from '@angular/
 import { RouterModule, Routes } from '@angular/router';
 
 import { ButtonsPageComponent } from './page';
-import { CommonModule } from '@angular/common';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { PiModule } from '../../lib';
 
 /**
@@ -15,10 +13,7 @@ const COMPONENTS = [
 ];
 
 const MODULES = [
-  CommonModule,
-  FlexLayoutModule,
-  PiModule,
-  RouterModule
+  PiModule
 ];
 
 const ROUTES: Routes = [

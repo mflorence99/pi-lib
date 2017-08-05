@@ -117,6 +117,14 @@
       margin: 0;
     }
 
+    hr {
+      border-top: 1px solid var(--paper-grey-700);
+    }
+
+    hr[double] {
+      border-top: 3px double var(--paper-grey-700);
+    }
+
     html {
       border: 0;
       font-size: 14px;
@@ -584,6 +592,10 @@
 
     table[aside] td {
       padding: 0 4px 4px 0;
+    }
+
+    table[aside] td[numeric] {
+      text-align: right;
     }
 
     table[aside] tr {

@@ -1,8 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { CommonModule } from '@angular/common';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { PiModule } from '../../lib';
 import { PipesPageComponent } from './page';
 import { TestFilterComponent } from './filter';
@@ -19,10 +17,7 @@ const COMPONENTS = [
 ];
 
 const MODULES = [
-  CommonModule,
-  FlexLayoutModule,
-  PiModule,
-  RouterModule
+  PiModule
 ];
 
 const ROUTES: Routes = [
