@@ -21,7 +21,7 @@ import { toVaadinItems } from '../utils';
 
 export class MultiSelectorItem {
   label: string;
-  value: string;
+  value: any;
 }
 
 /**

@@ -253,15 +253,15 @@ export class PolymerControlDirective implements OnDestroy {
       case Control.DATE:
       case Control.HIDDEN:
       case Control.SLIDER:
-        this.el.value = data? data : null;
+        this.el.value = PolymerControlDirective.isEmpty(data)? null : data;
         break;
       case Control.INPUT:
         if (this.el.type === 'number')
           this.el.value = PolymerControlDirective.isEmpty(data)? null : Number(data);
-        else this.el.value = data? data : null;
+        else this.el.value = PolymerControlDirective.isEmpty(data)? null : data;
         break;
       case Control.MULTI:
-        this.el._proxy.value = data? data : null;
+        this.el._proxy.value = PolymerControlDirective.isEmpty(data)? null : data;
         break;
       case Control.RADIO:
         this.el.selected = data;

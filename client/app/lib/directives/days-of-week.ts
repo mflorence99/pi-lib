@@ -1,28 +1,27 @@
 import { AfterViewInit, ChangeDetectorRef, Directive, ElementRef, ViewContainerRef } from '@angular/core';
 
 import { MultiSelectorComponent } from '../components/multi-selector';
-import { toVaadinItems } from '../utils';
 
-// THIS IS JUST A TEST DURECTIVE -- DON'T EXPECT ANY USERS
+// THIS IS JUST A TEST DIRECTIVE -- DON'T EXPECT ANY USERS
 
 const DAYS_OF_WEEK = [
-  'Monday',
-  'Tuesday',
-  'Wednesday',
-  'Thursday',
-  'Friday',
-  'Saturday',
-  'Sunday'
+  {label: 'Monday', value: 0},
+  {label: 'Tuesday', value: 1},
+  {label: 'Wednesday', value: 2},
+  {label: 'Thursday', value: 3},
+  {label: 'Friday', value: 4},
+  {label: 'Saturday', value: 5},
+  {label: 'Sunday',  value: 6}
 ];
 
 const DAYS_OF_WEEK_ALT = [
-  'lundi',
-  'mardi',
-  'mercredi',
-  'jeudi',
-  'vendredi',
-  'samedi',
-  'dimanche'
+  {label: 'lundi', value: 0},
+  {label: 'mardi', value: 1},
+  {label: 'mercredi', value: 2},
+  {label: 'jeudi', value: 3},
+  {label: 'vendredi', value: 4},
+  {label: 'samedi', value: 5},
+  {label: 'dimanche',  value: 6}
 ];
 
 /**
@@ -37,7 +36,7 @@ export class DaysOfWeekComboDirective {
 
   /** ctor */
   constructor(element: ElementRef) {
-    element.nativeElement.items = toVaadinItems(DAYS_OF_WEEK);
+    element.nativeElement.items = DAYS_OF_WEEK;
   }
 
 }
@@ -65,7 +64,7 @@ export class DaysOfWeekMultiDirective implements AfterViewInit {
       // https://github.com/angular/angular/issues/8277
       const multi: MultiSelectorComponent = (<any>this.vcf)._data.componentView.component;
       const choice = choices[ix++ % choices.length];
-      multi.items = toVaadinItems(choice);
+      multi.items = choice;
       this.cdf.markForCheck();
       // setTimeout(changer, 5000);
     };
