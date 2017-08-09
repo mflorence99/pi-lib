@@ -41,6 +41,7 @@ export * from './components/tiny-button';
 export * from './components/toolbar-controls';
 export * from './components/working-button';
 export * from './directives/days-of-week';
+export * from './directives/periods';
 export * from './effects/launch-url';
 export * from './effects/log';
 export * from './effects/navigator';
@@ -86,6 +87,7 @@ const COMPONENTS = [
   lib.NodeFinderComponent,
   lib.PageableDataComponent,
   lib.PagedDataTableComponent,
+  lib.PeriodsComboDirective,
   lib.PolymerAppComponent,
   lib.PolymerControlDirective,
   lib.PolymerFormComponent,
