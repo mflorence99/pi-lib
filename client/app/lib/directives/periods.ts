@@ -97,8 +97,9 @@ export class PeriodsComboDirective {
   /** ctor */
   constructor(private element: ElementRef) { }
 
-  @Input() set period(type: string) {
-    this.element.nativeElement.items = getPeriods(type);
+  @Input() set period(period: string) {
+    if (period)
+      this.element.nativeElement.items = getPeriods(period);
   }
 
 }
@@ -117,11 +118,13 @@ export class PeriodsMultiDirective {
   constructor(private cdf: ChangeDetectorRef,
               private vcf: ViewContainerRef) { }
 
-  @Input() set period(type: string) {
-    // https://github.com/angular/angular/issues/8277
-    const multi: MultiSelectorComponent = (<any>this.vcf)._data.componentView.component;
-    multi.items = getPeriods(type);
-    this.cdf.markForCheck();
+  @Input() set period(period: string) {
+    if (period) {
+      // https://github.com/angular/angular/issues/8277
+      const multi: MultiSelectorComponent = (<any>this.vcf)._data.componentView.component;
+      multi.items = getPeriods(period);
+      this.cdf.markForCheck();
+    }
   }
 
 }
@@ -130,8 +133,8 @@ export class PeriodsMultiDirective {
  * Helper functions
  */
 
-function getPeriods(type: string) {
-  switch (type.toLowerCase()) {
+function getPeriods(period: string) {
+  switch (period.toLowerCase()) {
     case 'ago':
       return AGO;
     case 'minutes':
@@ -143,6 +146,6 @@ function getPeriods(type: string) {
     case 'relative':
       return RELATIVE;
     default:
-      throw new Error(`PeriodsComboDirective ${type} not recognized`);
+      throw new Error(`PeriodsComboDirective ${period} not recognized`);
   }
 }
