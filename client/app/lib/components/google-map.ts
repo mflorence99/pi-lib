@@ -47,8 +47,13 @@ export class GoogleMapMarker {
 export class GoogleMapComponent extends LifecycleComponent
                                 implements AfterViewInit {
 
+  @Input() center: {
+    lat: 39.8282,
+    lng: -98.5795
+  };
   @Input() markers: GoogleMapMarker[];
   @Input() stickyKey: string;
+  @Input() zoom = 5;
 
   @Output() centerChanged = new EventEmitter<any>();
   @Output() mapTypeIdChanged = new EventEmitter<any>();
@@ -93,7 +98,7 @@ export class GoogleMapComponent extends LifecycleComponent
   @OnChange('markers') newMarkers() {
     // clear out all the old markers
     this.gmarkers.forEach(gmarker => gmarker.setMap(null));
-    if (this.markers) {
+    if (this.markers && this.markers.length) {
       // buid the new markers
       this.gmarkers = this.markers.map(marker => {
         marker.map = this.gmap;
@@ -110,6 +115,16 @@ export class GoogleMapComponent extends LifecycleComponent
         }
         return gmarker;
       });
+      // are all the markers in view?
+      const bounds = new google.maps.LatLngBounds();
+      const allInView = this.gmarkers.reduce((acc, gmarker) => {
+        const inView = this.gmap.getBounds().contains(gmarker.getPosition());
+        bounds.extend(gmarker.getPosition());
+        return acc && inView;
+      }, true);
+      // if they're not, make the map fit
+      if (!allInView)
+        this.gmap.fitBounds(bounds);
     }
   }
 
@@ -147,10 +162,7 @@ export class GoogleMapComponent extends LifecycleComponent
   // private methods
 
   private initCenter(): google.maps.LatLngLiteral {
-    const center = {
-      lat: 39.8282,
-      lng: -98.5795
-    };
+    const center = this.center;
     if (this.stickyKey)
       return <google.maps.LatLngLiteral>this.lstor.get(`${this.stickyKey}.center`) || center;
     else return center;
@@ -164,7 +176,7 @@ export class GoogleMapComponent extends LifecycleComponent
   }
 
   private initZoom(): number {
-    const zoom = 5;
+    const zoom = this.zoom;
     if (this.stickyKey)
       return <number>this.lstor.get(`${this.stickyKey}.zoom`) || zoom;
     return zoom;

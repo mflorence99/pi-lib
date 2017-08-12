@@ -1,6 +1,8 @@
 <lib-google-map
   (markerClicked)="markerClicked($event)"
+  [center]="{lat: 55.3781, lng: -3.4360}"
   [markers]="markers"
+  [zoom]="6"
   stickyKey="lib.test-map">
 </lib-google-map>
 
@@ -15,6 +17,12 @@
     fxLayout="row"
     fxLayoutAlign="end center"
     fxLayoutGap="16px">
+
+    <paper-checkbox
+      (change)="plot(lhr.checked, 'lhr')"
+      #lhr>
+      London
+    </paper-checkbox>
 
     <paper-checkbox
       (change)="plot(jfk.checked, 'jfk')"
