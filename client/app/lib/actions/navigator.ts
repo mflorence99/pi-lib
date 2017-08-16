@@ -34,7 +34,7 @@ export class LoadAction implements Action {
 
 export class MenuAction implements Action {
   type = ActionTypes.MENU;
-  constructor(public payload: number) { }
+  constructor(public payload: {menu, stickyMenu}) { }
 }
 
 export class NoopAction implements Action {
@@ -72,8 +72,9 @@ export function load(state: NavigatorState): LoadAction {
   return new LoadAction(state);
 }
 
-export function menu(menu: number): MenuAction {
-  return new MenuAction(menu);
+export function menu(menu: number,
+                     stickyMenu = true): MenuAction {
+  return new MenuAction({menu, stickyMenu});
 }
 
 export function noop(): NoopAction {

@@ -21,7 +21,7 @@
     "no-input-rename": false,
     "no-output-rename": false,
     "no-reference": true,
-    "no-shadowed-variable": true,
+    "no-shadowed-variable": false,
     "no-unused-expression": true,
     "no-use-before-declare": true,
     "no-var-keyword": true,

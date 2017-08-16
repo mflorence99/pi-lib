@@ -13,6 +13,7 @@ export class NavigatorState {
     [group: string]: boolean;
   };
   menu?: number;
+  stickyMenu?: boolean;
 }
 
 export const initialState: NavigatorState = {
@@ -37,7 +38,7 @@ export function reducer(state = initialState,
       return Object.assign({}, initialState, action.payload);
 
     case navigator.ActionTypes.MENU:
-      return Object.assign({}, state, {menu: action.payload});
+      return Object.assign({}, state, action.payload);
 
     default:
       return state;

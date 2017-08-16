@@ -37,7 +37,10 @@ export class NavigatorEffects {
   @Effect() menu: Observable<Action> = this.actions
     .ofType(navigator.ActionTypes.MENU)
     .withLatestFrom(this.store.select('navigator'), (action, state) => state)
-    .do((state: NavigatorState) => this.lstor.set(navigator.ActionTypes.MENU, state.menu))
+    .do((state: NavigatorState) => {
+      if (state.stickyMenu)
+        this.lstor.set(navigator.ActionTypes.MENU, state.menu);
+    })
     .map((state: NavigatorState) => navigator.noop());
 
   /**
