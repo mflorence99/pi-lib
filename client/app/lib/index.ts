@@ -1,124 +1,117 @@
-import * as lib from './';
+import { CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule } from '@angular/core';
+import { DateFormatPipe, DurationPipe, FromUnixTimePipe, TimeAgoPipe, UTCFormatPipe } from './pipes/moment';
+import { DaysOfWeekComboDirective, DaysOfWeekMultiDirective } from './directives/days-of-week';
+import { MultiSelectorComponent, MultiSelectorControlDirective } from './components/multi-selector';
+import { NavigatorComponent, NavigatorGroupComponent, NavigatorItemComponent } from './components/navigator';
+import { PeriodDirective, PeriodsComboDirective, PeriodsMultiDirective } from './directives/periods';
+import { PolymerControlDirective, PolymerFormComponent } from './components/polymer-form';
 
-import {CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule} from '@angular/core';
-
+import { AnimatedRouterOutletComponent } from './components/animated-router-outlet';
+import { BreakablePipe } from './pipes/breakable';
+import { CircledNumberComponent } from './components/circled-number';
+import { CodeViewerComponent } from './components/code-viewer';
 import { CommonModule } from '@angular/common';
+import { ConfiguratorService } from './services/configurator';
+import { DrawerContainerComponent } from './components/drawer-container';
+import { DrawerPanelComponent } from './components/drawer-panel';
 import { EffectsModule } from '@ngrx/effects';
+import { EllipsizePipe } from './pipes/ellipsize';
+import { EnvService } from './services/env';
+import { ExportToCSVComponent } from './components/export-to-csv';
+import { ExportableDataComponent } from './components/exportable-data';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FourOhFourPageComponent } from './pages/404-page';
+import { GoogleMapComponent } from './components/google-map';
+import { GoogleMapInfoWindowComponent } from './components/google-map-infowindow';
+import { GravatarComponent } from './components/gravatar';
+import { HTMLifyPipe } from './pipes/htmlify';
+import { JSONifyPipe } from './pipes/jsonify';
+import { LaunchURLEffects } from './effects/launch-url';
+import { LinkifyPipe } from './pipes/linkify';
+import { LogEffects } from './effects/log';
+import { MarkdownComponent } from './components/markdown';
+import { MarkdownPipe } from './pipes/markdown';
+import { NavigatorEffects } from './effects/navigator';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+import { NoDataOnPageComponent } from './components/no-data-on-page';
+import { NodeFinderComponent } from './components/node-finder';
+import { NumeralPipe } from './pipes/numeral';
+import { PageEffects } from './effects/page';
+import { PageableDataComponent } from './components/pageable-data';
+import { PagedDataSourceService } from './services/paged-datasource';
+import { PagedDataTableComponent } from './components/paged-datatable';
+import { PolymerAppComponent } from './components/polymer-app';
+import { RouterEffects } from './effects/router';
 import { RouterModule } from '@angular/router';
+import { SortableColumnComponent } from './components/sortable-column';
+import { StatusbarComponent } from './components/statusbar';
+import { TinyButtonComponent } from './components/tiny-button';
+import { ToolbarControlsComponent } from './components/toolbar-controls';
+import { UserEffects } from './effects/user';
+import { WindowEffects } from './effects/window';
+import { WorkingButtonComponent } from './components/working-button';
 
 /**
- * pi-lib module definition
- *
- * import { PiModule } from 'pi-lib';
- *
- * @NgModule({ ... imports: [PiModule, ...] ...})
+ * angular-lib module definition
  */
 
-export * from './components/animated-router-outlet';
-export * from './components/circled-number';
-export * from './components/code-viewer';
-export * from './components/drawer-container';
-export * from './components/drawer-panel';
-export * from './components/export-to-csv';
-export * from './components/exportable-data';
-export * from './components/google-map';
-export * from './components/google-map-infowindow';
-export * from './components/gravatar';
-export * from './components/markdown';
-export * from './components/multi-selector';
-export * from './components/navigator';
-export * from './components/node-finder';
-export * from './components/no-data-on-page';
-export * from './components/pageable-data';
-export * from './components/paged-datatable';
-export * from './components/polymer-app';
-export * from './components/polymer-form';
-export * from './components/sortable-column';
-export * from './components/statusbar';
-export * from './components/tiny-button';
-export * from './components/toolbar-controls';
-export * from './components/working-button';
-export * from './directives/days-of-week';
-export * from './directives/periods';
-export * from './effects/launch-url';
-export * from './effects/log';
-export * from './effects/navigator';
-export * from './effects/page';
-export * from './effects/router';
-export * from './effects/user';
-export * from './effects/window';
-export * from './pages/404-page';
-export * from './pipes/breakable';
-export * from './pipes/ellipsize';
-export * from './pipes/htmlify';
-export * from './pipes/jsonify';
-export * from './pipes/linkify';
-export * from './pipes/markdown';
-export * from './pipes/moment';
-export * from './pipes/numeral';
-export * from './services/configurator';
-export * from './services/env';
-export * from './services/paged-datasource';
-export * from './utils';
 
 const COMPONENTS = [
-  lib.AnimatedRouterOutletComponent,
-  lib.CircledNumberComponent,
-  lib.CodeViewerComponent,
-  lib.DaysOfWeekComboDirective,
-  lib.DaysOfWeekMultiDirective,
-  lib.DrawerContainerComponent,
-  lib.DrawerPanelComponent,
-  lib.ExportToCSVComponent,
-  lib.ExportableDataComponent,
-  lib.FourOhFourPageComponent,
-  lib.GoogleMapComponent,
-  lib.GoogleMapInfoWindowComponent,
-  lib.GravatarComponent,
-  lib.MarkdownComponent,
-  lib.MultiSelectorComponent,
-  lib.MultiSelectorControlDirective,
-  lib.NavigatorComponent,
-  lib.NavigatorGroupComponent,
-  lib.NavigatorItemComponent,
-  lib.NoDataOnPageComponent,
-  lib.NodeFinderComponent,
-  lib.PageableDataComponent,
-  lib.PagedDataTableComponent,
-  lib.PeriodDirective,
-  lib.PeriodsComboDirective,
-  lib.PeriodsMultiDirective,
-  lib.PolymerAppComponent,
-  lib.PolymerControlDirective,
-  lib.PolymerFormComponent,
-  lib.SortableColumnComponent,
-  lib.StatusbarComponent,
-  lib.TinyButtonComponent,
-  lib.ToolbarControlsComponent,
-  lib.WorkingButtonComponent
+  AnimatedRouterOutletComponent,
+  CircledNumberComponent,
+  CodeViewerComponent,
+  DaysOfWeekComboDirective,
+  DaysOfWeekMultiDirective,
+  DrawerContainerComponent,
+  DrawerPanelComponent,
+  ExportToCSVComponent,
+  ExportableDataComponent,
+  FourOhFourPageComponent,
+  GoogleMapComponent,
+  GoogleMapInfoWindowComponent,
+  GravatarComponent,
+  MarkdownComponent,
+  MultiSelectorComponent,
+  MultiSelectorControlDirective,
+  NavigatorComponent,
+  NavigatorGroupComponent,
+  NavigatorItemComponent,
+  NoDataOnPageComponent,
+  NodeFinderComponent,
+  PageableDataComponent,
+  PagedDataTableComponent,
+  PeriodDirective,
+  PeriodsComboDirective,
+  PeriodsMultiDirective,
+  PolymerAppComponent,
+  PolymerControlDirective,
+  PolymerFormComponent,
+  SortableColumnComponent,
+  StatusbarComponent,
+  TinyButtonComponent,
+  ToolbarControlsComponent,
+  WorkingButtonComponent
 ];
 
 const PIPES = [
-  lib.BreakablePipe,
-  lib.DateFormatPipe,
-  lib.DurationPipe,
-  lib.FromUnixTimePipe,
-  lib.EllipsizePipe,
-  lib.HTMLifyPipe,
-  lib.JSONifyPipe,
-  lib.LinkifyPipe,
-  lib.MarkdownPipe,
-  lib.NumeralPipe,
-  lib.TimeAgoPipe,
-  lib.UTCFormatPipe
+  BreakablePipe,
+  DateFormatPipe,
+  DurationPipe,
+  FromUnixTimePipe,
+  EllipsizePipe,
+  HTMLifyPipe,
+  JSONifyPipe,
+  LinkifyPipe,
+  MarkdownPipe,
+  NumeralPipe,
+  TimeAgoPipe,
+  UTCFormatPipe
 ];
 
 const SERVICES = [
-  lib.ConfiguratorService,
-  lib.EnvService,
-  lib.PagedDataSourceService
+  ConfiguratorService,
+  EnvService,
+  PagedDataSourceService
 ];
 
 @NgModule({
@@ -140,13 +133,13 @@ const SERVICES = [
   imports: [
     CommonModule,
     EffectsModule.forFeature([
-      lib.LaunchURLEffects,
-      lib.LogEffects,
-      lib.NavigatorEffects,
-      lib.PageEffects,
-      lib.RouterEffects,
-      lib.UserEffects,
-      lib.WindowEffects
+      LaunchURLEffects,
+      LogEffects,
+      NavigatorEffects,
+      PageEffects,
+      RouterEffects,
+      UserEffects,
+      WindowEffects
     ]),
     FlexLayoutModule,
     Ng2GoogleChartsModule,
